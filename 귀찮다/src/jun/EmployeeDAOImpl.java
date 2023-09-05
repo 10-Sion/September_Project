@@ -52,10 +52,52 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 	@Override
 	public void updateEmployee(Employee employee) {
+		String query = "UPDATE Employee SET pw = ?, name = ?, addr = ?, phone = ?, tel = ?, email = ? WHERE no = ?";
+		
+		try(PreparedStatement statement = connection.prepareStatement(query)) {
+			statement.setString(1, employee.getPassword());
+			statement.setString(2, employee.getName());
+			statement.setString(3, employee.getAddress());
+			statement.setString(4, employee.getPhone());
+			statement.setString(5, employee.getTelephone());
+			statement.setString(6, employee.getEmail());
+			statement.setInt(7, employee.getNo());
+			
+			statement.executeQuery();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		
 	}
 
 	@Override
 	public void deleteEmployee(int no) {
+		 String query = "DELETE FROM Employee WHERE no = ?";
+		 
+		 try(PreparedStatement statement = connection.prepareStatement(query)) {
+			statement.setInt(1, no);
+			
+			statement.executeUpdate();
+			 
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+		
+	}
+
+	public static String getDbUrl() {
+		return DB_URL;
+	}
+
+	public static String getDbUsername() {
+		return DB_USERNAME;
+	}
+
+	public static String getDbPassword() {
+		return DB_PASSWORD;
 	}
 
 }

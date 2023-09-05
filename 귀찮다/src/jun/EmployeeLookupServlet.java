@@ -1,24 +1,65 @@
 package jun;
 import java.io.IOException;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/EmployeeLookupServlet")
+@WebServlet("/employee-lookup")
 public class EmployeeLookupServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    
+    private EmployeeDAO employeeDAO;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//	DB에서 교직원 정보를 조회 후 변수 저장
-		List<Employee> employeeLookup = EmployeeDAO.getAll
-				request.setAttribute("employeeLookup", EmployeeLookup);
-				request.getRequestDispatcher("EmployeeLookUp.jsp").forward(request, response);
-	}
+    public EmployeeLookupServlet() {
+        // EmployeeDAOImpl을 초기화합니다.
 
+    }
 
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        
+        // 데이터베이스 연결 및 EmployeeDAO 객체 초기화
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection
+            		(EmployeeDAOImpl.getDbUrl(), EmployeeDAOImpl.getDbUsername(), EmployeeDAOImpl.getDbPassword());
+            employeeDAO = new EmployeeDAOImpl(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
+        try {
+            // 요청 파라미터에서 교직원 번호를 읽어옵니다.
+            int employeeNo = Integer.parseInt(request.getParameter("employeeNo"));
+
+            // EmployeeDAO를 사용하여 교직원 정보를 조회합니다.
+            Employee employee = employeeDAO.getEmployeeByNo(employeeNo);
+
+            if (employee != null) {
+                // 조회한 교직원 정보를 request 객체에 저장합니다.
+                request.setAttribute("employeeLookup", employee);
+
+                // JSP 페이지로 포워딩합니다.
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/employee-list.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                // 교직원이 없을 경우 처리
+                response.getWriter().println("Employee not found");
+            }
+        } catch (NumberFormatException e) {
+            response.getWriter().println("Invalid employee number");
+        }
+    }
 }
