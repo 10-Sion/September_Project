@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Employee List</h1>
-    
+<!-- 데이터 가져와 보여줄 테이블 -->    
     <table border="1">
         <tr>
             <th>No</th>
@@ -18,7 +18,7 @@
             <th>Phone</th>
             <th>Email</th>
         </tr>
-        <c:forEach var="employee" items="${employeeList}">
+        <c:forEach var="employee" items="${employeeLookup}">
             <tr>
                 <td>${employee.no}</td>
                 <td>${employee.name}</td>
