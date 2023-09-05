@@ -3,10 +3,14 @@ package Professor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+
+import Subject.SubBean;
 
 public class ProDao {
 
@@ -26,16 +30,58 @@ public class ProDao {
 			//즉! 현재 웹애플리케이션이 사용할수 있는 모든 자원은 "java:comp/env"아래에 위치합니다.(<Context></Context/>이위치를 말합니다.)
 			Context ctx = (Context)initCtx.lookup("java:comp/env");
 			//3. "java:comp/env 경로 아래에 위치한  "jdbc/jspbeginner" Recource태그의  DataSource커넥션풀을 얻는다
-			ds = (DataSource)ctx.lookup("jdbc/jspbeginner");		 
+			ds = (DataSource)ctx.lookup("jdbc/gwanlee");		 
 			//4. 마지막으로 커넥션풀(DataSouce)객체 메모리 에 저장된 Connection객체를 반환받아 사용
 			con = ds.getConnection();
 			return con;
 		}
 		
+		public void rs_Close() {
+			try {	
+				if(pstmt != null) {	pstmt.close(); }
+				if(rs != null) { rs.close(); }
+				if(con != null) { con.close(); }
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 		public void ProInfo(ProBean pb) {
 			
+			String sql = "";
 			
+			try{	
+				con = getConnection();
 			
-			
+			}catch(Exception e){
+					System.out.println( "Professr/ProDao내부의 교수정보 입력에서 오류가 발생했습니다." + e);				
+			}
+				
 		}
+		public void InsertSubject(SubBean sub) {
+			// 과목 등록하기
+			String sql = "";			
+			
+			try {
+				//DB연결
+				con = getConnection();
+				// 과목 등록 SQL문 작성
+				sql = "insert into Subject (sub_name, Pro_no, place, Point)"+
+				"values(?,?,?,?)"; 
+				// 미리 sql문 전송
+				pstmt = con.prepareStatement(sql);
+				// ?에 대입할 값 입력
+				pstmt.setString(1, sub.getSub_name());
+				pstmt.setInt(2, sub.getPro_no());
+				pstmt.setString(3, sub.getPlace());
+				pstmt.setInt(4, sub.getPoint());
+				// SQL문 실행
+				pstmt.executeUpdate();
+				
+			}catch (Exception e) {
+				System.out.println("Professor/ProDao내부의 수강등록처리에서 오류가 발생 했습니다. " + e);
+			}finally {
+				rs_Close();		
+		}
+		
+}
 }

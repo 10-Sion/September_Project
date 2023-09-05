@@ -4,15 +4,16 @@ public class ProBean {
 
 	// 교수 테이블의 정보를 저장할 인스턴스 변수 선언
 	private int no; // 교수 식별 번호
-	private String id;	//교수 아이디
+	private String name;	//교수 이름
 	private String pw;	// 교수 비밀번호
-	private String name; // 교수 이름 
 	private String addr; // 교수 거주지
 	private String tel; // 연구실 전화번호
 	private String phone; // 교수 휴대전화 번호
 	private String major; // 학부(전공)
 	private String email; //교수 이메일 주소
 	private String labAddr; // 연구실 번호
+	
+	
 	
 	
 	//getter, setter 메소드들
@@ -22,23 +23,17 @@ public class ProBean {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getId() {
-		return id;
+	public String getName() {
+		return name;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getPw() {
 		return pw;
 	}
 	public void setPw(String pw) {
 		this.pw = pw;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public String getAddr() {
 		return addr;
@@ -76,6 +71,9 @@ public class ProBean {
 	public void setLabAddr(String labAddr) {
 		this.labAddr = labAddr;
 	}
+	
+
+
 	
 	
 }
