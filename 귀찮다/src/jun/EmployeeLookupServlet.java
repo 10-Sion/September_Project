@@ -1,4 +1,5 @@
 package jun;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +18,6 @@ public class EmployeeLookupServlet extends HttpServlet {
     private EmployeeDAO employeeDAO;
 
     public EmployeeLookupServlet() {
-        // EmployeeDAOImpl을 초기화합니다.
 
     }
 
@@ -41,17 +41,17 @@ public class EmployeeLookupServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-            // 요청 파라미터에서 교직원 번호를 읽어옵니다.
+            // 요청 파라미터에서 교직원 번호를 읽어옴
             int employeeNo = Integer.parseInt(request.getParameter("employeeNo"));
 
-            // EmployeeDAO를 사용하여 교직원 정보를 조회합니다.
+            // EmployeeDAO를 사용하여 교직원 정보를 조회
             Employee employee = employeeDAO.getEmployeeByNo(employeeNo);
 
             if (employee != null) {
-                // 조회한 교직원 정보를 request 객체에 저장합니다.
+                // 조회한 교직원 정보를 request 객체에 저장
                 request.setAttribute("employeeLookup", employee);
 
-                // JSP 페이지로 포워딩합니다.
+                // JSP 페이지로 포워딩
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/employee-list.jsp");
                 dispatcher.forward(request, response);
             } else {

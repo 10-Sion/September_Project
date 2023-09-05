@@ -1,7 +1,6 @@
 package jun;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,28 +23,27 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		Employee employee = null;
 		String query = "SELECT * FROM Employee WHERE no =?";
 		
-		try(PreparedStatement statement = connection.prepareStatement(query)) {
-			statement.setInt(1, no);
-			ResultSet resultSet = statement.executeQuery();
-			
-			if (resultSet.next()) {
-				employee = new Employee();
-				
-				employee.setNo(resultSet.getInt("no"));
-                employee.setPassword(resultSet.getString("pw"));
+		try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, no);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                employee = new Employee();
+
+                employee.setNo(resultSet.getInt("no"));
+                employee.setPw(resultSet.getString("pw"));
                 employee.setName(resultSet.getString("name"));
-                employee.setAddress(resultSet.getString("addr"));
+                employee.setAddr(resultSet.getString("addr"));
                 employee.setPhone(resultSet.getString("phone"));
-                employee.setTelephone(resultSet.getString("tel"));
+                employee.setTel(resultSet.getString("tel"));
                 employee.setEmail(resultSet.getString("email"));
 
                 resultSet.close();
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			
-		}
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 		
 		return employee;
 	}
@@ -54,23 +52,21 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 	public void updateEmployee(Employee employee) {
 		String query = "UPDATE Employee SET pw = ?, name = ?, addr = ?, phone = ?, tel = ?, email = ? WHERE no = ?";
 		
-		try(PreparedStatement statement = connection.prepareStatement(query)) {
-			statement.setString(1, employee.getPassword());
-			statement.setString(2, employee.getName());
-			statement.setString(3, employee.getAddress());
-			statement.setString(4, employee.getPhone());
-			statement.setString(5, employee.getTelephone());
-			statement.setString(6, employee.getEmail());
-			statement.setInt(7, employee.getNo());
-			
-			statement.executeQuery();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}
-		
-	}
+		try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, employee.getPw());
+            statement.setString(2, employee.getName());
+            statement.setString(3, employee.getAddr());
+            statement.setString(4, employee.getPhone());
+            statement.setString(5, employee.getTel());
+            statement.setString(6, employee.getEmail());
+            statement.setInt(7, employee.getNo());
+
+            statement.executeUpdate(); // executeUpdate를 사용하여 업데이트 쿼리를 실행
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 	@Override
 	public void deleteEmployee(int no) {

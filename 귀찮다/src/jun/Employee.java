@@ -2,11 +2,11 @@ package jun;
 
 public class Employee {
 	private int no;
-	private String password;
+	private String pw;
 	private String name;
-	private String address;
+	private String addr;
 	private String phone;
-	private String telephone;
+	private String tel;
 	private String email;
 	
 	
@@ -18,12 +18,12 @@ public class Employee {
 		this.no = no;
 		
 	}
-	public String getPassword() {
-		return password;
+	public String getPw() {
+		return pw;
 		
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPw(String password) {
+		this.pw = password;
 		
 	}
 	public String getName() {
@@ -34,12 +34,12 @@ public class Employee {
 		this.name = name;
 		
 	}
-	public String getAddress() {
-		return address;
+	public String getAddr() {
+		return addr;
 		
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddr(String address) {
+		this.addr = address;
 		
 	}
 	public String getPhone() {
@@ -50,12 +50,12 @@ public class Employee {
 		this.phone = phone;
 		
 	}
-	public String getTelephone() {
-		return telephone;
+	public String getTel() {
+		return tel;
 		
 	}
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public void setTel(String telephone) {
+		this.tel = telephone;
 		
 	}
 	public String getEmail() {
