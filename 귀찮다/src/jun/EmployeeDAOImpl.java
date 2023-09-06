@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class EmployeeDAOImpl implements EmployeeDAO{
 
-	private static final String DB_URL = "jdbc:mysql://localhost:3306/GwanLee";
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/gwanlee?serverTimezone=UTC";
 	private static final String DB_USERNAME = "pid";
 	private static final String DB_PASSWORD = "1234";
 	
@@ -21,7 +21,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 	@Override
 	public Employee getEmployeeByNo(int no) {
 		Employee employee = null;
-		String query = "SELECT * FROM Employee WHERE no =?";
+		String query = "SELECT * FROM employee WHERE no =?";
 		
 		try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, no);
@@ -43,7 +43,18 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+            
+        } finally {
+			try {
+				if (connection != null) {
+					connection.close();
+					
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 		return employee;
 	}
@@ -65,7 +76,18 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+            
+        } finally {
+			try {
+				if (connection != null) {
+					connection.close();
+					
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
     }
 
 	@Override
@@ -80,6 +102,16 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		} catch (SQLException e) {
 			e.printStackTrace();
 			
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+					
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}

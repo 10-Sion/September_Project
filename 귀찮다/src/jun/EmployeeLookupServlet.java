@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/employee-lookup")
+@WebServlet("/EmployeeLookUp")
 public class EmployeeLookupServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
@@ -27,9 +27,12 @@ public class EmployeeLookupServlet extends HttpServlet {
         
         // 데이터베이스 연결 및 EmployeeDAO 객체 초기화
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection
-            		(EmployeeDAOImpl.getDbUrl(), EmployeeDAOImpl.getDbUsername(), EmployeeDAOImpl.getDbPassword());
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(
+                EmployeeDAOImpl.getDbUrl(),
+                EmployeeDAOImpl.getDbUsername(),
+                EmployeeDAOImpl.getDbPassword()
+            );
             employeeDAO = new EmployeeDAOImpl(connection);
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,14 +55,18 @@ public class EmployeeLookupServlet extends HttpServlet {
                 request.setAttribute("employeeLookup", employee);
 
                 // JSP 페이지로 포워딩
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/employee-list.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/EmployeeLookUp.jsp");
                 dispatcher.forward(request, response);
             } else {
                 // 교직원이 없을 경우 처리
-                response.getWriter().println("Employee not found");
+                request.setAttribute("errorMessage", "Employee not found");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+                dispatcher.forward(request, response);
             }
         } catch (NumberFormatException e) {
-            response.getWriter().println("Invalid employee number");
+            request.setAttribute("errorMessage", "Invalid employee number");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+            dispatcher.forward(request, response);
         }
     }
 }

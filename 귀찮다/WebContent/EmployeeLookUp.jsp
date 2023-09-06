@@ -11,13 +11,14 @@
 <!-- 데이터 가져와 보여줄 테이블 -->    
     <table border="1">
         <tr>
-            <th>No</th>
-            <th>Pw</th>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Email</th>
-        </tr>
+		    <th>Employee ID</th>
+		    <th>Password</th>
+		    <th>Name</th>
+		    <th>Address</th>
+		    <th>Phone</th>
+		    <th>Email</th>
+		</tr>
+
         <c:forEach var="employee" items="${employeeLookup}">
             <tr>
                 <td>${employee.no}</td>
