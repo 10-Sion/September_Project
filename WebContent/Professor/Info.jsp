@@ -28,6 +28,7 @@
 			<th>교수 이름</th>
 			<td></td>
 		</tr>
+		
 	
 
 <!-- 	private int no; // 교수 식별 번호 -->

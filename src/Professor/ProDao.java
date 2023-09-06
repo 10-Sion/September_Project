@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -65,7 +67,7 @@ public class ProDao {
 				//DB연결
 				con = getConnection();
 				// 과목 등록 SQL문 작성
-				sql = "insert into Subject (sub_name, Pro_no, place, Point)"+
+				sql = "insert into Subject(sub_name, Pro_no, place, Point)"+
 				"values(?,?,?,?)"; 
 				// 미리 sql문 전송
 				pstmt = con.prepareStatement(sql);
@@ -84,4 +86,34 @@ public class ProDao {
 		}
 		
 }
+		public List getSublist() {
+			
+			ArrayList list = new ArrayList();
+			String sql = "";
+			try {
+			con = ds.getConnection();
+			sql = "SELECT * FROM gwanlee.subject";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+			
+			SubBean subbean = new SubBean();
+			subbean.setSub_no(rs.getInt("sub_no"));
+			subbean.setPro_no(rs.getInt("pro_no"));
+			subbean.setSub_name(rs.getString("sub_name"));
+			subbean.setPlace(rs.getString("place"));
+			subbean.setPoint(rs.getInt("point"));	
+			list.add(subbean);
+			}
+			
+			}catch(Exception e) {
+				System.out.println("Subject/SubDao클래스에서 getList메소드 오류 " + e);
+				e.printStackTrace();
+			} finally{
+				rs_Close();
+			}
+			return list;
+		}
 }

@@ -2,6 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%--
+	SubIndex에서 request객체로 넘어온 pro_no의(세션 아이디 no값)과 
+	수정할 행의 p_no값이 다른지 비교 
+	SubIndex.jsp를 복사해서 if( 교수id == 로그인해서 저장된 세션)이면
+	수정가능한 화면 보여주기,
+	만약 권한이 없으면 (else)?
+	alert("수정 권한이 없습니다.") 알림을 띄우고 history.back()으로 이전페이지 보여주기.
+ --%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -12,11 +20,11 @@
 	request.setCharacterEncoding("UTF-8");
  //	int pro_no = Integer.parseInt( request.getParameter("no")) ;
  //	String P_name = request.getParameter("name");
- 	int pro_no = (int)session.getAttribute("pro_no"); //로그인 된 교수의 정보를 가져오는 테스트용 세션값 가져오기
+ 	int pro_no = (int)session.getAttribute("pro_no");
  //	String p_name = (String)session.getAttribute("pro_no");
 %>
 
-<form action = "InsertSubjectPro.jsp" method = "post">
+<form action = "modSubjectPro.jsp" method = "post">
 	<div align="center">
 	<h1>과목 등록</h1>
 	<table>
@@ -49,8 +57,8 @@
 	</table>
 	</div>
 	<div id="buttons" align="center">
-		<input type="submit" value="수업등록" class="submit"/> 
-		<input type="reset" value="등록취소" class="cancel"/>
+		<input type="submit" value="수정" class="submit"/> 
+		<input type="button" value="취소" onClick="history.back()"> 
 	</div>
 </form>
 </body>

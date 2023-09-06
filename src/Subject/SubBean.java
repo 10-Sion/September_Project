@@ -5,8 +5,7 @@ public class SubBean { // 과목테이블의 정보를 저장할 DTO
 	private String sub_name;// 과목명
 	private int pro_no; // 교수 번호 
 	private String place; //강의 장소
-	private int Point;//  학점
-	
+	private int point;//  학점
 	
 	
 	public int getSub_no() {
@@ -34,11 +33,15 @@ public class SubBean { // 과목테이블의 정보를 저장할 DTO
 		this.place = place;
 	}
 	public int getPoint() {
-		return Point;
+		return point;
 	}
 	public void setPoint(int point) {
-		Point = point;
+		this.point = point;
 	}
+	
+	
+	
+
 	
 	
 }
