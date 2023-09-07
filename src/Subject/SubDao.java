@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+
 public class SubDao {
 		
 	
@@ -43,18 +44,17 @@ public class SubDao {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
+	} 
 	
-	public List getSublist() {
+	public List getSublist(int pro_no) {
 		
 		ArrayList list = new ArrayList();
 		String sql = "";
 		try {
-		con = ds.getConnection();
-		sql = "select * from subject";
+		con = getConnection();
+		sql = "select * from subject where pro_no=" + pro_no;
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
-		
 		while(rs.next()) {
 			
 		
@@ -74,5 +74,25 @@ public class SubDao {
 			rs_Close();
 		}
 		return list;
+	}
+	public void delSubject(int sub_no) {
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			
+			sql = " delete from subject where sub_no=" + sub_no;
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.executeUpdate();	
+			
+		}catch(Exception e){
+			System.out.println("Subject/SubDao 클래스의 delSubject 메소드 오류 " + e);
+			e.printStackTrace();		
+		}finally {
+			rs_Close();
+		}
+
 	}
 }

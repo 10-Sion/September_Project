@@ -46,19 +46,8 @@ public class ProDao {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-		}
-		public void ProInfo(ProBean pb) {
-			
-			String sql = "";
-			
-			try{	
-				con = getConnection();
-			
-			}catch(Exception e){
-					System.out.println( "Professr/ProDao내부의 교수정보 입력에서 오류가 발생했습니다." + e);				
-			}
-				
-		}
+		}//자원해제 끝
+		
 		public void InsertSubject(SubBean sub) {
 			// 과목 등록하기
 			String sql = "";			
@@ -83,37 +72,8 @@ public class ProDao {
 				System.out.println("Professor/ProDao내부의 수강등록처리에서 오류가 발생 했습니다. " + e);
 			}finally {
 				rs_Close();		
-		}
+			}
 		
-}
-		public List getSublist() {
-			
-			ArrayList list = new ArrayList();
-			String sql = "";
-			try {
-			con = ds.getConnection();
-			sql = "SELECT * FROM gwanlee.subject";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-			
-			SubBean subbean = new SubBean();
-			subbean.setSub_no(rs.getInt("sub_no"));
-			subbean.setPro_no(rs.getInt("pro_no"));
-			subbean.setSub_name(rs.getString("sub_name"));
-			subbean.setPlace(rs.getString("place"));
-			subbean.setPoint(rs.getInt("point"));	
-			list.add(subbean);
-			}
-			
-			}catch(Exception e) {
-				System.out.println("Subject/SubDao클래스에서 getList메소드 오류 " + e);
-				e.printStackTrace();
-			} finally{
-				rs_Close();
-			}
-			return list;
-		}
-}
+		}//InsertSubject() 끝
+		
+}//ProDao 끝
