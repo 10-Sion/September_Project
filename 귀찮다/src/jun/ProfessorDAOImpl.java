@@ -17,7 +17,7 @@ public class ProfessorDAOImpl implements ProfessorDAO {
     public ProfessorDAOImpl(Connection connection) {
         this.connection = connection;
     }
-
+ 
     @Override
     public List<Professor> getProfessors() {
         List<Professor> professors = new ArrayList<>();

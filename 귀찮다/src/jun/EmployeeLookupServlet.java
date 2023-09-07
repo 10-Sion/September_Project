@@ -36,7 +36,7 @@ public class EmployeeLookupServlet extends HttpServlet {
             employeeDAO = new EmployeeDAOImpl(connection);
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        } 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

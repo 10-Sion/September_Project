@@ -11,7 +11,7 @@ public class Professor {
     private String email;
     private int labnum;
 
-
+ 
     public int getNo() {
         return no;
     }

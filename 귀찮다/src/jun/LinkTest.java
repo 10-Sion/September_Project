@@ -21,7 +21,7 @@ public class LinkTest {
 
             // 3. SQL 쿼리 작성
             String query = "SELECT * FROM employee";
-
+ 
             // 4. SQL 쿼리 실행
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();

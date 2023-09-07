@@ -46,7 +46,7 @@ public class Employee {
 		return phone;
 		
 	}
-	public void setPhone(String phone) {
+	public void setPhone(String phone) { 
 		this.phone = phone;
 		
 	}

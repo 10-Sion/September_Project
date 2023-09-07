@@ -9,3 +9,4 @@ public interface EmployeeDAO {
 	// 탈퇴
 	void deleteEmployee(int no);
 }
+ 

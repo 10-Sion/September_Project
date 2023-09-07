@@ -21,7 +21,7 @@
             <th>Email</th>
             <th>Lab Number</th>
             <!-- 필요한 교수 정보 컬럼 추가 -->
-        </tr>
+        </tr> 
         <c:forEach var="professor" items="${professorLookup}">
             <tr>
                 <td>${professor.no}</td>

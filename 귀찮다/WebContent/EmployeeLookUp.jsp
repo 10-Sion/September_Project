@@ -17,7 +17,7 @@
 		    <th>Address</th>
 		    <th>Phone</th>
 		    <th>Email</th>
-		</tr>
+		</tr> 
 
         <c:forEach var="employee" items="${employeeLookup}">
             <tr>

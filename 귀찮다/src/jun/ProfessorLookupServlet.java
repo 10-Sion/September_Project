@@ -21,7 +21,7 @@ public class ProfessorLookupServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        
+         
         // 데이터베이스 연결 및 ProfessorDAO 객체 초기화
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
