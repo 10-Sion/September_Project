@@ -69,6 +69,9 @@
     <br><br>
     <label for="pro_major">전공 : </label>
     <input id="pro_major" name="pro_major" type="text" size="20" maxlength="100" required>
+    <label for="pro_email">이메일 : </label>
+    <input id="pro_email" name="pro_email" type="text" size="20" maxlength="10" required>
+    <br><br>
 </div>
 
 <!-- 입력완료 -->
