@@ -1,51 +1,89 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 
-<% request.setCharacterEncoding("utf-8");%>
- 
-<% 
-	String user_id = request.getParameter("user_id");
-	String user_pw = request.getParameter("user_pw");
-   String name = request.getParameter("name");
-   String address= request.getParameter("address");
-   String phone = request.getParameter("phone");
-   String email = request.getParameter("email");
-   
+<%
+    request.setCharacterEncoding("utf-8");
 
+    // 사용자로부터 제출된 데이터 가져오기
+    String occupation = request.getParameter("occupation");
 
-   Connection conn=null;
-   PreparedStatement pstmt=null;
-   String str="";
-   try{
-	   String url = "jdbc:mysql://localhost:3306/GwanLee";
-	   String id = "pid";
-	   String pw = "1234";
- 	 
- 	 Class.forName("com.mysql.cj.jdbc.Driver");
- 	 conn=DriverManager.getConnection(url,id ,pw );
- 	
- 	 String sql= "insert into users values (?,?,?,?,?,?)";
- 	 pstmt=conn.prepareStatement(sql);
- 	pstmt.setString(1,user_id);
-	 pstmt.setString(2,user_pw);
- 	 pstmt.setString(3,name);
-     pstmt.setString(4,address);
- 	 pstmt.setString(5,phone);
- 	 pstmt.setString(6,email);
- 	
+    String name = request.getParameter("name");
+    String pw = request.getParameter("pw");
+    String phone = request.getParameter("phone");
+    String email = request.getParameter("email");
+    String addr = request.getParameter("addr");
+    String grade = request.getParameter("grade");
+    String major = request.getParameter("major");
 
- 	 pstmt.executeUpdate();
- 	 
- 	 out.println("users 테이블에 새로운 레코드를 추가했습니다.");
+    
+    
+    
+    // 데이터베이스 연결 설정
+    String url = "jdbc:mysql://localhost:3306/GwanLee";
+    String i_id = "pid";
+    String i_pw = "1234";
 
- 	}catch(Exception e){ 
- 		e.printStackTrace();
- 		out.println("users 테이블에 새로운 레코드를 추가에 실패했습니다");
- 	}finally{
- 		if(pstmt != null) 
- 			try{pstmt.close();}catch(SQLException sqle){}
- 		if(conn != null) 
- 			try{conn.close();}catch(SQLException sqle){}
- 	}
- %>
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection(url, i_id, i_pw);
+
+        if (occupation.equals("학생")) {
+        	
+        	System.out.println("학생 ");
+            // 학생 테이블에 데이터 삽입
+            String insertStudentSQL = "INSERT INTO Student (name, pw, addr, phone, email, grade, major) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            pstmt = conn.prepareStatement(insertStudentSQL);
+            pstmt.setString(1, name);
+            pstmt.setString(2, pw);
+            pstmt.setString(3, addr);
+            pstmt.setString(4, phone);
+            pstmt.setString(5, email);
+            pstmt.setString(6, grade);
+            pstmt.setString(7, major);
+
+            
+            pstmt.executeUpdate();
+        } else if (occupation.equals("교직원")) {
+        	
+        	System.out.println("교직원 ");
+            // 교직원 테이블에 데이터 삽입
+            String insertEmployeeSQL = "INSERT INTO Employee (name, pw, addr, phone,email) VALUES (?, ?, ?, ?, ?)";
+            pstmt = conn.prepareStatement(insertEmployeeSQL);
+            pstmt.setString(1, name);
+            pstmt.setString(2, pw);
+            pstmt.setString(3, addr);
+            pstmt.setString(4, phone);
+            pstmt.setString(5, email);
+            pstmt.executeUpdate();
+        } else if (occupation.equals("교수")) {
+        	
+        	System.out.println("교수 ");
+            // 교수 테이블에 데이터 삽입
+            String insertProfessorSQL = "INSERT INTO Professor (name, pw, addr, phone, major, email) VALUES (?, ?, ?, ?, ?, ?)";
+            pstmt = conn.prepareStatement(insertProfessorSQL);
+            pstmt.setString(1, name);
+            pstmt.setString(2, pw);
+            pstmt.setString(3, addr);
+            pstmt.setString(4, phone);
+            pstmt.setString(5, major);
+            pstmt.setString(6, email);
+            pstmt.executeUpdate();
+        }
+
+        out.println("데이터를 성공적으로 삽입했습니다.");
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        System.out.println("데이터 삽입에 실패했습니다.");
+    } finally {
+        // PreparedStatement와 Connection 닫기
+        if (pstmt != null) try { pstmt.close(); } catch (SQLException sqle) {}
+        if (conn != null) try { conn.close(); } catch (SQLException sqle) {}
+    }
+    
+	
+
+%>
