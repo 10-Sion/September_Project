@@ -1,27 +1,46 @@
-package jun;
+package jjin_mak;
 
 public class Professor {
-    private int pro_no;
+    private int proNo;
     private String pw;
     private String name;
     private String addr;
-    private String phone;
     private String tel;
+    private String phone;
     private String major;
     private String email;
     private int labNum;
 
+    // 기본 생성자
     public Professor() {
     }
-
-    // Getter와 Setter 메서드 추가
-
-    public int getPro_no() {
-        return pro_no;
+    
+    public Professor(int proNo, String name, String tel, String major) {
+        this.proNo = proNo;
+        this.name = name;
+        this.tel = tel;
+        this.major = major;
     }
 
-    public void setPro_no(int pro_no) {
-        this.pro_no = pro_no;
+    public Professor(int proNo, String pw, String name, String addr, String tel, String phone, String major, String email, int labNum) {
+        this.proNo = proNo;
+        this.pw = pw;
+        this.name = name;
+        this.addr = addr;
+        this.tel = tel;
+        this.phone = phone;
+        this.major = major;
+        this.email = email;
+        this.labNum = labNum;
+    }
+
+    // Getter and Setter
+    public int getProNo() {
+        return proNo;
+    }
+
+    public void setProNo(int proNo) {
+        this.proNo = proNo;
     }
 
     public String getPw() {
@@ -48,20 +67,20 @@ public class Professor {
         this.addr = addr;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getTel() {
         return tel;
     }
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getMajor() {

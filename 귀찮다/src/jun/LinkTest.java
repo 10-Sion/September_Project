@@ -20,7 +20,7 @@ public class LinkTest {
             Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 
             // 3. SQL 쿼리 작성
-            String query = "SELECT * FROM employee";
+            String query = "SELECT * FROM professor";
  
             // 4. SQL 쿼리 실행
             PreparedStatement statement = connection.prepareStatement(query);
@@ -28,7 +28,7 @@ public class LinkTest {
 
             // 5. 결과 처리
             while (resultSet.next()) {
-                int employeeId = resultSet.getInt("no");
+                int employeeId = resultSet.getInt("pro_no");
                 String employeePw = resultSet.getString("pw");
                 String employeeName = resultSet.getString("name");
                 

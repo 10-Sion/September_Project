@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -20,9 +20,8 @@
             <th>Major</th>
             <th>Email</th>
             <th>Lab Number</th>
-            <!-- 필요한 교수 정보 컬럼 추가 -->
-        </tr> 
-        <c:forEach var="professor" items="${professorLookup}">
+        </tr>
+        <c:forEach var="professor" items="${professorList}">
             <tr>
                 <td>${professor.no}</td>
                 <td>${professor.pw}</td>
@@ -31,9 +30,8 @@
                 <td>${professor.phone}</td>
                 <td>${professor.tel}</td>
                 <td>${professor.major}</td>
-                <td><a href="mailto:${professor.email}">${professor.email}</a></td>
+                <td>${professor.email}</td>
                 <td>${professor.labnum}</td>
-                <!-- 교수 정보 컬럼 출력 -->
             </tr>
         </c:forEach>
     </table>
