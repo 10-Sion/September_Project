@@ -13,8 +13,8 @@
 <h1>로그인</h1>
 
 <form method="post" action="loginPro.jsp">
-		아이디 : <input type="text" name="user_id"><br>
-		비밀번호 : <input type="password" name="user_pw"><br>
+		이름  : <input type="text" name="name"><br>
+		비밀번호 : <input type="password" name="pw"><br>
 		<input type="submit" value="로그인">
 		<input type="reset" value="초기화">
 

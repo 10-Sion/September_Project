@@ -137,9 +137,11 @@ function submit() {
         data: formData,
         success: function (data) {
             // 성공한 경우 처리할 내용을 추가하세요.
+        	 window.location.href = "login.jsp";
         },
         error: function (error) {
             // 에러 발생 시 처리할 내용을 추가하세요.
+        	alert("회원가입이 실패했습니다.");
         }
     });
 }

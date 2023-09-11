@@ -11,41 +11,57 @@
 <body>
 <%
 
-String user_id = request.getParameter("user_id");
-String user_pw = request.getParameter("user_pw");
+String name = request.getParameter("name");
+String pw = request.getParameter("pw");
 
 Connection conn = null;
 PreparedStatement pstmt = null;
 ResultSet rs = null;
 
 try {
-	 Class.forName("com.mysql.jdbc.Driver");
+    Class.forName("com.mysql.cj.jdbc.Driver");
 
+    // 데이터베이스 연결 설정
     String url = "jdbc:mysql://localhost:3306/GwanLee";
-	   String id = "pid";
-	   String pw = "1234";
+    String dbUsername = "pid";
+    String dbPassword = "1234";
 
-    conn = DriverManager.getConnection(url, id, pw);
-    pstmt = conn.prepareStatement("SELECT user_id, user_pw, name FROM users WHERE user_id = ?");
-    pstmt.setString(1, user_id);
+    conn = DriverManager.getConnection(url, dbUsername, dbPassword);
+
+    // 사용자 이름과 비밀번호를 확인하는 SQL 쿼리
+    String query = "SELECT name, pw FROM Student WHERE name = ? AND pw = ?" +
+                   "UNION " +
+                   "SELECT name, pw FROM Employee WHERE name = ? AND pw = ?" +
+                   "UNION " +
+                   "SELECT name, pw FROM Professor WHERE name = ? AND pw = ?";
+    pstmt = conn.prepareStatement(query);
+    pstmt.setString(1, name);
+    pstmt.setString(2, pw);
+    pstmt.setString(3, name);
+    pstmt.setString(4, pw);
+    pstmt.setString(5, name);
+    pstmt.setString(6, pw);
+
     rs = pstmt.executeQuery();
 
     if (rs.next()) {
-        String dbUserId = rs.getString("user_id");
-        String dbUserPw = rs.getString("user_pw");
+        String dbUserName = rs.getString("name");
+        String dbUserPw = rs.getString("pw");
 
-        if (user_id.equals(dbUserId) && user_pw.equals(dbUserPw)) {
+        if (pw.equals(dbUserPw)) {
             // 로그인 성공
-            session.setAttribute("user_id", rs.getString("user_id"));
+            session.setAttribute("name", dbUserName);
             // 로그인 성공 후 메인 페이지로 리디렉션
-            response.sendRedirect(request.getContextPath() + "/September_Project/main.jsp");
+            response.sendRedirect(request.getContextPath() + "/main.jsp");
         } else {
             // 로그인 실패
-            // 사용자에게 로그인 실패 메시지를 보여줄 수 있습니다.
-        	
+            out.println("비밀번호가 일치하지 않습니다.");
         }
-        
-}} catch (ClassNotFoundException e) {
+    } else {
+        // 로그인 실패
+        out.println("사용자 이름 또는 비밀번호가 일치하지 않습니다.");
+    }
+} catch (ClassNotFoundException e) {
     e.printStackTrace();
 } catch (SQLException e) {
     e.printStackTrace();

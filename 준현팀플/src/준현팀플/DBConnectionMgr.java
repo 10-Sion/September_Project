@@ -17,7 +17,7 @@ public class DBConnectionMgr {
         String pw = "1234";
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, id, pw);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
