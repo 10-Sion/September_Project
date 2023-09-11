@@ -1,0 +1,55 @@
+Student 테이블 (정규화 후)
+
+	stu_no (기본 키)
+	pw
+	name
+	addr
+	phone
+	tel
+	email
+	grade  --
+	major  --	학생이 직접 수정 x
+	status  --
+
+Professor 테이블 (정규화 후)
+
+	pro_no (기본 키)
+	pw
+	name
+	addr
+	tel
+	phone
+	email
+	labNum
+	+) status	-- 교수가 직접 수정 x
+
++ Professor 테이블 (새로 생성) : student 테이블에서 사용 용이하게 변경
+
+	pro_no (기본 키)
+	pro_name
+	pro_email
+	pro_tel
+	pro_phone
+
++ Major 테이블 (새로 생성)
+
+	major_no (기본 키)
+	major_name
+
+subject 테이블 : 기존 컬럼 수정
+	no (기본 키)
+	sub_name  : 과목명
+	pro_name  : 교수 이름 (FK)
+	pro_no	  : 교수 번호 (FK)
+	place	  : 수업 장소
+	capacity    : 최대 수강 인원
+	major	  : 해당 과목의 학과/ 전공
+	start_date  : 수업 시작 날짜
+	end_date   : 수업 종료 날짜
+
+study 테이블 : 기존 컬럼 수정
+	no (기본 키)
+	stu_no	  : 등록된 학생 번호
+	sub_no	  : 수강 강의/ 과목의 고유 번호
+	point	  : 해당 과목 성적
+	reg_date	  : 수강 등록 날짜
