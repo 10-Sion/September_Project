@@ -1,55 +1,65 @@
-Student 테이블 (정규화 후)
+트리거 교직원, 교수, 학생 3개만 1000 2000
 
-	stu_no (기본 키)
-	pw
-	name
-	addr
-	phone
-	tel
-	email
-	grade  --
-	major  --	학생이 직접 수정 x
-	status  --
+Employee 테이블
+	emp_no int AI PK 
+	pw varchar(30) 
+	name varchar(20) 
+	addr varchar(50) 
+	phone varchar(20) 
+	tel varchar(20) 
+	email varchar(50)
+
+Student 테이블 (정규화 후)	++ 성적, 학부, 전공
+
+	stu_no int AI PK 
+	pw varchar(30) 
+	name varchar(20) 
+	addr varchar(50) 
+	phone varchar(20) 
+	tel varchar(20) 
+	email varchar(50)
+	
+	dep_name varchar(30) FK
+	major  varchar(30) FK
+	grade  tinyint(1)
+	status  tinyint(1)
 
 Professor 테이블 (정규화 후)
 
-	pro_no (기본 키)
-	pw
-	name
-	addr
-	tel
-	phone
-	email
-	labNum
-	+) status	-- 교수가 직접 수정 x
+	pro_no int AI PK
+	pw varchar(30)
+	name varchar(20) 
+	addr varchar(50) 
+	phone varchar(20)
+	tel varchar(20) 	
+	email varchar(50)
+	
+	dep_name varchar(30) FK
+	major  varchar(30) FK
+	labNum int(5)
+	status tinyint(1)
 
-+ Professor 테이블 (새로 생성) : student 테이블에서 사용 용이하게 변경
-
-	pro_no (기본 키)
-	pro_name
-	pro_email
-	pro_tel
-	pro_phone
++ Department 테이블 (새로 생성)
+	dep_name varchar(30) PK
 
 + Major 테이블 (새로 생성)
-
-	major_no (기본 키)
-	major_name
+	maj_name varchar(30) PK
 
 subject 테이블 : 기존 컬럼 수정
-	no (기본 키)
-	sub_name  : 과목명
-	pro_name  : 교수 이름 (FK)
-	pro_no	  : 교수 번호 (FK)
-	place	  : 수업 장소
-	capacity    : 최대 수강 인원
-	major	  : 해당 과목의 학과/ 전공
-	start_date  : 수업 시작 날짜
-	end_date   : 수업 종료 날짜
+	no int PK
+	sub_name varchar(20)
+	pro_name varchar(20) FK
+	pro_no int FK
+	place varchar(20)		: 장소
+	capacity int(5)		: 총원
+	dep_name varchar(30) FK	: 학부
+	major vharchar(30) FK	: 전공
+	point tinyint(1)		: 학점
+	semester tinyint(1)		: 학기
 
-study 테이블 : 기존 컬럼 수정
-	no (기본 키)
-	stu_no	  : 등록된 학생 번호
-	sub_no	  : 수강 강의/ 과목의 고유 번호
-	point	  : 해당 과목 성적
-	reg_date	  : 수강 등록 날짜
+study 테이블 : 기존 컬럼 수정 = 복합 기본키 구성
+	stu_no int PK
+	sub_no int PK
+	score float(5)		: 점수		
+	point tinyint(1) FK		: 학점
+	semester tinyint(1) FK	: 학기
