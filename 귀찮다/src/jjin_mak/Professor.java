@@ -9,7 +9,7 @@ public class Professor {
     private String phone;
     private String major;
     private String email;
-    private int labNum;
+    private String labNum;
 
     // 기본 생성자
     public Professor() {
@@ -22,7 +22,7 @@ public class Professor {
         this.major = major;
     }
 
-    public Professor(int proNo, String pw, String name, String addr, String tel, String phone, String major, String email, int labNum) {
+    public Professor(int proNo, String pw, String name, String addr, String tel, String phone, String major, String email, String labNum2) {
         this.proNo = proNo;
         this.pw = pw;
         this.name = name;
@@ -31,7 +31,7 @@ public class Professor {
         this.phone = phone;
         this.major = major;
         this.email = email;
-        this.labNum = labNum;
+        this.labNum = labNum2;
     }
 
     // Getter and Setter
@@ -99,11 +99,11 @@ public class Professor {
         this.email = email;
     }
 
-    public int getLabNum() {
+    public String getLabNum() {
         return labNum;
     }
 
-    public void setLabNum(int labNum) {
+    public void setLabNum(String labNum) {
         this.labNum = labNum;
     }
 }

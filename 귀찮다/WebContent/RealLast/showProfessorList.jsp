@@ -5,6 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#">
     <title>Show Professor List</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
 
         <c:forEach items="${professors}" var="professor">
             <tr>
-                <td><a href="<c:url value='displayProInfo.jsp'><c:param name='pro_no' value='${professor.proNo}'/></c:url>">${professor.proNo}</a></td>
+                <td><a href="DisplayProInfoServlet?pro_no=${professor.proNo}">${professor.proNo}</a></td>
                 <td>${professor.name}</td>
                 <td>${professor.tel}</td>
                 <td>${professor.major}</td>

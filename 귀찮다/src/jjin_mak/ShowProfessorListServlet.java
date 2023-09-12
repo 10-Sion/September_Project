@@ -34,8 +34,10 @@ public class ShowProfessorListServlet extends HttpServlet {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
+            
         } catch (ClassNotFoundException e) {
             throw new ServletException("MySQL JDBC 드라이버를 찾을 수 없습니다.", e);
+            
         }
     }
 
