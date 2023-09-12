@@ -24,20 +24,17 @@ DROP TABLE IF EXISTS `student`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student` (
   `stu_no` int NOT NULL AUTO_INCREMENT,
-  `pw` varchar(30) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `addr` varchar(50) NOT NULL,
-  `phone` varchar(20) NOT NULL,
+  `pw` varchar(30) DEFAULT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `addr` varchar(50) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
   `tel` varchar(20) DEFAULT NULL,
-  `email` varchar(50) NOT NULL,
-  `grade` int DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `dep_name` varchar(30) DEFAULT NULL,
   `major` varchar(30) DEFAULT NULL,
-  `status` varchar(10) DEFAULT NULL,
-  `Pro_name` varchar(20) DEFAULT NULL,
-  `Pro_no` int DEFAULT NULL,
-  PRIMARY KEY (`stu_no`),
-  KEY `Pro_no` (`Pro_no`),
-  CONSTRAINT `student_ibfk_1` FOREIGN KEY (`Pro_no`) REFERENCES `professor` (`pro_no`)
+  `grade` tinyint(1) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`stu_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2011 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -47,7 +44,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (2001,'password1','Student 1','Address 1','123-456-7890','987-654-3210','student1@example.com',1,'Major 1','Active','Professor 1',1001),(2002,'password2','Student 2','Address 2','234-567-8901','876-543-2109','student2@example.com',2,'Major 2','Active','Professor 2',1002),(2003,'password3','Student 3','Address 3','345-678-9012','765-432-1098','student3@example.com',3,'Major 3','Active','Professor 3',1003),(2004,'password4','Student 4','Address 4','456-789-0123','654-321-0987','student4@example.com',4,'Major 4','Inactive','Professor 4',1004),(2005,'password5','Student 5','Address 5','567-890-1234','543-210-9876','student5@example.com',1,'Major 1','Active','Professor 1',1001),(2006,'password6','Student 6','Address 6','678-901-2345','432-109-8765','student6@example.com',2,'Major 2','Inactive','Professor 2',1002),(2007,'password7','Student 7','Address 7','789-012-3456','321-098-7654','student7@example.com',3,'Major 3','Active','Professor 3',1003),(2008,'password8','Student 8','Address 8','890-123-4567','210-987-6543','student8@example.com',4,'Major 4','Active','Professor 4',1004),(2009,'password9','Student 9','Address 9','901-234-5678','098-765-4321','student9@example.com',1,'Major 1','Inactive','Professor 1',1001),(2010,'password10','Student 10','Address 10','012-345-6789','987-654-3210','student10@example.com',2,'Major 2','Active','Professor 2',1002);
+INSERT INTO `student` VALUES (2001,'password2001','Student1','Address1','Phone1','Tel1','student1@example.com',NULL,NULL,1,1),(2002,'password2002','Student2','Address2','Phone2','Tel2','student2@example.com',NULL,NULL,2,0),(2003,'password2003','Student3','Address3','Phone3','Tel3','student3@example.com',NULL,NULL,3,1),(2004,'password2004','Student4','Address4','Phone4','Tel4','student4@example.com',NULL,NULL,4,0),(2005,'password2005','Student5','Address5','Phone5','Tel5','student5@example.com',NULL,NULL,1,1),(2006,'password2006','Student6','Address6','Phone6','Tel6','student6@example.com',NULL,NULL,2,0),(2007,'password2007','Student7','Address7','Phone7','Tel7','student7@example.com',NULL,NULL,3,1),(2008,'password2008','Student8','Address8','Phone8','Tel8','student8@example.com',NULL,NULL,4,0),(2009,'password2009','Student9','Address9','Phone9','Tel9','student9@example.com',NULL,NULL,1,1),(2010,'password2010','Student10','Address10','Phone10','Tel10','student10@example.com',NULL,NULL,2,0);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-08 17:33:25
+-- Dump completed on 2023-09-12 15:33:15

@@ -16,26 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `major`
+-- Table structure for table `department`
 --
 
-DROP TABLE IF EXISTS `major`;
+DROP TABLE IF EXISTS `department`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `major` (
-  `maj_name` varchar(30) NOT NULL,
-  PRIMARY KEY (`maj_name`)
+CREATE TABLE `department` (
+  `dep_name` varchar(30) NOT NULL,
+  PRIMARY KEY (`dep_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `major`
+-- Dumping data for table `department`
 --
 
-LOCK TABLES `major` WRITE;
-/*!40000 ALTER TABLE `major` DISABLE KEYS */;
-INSERT INTO `major` VALUES ('Major1'),('Major10'),('Major2'),('Major3'),('Major4'),('Major5'),('Major6'),('Major7'),('Major8'),('Major9');
-/*!40000 ALTER TABLE `major` ENABLE KEYS */;
+LOCK TABLES `department` WRITE;
+/*!40000 ALTER TABLE `department` DISABLE KEYS */;
+INSERT INTO `department` VALUES ('Department1'),('Department10'),('Department2'),('Department3'),('Department4'),('Department5'),('Department6'),('Department7'),('Department8'),('Department9');
+/*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

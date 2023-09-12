@@ -23,13 +23,12 @@ DROP TABLE IF EXISTS `study`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `study` (
-  `Stu_no` int NOT NULL,
-  `Sub_no` int NOT NULL,
-  `Point` float DEFAULT NULL,
-  KEY `Stu_no` (`Stu_no`),
-  KEY `Sub_no` (`Sub_no`),
-  CONSTRAINT `study_ibfk_1` FOREIGN KEY (`Stu_no`) REFERENCES `student` (`stu_no`),
-  CONSTRAINT `study_ibfk_2` FOREIGN KEY (`Sub_no`) REFERENCES `subject` (`no`)
+  `stu_no` int NOT NULL,
+  `sub_no` int NOT NULL,
+  `score` float DEFAULT NULL,
+  `point` tinyint(1) DEFAULT NULL,
+  `semester` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`stu_no`,`sub_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,7 +38,7 @@ CREATE TABLE `study` (
 
 LOCK TABLES `study` WRITE;
 /*!40000 ALTER TABLE `study` DISABLE KEYS */;
-INSERT INTO `study` VALUES (2001,15000,4),(2002,15001,3.5),(2003,15002,3),(2004,15003,4),(2005,15004,3.7);
+INSERT INTO `study` VALUES (1,1,37.47,2,1),(2,1,52.27,3,1),(3,1,70.03,4,0),(4,1,91.3,2,0),(5,1,13.47,3,0),(6,1,12.49,3,0),(7,1,35.09,3,1),(8,1,69.74,3,0),(9,1,31.83,3,1),(10,1,63.83,2,0);
 /*!40000 ALTER TABLE `study` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-08 17:33:26
+-- Dump completed on 2023-09-12 15:33:15

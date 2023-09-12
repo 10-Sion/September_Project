@@ -23,17 +23,18 @@ DROP TABLE IF EXISTS `subject`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `subject` (
-  `no` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) DEFAULT NULL,
-  `Pro_name` varchar(20) DEFAULT NULL,
-  `Pro_no` int NOT NULL,
-  `place` varchar(20) NOT NULL,
-  `count` int NOT NULL,
-  `major` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`no`),
-  KEY `Pro_no` (`Pro_no`),
-  CONSTRAINT `subject_ibfk_1` FOREIGN KEY (`Pro_no`) REFERENCES `professor` (`pro_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=15005 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `no` int NOT NULL,
+  `sub_name` varchar(20) DEFAULT NULL,
+  `pro_name` varchar(20) DEFAULT NULL,
+  `pro_no` int DEFAULT NULL,
+  `place` varchar(20) DEFAULT NULL,
+  `capacity` int DEFAULT NULL,
+  `dep_name` varchar(30) DEFAULT NULL,
+  `major` varchar(30) DEFAULT NULL,
+  `point` tinyint(1) DEFAULT NULL,
+  `semester` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +43,7 @@ CREATE TABLE `subject` (
 
 LOCK TABLES `subject` WRITE;
 /*!40000 ALTER TABLE `subject` DISABLE KEYS */;
-INSERT INTO `subject` VALUES (15000,'과목1','교수1',1001,'강의장A',30,'전공A'),(15001,'과목2','교수2',1002,'강의장B',25,'전공B'),(15002,'과목3','교수3',1003,'강의장C',40,'전공C'),(15003,'과목4','교수4',1004,'강의장D',20,'전공A'),(15004,'과목5','교수5',1005,'강의장E',35,'전공B');
+INSERT INTO `subject` VALUES (1,'Subject1','Professor1',1,'Place1',13,'Department2','Major2',3,1),(2,'Subject2','Professor2',2,'Place2',37,'Department1','Major1',4,0),(3,'Subject3','Professor3',3,'Place3',55,'Department2','Major2',3,1),(4,'Subject4','Professor4',4,'Place4',22,'Department1','Major1',5,1),(5,'Subject5','Professor5',5,'Place5',33,'Department2','Major2',2,0),(6,'Subject6','Professor6',6,'Place6',21,'Department1','Major1',3,1),(7,'Subject7','Professor7',7,'Place7',92,'Department2','Major2',5,1),(8,'Subject8','Professor8',8,'Place8',56,'Department1','Major1',1,0),(9,'Subject9','Professor9',9,'Place9',75,'Department2','Major2',5,1),(10,'Subject10','Professor10',10,'Place10',80,'Department1','Major1',2,1);
 /*!40000 ALTER TABLE `subject` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-08 17:33:26
+-- Dump completed on 2023-09-12 15:33:15
