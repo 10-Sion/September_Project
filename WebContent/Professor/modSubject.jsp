@@ -1,3 +1,5 @@
+<%@page import="Subject.SubBean"%>
+<%@page import="Professor.ProDao"%>
 <%@page import="Professor.ProBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -22,6 +24,11 @@
  //	String P_name = request.getParameter("name");
  	int pro_no = (int)session.getAttribute("pro_no");
  //	String p_name = (String)session.getAttribute("pro_no");
+ 
+ 	//Subindex에서 수정 버튼을 클릭할때 넘겨받은 sub_no 을 저장
+ 	int sub_no = Integer.parseInt( request.getParameter("sub_no")) ;
+ 	ProDao pdao = new ProDao();
+ 	SubBean pb = pdao.getSubject(sub_no);
 %>
 
 <form action = "modSubjectPro.jsp" method = "post">
@@ -30,7 +37,7 @@
 	<table>
 		<tr>
 			<th>과목 이름</th>
-			<td><input type = "text" name = "sub_name"></td>
+			<td><input type = "text" name = "sub_name" value= "<%=pb.getSub_name()%>"></td>
 		</tr>
 		<tr>
 			<th>교수 이름</th>

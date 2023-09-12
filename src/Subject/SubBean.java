@@ -1,11 +1,15 @@
 package Subject;
 
 public class SubBean { // 과목테이블의 정보를 저장할 DTO
-	private int sub_no; // 과목번호
+	private int sub_no; // 강의코드
+	private String pro_name; // 교수 이름
 	private String sub_name;// 과목명
 	private int pro_no; // 교수 번호 
 	private String place; //강의 장소
 	private int point;//  학점
+	private int count; //수강 가능 인원
+	private String major; //전공
+	
 	
 	
 	public int getSub_no() {
@@ -13,6 +17,12 @@ public class SubBean { // 과목테이블의 정보를 저장할 DTO
 	}
 	public void setSub_no(int sub_no) {
 		this.sub_no = sub_no;
+	}
+	public String getPro_name() {
+		return pro_name;
+	}
+	public void setPro_name(String pro_name) {
+		this.pro_name = pro_name;
 	}
 	public String getSub_name() {
 		return sub_name;
@@ -38,10 +48,23 @@ public class SubBean { // 과목테이블의 정보를 저장할 DTO
 	public void setPoint(int point) {
 		this.point = point;
 	}
-	
-	
-	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
 
+	
+	
+	
+	
 	
 	
 }

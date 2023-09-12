@@ -47,6 +47,32 @@ public class ProDao {
 				e.printStackTrace();
 			}
 		}//자원해제 끝
+		public ProBean getProInfo(int pro_no) {
+			//과목 등록시 가져올 교수 데이터 가져오기
+			String sql = "";
+			ProBean pb = new ProBean();
+			try {
+				con = getConnection();
+				
+				sql = "select name, major from professor where no=" + pro_no ;
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery(sql);
+				
+				
+				if(rs.next()) {
+					pb.setName(rs.getString("name"));
+					pb.setMajor(rs.getString("major"));	
+				}	
+			} catch(Exception e) {
+				System.out.println("ProDao/Professor내부의 getProInfo메소드 구문 오류" + e);
+				e.printStackTrace();
+			} finally {
+				rs_Close();
+			}
+			
+			return pb;
+			
+		}
 		
 		public void InsertSubject(SubBean sub) {
 			// 과목 등록하기
@@ -56,24 +82,49 @@ public class ProDao {
 				//DB연결
 				con = getConnection();
 				// 과목 등록 SQL문 작성
-				sql = "insert into Subject(sub_name, Pro_no, place, Point)"+
-				"values(?,?,?,?)"; 
+				sql = "insert into Subject(name, pro_name, pro_no, place, point, count, major)"+
+				"values(?,?,?,?,?,?,?)"; 
 				// 미리 sql문 전송
 				pstmt = con.prepareStatement(sql);
 				// ?에 대입할 값 입력
 				pstmt.setString(1, sub.getSub_name());
-				pstmt.setInt(2, sub.getPro_no());
-				pstmt.setString(3, sub.getPlace());
-				pstmt.setInt(4, sub.getPoint());
+				pstmt.setString(2, sub.getPro_name());
+				pstmt.setInt(3, sub.getPro_no());
+				pstmt.setString(4, sub.getPlace());
+				pstmt.setInt(5, sub.getPoint());
+				pstmt.setInt(6, sub.getCount());
+				pstmt.setString(7, sub.getMajor());
+				
 				// SQL문 실행
 				pstmt.executeUpdate();
 				
 			}catch (Exception e) {
 				System.out.println("Professor/ProDao내부의 수강등록처리에서 오류가 발생 했습니다. " + e);
+				e.printStackTrace();
 			}finally {
 				rs_Close();		
 			}
 		
 		}//InsertSubject() 끝
 		
+		public SubBean getSubject(int sub_no) {
+			String sql = "";
+			SubBean sb= new SubBean();
+			try {
+				
+				con = getConnection();
+				sql = "select * from subject where no=" + sub_no;
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				
+			}catch(Exception e) {
+				System.out.println("Professor/ProDao 내부의 교수정보 수정을 위한 정보를 가져오는데 오류가 발생했습니다." + e);
+				e.printStackTrace();
+				
+			}finally {
+				rs_Close();
+			}
+			return sb;
+		}
 }//ProDao 끝

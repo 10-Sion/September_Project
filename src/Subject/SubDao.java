@@ -59,11 +59,15 @@ public class SubDao {
 			
 		
 		SubBean subbean = new SubBean();
-		subbean.setSub_no(rs.getInt("sub_no"));
-		subbean.setPro_no(rs.getInt("pro_no"));
-		subbean.setSub_name(rs.getString("sub_name"));
-		subbean.setPlace(rs.getString("place"));
-		subbean.setPoint(rs.getInt("point"));	
+		subbean.setSub_no(rs.getInt("no"));// 강의코드
+		subbean.setSub_name(rs.getString("name")); // 과목명
+		subbean.setPro_name(rs.getString("pro_name")); // 교수 이름
+		subbean.setPro_no(rs.getInt("pro_no")); // 교수 번호 	
+		subbean.setPlace(rs.getString("place")); //강의 장소
+		subbean.setPoint(rs.getInt("point"));	// 학점
+		subbean.setCount(rs.getInt("count")); //수강 가능 인원
+		subbean.setMajor(rs.getString("major")); //전공
+
 		list.add(subbean);
 		}
 		
