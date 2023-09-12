@@ -7,73 +7,82 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 결과</title>
+<script>
+    function redirectToMain() {
+        window.location.href = "main/stu_main.html"; // 로그인 성공 시 이동할 페이지 URL을 설정
+    }
+</script>
 </head>
 <body>
 <%
-
-String name = request.getParameter("name");
-String pw = request.getParameter("pw");
-
-Connection conn = null;
-PreparedStatement pstmt = null;
-ResultSet rs = null;
-
-try {
-    Class.forName("com.mysql.cj.jdbc.Driver");
-
     // 데이터베이스 연결 설정
     String url = "jdbc:mysql://localhost:3306/GwanLee";
-    String dbUsername = "pid";
-    String dbPassword = "1234";
+    String i_id = "pid";
+    String i_pw = "1234";
+    
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
 
-    conn = DriverManager.getConnection(url, dbUsername, dbPassword);
-
-    // 사용자 이름과 비밀번호를 확인하는 SQL 쿼리
-    String query = "SELECT name, pw FROM Student WHERE name = ? AND pw = ?" +
-                   "UNION " +
-                   "SELECT name, pw FROM Employee WHERE name = ? AND pw = ?" +
-                   "UNION " +
-                   "SELECT name, pw FROM Professor WHERE name = ? AND pw = ?";
-    pstmt = conn.prepareStatement(query);
-    pstmt.setString(1, name);
-    pstmt.setString(2, pw);
-    pstmt.setString(3, name);
-    pstmt.setString(4, pw);
-    pstmt.setString(5, name);
-    pstmt.setString(6, pw);
-
-    rs = pstmt.executeQuery();
-
-    if (rs.next()) {
-        String dbUserName = rs.getString("name");
-        String dbUserPw = rs.getString("pw");
-
-        if (pw.equals(dbUserPw)) {
-            // 로그인 성공
-            session.setAttribute("name", dbUserName);
-            // 로그인 성공 후 메인 페이지로 리디렉션
-            response.sendRedirect(request.getContextPath() + "/main.jsp");
-        } else {
-            // 로그인 실패
-            out.println("비밀번호가 일치하지 않습니다.");
-        }
-    } else {
-        // 로그인 실패
-        out.println("사용자 이름 또는 비밀번호가 일치하지 않습니다.");
-    }
-} catch (ClassNotFoundException e) {
-    e.printStackTrace();
-} catch (SQLException e) {
-    e.printStackTrace();
-} finally {
     try {
-        if (rs != null) rs.close();
-        if (pstmt != null) pstmt.close();
-        if (conn != null) conn.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
+        // DB 연결
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection(url, i_id, i_pw);
+
+        // 사용자로부터 입력받은 고유번호와 비밀번호
+        String uniqueId = request.getParameter("no");
+        String userPassword = request.getParameter("pw");
+
+        // 학생 테이블에서 고유번호와 비밀번호 검색
+        String studentSql = "SELECT * FROM Student WHERE stu_no = ? AND pw = ?";
+        pstmt = conn.prepareStatement(studentSql);
+        pstmt.setInt(1, Integer.parseInt(uniqueId));
+        pstmt.setString(2, userPassword);
+
+        ResultSet studentRs = pstmt.executeQuery(); // 학생 결과
+
+        // 직원 테이블에서 고유번호와 비밀번호 검색
+        String employeeSql = "SELECT * FROM Employee WHERE emp_no = ? AND pw = ?";
+        pstmt = conn.prepareStatement(employeeSql);
+        pstmt.setInt(1, Integer.parseInt(uniqueId));
+        pstmt.setString(2, userPassword);
+
+        ResultSet employeeRs = pstmt.executeQuery(); // 직원 결과
+
+        // 교수 테이블에서 고유번호와 비밀번호 검색
+        String professorSql = "SELECT * FROM Professor WHERE Pro_no = ? AND pw = ?";
+        pstmt = conn.prepareStatement(professorSql);
+        pstmt.setInt(1, Integer.parseInt(uniqueId));
+        pstmt.setString(2, userPassword);
+
+        ResultSet professorRs = pstmt.executeQuery(); // 교수 결과
+
+        // 로그인 성공 여부 확인
+        if (studentRs.next() || employeeRs.next() || professorRs.next()) {
+    %>
+    
+    <script>
+        redirectToMain(); // 로그인 성공 시 메인 페이지로 이동
+    </script>
+
+    <%
+    } else {
+        // 개인 정보를 찾을 수 없거나 고유번호와 비밀번호가 일치하지 않는 경우에 대한 처리
+    %>
+
+    <h1>로그인 실패</h1>
+    <p>입력한 고유번호 또는 비밀번호가 올바르지 않습니다.</p>
+
+    <%
     }
-}
+  } catch (Exception e) {
+      e.printStackTrace();
+  } finally {
+      // DB 연결 해제
+      if (rs != null) try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+      if (pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+      if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+  }
 %>
 
 </body>

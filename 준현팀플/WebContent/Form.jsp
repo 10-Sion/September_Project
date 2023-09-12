@@ -27,9 +27,7 @@
     <br><br>
     <label for="stu_email">이메일 : </label>
     <input id="stu_email" name="stu_email" type="text" size="20" maxlength="16" required>
-    <br><br>
-    <label for="stu_grade">학년 : </label>
-    <input id="stu_grade" name="stu_grade" type="text" size="20" maxlength="100" required>
+  
     <br><br>
     <label for="stu_major">전공 : </label>
     <input id="stu_major" name="stu_major" type="text" size="20" maxlength="100" required>
@@ -86,7 +84,7 @@ function submit() {
     var radio = $("input[name='occupation']:checked").val();
 
     // 각 직업별로 필요한 변수를 정의합니다.
-    var name, pw, addr, phone, email, grade, major;
+    var name, pw, addr, phone, email, major;
 
     if (radio == "학생") {
         name = $("#stu_name").val();
@@ -94,7 +92,6 @@ function submit() {
         addr = $("#stu_addr").val();
         phone = $("#stu_phone").val();
         email = $("#stu_email").val();
-        grade = $("#stu_grade").val();
         major = $("#stu_major").val();
     } else if (radio == "교직원") {
         name = $("#em_name").val();
@@ -123,7 +120,6 @@ function submit() {
 
     // 선택된 직업에 따라 해당 카테고리에서 필요한 변수를 추가합니다.
     if (radio === "학생") {
-    formData.grade = grade;
     formData.major = major;
 } else if (radio === "교수") {
     formData.major = major; // 교수인 경우에만 major 설정
@@ -135,9 +131,14 @@ function submit() {
         url: "FormPro.jsp",
         type: "POST",
         data: formData,
+        dataType:"text",
         success: function (data) {
-            // 성공한 경우 처리할 내용을 추가하세요.
-        	 window.location.href = "login.jsp";
+        	console.log(data);
+        	 // 회원가입 성공 시 고유번호를 사용자에게 알림
+           alert("회원가입이 성공했습니다. 고유번호는 : " + data);
+        	 
+        	 //login.jsp 페이지로 이동
+        	 window.location.href = "login.jsp?uniqueId="+data;
         },
         error: function (error) {
             // 에러 발생 시 처리할 내용을 추가하세요.
@@ -145,37 +146,36 @@ function submit() {
         }
     });
 }
-
-var studentRadio = document.getElementById("studentRadio");
-var staffRadio = document.getElementById("staffRadio");
-var professorRadio = document.getElementById("professorRadio");
-
-var studentForm = document.getElementById("studentForm");
-var staffForm = document.getElementById("staffForm");
-var professorForm = document.getElementById("professorForm");
-
-studentRadio.addEventListener("change", function () {
-    if (studentRadio.checked) {
-        studentForm.style.display = "block";
-        staffForm.style.display = "none";
-        professorForm.style.display = "none";
-    }
-});
-
-staffRadio.addEventListener("change", function () {
-    if (staffRadio.checked) {
-        studentForm.style.display = "none";
-        staffForm.style.display = "block";
-        professorForm.style.display = "none";
-    }
-});
-
-professorRadio.addEventListener("change", function () {
-    if (professorRadio.checked) {
-        studentForm.style.display = "none";
-        staffForm.style.display = "none";
-        professorForm.style.display = "block";
-    }
-});
-
+	
+	var studentRadio = document.getElementById("studentRadio");
+	var staffRadio = document.getElementById("staffRadio");
+	var professorRadio = document.getElementById("professorRadio");
+	
+	var studentForm = document.getElementById("studentForm");
+	var staffForm = document.getElementById("staffForm");
+	var professorForm = document.getElementById("professorForm");
+	
+	studentRadio.addEventListener("change", function () {
+	    if (studentRadio.checked) {
+	        studentForm.style.display = "block";
+	        staffForm.style.display = "none";
+	        professorForm.style.display = "none";
+	    }
+	});
+	
+	staffRadio.addEventListener("change", function () {
+	    if (staffRadio.checked) {
+	        studentForm.style.display = "none";
+	        staffForm.style.display = "block";
+	        professorForm.style.display = "none";
+	    }
+	});
+	
+	professorRadio.addEventListener("change", function () {
+	    if (professorRadio.checked) {
+	        studentForm.style.display = "none";
+	        staffForm.style.display = "none";
+	        professorForm.style.display = "block";
+	    }
+	});
 </script>
