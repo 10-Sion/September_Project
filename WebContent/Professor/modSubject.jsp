@@ -54,11 +54,15 @@
 		<p></p>
 		<tr>
 			<th>부여 학점</th>
-			<td>	
-				1<input type="radio" name="point" value= 1>
-				2<input type="radio" name="point" value= 2>
-				3<input type="radio" name="point" value= 3>
-			</td>
+			<select name="point">
+							<option value="1" <%if(pb.getPoint()==1){%>selected<%}%>>1</option>
+							<option value="2" <%if(pb.getPoint()==2){%>selected<%}%>>2</option>
+							<option value="3" <%if(pb.getPoint()==3){%>selected<%}%>>3</option>
+			</select>
+		</tr>
+		<tr>
+			<th>수강인원</th>
+			<td><input type="text" name= "capacity" value="<%=pb.getCapacity()%>"></td>
 		</tr>
 		
 	</table>

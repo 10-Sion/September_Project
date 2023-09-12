@@ -66,7 +66,7 @@
 			<th><%=sb.getMajor()%></th>
 			<th><%=sb.getPlace()%></th>
 			<th><%=sb.getPoint()%></th>
-			<th><%=sb.getCount()%></th>
+			<th><%=sb.getCapacity()%></th>
 			<th><a href="modSubject.jsp?pro_no=<%=sb.getPro_no()%>&sub_no=<%=sb.getSub_no()%>">수정</a></th> <%-- 수정할 페이지로 이동 --%>
 			<th><a href="deleteSubject.jsp?sub_no=<%=sb.getSub_no()%>">삭제</a></th> <%-- 삭제할 페이지로 이동 --%>	
 	</tr>

@@ -7,7 +7,7 @@ public class SubBean { // 과목테이블의 정보를 저장할 DTO
 	private int pro_no; // 교수 번호 
 	private String place; //강의 장소
 	private int point;//  학점
-	private int count; //수강 가능 인원
+	private int capacity; //수강 가능 인원
 	private String major; //전공
 	
 	
@@ -48,11 +48,11 @@ public class SubBean { // 과목테이블의 정보를 저장할 DTO
 	public void setPoint(int point) {
 		this.point = point;
 	}
-	public int getCount() {
-		return count;
+	public int getCapacity() {
+		return capacity;
 	}
-	public void setCount(int count) {
-		this.count = count;
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
 	}
 	public String getMajor() {
 		return major;
@@ -60,6 +60,10 @@ public class SubBean { // 과목테이블의 정보를 저장할 DTO
 	public void setMajor(String major) {
 		this.major = major;
 	}
+	
+	
+	
+
 
 	
 	

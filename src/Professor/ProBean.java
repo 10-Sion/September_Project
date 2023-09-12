@@ -11,9 +11,8 @@ public class ProBean {
 	private String phone; // 교수 휴대전화 번호
 	private String major; // 학부(전공)
 	private String email; //교수 이메일 주소
-	private String labAddr; // 연구실 번호
-	
-	
+	private int labNum; // 연구실 번호
+	private String dep_name; //소속 학부
 	
 	
 	//getter, setter 메소드들
@@ -65,12 +64,22 @@ public class ProBean {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getLabAddr() {
-		return labAddr;
+	public int getLabNum() {
+		return labNum;
 	}
-	public void setLabAddr(String labAddr) {
-		this.labAddr = labAddr;
+	public void setLabNum(int labNum) {
+		this.labNum = labNum;
 	}
+	public String getDep_name() {
+		return dep_name;
+	}
+	public void setDep_name(String dep_name) {
+		this.dep_name = dep_name;
+	}
+	
+	
+
+	
 	
 
 

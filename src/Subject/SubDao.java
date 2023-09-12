@@ -46,6 +46,7 @@ public class SubDao {
 		}
 	} 
 	
+	// 수강등록 과목 가져오기
 	public List getSublist(int pro_no) {
 		
 		ArrayList list = new ArrayList();
@@ -65,7 +66,7 @@ public class SubDao {
 		subbean.setPro_no(rs.getInt("pro_no")); // 교수 번호 	
 		subbean.setPlace(rs.getString("place")); //강의 장소
 		subbean.setPoint(rs.getInt("point"));	// 학점
-		subbean.setCount(rs.getInt("count")); //수강 가능 인원
+		subbean.setCapacity(rs.getInt("capacity")); //수강 가능 인원
 		subbean.setMajor(rs.getString("major")); //전공
 
 		list.add(subbean);
@@ -94,7 +95,7 @@ public class SubDao {
 		}catch(Exception e){
 			System.out.println("Subject/SubDao 클래스의 delSubject 메소드 오류 " + e);
 			e.printStackTrace();		
-		}finally {
+		}finally{
 			rs_Close();
 		}
 

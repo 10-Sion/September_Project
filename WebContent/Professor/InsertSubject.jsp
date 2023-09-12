@@ -61,7 +61,7 @@
 		</tr>
 		<tr>
 			<th>수강인원</th>
-			<td><input type="text" name= "count"></td>
+			<td><input type="text" name= "capacity"></td>
 		</tr>
 	</table>
 	</div>

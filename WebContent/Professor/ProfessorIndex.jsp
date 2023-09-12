@@ -12,11 +12,8 @@ session.setAttribute("pro_no", 1002); //테스트용 세션값
   
   
   System.out.println(pro_no);
-  session.setAttribute("pro_name", "교수");
-  String pro_name = (String)session.getAttribute("pro_name");
-  
-  session.setAttribute("major", "경영정보");
-  String major = (String)session.getAttribute("major");
+
+
 %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -32,6 +29,16 @@ session.setAttribute("pro_no", 1002); //테스트용 세션값
 	<tr>
 		<td>
 		<a href="InsertSubject.jsp">강의 등록</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<a href="modProfessor.jsp">교수 정보</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<a href="ProfessorJoin.jsp">회원 가입</a>
 		</td>
 	</tr>
 	</div>

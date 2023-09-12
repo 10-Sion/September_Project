@@ -47,25 +47,66 @@ public class ProDao {
 				e.printStackTrace();
 			}
 		}//자원해제 끝
+		public void JoinProfessor(ProBean pb) {
+			
+			String sql = "";
+			
+			try {
+				con = getConnection();
+				
+				sql = "insert into professor(name, pw, addr, tel, phone, major, email, labAddr) +"
+						+ "values(?,?,?,?,?,?,?,?)";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, "name");
+				pstmt.setString(2, "pw");
+				pstmt.setString(3, "addr");
+				pstmt.setString(4, "tel");
+				pstmt.setString(5, "phone");
+				pstmt.setString(6, "major");
+				pstmt.setString(7, "email");
+				pstmt.setString(8, "labAddr");
+				
+				pstmt.executeUpdate();
+				
+			}catch(Exception e) {
+				System.out.print("Professor/ProDAO 내부 교수 회원 가입 sql 오류 " + e);
+				e.printStackTrace();
+			}finally {
+				rs_Close();
+			}
+			
+			
+		}
 		public ProBean getProInfo(int pro_no) {
-			//과목 등록시 가져올 교수 데이터 가져오기
+			//과교수 데이터 가져오기
 			String sql = "";
 			ProBean pb = new ProBean();
 			try {
 				con = getConnection();
 				
-				sql = "select name, major from professor where no=" + pro_no ;
+				// sql = "select name, major from professor where no=" + pro_no ;
+				sql = "select * from professor where pro_no =" + pro_no;
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery(sql);
 				
 				
 				if(rs.next()) {
-					pb.setName(rs.getString("name"));
-					pb.setMajor(rs.getString("major"));	
-				}	
+					pb.setNo(pro_no);
+					pb.setName(rs.getString("name")); //교수 이름
+					pb.setMajor(rs.getString("major")); //교수 전공
+					pb.setPw(rs.getString("pw")); //교수 비밀번호
+					pb.setAddr(rs.getString("addr")); //교수 주소지
+					pb.setPhone(rs.getString("phone")); // 교수 폰 번호
+					pb.setTel(rs.getString("tel"));// 연구실 전화번호 
+					pb.setEmail(rs.getString("email")); //교수 이메일
+					pb.setLabNum(rs.getInt("labNum"));// 연구실 위치
+					}
+				
 			} catch(Exception e) {
 				System.out.println("ProDao/Professor내부의 getProInfo메소드 구문 오류" + e);
-				e.printStackTrace();
+				e.printStackTrace(); 
 			} finally {
 				rs_Close();
 			}
@@ -82,7 +123,7 @@ public class ProDao {
 				//DB연결
 				con = getConnection();
 				// 과목 등록 SQL문 작성
-				sql = "insert into Subject(name, pro_name, pro_no, place, point, count, major)"+
+				sql = "insert into Subject(name, pro_name, pro_no, place, point, capacity, major)"+
 				"values(?,?,?,?,?,?,?)"; 
 				// 미리 sql문 전송
 				pstmt = con.prepareStatement(sql);
@@ -92,7 +133,7 @@ public class ProDao {
 				pstmt.setInt(3, sub.getPro_no());
 				pstmt.setString(4, sub.getPlace());
 				pstmt.setInt(5, sub.getPoint());
-				pstmt.setInt(6, sub.getCount());
+				pstmt.setInt(6, sub.getCapacity());
 				pstmt.setString(7, sub.getMajor());
 				
 				// SQL문 실행
@@ -126,5 +167,38 @@ public class ProDao {
 				rs_Close();
 			}
 			return sb;
+		}
+		
+		public void ModProfessor(ProBean pb) {
+			
+			String sql = "";
+			try {
+				
+				con = getConnection();
+				
+				sql = "update professor set name=?, pw=?, addr=?, tel=?, phone=?, major=?, email=?, labAddr=? no=?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, pb.getName() );
+				pstmt.setString(2, pb.getPw());
+				pstmt.setString(3, pb.getAddr());
+				pstmt.setString(4, pb.getTel());
+				pstmt.setString(5, pb.getPhone());
+				pstmt.setString(6, pb.getMajor());
+				pstmt.setString(7, pb.getEmail());
+				pstmt.setInt(8, pb.getLabNum());
+				pstmt.setInt(9, pb.getNo());
+				
+				pstmt.executeQuery();
+				
+				
+				
+			}catch(Exception e) {
+				System.out.print("Professor/ProDao 내부의 교수정보 수정에서 오류가 발생 했습니다." + e);
+				
+			}finally {
+				rs_Close();
+			}
 		}
 }//ProDao 끝
