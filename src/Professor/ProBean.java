@@ -11,10 +11,10 @@ public class ProBean {
 	private String phone; // 교수 휴대전화 번호
 	private String major; // 학부(전공)
 	private String email; //교수 이메일 주소
-	private int labNum; // 연구실 번호
+	private int labNum; // 연구실 번호 
 	private String dep_name; //소속 학부
 	
-	
+
 	//getter, setter 메소드들
 	public int getNo() {
 		return no;
@@ -76,6 +76,7 @@ public class ProBean {
 	public void setDep_name(String dep_name) {
 		this.dep_name = dep_name;
 	}
+	
 	
 	
 

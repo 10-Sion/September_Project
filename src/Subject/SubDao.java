@@ -61,7 +61,7 @@ public class SubDao {
 		
 		SubBean subbean = new SubBean();
 		subbean.setSub_no(rs.getInt("no"));// 강의코드
-		subbean.setSub_name(rs.getString("name")); // 과목명
+		subbean.setSub_name(rs.getString("sub_name")); // 과목명
 		subbean.setPro_name(rs.getString("pro_name")); // 교수 이름
 		subbean.setPro_no(rs.getInt("pro_no")); // 교수 번호 	
 		subbean.setPlace(rs.getString("place")); //강의 장소
@@ -73,7 +73,7 @@ public class SubDao {
 		}
 		
 		}catch(Exception e) {
-			System.out.println("Subject/SubDao클래스에서 getList메소드 오류 " + e);
+			System.out.println("Subject/SubDao클래스에서 getSublist메소드 오류 " + e);
 			e.printStackTrace();
 		} finally{
 			rs_Close();

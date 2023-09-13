@@ -11,7 +11,11 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
+import Department.DepBean;
+import Major.MajorBean;
 import Subject.SubBean;
 
 public class ProDao {
@@ -54,19 +58,20 @@ public class ProDao {
 			try {
 				con = getConnection();
 				
-				sql = "insert into professor(name, pw, addr, tel, phone, major, email, labAddr) +"
-						+ "values(?,?,?,?,?,?,?,?)";
+				sql = "insert into professor(name, pw, addr, tel, phone, major, email, labNum, dep_name)"
+						+ "values(?,?,?,?,?,?,?,?,?)";
 				
 				pstmt = con.prepareStatement(sql);
 				
-				pstmt.setString(1, "name");
-				pstmt.setString(2, "pw");
-				pstmt.setString(3, "addr");
-				pstmt.setString(4, "tel");
-				pstmt.setString(5, "phone");
-				pstmt.setString(6, "major");
-				pstmt.setString(7, "email");
-				pstmt.setString(8, "labAddr");
+				pstmt.setString(1, pb.getName());
+				pstmt.setString(2, pb.getPw());
+				pstmt.setString(3, pb.getAddr());
+				pstmt.setString(4, pb.getTel());
+				pstmt.setString(5, pb.getPhone());
+				pstmt.setString(6, pb.getMajor());
+				pstmt.setString(7, pb.getEmail());
+				pstmt.setInt(8, pb.getLabNum()); 
+				pstmt.setString(9, pb.getDep_name());
 				
 				pstmt.executeUpdate();
 				
@@ -123,7 +128,7 @@ public class ProDao {
 				//DB연결
 				con = getConnection();
 				// 과목 등록 SQL문 작성
-				sql = "insert into Subject(name, pro_name, pro_no, place, point, capacity, major)"+
+				sql = "insert into Subject(sub_name, pro_name, pro_no, place, point, capacity, major)"+
 				"values(?,?,?,?,?,?,?)"; 
 				// 미리 sql문 전송
 				pstmt = con.prepareStatement(sql);
@@ -140,7 +145,7 @@ public class ProDao {
 				pstmt.executeUpdate();
 				
 			}catch (Exception e) {
-				System.out.println("Professor/ProDao내부의 수강등록처리에서 오류가 발생 했습니다. " + e);
+				System.out.println("Professor/ProDao내부의 InsertSubject에서 오류가 발생 했습니다. " + e);
 				e.printStackTrace();
 			}finally {
 				rs_Close();		
@@ -199,6 +204,64 @@ public class ProDao {
 				
 			}finally {
 				rs_Close();
-			}
+			}			
 		}
+		
+		public ArrayList getDep() {
+			ArrayList list = new ArrayList();
+			
+			try {
+			con = getConnection();
+			
+			String sql = "select dep_name from department order by dep_name asc";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			 while(rs.next() ) {
+				DepBean dBean = new DepBean();
+				dBean.setDep_name(rs.getString("dep_name"));
+				list.add(dBean); 
+			 }
+			}catch(Exception e) {
+				System.out.println("Professor/ProDao 내부의 GetDep메소드 오류" + e);
+				e.printStackTrace();
+			}finally {
+				rs_Close();
+			}
+			
+			return list;
+		}
+
+		public JSONArray getMajor(String dep_name) {
+			
+			
+			JSONArray array = new JSONArray();
+			try {
+			con = getConnection();
+			
+			String sql = "select maj_name from major where dep_name ='" + dep_name +"'" ;
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				JSONObject Jojb = new JSONObject();
+				Jojb.put("major", rs.getString("maj_name"));
+				array.add(Jojb);
+			}
+			
+			}catch(Exception e) {
+				System.out.println("Professor/ProDao 내부의 getMajor메소드 오류" + e);
+				e.printStackTrace();
+			}finally {
+				rs_Close();
+			}
+			
+			return array;
+			
+		}
+		
 }//ProDao 끝
