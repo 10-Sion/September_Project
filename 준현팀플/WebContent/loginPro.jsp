@@ -9,7 +9,7 @@
 <title>로그인 결과</title>
 <script>
     function redirectToMain() {
-        window.location.href = "main/stu_main.html"; // 로그인 성공 시 이동할 페이지 URL을 설정
+        window.location.href = "page/main/MainPage.html"; // 로그인 성공 시 이동할 페이지 URL을 설정
     }
 </script>
 </head>
