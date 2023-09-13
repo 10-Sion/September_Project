@@ -9,24 +9,4 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <servlet-name>ShowProfessorListServlet</servlet-name>
-    <servlet-class>jjin_mak.ShowProfessorListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ShowProfessorListServlet</servlet-name>
-    <url-pattern>/ShowProfessorListServlet</url-pattern>
-  </servlet-mapping>
-  <context-param>
-    <param-name>dbUrl</param-name>
-    <param-value>jdbc:mysql://localhost:3306/gwanlee?serverTimezone=UTC</param-value>
-  </context-param>
-  <context-param>
-    <param-name>dbUsername</param-name>
-    <param-value>pid</param-value>
-  </context-param>
-  <context-param>
-    <param-name>dbPassword</param-name>
-    <param-value>1234</param-value>
-  </context-param>
 </web-app>
