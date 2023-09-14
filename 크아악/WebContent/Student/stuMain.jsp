@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
-  <link rel="stylesheet" href="mainStyle.css">
+  <link rel="stylesheet" href="/WebContent/pageSetUp/mainStyle.css">
 
   <title>Document</title>
 </head>
@@ -15,7 +15,7 @@
   <div class="container ">
 
     <div class="left_sidebar">
-        <jsp:include page="proSidebar.jsp" />
+        <jsp:include page="stuSidebar.jsp" />
     </div>
 
     <div class="main_content">
@@ -63,14 +63,13 @@
         </div>
 
         <div class="table">
-            <!-- 불러올 페이지 동적 처리함 -->
-
+            <jsp:include page="stuTable.jsp" />
         </div>
         
     </div>
 
 </div>
 
-<script src="mainApp.js"></script>
+<script src="/pageSetUp/mainApp.js"></script>
 </body>
 </html>

@@ -109,6 +109,12 @@
     align-items: center;
     gap: 10px;
 }
+.student {
+    position: sticky;
+    right: 3%;
+    top: 3%;
+
+}
 
 .main_content .left_right_sidebar_opener .student img {
     height: 50px;
@@ -423,74 +429,7 @@
     .left_sidebar .menu_items .menu_item {
         font-size: 16px;
     }
-    /*----- right_sidebar -----*/
-    .right_sidebar {
-        transform: translateX(150%);
-        overflow: hidden;
-        z-index: 100;
-        position: fixed;
-        top: 0;
-        right: 0;
-        background-color: #fff;
-        width: 100%;
-        height: 100%;
-        overflow: scroll;
-    }
-    .right_sidebar .profile {
-        gap: 25px;
-        padding: 25px;
-        text-align: center;
-    }
-    .profile .other_info {
-        justify-content: center;
-    }
-    .profile .name_and_class P,
-    .profile .about h4,
-    .profile .other_info h4 {
-        font-size: 15px;
-        color: #000;
-    }
-    .profile .name_and_class span {
-        font-size: 15px;
-    }
-    .notification_and_name {
-        color: #000;
-    }
-    .notification_and_name .bx-chevron-down {
-        display: none;
-    }
-    .notification_and_name .close_btn,
-    .notification_and_name .bell {
-        font-size: 28px;
-    }
-    .profile .contact_info {
-        font-size: 24px;
-        gap: 20px;
-        color: #000;
-    }
-    .profile .about p,
-    .profile .other_info p,
-    .profile .student_from_same_class h4 {
-        font-size: 14px;
-    }
-    .notification_and_name img {
-        height: 50px;
-        width: 50px;
-    }
-    .notification_and_name {
-        justify-content: center;
-        gap: 35px;
-    }
-    .student_from_same_class {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-    }
-    .notification_and_name .close_btn {
-        display: block;
-    }
+    
     /*----- Main Content -----*/
     .main_content {
         flex-basis: 100%;
@@ -543,74 +482,7 @@
     .left_sidebar .menu_items .menu_item {
         font-size: 16px;
     }
-    /*----- right_sidebar -----*/
-    .right_sidebar {
-        transform: translateX(150%);
-        overflow: hidden;
-        z-index: 100;
-        position: fixed;
-        top: 0;
-        right: 0;
-        background-color: #fff;
-        width: 100%;
-        height: 100%;
-        overflow: scroll;
-    }
-    .right_sidebar .profile {
-        gap: 25px;
-        padding: 25px;
-        text-align: center;
-    }
-    .profile .other_info {
-        justify-content: center;
-    }
-    .profile .name_and_class P,
-    .profile .about h4,
-    .profile .other_info h4 {
-        font-size: 15px;
-        color: #000;
-    }
-    .profile .name_and_class span {
-        font-size: 15px;
-    }
-    .notification_and_name {
-        color: #000;
-    }
-    .notification_and_name .bx-chevron-down {
-        display: none;
-    }
-    .notification_and_name .close_btn,
-    .notification_and_name .bell {
-        font-size: 28px;
-    }
-    .profile .contact_info {
-        font-size: 24px;
-        gap: 20px;
-        color: #000;
-    }
-    .profile .about p,
-    .profile .other_info p,
-    .profile .student_from_same_class h4 {
-        font-size: 14px;
-    }
-    .notification_and_name img {
-        height: 50px;
-        width: 50px;
-    }
-    .notification_and_name {
-        justify-content: center;
-        gap: 35px;
-    }
-    .student_from_same_class {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-    }
-    .notification_and_name .close_btn {
-        display: block;
-    }
+    
     /*----- Main Content -----*/
     .main_content {
         flex-basis: 100%;
