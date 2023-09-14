@@ -9,8 +9,6 @@
 session.setAttribute("pro_no", 1002); //테스트용 세션값
   int pro_no = (int)session.getAttribute("pro_no"); //테스트용 세션값 
   
-  
-  
   System.out.println(pro_no);
 
 

@@ -9,7 +9,7 @@ public class SubBean { // 과목테이블의 정보를 저장할 DTO
 	private int point;//  학점
 	private int capacity; //수강 가능 인원
 	private String major; //전공
-	
+	private String dep_name;
 	
 	
 	public int getSub_no() {
@@ -60,6 +60,15 @@ public class SubBean { // 과목테이블의 정보를 저장할 DTO
 	public void setMajor(String major) {
 		this.major = major;
 	}
+	public String getDep_name() {
+		return dep_name;
+	}
+	public void setDep_name(String dep_name) {
+		this.dep_name = dep_name;
+	}
+	
+	
+	
 	
 	
 	

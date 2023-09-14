@@ -10,6 +10,7 @@
 <jsp:setProperty property="*" name="ProBean"/>
 <%
 	ProDao.JoinProfessor(ProBean);
+	response.sendRedirect("ProfessorIndex.jsp");
 %>
 <html>
 <head>

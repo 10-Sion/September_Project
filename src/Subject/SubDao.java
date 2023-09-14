@@ -63,7 +63,8 @@ public class SubDao {
 		subbean.setSub_no(rs.getInt("no"));// 강의코드
 		subbean.setSub_name(rs.getString("sub_name")); // 과목명
 		subbean.setPro_name(rs.getString("pro_name")); // 교수 이름
-		subbean.setPro_no(rs.getInt("pro_no")); // 교수 번호 	
+		subbean.setPro_no(rs.getInt("pro_no")); // 교수 번호
+		subbean.setDep_name(rs.getString("dep_name"));
 		subbean.setPlace(rs.getString("place")); //강의 장소
 		subbean.setPoint(rs.getInt("point"));	// 학점
 		subbean.setCapacity(rs.getInt("capacity")); //수강 가능 인원
@@ -86,7 +87,7 @@ public class SubDao {
 		try {
 			con = getConnection();
 			
-			sql = " delete from subject where sub_no=" + sub_no;
+			sql = " delete from subject where no=" + sub_no;
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -99,5 +100,43 @@ public class SubDao {
 			rs_Close();
 		}
 
+	}
+	
+	public int ModSubject(SubBean sb) {
+		
+		int result = -1;
+		try {
+			con = getConnection();
+			
+			String sql = "update subject set sub_name=?,"
+					+ " pro_name =?, pro_no=?,place =?,capacity =?,dep_name=?,major=?,point=? where no=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, sb.getSub_name());
+			pstmt.setString(2, sb.getPro_name());
+			pstmt.setInt(3, sb.getPro_no());
+			pstmt.setString(4, sb.getPlace());
+			pstmt.setInt(5, sb.getCapacity());
+			pstmt.setString(6, sb.getDep_name());
+			pstmt.setString(7, sb.getMajor());
+			pstmt.setInt(8, sb.getPoint());
+			pstmt.setInt(9, sb.getSub_no());
+			
+			
+			int check = pstmt.executeUpdate();
+			
+			if(check != -1) {
+				result = 1;
+			}
+			
+		}catch(Exception e) {
+			System.out.println("Subject/SubDao 내부에서 ModSubject 메소드 오류" + e);
+			e.printStackTrace();
+		}finally {
+			rs_Close();
+		}
+		return result;
+		
 	}
 }

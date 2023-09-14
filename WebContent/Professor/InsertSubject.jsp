@@ -22,7 +22,8 @@
  	
  	ProBean pb = pdao.getProInfo(pro_no);
  	String pro_name = pb.getName();
- 	String major = pb.getMajor();	
+ 	String major = pb.getMajor();
+ 	String dep_name = pb.getDep_name();
  	
  	
 %>
@@ -40,6 +41,10 @@
 			<td><input type= "hidden" name="pro_name" value ="<%=pro_name%>"><%=pro_name%></td>
 		</tr>
 		<tr>
+			<th>학부</th>
+			<td><input type = "hidden" name = "dep_name" value="<%=dep_name%>"><%=dep_name%></td>
+		</tr>
+		<tr>
 			<th>전공</th>
 			<td><input type= "hidden" name="major" value ="<%=major%>"><%=major%></td>
 		</tr>
@@ -54,9 +59,12 @@
 		<tr>
 			<th>부여 학점</th>
 			<td>	
-				1<input type="radio" name="point" value= 1>
-				2<input type="radio" name="point" value= 2>
-				3<input type="radio" name="point" value= 3>
+				<select name="point">
+							<option selected disabled>학점</option>
+							<option value="1" >1 학점</option>
+							<option value="2" >2  학점</option>
+							<option value="3" >3  학점</option>
+				</select>
 			</td>
 		</tr>
 		<tr>

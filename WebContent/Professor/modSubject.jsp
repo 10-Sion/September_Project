@@ -28,41 +28,53 @@
  	//Subindex에서 수정 버튼을 클릭할때 넘겨받은 sub_no 을 저장
  	int sub_no = Integer.parseInt( request.getParameter("sub_no")) ;
  	ProDao pdao = new ProDao();
- 	SubBean pb = pdao.getSubject(sub_no);
+ 	SubBean sb = pdao.getSubject(sub_no);
 %>
 
 <form action = "modSubjectPro.jsp" method = "post">
 	<div align="center">
-	<h1>과목 등록</h1>
+	<h1>개설과목 수정</h1>
 	<table>
 		<tr>
+			<td><input type = "hidden" name = "sub_no" value ="<%=sub_no%>"></td>
+		</tr>
+		<tr>
 			<th>과목 이름</th>
-			<td><input type = "text" name = "sub_name" value= "<%=pb.getSub_name()%>"></td>
+			<td><input type = "text" name = "sub_name" value= "<%=sb.getSub_name()%>"></td>
 		</tr>
 		<tr>
 			<th>교수 이름</th>
-			<td>그녀석<%--<%=p_name%>--%></td>
+			<td><input type = "hidden" name = "pro_name" value= "<%=sb.getPro_name()%>"><%=sb.getPro_name()%></td>
 		</tr>
 		<tr>
-			<th>교수 번호</th>
-			<td><input type= "hidden" name="pro_no" value ="<%=pro_no%>"><%=pro_no%></td> <%-- <%=pro_no%> --%>		
+			<th>학부</th>
+			<td><input type = "hidden" name = "dep_name" value="<%=sb.getDep_name()%>"><%=sb.getDep_name()%></td>
+		</tr>
+		<tr>
+			<th>전공</th>
+			<td><input type= "hidden" name="major" value ="<%=sb.getMajor()%>"><%=sb.getMajor()%></td>
+		</tr>
+		<tr>
+			<td><input type= "hidden" name="pro_no" value ="<%=sb.getPro_no()%>"></td> <%-- <%=pro_no%> --%>		
 		</tr>
 		<tr>
 			<th>강의 장소 (건물명-호수)</th>
-			<td><input type="text" name= "place"></td>
+			<td><input type="text" name= "place"  value="<%=sb.getPlace()%>"></td>
 		</tr>
 		<p></p>
 		<tr>
 			<th>부여 학점</th>
+			<td>
 			<select name="point">
-							<option value="1" <%if(pb.getPoint()==1){%>selected<%}%>>1</option>
-							<option value="2" <%if(pb.getPoint()==2){%>selected<%}%>>2</option>
-							<option value="3" <%if(pb.getPoint()==3){%>selected<%}%>>3</option>
+							<option value="1" <%if(sb.getPoint()==1){%>selected<%}%>>1</option>
+							<option value="2" <%if(sb.getPoint()==2){%>selected<%}%>>2</option>
+							<option value="3" <%if(sb.getPoint()==3){%>selected<%}%>>3</option>
 			</select>
+			</td>
 		</tr>
 		<tr>
 			<th>수강인원</th>
-			<td><input type="text" name= "capacity" value="<%=pb.getCapacity()%>"></td>
+			<td><input type="text" name= "capacity" value="<%=sb.getCapacity()%>"></td>
 		</tr>
 		
 	</table>

@@ -107,6 +107,7 @@ public class ProDao {
 					pb.setTel(rs.getString("tel"));// 연구실 전화번호 
 					pb.setEmail(rs.getString("email")); //교수 이메일
 					pb.setLabNum(rs.getInt("labNum"));// 연구실 위치
+					pb.setDep_name(rs.getString("dep_name"));
 					}
 				
 			} catch(Exception e) {
@@ -128,8 +129,8 @@ public class ProDao {
 				//DB연결
 				con = getConnection();
 				// 과목 등록 SQL문 작성
-				sql = "insert into Subject(sub_name, pro_name, pro_no, place, point, capacity, major)"+
-				"values(?,?,?,?,?,?,?)"; 
+				sql = "insert into Subject(sub_name, pro_name, pro_no, place, point, capacity, major, dep_name)"+
+				"values(?,?,?,?,?,?,?,?)"; 
 				// 미리 sql문 전송
 				pstmt = con.prepareStatement(sql);
 				// ?에 대입할 값 입력
@@ -140,6 +141,7 @@ public class ProDao {
 				pstmt.setInt(5, sub.getPoint());
 				pstmt.setInt(6, sub.getCapacity());
 				pstmt.setString(7, sub.getMajor());
+				pstmt.setString(8, sub.getDep_name());
 				
 				// SQL문 실행
 				pstmt.executeUpdate();
@@ -161,11 +163,23 @@ public class ProDao {
 				con = getConnection();
 				sql = "select * from subject where no=" + sub_no;
 				pstmt = con.prepareStatement(sql);
+				
 				rs = pstmt.executeQuery();
 				
+				if(rs.next()) {
+				sb.setPro_name(rs.getString("pro_name"));
+				sb.setSub_name(rs.getString("sub_name"));
+				sb.setSub_no(rs.getInt("no"));
+				sb.setPro_no(rs.getInt("pro_no"));
+				sb.setCapacity(rs.getInt("capacity"));
+				sb.setPlace(rs.getString("place"));
+				sb.setPoint(rs.getInt("point"));
+				sb.setMajor(rs.getString("major"));
+				sb.setDep_name(rs.getString("dep_name"));
+				}
 				
 			}catch(Exception e) {
-				System.out.println("Professor/ProDao 내부의 교수정보 수정을 위한 정보를 가져오는데 오류가 발생했습니다." + e);
+				System.out.println("Professor/ProDao 내부의 getSubject 에 오류가 발생했습니다." + e);
 				e.printStackTrace();
 				
 			}finally {
@@ -174,16 +188,19 @@ public class ProDao {
 			return sb;
 		}
 		
-		public void ModProfessor(ProBean pb) {
+		public int ModProfessor(ProBean pb) {
 			
 			String sql = "";
+			int result = -1;
+			
 			try {
 				
 				con = getConnection();
 				
-				sql = "update professor set name=?, pw=?, addr=?, tel=?, phone=?, major=?, email=?, labAddr=? no=?";
+				sql = "update professor set name=?, pw=?, addr=?, tel=?, phone=?, major=?, email=?, labNum=?, dep_name=? where pro_no =" + pb.getNo();
 				
 				pstmt = con.prepareStatement(sql);
+				
 				
 				pstmt.setString(1, pb.getName() );
 				pstmt.setString(2, pb.getPw());
@@ -193,18 +210,26 @@ public class ProDao {
 				pstmt.setString(6, pb.getMajor());
 				pstmt.setString(7, pb.getEmail());
 				pstmt.setInt(8, pb.getLabNum());
-				pstmt.setInt(9, pb.getNo());
+				pstmt.setString(9, pb.getDep_name());
+				System.out.print(pb.getPw());
+				System.out.print(pb.getAddr());
 				
-				pstmt.executeQuery();
+				
+				int check = pstmt.executeUpdate();
+				
+				if(check > 0) {
+					result = 1;
+				}
 				
 				
 				
 			}catch(Exception e) {
 				System.out.print("Professor/ProDao 내부의 교수정보 수정에서 오류가 발생 했습니다." + e);
-				
+				e.printStackTrace();
 			}finally {
 				rs_Close();
-			}			
+			}		
+			return result ;
 		}
 		
 		public ArrayList getDep() {
@@ -261,7 +286,32 @@ public class ProDao {
 			}
 			
 			return array;
-			
+		}
+		
+		public int deleteProfessor(int pro_no) {
+			String sql = "";
+			int result = -1;
+			try {
+				
+				con = getConnection();
+				
+				sql = "delete * from professor no =" + pro_no;
+				
+				pstmt = con.prepareStatement(sql);
+				
+				int check = pstmt.executeUpdate();
+				
+				if( check !=- 1) {
+					result = 1;
+				}
+				
+			}catch(Exception e) {
+				System.out.println("ProDao/Proffesor 내부의 DeleteProfessor() 에서 오류 " + e);
+				e.printStackTrace();
+			}finally {
+				rs_Close();
+			}
+			return result;
 		}
 		
 }//ProDao 끝
