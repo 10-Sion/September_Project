@@ -16,6 +16,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 사용자로부터 입력 받은 데이터 가져오기
         int uniqueId = Integer.parseInt(request.getParameter("no")); // 사용자 고유번호
+        
         String userPassword = request.getParameter("pw"); // 사용자 비밀번호
 
         // 각 DAO 클래스를 사용하여 로그인 체크
@@ -28,7 +29,8 @@ public class LoginServlet extends HttpServlet {
         boolean employeeLogin = employeeDAO.checkLogin(uniqueId, userPassword);
         boolean professorLogin = professorDAO.checkLogin(uniqueId, userPassword);
 
-        if (studentLogin || employeeLogin || professorLogin) {
+       if (studentLogin || employeeLogin || professorLogin) {
+ 
             // 로그인 성공
             // 로그인 후 작업 (예: 세션 설정)
         	// 세션 생성 또는 기존 세션 가져오기

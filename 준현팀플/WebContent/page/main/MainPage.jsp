@@ -19,9 +19,14 @@
 
   </head>
   <body>
+  
 	<%
+	
+	//LoginServlet에서  세션에 로그인한 사람의 고유번호를 아래 줄과 같이 저장 했었습니다.
+    //session.setAttribute("uniqueId", uniqueId);
+	
 	// 세션에서 uniqueId 값을 가져옴
-    Integer uniqueId = (Integer) session.getAttribute("no");
+    Integer uniqueId = (Integer) session.getAttribute("uniqueId");
 	
 	out.println("uniqueId: " + uniqueId); // uniqueId 값을 출력
 	
@@ -40,13 +45,13 @@ function redirectToMyPage(uniqueId) {
 
     if (uniqueId >= 0 && uniqueId <= 1000) {
         // 교직원의 경우
-        redirectURL ="page/tea_main.html" ;
+        redirectURL = "emp_main.html";
     } else if (uniqueId >= 1001 && uniqueId <= 2000) {
         // 교수의 경우
-        redirectURL = "page/pro_main.html";
+        redirectURL = "pro_main.html";
     } else if (uniqueId >= 2001 && uniqueId <= 9999) {
         // 학생의 경우
-        redirectURL = "page/stu_main.html";
+        redirectURL = "stu_main.html";
     } else {
         // 그 외의 경우
         redirectURL = "#"; // 혹은 다른 처리를 원하는 페이지로 이동
