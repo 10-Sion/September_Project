@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,18 +19,59 @@
 
   </head>
   <body>
+	<%
+	// 세션에서 uniqueId 값을 가져옴
+    Integer uniqueId = (Integer) session.getAttribute("no");
+	
+	out.println("uniqueId: " + uniqueId); // uniqueId 값을 출력
+	
+    if (uniqueId != null) {
+        
+	    // 여기서 userId를 사용하여 필요한 작업 수행 가능
+	} else {
+	    // 세션 없거나 사용자 정보가 없는 경우의 처리
+	    // 예: 로그인하지 않은 사용자 처리
+	}
+	%>
+	
+<script>
+function redirectToMyPage(uniqueId) {
+    var redirectURL = "";
 
+    if (uniqueId >= 0 && uniqueId <= 1000) {
+        // 교직원의 경우
+        redirectURL ="page/tea_main.html" ;
+    } else if (uniqueId >= 1001 && uniqueId <= 2000) {
+        // 교수의 경우
+        redirectURL = "page/pro_main.html";
+    } else if (uniqueId >= 2001 && uniqueId <= 9999) {
+        // 학생의 경우
+        redirectURL = "page/stu_main.html";
+    } else {
+        // 그 외의 경우
+        redirectURL = "#"; // 혹은 다른 처리를 원하는 페이지로 이동
+    }
+
+    window.location.href = redirectURL; // JavaScript를 사용하여 페이지 이동
+}
+</script>
   
 <header>
 
+
 <div class="navigation">
 		<a href="#" class="menuItem">Home</a>
-		<a href="../WebContent/login.jsp" class="menuItem">Login</a>
-		<a href="../WebContent/Form.jsp" class="menuItem">Join</a>
-		<a href="#" class="menuItem">My page</a>
+		<a href="#" class="menuItem">Logout</a>
+		<a href="#" class="menuItem">Join</a>
+		<!-- uniqueId를 사용하여 My page로 이동하는 함수 호출 -->
+        <a href="#" class="menuItem" onclick="redirectToMyPage('<%= uniqueId %>')">My page</a>
 </div>
 
 </header>
+
+
+
+
 
     <div class="container-fluid" _msthidden="18">
 	<div class="row" _msthidden="18">

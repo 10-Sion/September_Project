@@ -12,8 +12,8 @@
 
 <h1>로그인</h1>
 
-<form method="post" action="loginPro.jsp">
-		이름  : <input type="text" name="no" value="<%=request.getParameter("uniqueId")%>"><br>
+<form method="post" action="LoginServlet">
+		고유번호  : <input type="text" name="no" value="<%=request.getParameter("uniqueId")%>"><br>
 		비밀번호 : <input type="password" name="pw"><br>
 		<input type="submit" value="로그인">
 		<input type="reset" value="초기화">
