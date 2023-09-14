@@ -34,6 +34,7 @@ public class EmployeeEditServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int empNo = Integer.parseInt(request.getParameter("emp_no"));
+        
         Employee employee = employeeService.getEmployeeById(empNo);
         request.setAttribute("employee", employee);
         request.getRequestDispatcher("/employee_edit.jsp").forward(request, response);
@@ -41,6 +42,7 @@ public class EmployeeEditServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int empNo = Integer.parseInt(request.getParameter("emp_no"));
+        
         String pw = request.getParameter("pw");
         String name = request.getParameter("name");
         String addr = request.getParameter("addr");

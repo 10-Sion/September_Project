@@ -37,7 +37,14 @@
 
         </div>
     </div>
-
+    
+    <script>
+        function loadPage(pageUrl) {
+            
+            const Div = document.getElementById('content');
+            contentDiv.innerHTML = '<jsp:include page="' + pageUrl + '" />';
+        }
+    </script>
     <script src="mainApp.js"></script>
 </body>
 </html>

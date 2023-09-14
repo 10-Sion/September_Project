@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
-  <link rel="stylesheet" href="/WebContent/pageSetUp/mainStyle.css">
+  <link rel="stylesheet" href="mainStyle.css">
 
   <title>Document</title>
 </head>

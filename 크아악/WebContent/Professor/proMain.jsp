@@ -33,7 +33,6 @@
             </div>
         </div>
         <div class="main_navbar">
-
             
         </div>
         <div class="menu_item_name_and_filter ">
