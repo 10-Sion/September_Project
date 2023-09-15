@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,44 +6,39 @@
 <title>Insert title here</title>
 </head>
 <body>
-        <div class="left_sidebar">
+    <div class="left_sidebar">
         <div class="close_hamburger_btn">
             <i class='bx bx-x-circle'></i>
         </div>
 
-        <div class="logo ">
+        <div class="logo">
             <h2 onclick="myFunction()">School</h2>
         </div>
 
-        <div class="menu_items ">
-            <div class="menu_item " onclick="loadpage(proTable.jsp)">
+        <div class="menu_items">
+            <div class="menu_item" onclick="loadPage('proTable1.jsp')">
                 <i class='bx bxs-dashboard'></i>
                 <p>Account</p>
             </div>
-            <div class="menu_item " onclick="loadpage(page2.jsp)">
+            
+            <div class="menu_item" onclick="loadPage('proTable2.jsp')">
                 <i class='bx bx-message-rounded-dots'></i>
                 <p>Subject</p>
-                <i class="fa-regular fa-circle-2 "></i>
+                <i class="fa-regular fa-circle-2"></i>
             </div>
-            <div class="menu_item " onclick="loadpage(page3.jsp)">
+            
+            <div class="menu_item" onclick="loadPage('proTable3.jsp')">
                 <i class='bx bx-calendar'></i>
                 <p>Score</p>
-            </div>           
-            <div class="menu_item " onclick="loadpage(page4.jsp)">
+            </div>
+            
+            <div class="menu_item" onclick="loadPage('proTable4.jsp')">
                 <i class='bx bx-cog'></i>
                 <p>Settings</p>
             </div>
-
+            
+            
         </div>
     </div>
-    
-    <script>
-        function loadPage(pageUrl) {
-            
-            const Div = document.getElementById('content');
-            contentDiv.innerHTML = '<jsp:include page="' + pageUrl + '" />';
-        }
-    </script>
-    <script src="mainApp.js"></script>
 </body>
 </html>
