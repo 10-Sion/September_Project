@@ -1,15 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<h1>회원가입</h1>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<link href=Form.css rel="stylesheet">
+</head>
 
-<p>직업을 선택하세요:</p>
-<input type="radio" id="studentRadio" name="occupation" value="학생" required>
-<label for="studentRadio">학생</label><br>
-<input type="radio" id="staffRadio" name="occupation" value="교직원" required>
-<label for="staffRadio">교직원</label><br>
-<input type="radio" id="professorRadio" name="occupation" value="교수" required>
-<label for="professorRadio">교수</label><br><br>
+<div id="join-form">
+	<h1>회원가입</h1>
+	
+	<p>직업을 선택하세요</p>
+	
+
+	<div class="radio-group">
+	<label for="studentRadio">학생</label><br>
+	<input type="radio" id="studentRadio" name="occupation" value="학생" class="text-field" required>
+	
+	</div>
+	
+	<div class="radio-group">
+	<label for="staffRadio">교직원</label><br>
+	<input type="radio" id="staffRadio" name="occupation" value="교직원" class="text-field" required>
+	
+	</div>
+	
+	<div class="radio-group">
+	<label for="professorRadio">교수</label>
+	<input type="radio" id="professorRadio" name="occupation" value="교수" class="text-field" required>
+	<br><br>
+</div> 
+
 
 <div id="studentForm" style="display: none;">
     <!-- 학생용 회원가입 양식 -->
@@ -31,6 +52,7 @@
     <br><br>
     <label for="stu_major">전공 : </label>
     <input id="stu_major" name="stu_major" type="text" size="20" maxlength="100" required>
+    <br><br>
 </div>
 
 <div id="staffForm" style="display: none;">
@@ -49,6 +71,7 @@
     <br><br>
     <label for="em_email">이메일 : </label>
     <input id="em_email" name="em_email" type="text" size="20" maxlength="16" required>
+    <br><br>
 </div>
 
 <div id="professorForm" style="display: none;">
@@ -67,14 +90,18 @@
     <br><br>
     <label for="pro_major">전공 : </label>
     <input id="pro_major" name="pro_major" type="text" size="20" maxlength="100" required>
+    <br><br>
     <label for="pro_email">이메일 : </label>
     <input id="pro_email" name="pro_email" type="text" size="20" maxlength="10" required>
     <br><br>
 </div>
 
 <!-- 입력완료 -->
-<input type="button" value="입력완료" onclick="submit();">
-<input type="reset" value="다시작성">
+<!-- <input type="button" value="입력완료" onclick="submit();"> -->
+<button class="submit-btn" type="submit" onclick="submit();">Join</button>  
+<!-- <input type="reset" value="다시작성"> -->
+</div>
+
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>

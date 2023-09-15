@@ -7,16 +7,19 @@
         body {
             margin: 0;
             background-color: white;
+            
         }
         
         .login-form{
-            /* border: 3px solid red; */
             border-radius: 5px;
-            width: 300px;
-            background-color: #eeeff1;
-            padding:20px;
-            margin : 50px auto;
+          width: 300px;
+          background-color: #eeeff1;
+          padding: 20px;
+          margin: 50px auto;
+          text-align: center; /* 가운데 정렬 추가 */
         }
+     
+        
         .text-field{
             font-size: 14px;
             padding : 10px;
@@ -38,15 +41,8 @@
             width : 100%;
         }
 
-        .links {
-            text-align: center;
-            margin:30px;
-        }
-        .links a {
-            color : #9b9b9b;
-            text-decoration: none;
-            font-size: 12px; 
-        }
+       
         .submit-btn:hover {
             box-shadow: 2px 4px 5px rgba(0,0,0,0.5);
         }
+        
