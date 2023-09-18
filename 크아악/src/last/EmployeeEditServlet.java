@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import javax.servlet.ServletException;
 import java.io.IOException;
@@ -33,12 +34,30 @@ public class EmployeeEditServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int empNo = Integer.parseInt(request.getParameter("emp_no"));
         
+    	int empNo = Integer.parseInt(request.getParameter("emp_no"));
+
+        // 세션에서 현재 로그인된 사용자의 직원 No.
+        HttpSession session = request.getSession();
+        int currentEmployeeId = (int) session.getAttribute("currentEmployeeId");
+
+        // 이전 페이지로 이동시키기 위한 URL 설정
+        String previousPage = request.getHeader("Referer");
+
+        // 범위를 벗어난 경우 처리
+        if (currentEmployeeId <= 0 || currentEmployeeId >= 1000) {
+            // 경고 메시지를 설정
+            request.setAttribute("errorMessage", "잘못된 접근입니다.");
+            // 경고 메시지와 함께 이전 페이지로 이동
+            request.getRequestDispatcher(previousPage).forward(request, response);
+            return;
+        }
+
         Employee employee = employeeService.getEmployeeById(empNo);
         request.setAttribute("employee", employee);
         request.getRequestDispatcher("/employee_edit.jsp").forward(request, response);
     }
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int empNo = Integer.parseInt(request.getParameter("emp_no"));

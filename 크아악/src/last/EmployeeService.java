@@ -19,15 +19,19 @@ public class EmployeeService {
 
     public EmployeeService(DataSource dataSource) {
         if (dataSource != null) { // 데이터 소스가 null이 아닌 경우에만 초기화
+        	
             try {
                 // DataSource를 이용하여 Connection을 얻어옵니다.
                 dbConnection = dataSource.getConnection();
+                
             } catch (SQLException e) {
                 e.printStackTrace();
+                
             }
         } else {
             // 데이터 소스가 null인 경우 예외 처리 또는 오류 로깅
-            System.err.println("DataSource is null. Failed to initialize EmployeeService.");
+            System.err.println("DataSource is null.");
+            
         }
     }
 
@@ -65,6 +69,7 @@ public class EmployeeService {
             
             if (resultSet.next()) {
                 return createEmployeeFromResultSet(resultSet);
+                
             }
             
         } catch (SQLException e) {

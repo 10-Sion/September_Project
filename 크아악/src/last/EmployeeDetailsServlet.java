@@ -25,19 +25,33 @@ public class EmployeeDetailsServlet extends HttpServlet {
  }
 
  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     // 세션에서 현재 로그인된 사용자의 직원 No.
-     HttpSession session = request.getSession();
-     // 세션에 임시 값 저장.
-     session.setAttribute("currentEmployeeId", 123);
+	    // 세션에서 현재 로그인된 사용자의 직원 No.
+	    HttpSession session = request.getSession();
+	    // 세션에 임시 값 저장.
+	    session.setAttribute("currentEmployeeId", 3);
 
-     int currentEmployeeId = (int) session.getAttribute("currentEmployeeId");
-     // EmployeeService 직원 정보를 조회.
-     Employee employee = employeeService.getEmployeeById(currentEmployeeId);
+	    int currentEmployeeId = (int) session.getAttribute("currentEmployeeId");
 
-     // 조회된 직원 정보 JSP에 전달.
-     request.setAttribute("employee", employee);
+	    // 이전 페이지로 이동시키기 위한 URL 설정
+	    String previousPage = request.getHeader("이전페이지.jsp");
 
-     // 직원 세부 정보를 표시.
-     request.getRequestDispatcher("/employee_details.jsp").forward(request, response);
- }
+	    // 범위를 벗어난 경우 처리
+	    if (currentEmployeeId <= 0 || currentEmployeeId >= 1000) {
+	        // 경고 메시지를 설정
+	        request.setAttribute("errorMessage", "잘못된 접근입니다.");
+	        // 경고 메시지와 함께 이전 페이지로 이동
+	        request.getRequestDispatcher(previousPage).forward(request, response);
+	        return;
+	    }
+
+	    // EmployeeService 직원 정보를 조회.
+	    Employee employee = employeeService.getEmployeeById(currentEmployeeId);
+
+	    // 조회된 직원 정보 JSP에 전달.
+	    request.setAttribute("employee", employee);
+
+	    // 직원 세부 정보를 표시.
+	    request.getRequestDispatcher("/employee_details.jsp").forward(request, response);
+	}
+
 }
