@@ -29,6 +29,13 @@ public class EmployeeDetailsServlet extends HttpServlet {
 	    HttpSession session = request.getSession();
 	    Integer currentEmployeeId = (Integer) session.getAttribute("currentEmployeeId");
 
+	    // 콘솔에 현재 세션 값 출력
+	    System.out.println("현재 세션 값: " + currentEmployeeId);
+
+	    // 데이터베이스 연결 초기화
+	    DataSource dataSource = DatabaseConfig.getDataSource();
+	    EmployeeService employeeService = new EmployeeService(dataSource);
+
 	    // 이전 페이지로 이동시키기 위한 URL 설정
 	    String previousPage = request.getHeader("Referer");
 

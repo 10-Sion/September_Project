@@ -14,7 +14,6 @@
 	<p>전화번호: ${employee.getPhone()}</p>
 	<p>휴대폰번호: ${employee.getTel()}</p>
 	<p>이메일: ${employee.getEmail()}</p>
-	<p>${employee.currentEmployeeId}</p>
 	<a href="/employee/edit?emp_no=${employee.getEmpNo()}">수정</a>
 	<a href="/employee/delete?emp_no=${employee.getEmpNo()}">삭제</a>
 
