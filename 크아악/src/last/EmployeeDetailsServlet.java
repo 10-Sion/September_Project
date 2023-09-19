@@ -25,18 +25,15 @@ public class EmployeeDetailsServlet extends HttpServlet {
  }
 
  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    // 세션에서 현재 로그인된 사용자의 직원 No.
+	    // 세션에서 현재 로그인된 사용자의 직원 No. 가져오기
 	    HttpSession session = request.getSession();
-	    // 세션에 임시 값 저장.
-	    session.setAttribute("currentEmployeeId", 3);
-
-	    int currentEmployeeId = (int) session.getAttribute("currentEmployeeId");
+	    Integer currentEmployeeId = (Integer) session.getAttribute("currentEmployeeId");
 
 	    // 이전 페이지로 이동시키기 위한 URL 설정
-	    String previousPage = request.getHeader("이전페이지.jsp");
+	    String previousPage = request.getHeader("Referer");
 
 	    // 범위를 벗어난 경우 처리
-	    if (currentEmployeeId <= 0 || currentEmployeeId >= 1000) {
+	    if (currentEmployeeId == null || currentEmployeeId <= 0 || currentEmployeeId >= 1000) {
 	        // 경고 메시지를 설정
 	        request.setAttribute("errorMessage", "잘못된 접근입니다.");
 	        // 경고 메시지와 함께 이전 페이지로 이동
@@ -53,5 +50,7 @@ public class EmployeeDetailsServlet extends HttpServlet {
 	    // 직원 세부 정보를 표시.
 	    request.getRequestDispatcher("/employee_details.jsp").forward(request, response);
 	}
+
+
 
 }

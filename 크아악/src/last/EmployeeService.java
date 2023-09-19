@@ -19,10 +19,16 @@ public class EmployeeService {
 
     public EmployeeService(DataSource dataSource) {
         if (dataSource != null) { // 데이터 소스가 null이 아닌 경우에만 초기화
-        	
+            
             try {
                 // DataSource를 이용하여 Connection을 얻어옵니다.
                 dbConnection = dataSource.getConnection();
+                
+                // dbConnection이 이미 닫혔는지 확인
+                if (dbConnection.isClosed()) {
+                    // 닫혔다면 다시 연결 얻어오기
+                    dbConnection = dataSource.getConnection();
+                }
                 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -34,6 +40,7 @@ public class EmployeeService {
             
         }
     }
+
 
 
     // Employee 추가
@@ -59,25 +66,31 @@ public class EmployeeService {
 
     // Employee 조회 by ID
     public Employee getEmployeeById(int empNo) {
-    	
-    	String sql = "SELECT * FROM employee WHERE emp_no = ?";
-    	
+        if (dbConnection == null) {
+            // dbConnection이 null인 경우 처리
+            System.err.println("Database connection is not initialized.");
+            return null;
+        }
+        
+        String sql = "SELECT * FROM employee WHERE emp_no = ?";
+        
         try (PreparedStatement statement = dbConnection.prepareStatement(sql)) {
-        	
             statement.setInt(1, empNo);
             ResultSet resultSet = statement.executeQuery();
             
             if (resultSet.next()) {
                 return createEmployeeFromResultSet(resultSet);
-                
             }
             
         } catch (SQLException e) {
             e.printStackTrace();
-            
         }
+        
         return null;
     }
+
+
+
 
     // 모든 Employee 조회
     public List<Employee> getAllEmployees() {
@@ -153,6 +166,45 @@ public class EmployeeService {
     }
 
 	public void updateEmployee(int empNo, String pw, String name, String addr, String phone, String tel, String email) {
+	}
+
+	
+	//	테스트
+	public static void main(String[] args) {
+	    // 데이터베이스 연결 테스트를 위한 메인 메서드
+	    DataSource dataSource = DatabaseConfig.getDataSource();
+	    EmployeeService employeeService = new EmployeeService(dataSource);
+
+	    // 데이터베이스 연결 테스트
+	    testDatabaseConnection(employeeService);
+
+	    // emp_no가 3인 직원 정보 가져오기
+	    Employee employee = employeeService.getEmployeeById(3);
+	    if (employee != null) {
+	        System.out.println("직원 정보:");
+	        System.out.println("직원 번호: " + employee.getEmpNo());
+	        System.out.println("비밀번호: " + employee.getPw());
+	        System.out.println("이름: " + employee.getName());
+	        System.out.println("주소: " + employee.getAddr());
+	        System.out.println("전화번호: " + employee.getPhone());
+	        System.out.println("휴대폰번호: " + employee.getTel());
+	        System.out.println("이메일: " + employee.getEmail());
+	    } else {
+	        System.out.println("직원 정보를 가져오지 못했습니다.");
+	    }
+	}
+
+
+
+	private static void testDatabaseConnection(EmployeeService employeeService) {
+	    // 데이터베이스 연결 테스트 메서드
+	    Connection dbConnection = employeeService.dbConnection;
+	    if (dbConnection != null) {
+	        System.out.println("데이터베이스 연결 성공");
+	        // 여기에서 연결을 닫지 않도록 수정
+	    } else {
+	        System.out.println("데이터베이스 연결 실패");
+	    }
 	}
 
 }
