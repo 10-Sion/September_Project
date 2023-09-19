@@ -10,7 +10,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import java.io.IOException;
 
-@WebServlet("/employee/details")
+@WebServlet("/EmployeeDetailsServlet")
 public class EmployeeDetailsServlet extends HttpServlet {
 
  private EmployeeService employeeService;
@@ -26,8 +26,9 @@ public class EmployeeDetailsServlet extends HttpServlet {
 
  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    // 세션에서 현재 로그인된 사용자의 직원 No. 가져오기
+	    // 세션 값 하드코딩
 	    HttpSession session = request.getSession();
-	    Integer currentEmployeeId = (Integer) session.getAttribute("currentEmployeeId");
+	    Integer currentEmployeeId = 5; // 하드코딩된 세션 값
 
 	    // 콘솔에 현재 세션 값 출력
 	    System.out.println("현재 세션 값: " + currentEmployeeId);
@@ -54,9 +55,13 @@ public class EmployeeDetailsServlet extends HttpServlet {
 	    // 조회된 직원 정보 JSP에 전달.
 	    request.setAttribute("employee", employee);
 
+	    // 세션 값을 JSP에 전달
+	    request.setAttribute("currentEmployeeId", currentEmployeeId);
+
 	    // 직원 세부 정보를 표시.
 	    request.getRequestDispatcher("/employee_details.jsp").forward(request, response);
 	}
+
 
 
 

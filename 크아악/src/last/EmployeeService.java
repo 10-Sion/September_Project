@@ -45,24 +45,28 @@ public class EmployeeService {
         }
     }
 
-    // Employee 조회 by ID
+ // Employee 조회 by ID
     public Employee getEmployeeById(int empNo) {
-        if (dbConnection == null) {
-            // dbConnection이 null인 경우 처리
-            System.err.println("Database connection is not initialized.");
+        if (dataSource == null) {
+            // dataSource가 null인 경우 처리
+            System.err.println("DataSource is not initialized.");
             return null;
         }
         
-        String sql = "SELECT * FROM employee WHERE emp_no = ?";
+        try (Connection dbConnection = dataSource.getConnection()) {
+            String sql = "SELECT * FROM employee WHERE emp_no = ?";
         
-        try (PreparedStatement statement = dbConnection.prepareStatement(sql)) {
-            statement.setInt(1, empNo);
-            ResultSet resultSet = statement.executeQuery();
-            
-            if (resultSet.next()) {
-                return createEmployeeFromResultSet(resultSet);
+            try (PreparedStatement statement = dbConnection.prepareStatement(sql)) {
+                statement.setInt(1, empNo);
+                ResultSet resultSet = statement.executeQuery();
+                
+                if (resultSet.next()) {
+                    return createEmployeeFromResultSet(resultSet);
+                }
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            
         } catch (SQLException e) {
             e.printStackTrace();
         }
