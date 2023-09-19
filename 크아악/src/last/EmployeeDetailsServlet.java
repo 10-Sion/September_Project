@@ -59,7 +59,7 @@ public class EmployeeDetailsServlet extends HttpServlet {
 	    request.setAttribute("currentEmployeeId", currentEmployeeId);
 
 	    // 직원 세부 정보를 표시.
-	    request.getRequestDispatcher("/employee_details.jsp").forward(request, response);
+	    request.getRequestDispatcher("/Employee/employee_details.jsp").forward(request, response);
 	}
 
 

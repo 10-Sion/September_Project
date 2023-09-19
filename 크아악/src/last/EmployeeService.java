@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -21,6 +22,11 @@ public class EmployeeService {
     public EmployeeService(DataSource dataSource) {
         this.dataSource = dataSource;
     }
+    
+    public void init(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
 
 
 
@@ -45,7 +51,7 @@ public class EmployeeService {
         }
     }
 
- // Employee 조회 by ID
+    // Employee 조회 by ID
     public Employee getEmployeeById(int empNo) {
         if (dataSource == null) {
             // dataSource가 null인 경우 처리
@@ -79,23 +85,29 @@ public class EmployeeService {
 
     // 모든 Employee 조회
     public List<Employee> getAllEmployees() {
+        if (dataSource == null) {
+            // dataSource가 null인 경우 처리
+            System.err.println("DataSource is not initialized.");
+            return Collections.emptyList(); // 빈 리스트 반환 또는 예외 처리 방법 선택
+        }
+
         List<Employee> employees = new ArrayList<>();
-        
         String sql = "SELECT * FROM employee";
-        
-        try (PreparedStatement statement = dbConnection.prepareStatement(sql)) {
-            ResultSet resultSet = statement.executeQuery();
-            
+
+        try (Connection dbConnection = dataSource.getConnection();
+             PreparedStatement statement = dbConnection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
             while (resultSet.next()) {
                 employees.add(createEmployeeFromResultSet(resultSet));
-                
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            
         }
+        
         return employees;
     }
+
 
     // Employee 정보 업데이트
     public void updateEmployee(Employee employee) {

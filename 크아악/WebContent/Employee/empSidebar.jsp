@@ -16,7 +16,7 @@
         </div>
 
         <div class="menu_items">
-            <div class="menu_item" onclick="loadPage('empTable1.jsp')">
+            <div class="menu_item" onclick="loadPage('employee_details.jsp')">
                 <i class='bx bxs-dashboard'></i>
                 <p>Account</p>
             </div>
