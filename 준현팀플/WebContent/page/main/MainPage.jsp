@@ -16,7 +16,7 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
+	<link href="css/bottom.css" rel="stylesheet">
   </head>
   <body>
   
@@ -65,11 +65,11 @@ function redirectToMyPage(uniqueId) {
 
 
 <div class="navigation">
-		<a href="#" class="menuItem">Home</a>
-		<a href="#" class="menuItem">Logout</a>
-		<a href="#" class="menuItem">Join</a>
+		<a href="#" class="menuItem">DOOR</a>
+		<a href="#" class="menuItem">강의실</a>
+		<a href="#" class="menuItem">공지사항</a>
 		<!-- uniqueId를 사용하여 My page로 이동하는 함수 호출 -->
-        <a href="#" class="menuItem" onclick="redirectToMyPage('<%= uniqueId %>')">My page</a>
+        <a href="#" class="menuItem" onclick="redirectToMyPage('<%= uniqueId %>')">마이페이지</a>
 </div>
 
 </header>
@@ -133,6 +133,13 @@ function redirectToMyPage(uniqueId) {
 		</div>
 	</div>
 </div>
+
+
+<!-- 하단 화면 -->
+
+
+
+
 
 <footer>
 <address>
