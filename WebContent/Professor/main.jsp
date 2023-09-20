@@ -10,7 +10,6 @@
 	width : 180px;
 	height : 70px;
 	font-size : 20px;
-	
 	}
 </style>
 </head>
