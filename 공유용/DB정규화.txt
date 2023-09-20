@@ -1,0 +1,88 @@
+employee
+
+	emp_no int AI PK 
+	pw varchar(30) 
+	name varchar(20) 
+	addr varchar(50) 
+	phone varchar(20) 
+	tel varchar(20) 
+	email varchar(50)
+	status
+
+professor
+	pro_no int AI PK 
+	pw varchar(30) 
+	name varchar(20) 
+	addr varchar(50) 
+	phone varchar(20) 
+	tel varchar(20) 
+	email varchar(50) 
+	dep_name varchar(30) 
+	major varchar(30) 
+	labNum int 
+	status tinyint(1)
+
+student
+	stu_no int AI PK 
+	pw varchar(30) 
+	name varchar(20) 
+	addr varchar(50) 
+	phone varchar(20) 
+	tel varchar(20) 
+	email varchar(50) 
+	dep_name varchar(30) 
+	major varchar(30) 
+	grade tinyint(1) 
+	status tinyint(1)
+
+major
+	maj_no	PK
+	maj_name
+
+subject_info	|MAIN
+	sub_no
+	sub_name
+	pro_no		FK
+	pro_name	FK
+	pro_email	FK
+
+	lecture_plan	|SUB
+		sub_no	(subject_info)
+		major	(major)
+		credit
+		comp_sort
+		grade
+		period
+		edu_goal
+		place
+		textbook
+
+	evaluation_plan	|SUB
+		sub_no	(subject_info)
+		mid_exam
+		final_exam
+		quiz
+		task
+		attendance
+		jilmun
+		debate
+		
+notice_info	|MAIN
+	notice_no
+	title
+	pro_no		FK
+	pro_name	FK
+
+	not_list		|SUB
+		date
+
+	not_detail	|SUB
+		content		
+	
+task		|MAIN
+	task_no
+	title
+	 
+	
+	
+	

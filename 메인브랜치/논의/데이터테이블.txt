@@ -1,0 +1,65 @@
+트리거 교직원, 교수, 학생 3개만 1000 2000
+
+Employee 테이블
+	emp_no int AI PK 
+	pw varchar(30) 
+	name varchar(20) 
+	addr varchar(50) 
+	phone varchar(20) 
+	tel varchar(20) 
+	email varchar(50)
+
+Student 테이블 (정규화 후)	++ 성적, 학부, 전공
+
+	stu_no int AI PK 
+	pw varchar(30) 
+	name varchar(20) 
+	addr varchar(50) 
+	phone varchar(20) 
+	tel varchar(20) 
+	email varchar(50)
+	
+	dep_name varchar(30) FK
+	major  varchar(30) FK
+	grade  tinyint(1)
+	status  tinyint(1)
+
+Professor 테이블 (정규화 후)
+
+	pro_no int AI PK
+	pw varchar(30)
+	name varchar(20) 
+	addr varchar(50) 
+	phone varchar(20)
+	tel varchar(20) 	
+	email varchar(50)
+	
+	dep_name varchar(30) FK
+	major  varchar(30) FK
+	labNum int(5)
+	status tinyint(1)
+
++ Department 테이블 (새로 생성)
+	dep_name varchar(30) PK
+
++ Major 테이블 (새로 생성)
+	maj_name varchar(30) PK
+
+subject 테이블 : 기존 컬럼 수정
+	no int PK
+	sub_name varchar(20)
+	pro_name varchar(20) FK
+	pro_no int FK
+	place varchar(20)		: 장소
+	capacity int(5)		: 총원
+	dep_name varchar(30) FK	: 학부
+	major vharchar(30) FK	: 전공
+	point tinyint(1)		: 학점
+	semester tinyint(1)		: 학기
+
+study 테이블 : 기존 컬럼 수정 = 복합 기본키 구성
+	stu_no int PK
+	sub_no int PK
+	score float(5)		: 점수		
+	point tinyint(1) FK		: 학점
+	semester tinyint(1) FK	: 학기
