@@ -18,30 +18,34 @@ public class EmployeeListServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-    	
         super.init();
-        // 여기서 EmployeeService를 초기화하는 코드 추가
+        
         ServletContext context = getServletContext();
-        DataSource dataSource = (DataSource) context.getAttribute("dataSource");
+        DataSource dataSource = DatabaseConfig.getDataSource();
 
         if (dataSource != null) {
-            employeeService = new EmployeeService();
-            employeeService.init(dataSource);
+            employeeService = new EmployeeService(dataSource);
             
         } else {
-        	throw new ServletException("DataSource is not initialized.");
-
+            throw new ServletException("DataSource is not initialized.");
+            
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // EmployeeService를 사용하여 모든 Employee의 정보를 조회합니다.
+        // 모든 Employee의 정보를 조회
         List<Employee> employees = employeeService.getAllEmployees();
 
-        // 조회된 직원 정보를 request에 설정하여 JSP에 전달합니다.
+        // 각 직원의 emp_no를 콘솔에 출력
+        for (Employee employee : employees) {
+            int empNo = employee.getEmpNo();
+            System.out.println("조회된 직원 번호: " + empNo);
+        }
+        
         request.setAttribute("employees", employees);
 
         // JSP로 포워드하여 직원 목록을 표시합니다.
-        request.getRequestDispatcher("/employee/employee_list.jsp").forward(request, response);
+        request.getRequestDispatcher("/Employee/employee_list.jsp").forward(request, response);
     }
+
 }

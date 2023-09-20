@@ -10,6 +10,20 @@
 </head>
 <body>
   <div class="container">
+    <%
+    String currentEmployeeIdParam = request.getParameter("currentEmployeeId");
+    if (currentEmployeeIdParam != null && !currentEmployeeIdParam.isEmpty()) {
+        int currentEmployeeId = Integer.parseInt(currentEmployeeIdParam);
+        session.setAttribute("currentEmployeeId", currentEmployeeId);
+    }
+    %>
+    <%-- 세션에서 값을 읽어와 출력 --%>
+    <% Integer currentEmployeeId = (Integer) session.getAttribute("currentEmployeeId"); %>
+    <% if (currentEmployeeId != null) { %>
+        <p>현재 직원 ID: <%= currentEmployeeId %></p>
+    <% } else { %>
+        <p>세션에서 직원 ID를 찾을 수 없습니다.</p>
+    <% } %>
   
     <div class="left_sidebar">
       <jsp:include page="empSidebar.jsp" />
