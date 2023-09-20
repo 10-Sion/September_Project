@@ -1,6 +1,6 @@
 package last;
 
-import javax.servlet.annotation.WebServlet;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+
 import java.io.IOException;
 
 @WebServlet("/EmployeeDetailsServlet")
@@ -24,18 +26,14 @@ public class EmployeeDetailsServlet extends HttpServlet {
      employeeService = new EmployeeService(dataSource);
  }
 
+
  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    // 세션에서 현재 로그인된 사용자의 직원 No. 가져오기
-	    // 세션 값 하드코딩
 	    HttpSession session = request.getSession();
-	    Integer currentEmployeeId = 5; // 하드코딩된 세션 값
+	    Integer currentEmployeeId = (Integer) session.getAttribute("currentEmployeeId");
 
 	    // 콘솔에 현재 세션 값 출력
 	    System.out.println("현재 세션 값: " + currentEmployeeId);
-
-	    // 데이터베이스 연결 초기화
-	    DataSource dataSource = DatabaseConfig.getDataSource();
-	    EmployeeService employeeService = new EmployeeService(dataSource);
 
 	    // 이전 페이지로 이동시키기 위한 URL 설정
 	    String previousPage = request.getHeader("Referer");
