@@ -68,9 +68,9 @@
       </div>
       <div class="tabs">
         <div class="tab_name">
-          <p onclick="loadServletData('/HakSaGwanLee/employee/list')">Student</p>
-          <p>Teacher</p>
-          <p>Employee</p>
+          <p onclick="loadServletData('/HakSaGwanLee/employee/list')">Employee</p>
+          <p>Professor</p>
+          <p>Student</p>
         </div>
         <div class="three_dots">
           <i class='bx bx-dots-vertical-rounded'></i>

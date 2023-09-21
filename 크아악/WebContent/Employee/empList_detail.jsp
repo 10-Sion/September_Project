@@ -20,6 +20,10 @@
                 <td>${employee.name}</td>
             </tr>
             <tr>
+                <th>비밀 번호:</th>
+                <td>${employee.pw}</td>
+            </tr>
+            <tr>
                 <th>주소:</th>
                 <td>${employee.addr}</td>
             </tr>
@@ -42,6 +46,6 @@
         <p>직원 정보를 가져오지 못했습니다.</p>
     </c:if>
     
-    <a href="/HakSaGwanLee/employee/list">직원 목록으로 돌아가기</a>
+    <a href="#" onclick="loadServletData('/HakSaGwanLee/employee/list')">직원 목록으로 돌아가기</a>
 </body>
 </html>

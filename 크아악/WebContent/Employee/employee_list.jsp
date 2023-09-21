@@ -23,7 +23,7 @@
 	            <td>${employee.phone}</td>
 	            <td>${employee.email}</td>
 	            <td>
-	                <a href="/HakSaGwanLee/employee/detail?currentEmployeeId=${employee.empNo}">세부 정보</a>
+                    <a href="#" onclick="loadServletData('/HakSaGwanLee/employee/detail?currentEmployeeId=${employee.empNo}')">세부 정보</a>
 	            </td>
 	        </tr>
 	    </c:forEach>
