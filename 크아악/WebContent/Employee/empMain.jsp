@@ -72,7 +72,7 @@
         <div class="tab_name">
           <p onclick="loadServletData('/HakSaGwanLee/employee/list')">Employee</p>
           <p onclick="loadServletData()">Professor</p>
-          <p onclick="loadServletData()">Student</p>
+          <p onclick="loadServletData('/HakSaGwanLee/student/list')">Student</p>
         </div>
         <div class="three_dots">
           <i class='bx bx-dots-vertical-rounded'></i>

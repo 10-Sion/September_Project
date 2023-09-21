@@ -1,4 +1,4 @@
-package last;
+package jun_emp;
 
 public class Employee {
     private int empNo;
