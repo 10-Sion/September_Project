@@ -46,6 +46,7 @@
         <p>직원 정보를 가져오지 못했습니다.</p>
     </c:if>
     
+    <a href="#" onclick="loadServletData('/HakSaGwanLee/employee/edit?currentEmployeeId=${employee.empNo}')">수정</a>
     <a href="#" onclick="loadServletData('/HakSaGwanLee/employee/list')">직원 목록으로 돌아가기</a>
 </body>
 </html>

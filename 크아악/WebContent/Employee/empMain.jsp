@@ -22,7 +22,9 @@
     <% if (currentEmployeeId != null) { %>
         <p>현재 직원 ID: <%= currentEmployeeId %></p>
     <% } else { %>
-        <p>세션에서 직원 ID를 찾을 수 없습니다.</p>
+        <%-- error.jsp 페이지로 이동 --%>
+        <% request.setAttribute("errorMessage", "직원 정보를 가져오지 못했습니다."); %>
+        <% request.getRequestDispatcher("/Employee/error.jsp").forward(request, response); %>
     <% } %>
   
     <div class="left_sidebar">

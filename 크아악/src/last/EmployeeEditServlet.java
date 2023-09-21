@@ -35,7 +35,7 @@ public class EmployeeEditServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 직원 번호(empNo)를 요청 파라미터에서 가져옴
-        int empNo = Integer.parseInt(request.getParameter("emp_no"));
+        int empNo = Integer.parseInt(request.getParameter("currentEmployeeId"));
 
         // 세션에서 현재 로그인된 사용자의 직원 No.
         HttpSession session = request.getSession();
@@ -61,7 +61,7 @@ public class EmployeeEditServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 직원 번호(empNo)를 요청 파라미터에서 가져옴
-        int empNo = Integer.parseInt(request.getParameter("emp_no"));
+        int empNo = Integer.parseInt(request.getParameter("currentEmployeeId"));
 
         // 요청 파라미터에서 직원 정보를 가져옴
         String pw = request.getParameter("pw");

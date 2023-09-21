@@ -11,7 +11,6 @@
         <label for="pw">비밀번호:</label>
         <input type="password" name="pw" value="${employee.pw}">
         
-        <!-- 나머지 필드들 추가 -->
         <label for="name">이름:</label>
         <input type="text" name="name" value="${employee.name}">
         
