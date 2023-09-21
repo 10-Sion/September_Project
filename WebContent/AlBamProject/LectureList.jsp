@@ -1,3 +1,5 @@
+<%@page import="Leture.LectureDAO"%>
+<%@page import="Leture.LectureVO"%>
 <%@page import="Professor.ProDao"%>
 <%@page import="Subject.SubDao"%>
 <%@page import="java.util.List"%>
@@ -5,14 +7,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
-
-
-<% 
-  SubDao subDao = new SubDao();
-   //테스트용 세션값
-//  int pro_no = (int)session.getAttribute("pro_no"); //테스트용 세션값
-
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,39 +30,31 @@
 	<table border="2" width="80%" height="50px" class = "Sub_top">
 		<tr>
 			<th>과목코드</th>
+			<th>학년</th>
 			<th>과목명</th>
 			<th>교수명</th>
-			<th>학부</th>
 			<th>전공</th>
 			<th>강의 장소</th>
 			<th>학점</th>
-			<th>수강 정원</th>
+			<th>수업계획서</th>
 		</tr>	
 <%
-  SubBean sb = new SubBean();
-   List list = new SubDao().getSublist();
+    LectureVO lv = new LectureVO();
+	List list = new LectureDAO().getSublist();
    for(int i = 0; i < list.size(); i++){
-    sb = (SubBean)list.get(i);
-    
+	   lv = (LectureVO)list.get(i);
+
   %>
    	 <tr>	
-   	 		<th><%=sb.getSub_no()%></th>
-			<th><a href = "SubjectDetail.jsp?sub_no=<%=sb.getSub_no()%>" ><%=sb.getSub_name()%></a></th> 
-			<th><%=sb.getPro_name()%></th>
-			<th><%=sb.getDep_name()%></th>
-			<th><%=sb.getMajor()%></th>
-			<th><%=sb.getPlace()%></th>
-			<th><%=sb.getPoint()%></th>
-			<th><%=sb.getCapacity()%></th>
+   	 		<th><%=lv.getSub_no()%></th>
+   	 		<th><%=lv.getGrade()%></th>
+			<th><a href = "SubjectDetailMain.jsp?sub_no=<%=lv.getSub_no()%>" ><%=lv.getSub_name()%></a></th> 
+			<th><%=lv.getPro_name()%></th>
+			<th><%=lv.getMajor()%></th>
+			<th><%=lv.getPlace()%></th>
+			<th><%=lv.getCredit()%></th>
+			<th><a href = "SubjectPlan.jsp?sub_no=<%=lv.getSub_no()%>" >수업 계획</a></th> 	
 	</tr>
-	
-<!-- no int primary key auto_increment, -- 강의코드 -->
-<!-- name varchar(20), 	-- 과목명 -->
-<!-- Pro_name varchar(20),	-- 교수 이름, -->
-<!-- Pro_no int not null, -- 교수 번호 -->
-<!-- place varchar(20) not null, -- 강의 장소 -->
-<!-- count int not null, -- 수강 가능 인원 -->
-<!-- major varchar(20) -- 전공 -->
 
 <%
 	}

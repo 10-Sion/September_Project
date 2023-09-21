@@ -2,11 +2,11 @@ package Leture;
 
 public class LectureVO {
 	
-	private int	sub_no;
-	private String	sub_name;
-	private int pro_no;
-	private String pro_name;
-	private String pro_email;
+	private int	sub_no; // 과목번호
+	private String	sub_name; // 과목이름
+	private int pro_no; // 교수번호
+	private String pro_name; // 교수이름
+	private String pro_email; //email
 	private String major; //전공
 	private int credit; // 학점
 	private String comp_sort; // 이수구분
