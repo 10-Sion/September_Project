@@ -37,11 +37,12 @@ public class EmployeeListServlet extends HttpServlet {
         List<Employee> employees = employeeService.getAllEmployees();
 
         // 각 직원의 emp_no를 콘솔에 출력
-        for (Employee employee : employees) {
+        /*
+         * for (Employee employee : employees) {
             int empNo = employee.getEmpNo();
             System.out.println("조회된 직원 번호: " + empNo);
         }
-        
+        */
         request.setAttribute("employees", employees);
 
         // JSP로 포워드하여 직원 목록을 표시합니다.

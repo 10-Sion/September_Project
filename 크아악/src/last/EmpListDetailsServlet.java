@@ -32,7 +32,7 @@ public class EmpListDetailsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // URL 파라미터에서 empNo 가져오기
-        int empNo = Integer.parseInt(request.getParameter("empNo"));
+        int empNo = Integer.parseInt(request.getParameter("currentEmployeeId"));
 
         // EmployeeService 직원 정보를 조회.
         if (employeeService != null) {

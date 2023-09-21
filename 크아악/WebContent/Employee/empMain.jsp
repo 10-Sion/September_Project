@@ -68,7 +68,7 @@
       </div>
       <div class="tabs">
         <div class="tab_name">
-          <p>Student</p>
+          <p onclick="loadServletData('/HakSaGwanLee/employee/list')">Student</p>
           <p>Teacher</p>
           <p>Employee</p>
         </div>
@@ -85,6 +85,7 @@
   </div>
 
   <script>
+  //    페이지 로딩 함수
   function loadPage(pageUrl) {
       $.ajax({
           url: pageUrl,
@@ -98,6 +99,22 @@
           }
       });
   }
+  //    서블릿 데이터 처리 함수
+  function loadServletData(servletUrl) {
+	    $.ajax({
+	        url: servletUrl,
+	        type: 'GET',
+	        dataType: 'html',
+	        success: function(data) {
+	            // 서블릿에서 반환된 데이터를 화면에 표시
+	            $('.table').html(data);
+	        },
+	        error: function(xhr, status, error) {
+	            console.error(error);
+	        }
+	    });
+	}
+
   </script>
 </body>
 </html>

@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebServlet;
 
 import java.io.IOException;
 
-@WebServlet("/EmployeeDetailsServlet")
+@WebServlet("/employee/indivDetail")
 public class EmployeeDetailsServlet extends HttpServlet {
 
     private EmployeeService employeeService;
