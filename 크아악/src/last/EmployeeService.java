@@ -118,6 +118,8 @@ public class EmployeeService {
         }
     }
 
+
+
     // Employee 삭제
     public void deleteEmployee(int empNo) {
         String sql = "DELETE FROM employee WHERE emp_no = ?";

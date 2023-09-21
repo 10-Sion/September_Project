@@ -1,34 +1,37 @@
 package last;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import javax.servlet.ServletException;
 import java.io.IOException;
 
-@WebServlet("/employee/update")
-public class EmployeeEditServlet extends HttpServlet {
+@WebServlet("/employee/edit")
+public class EmpListEditServlet extends HttpServlet {
     private EmployeeService employeeService;
 
     @Override
     public void init() throws ServletException {
         super.init();
+        try {
+            // DatabaseConfig 데이터베이스 연결 정보
+            String dbUrl = DatabaseConfig.DB_URL;
+            String dbUsername = DatabaseConfig.DB_USERNAME;
+            String dbPassword = DatabaseConfig.DB_PASSWORD;
 
-        ServletContext context = getServletContext();
-        DataSource dataSource = DatabaseConfig.getDataSource();
+            // DataSource 객체.
+            DataSource dataSource = DatabaseConfig.getDataSource();
 
-        if (dataSource != null) {
+            // EmployeeService 객체.
             employeeService = new EmployeeService(dataSource);
-        } else {
-            // DataSource가 null인 경우 처리
-            throw new ServletException("DataSource is not initialized.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ServletException("Failed to initialize EmployeeService", e);
         }
     }
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 세션에서 현재 로그인된 사용자의 직원 정보 가져오기
@@ -66,10 +69,7 @@ public class EmployeeEditServlet extends HttpServlet {
         } else {
             // EmployeeService가 초기화되지 않은 경우 처리
             System.err.println("EmployeeService is not initialized.");
-            
-        }
+            // 오류 메시지를 표시하고 다른 처리를 하지 않습니다.
+        	}
+    	}
     }
-
-
-
-}
