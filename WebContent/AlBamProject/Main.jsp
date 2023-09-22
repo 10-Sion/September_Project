@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%
 	String center = request.getParameter("center");
-	
 	if(center == null){
 		center = "LectureList.jsp";		
 	}
+	
+	String contextPath = request.getContextPath(); 
 %>
 <!DOCTYPE html>
 <html>
@@ -17,21 +18,16 @@
 
 		<table width="100%" height="100%">
 			<tr align="left">
-				<td height="30%"> ╩С╢э ╦ч╢╨ </td>
+				<td height="30%"> Л┐│К▀╗ К╘■К┴╢ </td>
 			</tr>
 			<tr>
-				<td height="40%"><jsp:include page="${center}" /></td>
-			</tr>
-			<tr>
-			<td>
-				<div>
-					<a href = "contextPath/Lecture/LectureList.do">╟╜юг ╦╝╫╨ф╝</a>
-				</div>
-			</tr>
-			<tr>
-				<td height="30%">го╢э ╦ч╢╨</td>
-			</tr>
+				<td height="40%"><jsp:include page="${center}" />	
+			</tr>	
 		</table>
+			<tr>
+				<td><a href ="<%=contextPath%>/Lecture/LectureList.do">Й╟∙Л²≤ К╕╛Л┼╓М┼╦</a></td>
+				<td height="30%">М∙≤К▀╗ К╘■К┴╢</td>
+			</tr>
 
 </body>
 </html>

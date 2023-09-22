@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import JaeWooVO.LectureVO;
+import JaeWooVO.PlanVO;
 
 
 
@@ -41,7 +42,7 @@ public class LectureDAO {
 		}
 	}//�옄�썝�빐�젣 �걹
 	
-	public List getSublist() {
+	public ArrayList getSublist() {
 		ArrayList list = new ArrayList();
 		String sql = "";
 		try {
@@ -112,5 +113,38 @@ public class LectureDAO {
 		
 			
 		return lv;
+	}
+
+	public PlanVO getPlan(int sub_no) {
+		PlanVO Pv = new PlanVO();
+		
+		try {
+			
+			con = getConnection();
+			
+			String sql = "select * from evaluation_plan where sub_no =" + sub_no;
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				Pv.setSub_no(rs.getInt("sub_no"));
+				Pv.setMid_exam(rs.getInt("mid_exam"));
+				Pv.setFinal_exam(rs.getInt("final_exam"));
+				Pv.setQuiz(rs.getInt("quiz"));
+				Pv.setAttendance(rs.getInt("attendance"));
+				Pv.setJilmun(rs.getInt("jilmun"));
+				Pv.setToron(rs.getInt("toron"));
+			}		
+			
+		}catch(Exception e) {
+			System.out.println("LectureDAO 내부에서 getPlan 메소드 내부에서 오류 " + e);
+			e.printStackTrace();
+			
+		}finally {
+			rs_Close();
+		}
+		return Pv;
 	}
 }

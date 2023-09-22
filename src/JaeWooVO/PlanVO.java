@@ -1,15 +1,15 @@
 package JaeWooVO;
 
-public class PlanBean {
+public class PlanVO {
 	
-	private int sub_no; //°ú¸ñ ¹øÈ£	
-	private int mid_exam; //Áß°£°í»ç
-	private int final_exam; //±â¸»°í»ç
-	private int quiz; //ÄûÁî
-	private int task; //°úÁ¦
-	private int attendance; //Ãâ¼® 
-	private int jilmun; //Áú¹®
-	private int toron; //Åä·Ð
+	private int sub_no; //ê³¼ëª© ë²ˆí˜¸
+	private int mid_exam; //ì¤‘ê°„ê³ ì‚¬
+	private int final_exam; //ì¤‘ê°„ê³ ì‚¬
+	private int quiz; //í€´ì¦ˆ
+	private int task; //ï¿½ï¿½ï¿½ï¿½
+	private int attendance; //ï¿½â¼® 
+	private int jilmun; //ï¿½ï¿½ï¿½ï¿½
+	private int toron; //ï¿½ï¿½ï¿½
 	
 	
 	public int getSub_no() {

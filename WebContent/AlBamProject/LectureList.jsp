@@ -1,10 +1,14 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="JaeWooDAO.LectureDAO"%>
 <%@page import="JaeWooVO.LectureVO"%>
 <%@page import="java.util.List"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String contextPath = request.getContextPath(); 
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,21 +41,20 @@
 			<th>수업계획서</th>
 		</tr>	
 <%
-    LectureVO lv = new LectureVO();
-	List list = new LectureDAO().getSublist();
+ ArrayList list = (ArrayList)request.getAttribute("list");
    for(int i = 0; i < list.size(); i++){
-	   lv = (LectureVO)list.get(i);
+	   LectureVO lv = (LectureVO)list.get(i);
 
   %>
    	 <tr>	
    	 		<th><%=lv.getSub_no()%></th>
    	 		<th><%=lv.getGrade()%></th>
-			<th><a href = "SubjectDetailMain.jsp?sub_no=<%=lv.getSub_no()%>" ><%=lv.getSub_name()%></a></th> 
+			<th><a href = "<%=contextPath%>/Lecture/LectureList.do?sub_no=<%=lv.getSub_no()%>" ><%=lv.getSub_name()%></a></th> 
 			<th><%=lv.getPro_name()%></th>
 			<th><%=lv.getMajor()%></th>
 			<th><%=lv.getPlace()%></th>
 			<th><%=lv.getCredit()%></th>
-			<th><a href = "SubjectPlan.jsp?sub_no=<%=lv.getSub_no()%>" >수업 계획</a></th> 	
+			<th><a href = "<%=contextPath%>/Lecture/LecturePlan.do?sub_no=<%=lv.getSub_no()%>" >수업 계획</a></th> 	
 	</tr>
 
 <%

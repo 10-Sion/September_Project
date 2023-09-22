@@ -2,6 +2,7 @@ package JaeWooController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import JaeWooService.LectureService;
+import JaeWooVO.LectureVO;
+import JaeWooVO.PlanVO;
 
 
 
@@ -50,29 +53,44 @@ public class LectureController extends HttpServlet {
 		String action = request.getPathInfo();
 		System.out.println("주소 : "+action);
 		
-		String nextPage = null; 
-			
+		String nextPage = "" ; 
 		
-		switch(action) {
 		
-			case "/Main" :
+		if(action != null) {
+		
+			if(action.equals("/Main")){ 
 				
-				nextPage = "Main.jsp";
+				nextPage = "/AlBamProject/Main.jsp";
 				
-				break;
+			}else if(action.equals("/LectureList.do")){
 				
-			case "/LectureList.do" :
+				List Subject = lectureservice.getSublist();
 				
+				request.setAttribute("list", Subject);
 				request.setAttribute("center", "LectureList.jsp");
-		
-				nextPage = "/LectureList.jsp";
 				
-				break;
+				nextPage = "/AlBamProject/Main.jsp";
+				
+			}else if(action.equals("/LecturePlan.do")) {
+				
+				int sub_no = Integer.parseInt(request.getParameter("sub_no"));
+				
+				LectureVO Lv = lectureservice.getSubject(sub_no);
+				PlanVO Pv = lectureservice.getPlan(sub_no);
+						
+				request.setAttribute("plan", Pv);		
+				request.setAttribute("lv", Lv);
+				request.setAttribute("center", "/AlBamProject/SubjectPlan.jsp");
+				
+				nextPage = "/AlBamProject/Main.jsp";
+				
+			}
 			
 		}
 		
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
-		dispatch.forward(request, response);
+		
+			dispatch.forward(request, response);
 	}
 
 	
