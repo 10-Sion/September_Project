@@ -45,7 +45,7 @@ public class StuListDetailsServlet extends HttpServlet {
                 request.setAttribute("student", student);
 
                 // 학생 세부 정보를 표시하는 JSP 페이지로 이동
-                request.getRequestDispatcher("/Employee/student_detail.jsp").forward(request, response);
+                request.getRequestDispatcher("/Employee/stuList_detail.jsp").forward(request, response);
             } else {
                 // 학생 정보를 가져오지 못한 경우
                 request.setAttribute("errorMessage", "학생 정보를 가져오지 못했습니다.");

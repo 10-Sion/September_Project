@@ -1,4 +1,4 @@
-package jun_stu;
+package jun_pro;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,54 +10,53 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-public class StudentService {
+public class ProfessorService {
     private DataSource dataSource;
 
-    public StudentService(DataSource dataSource) {
+    public ProfessorService(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
-    public List<Student> getAllStudents() {
+    public List<Professor> getAllProfessors() {
         if (dataSource == null) {
             // dataSource가 null인 경우 처리
             System.err.println("DataSource is not initialized.");
             return Collections.emptyList(); // 빈 리스트 반환 또는 예외 처리 방법 선택
         }
 
-        List<Student> students = new ArrayList<>();
-        String sql = "SELECT * FROM student";
+        List<Professor> professors = new ArrayList<>();
+        String sql = "SELECT * FROM professor";
 
         try (Connection dbConnection = dataSource.getConnection();
              PreparedStatement statement = dbConnection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
-                students.add(createStudentFromResultSet(resultSet));
+                professors.add(createProfessorFromResultSet(resultSet));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return students;
+        return professors;
     }
 
-    // Student 조회 by ID
-    public Student getStudentById(int stuNo) {
+    public Professor getProfessorById(int proNo) {
         if (dataSource == null) {
             // dataSource가 null인 경우 처리
             System.err.println("DataSource is not initialized.");
             return null;
         }
 
-        String sql = "SELECT * FROM student WHERE stu_no = ?";
+        String sql = "SELECT * FROM professor WHERE pro_no = ?";
         
         try (Connection dbConnection = dataSource.getConnection();
              PreparedStatement statement = dbConnection.prepareStatement(sql)) {
-            statement.setInt(1, stuNo);
+            statement.setInt(1, proNo);
             ResultSet resultSet = statement.executeQuery();
             
             if (resultSet.next()) {
-                return createStudentFromResultSet(resultSet);
+                return createProfessorFromResultSet(resultSet);
             }
             
         } catch (SQLException e) {
@@ -67,20 +66,19 @@ public class StudentService {
         return null;
     }
 
-    private Student createStudentFromResultSet(ResultSet resultSet) throws SQLException {
-        int stuNo = resultSet.getInt("stu_no");
-        String name = resultSet.getString("name");
-        String phone = resultSet.getString("phone");
-        String email = resultSet.getString("email");
+    private Professor createProfessorFromResultSet(ResultSet resultSet) throws SQLException {
+        int proNo = resultSet.getInt("pro_no");
         String pw = resultSet.getString("pw");
+        String name = resultSet.getString("name");
         String addr = resultSet.getString("addr");
+        String phone = resultSet.getString("phone");
         String tel = resultSet.getString("tel");
-        String dep_name = resultSet.getString("dep_name");
+        String email = resultSet.getString("email");
+        String depName = resultSet.getString("dep_name");
         String major = resultSet.getString("major");
-        int grade = resultSet.getInt("grade");
+        int labNum = resultSet.getInt("labNum");
         int status = resultSet.getInt("status");
 
-        return new Student(stuNo, name, phone, email, pw, addr, tel, dep_name, major, grade, status);
+        return new Professor(proNo, pw, name, addr, phone, tel, email, depName, major, labNum, status);
     }
-
 }

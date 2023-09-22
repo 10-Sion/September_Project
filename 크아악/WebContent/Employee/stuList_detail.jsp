@@ -28,11 +28,11 @@
                 <td>${student.addr}</td>
             </tr>
             <tr>
-                <th>전화번호:</th>
+                <th>휴대폰번호:</th>
                 <td>${student.phone}</td>
             </tr>
             <tr>
-                <th>휴대폰번호:</th>
+                <th>전화번호:</th>
                 <td>${student.tel}</td>
             </tr>
             <tr>
@@ -41,7 +41,7 @@
             </tr>
             <tr>
                 <th>학과:</th>
-                <td>${student.depName}</td>
+                <td>${student.dep_name}</td>
             </tr>
             <tr>
                 <th>전공:</th>

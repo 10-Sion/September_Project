@@ -12,7 +12,7 @@ public class Student {
     private String tel;
     private String email;
     private String dep_name;
-    
+    private String major;
 
     public int getStuNo() {
 		return stuNo;
@@ -114,13 +114,31 @@ public class Student {
 	}
 
 
-	public Student(int stuNo, String name, String phone, String email /* 나머지 필드 */) {
+	public Student(int stuNo, String name, String phone, String email ) {
         this.stuNo = stuNo;
         this.name = name;
         this.phone = phone;
         this.email = email;
         
     }
+
+
+	public Student(int stuNo, String name, String phone, String email, String pw, String addr, String tel,
+            String dep_name, String major, int grade, int status) {
+		
+
+}
+
+
+
+	public String getMajor() {
+		return major;
+	}
+
+
+	public void setMajor(String major) {
+		this.major = major;
+	}
 
     
 }
