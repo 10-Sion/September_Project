@@ -67,6 +67,5 @@
 		<a href="InsertSubject.jsp">강의 등록</a>
 		<a href="ProfessorIndex.jsp">메인 화면</a>
 	</div>
-
 </footer>
 </html>

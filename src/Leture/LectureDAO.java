@@ -20,17 +20,17 @@ public class LectureDAO {
 	
 	private Connection getConnection() throws Exception {
 		
-		//1. InitialContext객체 생성
-		//생성하는 이유는  자바의 네이밍 서비스(JNDI)에서 이름과 실제 객체를 연결해주는 개념이 Context이며,
-		//InitialContext객체는 네이밍 서비스를 이용하기위한 시작점입니다.
+		//1. InitialContext媛앹껜 �깮�꽦
+		//�깮�꽦�븯�뒗 �씠�쑀�뒗  �옄諛붿쓽 �꽕�씠諛� �꽌鍮꾩뒪(JNDI)�뿉�꽌 �씠由꾧낵 �떎�젣 媛앹껜瑜� �뿰寃고빐二쇰뒗 媛쒕뀗�씠 Context�씠硫�,
+		//InitialContext媛앹껜�뒗 �꽕�씠諛� �꽌鍮꾩뒪瑜� �씠�슜�븯湲곗쐞�븳 �떆�옉�젏�엯�땲�떎.
 		Context initCtx = new InitialContext();
-		//2. "java:comp/env"라는 주소를 전달하여  Context객체를 얻었습니다.
-		//"java:comp/env" 주소는 현재 웹 애플리케이션의 루트 디렉터리 라고 생각 하면됩니다.
-		//즉! 현재 웹애플리케이션이 사용할수 있는 모든 자원은 "java:comp/env"아래에 위치합니다.(<Context></Context/>이위치를 말합니다.)
+		//2. "java:comp/env"�씪�뒗 二쇱냼瑜� �쟾�떖�븯�뿬  Context媛앹껜瑜� �뼸�뿀�뒿�땲�떎.
+		//"java:comp/env" 二쇱냼�뒗 �쁽�옱 �쎒 �븷�뵆由ъ��씠�뀡�쓽 猷⑦듃 �뵒�젆�꽣由� �씪怨� �깮媛� �븯硫대맗�땲�떎.
+		//利�! �쁽�옱 �쎒�븷�뵆由ъ��씠�뀡�씠 �궗�슜�븷�닔 �엳�뒗 紐⑤뱺 �옄�썝�� "java:comp/env"�븘�옒�뿉 �쐞移섑빀�땲�떎.(<Context></Context/>�씠�쐞移섎�� 留먰빀�땲�떎.)
 		Context ctx = (Context)initCtx.lookup("java:comp/env");
-		//3. "java:comp/env 경로 아래에 위치한  "jdbc/jspbeginner" Recource태그의  DataSource커넥션풀을 얻는다
+		//3. "java:comp/env 寃쎈줈 �븘�옒�뿉 �쐞移섑븳  "jdbc/jspbeginner" Recource�깭洹몄쓽  DataSource而ㅻ꽖�뀡���쓣 �뼸�뒗�떎
 		ds = (DataSource)ctx.lookup("jdbc/gwanlee");		 
-		//4. 마지막으로 커넥션풀(DataSouce)객체 메모리 에 저장된 Connection객체를 반환받아 사용
+		//4. 留덉�留됱쑝濡� 而ㅻ꽖�뀡��(DataSouce)媛앹껜 硫붾え由� �뿉 ���옣�맂 Connection媛앹껜瑜� 諛섑솚諛쏆븘 �궗�슜
 		con = ds.getConnection();
 		return con;
 	}
@@ -43,10 +43,9 @@ public class LectureDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	}//자원해제 끝
+	}//�옄�썝�빐�젣 �걹
 	
 	public List getSublist() {
-		
 		ArrayList list = new ArrayList();
 		String sql = "";
 		try {
@@ -86,9 +85,9 @@ public class LectureDAO {
 		try {
 			
 			con = getConnection();
-			String sql = "select * from subject_info sub_no=" + sub_no;
-			
+			String sql = "select * from subject_info where sub_no = " + sub_no;
 			pstmt = con.prepareStatement(sql);
+			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -105,11 +104,10 @@ public class LectureDAO {
 				lv.setEdu_goal(rs.getString("edu_goal"));
 				lv.setPlace(rs.getString("place"));
 				lv.setTextbook(rs.getString("textbook"));
-	
 			}
 			
 		}catch(Exception e) {
-			
+			e.printStackTrace();
 			
 		}finally {
 			
