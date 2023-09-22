@@ -30,7 +30,10 @@ public class BoardWriteServlet extends HttpServlet {
     protected void doHandle(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	
-    	
+    	 
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Board-QnA/boardWrite.jsp");
+        dispatcher.forward(request, response);
+        
     	
         // 사용자가 입력한 데이터 받아오기
         String name = request.getParameter("name");
@@ -63,10 +66,7 @@ public class BoardWriteServlet extends HttpServlet {
 
         // insertBoard 메서드 호출하여 게시물 추가
         boardDAO.insertBoard(boardBean);
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Board-QnA/boardWrite.jsp");
-        dispatcher.forward(request, response);
-        
+       
         
         
     }

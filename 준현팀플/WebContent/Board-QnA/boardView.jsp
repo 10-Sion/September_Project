@@ -10,6 +10,7 @@
 <body>
     <h1>게시물 상세 보기</h1>
     
+        <form action="<%=request.getContextPath()%>/Board/BoardWritePro.board" method="post">
     <table border="1">
         <tr>
             <th>글번호</th>
@@ -36,7 +37,7 @@
             <td>${board.count}</td>
         </tr>
     </table>
-    
+    </form>
     <br>
     <a href="BoardController?action=list">목록으로 돌아가기</a>
     <br>

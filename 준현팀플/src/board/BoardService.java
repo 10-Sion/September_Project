@@ -5,57 +5,55 @@ import java.util.List;
 import java.util.Map;
 
 public class BoardService {
-	BoardDAO boardDAO;
+    private BoardDAO boardDAO;
 
-	public BoardService() {
-		boardDAO = new BoardDAO();
-	}
+    public BoardService() {
+        boardDAO = new BoardDAO();
+    }
 
-	public Map listArticles(Map<String, Integer> pagingMap) {
-		Map articlesMap = new HashMap();
-		List<ArticleVO> articlesList = boardDAO.selectAllArticles(pagingMap);
-//		List<ArticleVO> articlesList = null;
-		int totArticles = boardDAO.selectTotArticles();   
-		int sectionArticlesSize = boardDAO.selectSectionArticlesSize(pagingMap);   //section�� �� ������ ������ �ɴϴ�.
-//		int sectionArticlesSize = 100;
-		
-		articlesMap.put("articlesList", articlesList);
-		articlesMap.put("sectionArticlesSize", sectionArticlesSize);
-		System.out.println("sectionArticlesSize : " + sectionArticlesSize);
-		articlesMap.put("totArticles", totArticles);
-		return articlesMap;
-	}
+    // 게시물 목록 조회
+    public List<BoardBean> listArticles() {
+        return boardDAO.getAllBoards();
+    }
 
-	public List<ArticleVO> listArticles() {
-		List<ArticleVO> articlesList = boardDAO.selectAllArticles();
-		return articlesList;
-	}
+    // 게시물 상세 조회
+    public BoardBean viewArticle(int articleNO) {
+        return boardDAO.getBoardByNum(articleNO);
+    }
 
-	// BoardController.java 에서  /BoardWritePro.board 2단계요청주소->  입력한 새글 내용들을 DB의 테이블에 INSERT요청 주소 를 받았으때	
-	public int addArticle(ArticleVO article) {
-		
-		return boardDAO.insertNewArticle(article);
-	}
+    // 게시물 추가
+    public void addArticle(BoardBean boardBean) {
+        boardDAO.insertBoard(boardBean);
+    }
 
-	public ArticleVO viewArticle(int articleNO) {
-		ArticleVO article = null;
-		article = boardDAO.selectArticle(articleNO);
-		return article;
-	}
+    // 게시물 수정
+    public void modArticle(BoardBean boardBean) {
+        boardDAO.updateBoard(boardBean);
+    }
 
-	public void modArticle(ArticleVO article) {
-		boardDAO.updateArticle(article);
-	}
+    // 게시물 삭제
+    public void removeArticle(int articleNO) {
+        boardDAO.deleteBoard(articleNO);
+    }
 
-	public List<Integer> removeArticle(int articleNO) {
-		List<Integer> articleNOList = boardDAO.selectRemovedArticles(articleNO);
-		boardDAO.deleteArticle(articleNO);
-		return articleNOList;
-	}
+   
+/*
+    
+    	// 아래는 페이징을 고려한 게시물 목록 조회 메서드입니다.
+    	public Map<String, Object> listArticles(int pageNo) {
+        Map<String, Object> articlesMap = new HashMap<>();
+        int totalArticles = boardDAO.getArticleCount(); // 전체 게시물 수 조회
 
-	public int addReply(ArticleVO article) {
-		return boardDAO.insertNewArticle(article);
-	}
+        // 페이지 정보 계산
+        Paging paging = new Paging(totalArticles, pageNo);
 
+        // 페이지 번호와 페이지 크기를 기반으로 게시물 목록 조회
+        List<BoardBean> articlesList = boardDAO.getArticlesByPage(paging.getStartRow(), paging.getEndRow());
+
+        articlesMap.put("articlesList", articlesList);
+        articlesMap.put("paging", paging);
+
+        return articlesMap;
+    }
+    */
 }
-

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+   <link rel="stylesheet" type="text/css" href="common.css">
     <meta charset="UTF-8">
     <title>게시물 작성</title>
 </head>
