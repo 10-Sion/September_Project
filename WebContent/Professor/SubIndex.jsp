@@ -1,7 +1,8 @@
-<%@page import="Professor.ProDao"%>
-<%@page import="Subject.SubDao"%>
+
+<%@page import="JaeWooVO.SubBean"%>
+<%@page import="JaeWooDAO.SubDao"%>
 <%@page import="java.util.List"%>
-<%@page import="Subject.SubBean"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>

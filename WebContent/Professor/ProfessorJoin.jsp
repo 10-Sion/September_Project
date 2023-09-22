@@ -1,6 +1,8 @@
-<%@page import="Department.DepBean"%>
+
+<%@page import="JaeWooVO.DepBean"%>
+<%@page import="JaeWooDAO.ProDao"%>
 <%@page import="java.util.List"%>
-<%@page import="Professor.ProDao"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%

@@ -1,4 +1,4 @@
-package Major;
+package JaeWooVO;
 
 public class MajorBean {
 	private String maj_name;

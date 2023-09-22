@@ -1,8 +1,5 @@
-<%@page import="Leture.LectureVO"%>
-<%@page import="Leture.LectureDAO"%>
-<%@page import="Subject.SubBean"%>
-<%@page import="Professor.ProDao"%>
-<%@page import="Professor.ProBean"%>
+<%@page import="JaeWooVO.LectureVO"%>
+<%@page import="JaeWooDAO.LectureDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -71,7 +68,7 @@ tbody tr:last-child td {
 					<th>교수 이름</th>
 					<td><%=lv.getPro_name()%></td>
 					<th>연락처/이메일</th>
-					<td>sdfsdfs@adsfad</td>
+					<td><%=lv.getPro_email()%></td>
 				</tr>
 				<tr>
 					<th>교육 목표</th>
@@ -81,16 +78,19 @@ tbody tr:last-child td {
 					<th>주 교재</th>
 					<td colspan = 3><%=lv.getTextbook()%></td>
 				</tr>
-
-
-
-<!-- 		edu_goal varchar(100), -- 교육 목표 -->
-
-<!-- 		textbook varchar(20), -- 교재 -->
 			</table>
 		</div>
 		<h2 align="center">강의 평가 계획</h2>
 		<div id="buttons" align="center">
+			<tr>
+				<td>평가 항목</td>
+				<td>중간고사</td>
+				<td>기말고사</td>
+				<td>퀴즈</td>
+			</tr>
+		
+		
+		
 			<input type="button" value="강의실 나가기" onClick="history.back()">
 		</div>
 	</form>

@@ -1,14 +1,14 @@
-package Subject;
+package JaeWooVO;
 
-public class SubBean { // ê³¼ëª©í…Œì´ë¸”ì˜ ì •ë³´ë¥¼ ì €ì¥í•  DTO
+public class SubBean { // ê³¼ëª©?…Œ?´ë¸”ì˜ ? •ë³´ë?? ???¥?•  DTO
 	private int sub_no; // ê°•ì˜ì½”ë“œ
-	private String pro_name; // êµìˆ˜ ì´ë¦„
-	private String sub_name;// ê³¼ëª©ëª…
+	private String pro_name; // êµìˆ˜ ?´ë¦?
+	private String sub_name;// ê³¼ëª©ëª?
 	private int pro_no; // êµìˆ˜ ë²ˆí˜¸ 
-	private String place; //ê°•ì˜ ì¥ì†Œ
-	private int point;//  í•™ì 
-	private int capacity; //ìˆ˜ê°• ê°€ëŠ¥ ì¸ì›
-	private String major; //ì „ê³µ
+	private String place; //ê°•ì˜ ?¥?†Œ
+	private int point;//  ?•™? 
+	private int capacity; //?ˆ˜ê°? ê°??Š¥ ?¸?›
+	private String major; //? „ê³?
 	private String dep_name;
 	
 	

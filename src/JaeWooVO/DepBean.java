@@ -1,4 +1,4 @@
-package Department;
+package JaeWooVO;
 
 public class DepBean {
 

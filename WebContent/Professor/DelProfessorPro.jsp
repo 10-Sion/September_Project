@@ -1,5 +1,5 @@
-<%@page import="Professor.ProBean"%>
-<%@page import="Professor.ProDao"%>
+
+<%@page import="JaeWooDAO.ProDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%

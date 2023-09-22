@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import Major.MajorBean;
-import Professor.ProDao;
+
+import JaeWooDAO.ProDao;
 
 
 @WebServlet("/join.do")
@@ -22,7 +22,7 @@ public class Joindata extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//한글처리
+		//�븳湲�泥섎━
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();

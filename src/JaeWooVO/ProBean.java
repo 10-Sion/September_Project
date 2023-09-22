@@ -1,21 +1,21 @@
-package Professor;
+package JaeWooVO;
 
 public class ProBean {
 
-	// êµìˆ˜ í…Œì´ë¸”ì˜ ì •ë³´ë¥¼ ì €ì¥í•  ì¸ìŠ¤í„´ìŠ¤ ë³€ìˆ˜ ì„ ì–¸
-	private int no; // êµìˆ˜ ì‹ë³„ ë²ˆí˜¸
-	private String name;	//êµìˆ˜ ì´ë¦„
-	private String pw;	// êµìˆ˜ ë¹„ë°€ë²ˆí˜¸
-	private String addr; // êµìˆ˜ ê±°ì£¼ì§€
-	private String tel; // ì—°êµ¬ì‹¤ ì „í™”ë²ˆí˜¸
-	private String phone; // êµìˆ˜ íœ´ëŒ€ì „í™” ë²ˆí˜¸
-	private String major; // í•™ë¶€(ì „ê³µ)
-	private String email; //êµìˆ˜ ì´ë©”ì¼ ì£¼ì†Œ
-	private int labNum; // ì—°êµ¬ì‹¤ ë²ˆí˜¸ 
-	private String dep_name; //ì†Œì† í•™ë¶€
+	// êµìˆ˜ ?…Œ?´ë¸”ì˜ ? •ë³´ë?? ???¥?•  ?¸?Š¤?„´?Š¤ ë³??ˆ˜ ?„ ?–¸
+	private int no; // êµìˆ˜ ?‹ë³? ë²ˆí˜¸
+	private String name;	//êµìˆ˜ ?´ë¦?
+	private String pw;	// êµìˆ˜ ë¹„ë?ë²ˆí˜¸
+	private String addr; // êµìˆ˜ ê±°ì£¼ì§?
+	private String tel; // ?—°êµ¬ì‹¤ ? „?™”ë²ˆí˜¸
+	private String phone; // êµìˆ˜ ?œ´??? „?™” ë²ˆí˜¸
+	private String major; // ?•™ë¶?(? „ê³?)
+	private String email; //êµìˆ˜ ?´ë©”ì¼ ì£¼ì†Œ
+	private int labNum; // ?—°êµ¬ì‹¤ ë²ˆí˜¸ 
+	private String dep_name; //?†Œ?† ?•™ë¶?
 	
 
-	//getter, setter ë©”ì†Œë“œë“¤
+	//getter, setter ë©”ì†Œ?“œ?“¤
 	public int getNo() {
 		return no;
 	}
