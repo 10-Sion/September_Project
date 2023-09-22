@@ -36,13 +36,24 @@ public class BoardWriteServlet extends HttpServlet {
         String name = request.getParameter("name");
         String subject = request.getParameter("subject");
         String content = request.getParameter("content");
+        
+        
         String id = request.getParameter("id"); // 사용자 아이디, 예: "admin"
+        // 사용자가 입력한 비밀번호 설정
+        String passwd = request.getParameter("passwd"); // 사용자가 입력한 비밀번호 받아오기
+        
+        // 콘솔에 값을 출력
+        System.out.println("name: " + name);
+        System.out.println("subject: " + subject);
+        System.out.println("content: " + content);
+        
+        
 
         // BoardBean 객체 생성 및 정보 설정
         BoardBean boardBean = new BoardBean();
         boardBean.setName(name);
         boardBean.setId(id);
-        boardBean.setPasswd("사용자가 입력한 비밀번호"); // 사용자가 입력한 비밀번호 설정
+        boardBean.setPasswd(passwd); // 사용자가 입력한 비밀번호 설정	
         boardBean.setSubject(subject);
         boardBean.setContent(content);
         boardBean.setIp(request.getRemoteAddr()); // 사용자 IP 주소 설정

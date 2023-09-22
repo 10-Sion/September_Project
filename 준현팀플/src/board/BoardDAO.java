@@ -115,32 +115,27 @@ public class BoardDAO implements IBoardDAO {
 
 	@Override
 	public void insertBoard(BoardBean boardBean) {
-		String sql = "";
-		int num = 0;
-		try {
-			con = ds.getConnection();
-			sql = "update board set pos=pos+1";
-			pstmt = con.prepareStatement(sql);
-			pstmt.executeUpdate();
-			sql = "insert into board (name, id, passwd, subject, content, pos, depth, count, ip) "
-					+ "values((select name from member where id=?),?,?,?,?,?,?,?,?) ";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, boardBean.getId());
-			pstmt.setString(2, boardBean.getId());
-			pstmt.setString(3, boardBean.getPasswd());
-			pstmt.setString(4, boardBean.getSubject());
-			pstmt.setString(5, boardBean.getContent());
-			pstmt.setInt(6, 0);
-			pstmt.setInt(7, 0);
-			pstmt.setInt(8, 0);
-			pstmt.setString(9, boardBean.getIp());
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			System.out.println("BoardDAO의 inserBoard메소드 내부에서 SQL문 실행오류 : " + e.toString());
-		} finally {
-			freeResource();
-		}
+	    String sql = "";
+	    try {
+	        con = ds.getConnection();
+	        // pos와 depth는 설정하지 않으므로 디폴트 값으로 들어갑니다.
+	        sql = "insert into board (name, id, passwd, subject, content, count, ip) "
+	                + "values (?, ?, ?, ?, ?, 0, ?)";
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, boardBean.getName());
+	        pstmt.setString(2, boardBean.getId());
+	        pstmt.setString(3, boardBean.getPasswd());
+	        pstmt.setString(4, boardBean.getSubject());
+	        pstmt.setString(5, boardBean.getContent());
+	        pstmt.setString(6, boardBean.getIp());
+	        pstmt.executeUpdate();
+	    } catch (Exception e) {
+	        System.out.println("BoardDAO의 insertBoard 메소드 내부에서 SQL문 실행 오류: " + e.toString());
+	    } finally {
+	        freeResource();
+	    }
 	}
+
 
 	public void updateReadCount(int num) {
 		String sql = "";

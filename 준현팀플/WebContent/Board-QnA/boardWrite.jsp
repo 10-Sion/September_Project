@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="common.css">
 
     <meta charset="UTF-8">
     <title>게시물 작성</title>
@@ -10,9 +9,8 @@
 <body>
     <h1>Q & A 작성</h1>
     
- 
     
-    <form action="BoardController?action=new" method="post">
+    <form action="<%=request.getContextPath()%>/Board/BoardWritePro.board" method="post">
         <table>
             <tr>
                 <td>작성자</td>
