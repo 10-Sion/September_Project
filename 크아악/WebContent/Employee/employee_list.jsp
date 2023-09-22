@@ -7,7 +7,7 @@
     
 </head>
 <body>
-    <h1>Employee 리스트 페이지</h1>
+    <h1>교직원 목록</h1>
 	<table>
 	    <tr>
 	        <th>직원 번호</th>

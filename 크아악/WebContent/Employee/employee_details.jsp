@@ -17,7 +17,5 @@
 	    <p>이메일: ${employee.getEmail()}</p>
 	    <a href="#" onclick="loadServletData('${pageContext.request.contextPath}/employee/update'); return false;">수정</a>
 
-	    <a href="/employee/delete?emp_no=${employee.getEmpNo()}">삭제</a>
-
 </body>
 </html>

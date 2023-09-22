@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student 리스트 페이지</title>
+
 </head>
 <body>
-    <h1>Student 리스트 페이지</h1>
+    <h1>학생 목록</h1>
     <table>
         <tr>
             <th>학번</th>

@@ -4,7 +4,6 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>교수 목록</title>
 </head>
 <body>
     <h1>교수 목록</h1>
@@ -38,7 +37,7 @@
     </c:if>
     
     <!-- 교수 정보 수정 및 목록으로 돌아가는 링크 추가 -->
-    <a href="#" onclick="loadServletData('/HakSaGwanLee/professor/edit?currentProfessorId=${professor.proNo}')">수정</a>
+    <a href="#" onclick="loadServletData('/HakSaGwanLee/professor/edit?currentProfessorId=${professor.proNo}')">세부 정보</a>
     <a href="#" onclick="loadServletData('/HakSaGwanLee/professor/list')">교수 목록으로 돌아가기</a>
 </body>
 </html>

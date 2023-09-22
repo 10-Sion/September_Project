@@ -41,7 +41,7 @@
             </tr>
             <tr>
                 <th>학과:</th>
-                <td>${professor.dep_name}</td>
+                <td>${professor.depName}</td>
             </tr>
             <tr>
                 <th>전공:</th>
@@ -63,6 +63,7 @@
     </c:if>
     
     <a href="#" onclick="loadServletData('/HakSaGwanLee/professor/edit?currentProfessorId=${professor.proNo}')">수정</a>
+    <a href="/HakSaGwanLee/professor/delete?proNo=${professor.proNo}">삭제</a>
     <a href="#" onclick="loadServletData('/HakSaGwanLee/professor/list')">교수 목록으로 돌아가기</a>
 </body>
 </html>
