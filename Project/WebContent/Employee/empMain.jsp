@@ -22,7 +22,9 @@
     <% if (currentEmployeeId != null) { %>
         <p>현재 직원 ID: <%= currentEmployeeId %></p>
     <% } else { %>
-        <p>세션에서 직원 ID를 찾을 수 없습니다.</p>
+        <%-- error.jsp 페이지로 이동 --%>
+        <% request.setAttribute("errorMessage", "직원 정보를 가져오지 못했습니다."); %>
+        <% request.getRequestDispatcher("/Employee/error.jsp").forward(request, response); %>
     <% } %>
   
     <div class="left_sidebar">
@@ -69,8 +71,8 @@
       <div class="tabs">
         <div class="tab_name">
           <p onclick="loadServletData('/HakSaGwanLee/employee/list')">Employee</p>
-          <p>Professor</p>
-          <p>Student</p>
+          <p onclick="loadServletData()">Professor</p>
+          <p onclick="loadServletData('/HakSaGwanLee/student/list')">Student</p>
         </div>
         <div class="three_dots">
           <i class='bx bx-dots-vertical-rounded'></i>

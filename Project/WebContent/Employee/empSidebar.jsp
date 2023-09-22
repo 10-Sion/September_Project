@@ -3,6 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,23 +17,23 @@
         </div>
 
         <div class="menu_items">
-            <div class="menu_item" onclick="loadPage('employee_details.jsp')">
+            <div class="menu_item" onclick="loadServletData('/HakSaGwanLee/employee/indivDetail')">
                 <i class='bx bxs-dashboard'></i>
                 <p>Account</p>
             </div>
             
-            <div class="menu_item" onclick="loadPage('empTable2.jsp')">
+            <div class="menu_item" onclick="loadServletData('empTable2.jsp')">
                 <i class='bx bx-message-rounded-dots'></i>
                 <p>Subject</p>
                 <i class="fa-regular fa-circle-2"></i>
             </div>
             
-            <div class="menu_item" onclick="loadPage('empTable3.jsp')">
+            <div class="menu_item" onclick="loadServletData('empTable3.jsp')">
                 <i class='bx bx-calendar'></i>
                 <p>Score</p>
             </div>
             
-            <div class="menu_item" onclick="loadPage('empTable4.jsp')">
+            <div class="menu_item" onclick="loadServletData('empTable4.jsp')">
                 <i class='bx bx-cog'></i>
                 <p>Settings</p>
             </div>
@@ -40,5 +41,23 @@
             
         </div>
     </div>
+    
+    <script>
+//  서블릿 데이터 처리 함수
+    function loadServletData(servletUrl) {
+          $.ajax({
+              url: servletUrl,
+              type: 'GET',
+              dataType: 'html',
+              success: function(data) {
+                  // 서블릿에서 반환된 데이터를 화면에 표시
+                  $('.table').html(data);
+              },
+              error: function(xhr, status, error) {
+                  console.error(error);
+              }
+          });
+      }
+    </script>
 </body>
 </html>

@@ -2,33 +2,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Employee 정보 수정 페이지</title>
+    <meta charset="UTF-8">
+    <title>Edit Employee Information</title>
 </head>
 <body>
-    <h1>Employee 정보 수정 페이지</h1>
-    <form method="post" action="/employee/edit">
-        <input type="hidden" name="emp_no" value="${employee.emp_no}">
-        <label for="pw">비밀번호:</label>
-        <input type="password" name="pw" value="${employee.pw}">
+    <h1>Edit Employee Information</h1>
+    
+    <form action="${pageContext.request.contextPath}/employee/update" method="post">
+        <input type="hidden" name="currentEmployeeId" value="${currentEmployeeId}">
         
-        <!-- 나머지 필드들 추가 -->
-        <label for="name">이름:</label>
-        <input type="text" name="name" value="${employee.name}">
+        <label for="newPw">New Password:</label>
+        <input type="text" id="newPw" name="newPw"><br>
         
-        <label for="addr">주소:</label>
-        <input type="text" name="addr" value="${employee.addr}">
+        <label for="newName">New Name:</label>
+        <input type="text" id="newName" name="newName"><br>
         
-        <label for="phone">전화번호:</label>
-        <input type="text" name="phone" value="${employee.phone}">
+        <label for="newAddr">New Address:</label>
+        <input type="text" id="newAddr" name="newAddr"><br>
         
-        <label for="tel">휴대폰번호:</label>
-        <input type="text" name="tel" value="${employee.tel}">
+        <label for="newPhone">New Phone:</label>
+        <input type="text" id="newPhone" name="newPhone"><br>
         
-        <label for="email">이메일:</label>
-        <input type="text" name="email" value="${employee.email}">
+        <label for="newTel">New Mobile:</label>
+        <input type="text" id="newTel" name="newTel"><br>
         
-        <!-- 저장 버튼 추가 -->
-        <button type="submit">저장</button>
+        <label for="newEmail">New Email:</label>
+        <input type="text" id="newEmail" name="newEmail"><br>
+        
+        <input type="submit" value="Save Changes">
     </form>
 </body>
 </html>

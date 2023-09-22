@@ -1,4 +1,4 @@
-package last;
+package jun_emp;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -118,6 +118,8 @@ public class EmployeeService {
         }
     }
 
+
+
     // Employee 삭제
     public void deleteEmployee(int empNo) {
         String sql = "DELETE FROM employee WHERE emp_no = ?";
@@ -150,6 +152,7 @@ public class EmployeeService {
     // ...
 
     // 테스트
+    /*
     public static void main(String[] args) {
         // 데이터베이스 연결 테스트를 위한 메인 메서드
         DataSource dataSource = DatabaseConfig.getDataSource();
@@ -182,4 +185,5 @@ public class EmployeeService {
             System.out.println("데이터베이스 연결 실패");
         }
     }
+    */
 }
