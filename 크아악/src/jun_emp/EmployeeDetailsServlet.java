@@ -19,7 +19,7 @@ public class EmployeeDetailsServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        // 여기서 EmployeeService를 초기화합니다.
+
         ServletContext context = getServletContext();
         DataSource dataSource = DatabaseConfig.getDataSource();
 
@@ -64,7 +64,7 @@ public class EmployeeDetailsServlet extends HttpServlet {
         } else {
             // EmployeeService가 초기화되지 않은 경우 처리
             System.err.println("EmployeeService is not initialized.");
-            // 오류 메시지를 표시하고 다른 처리를 하지 않습니다.
+
         }
     }
 }

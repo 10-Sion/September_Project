@@ -13,6 +13,7 @@
             <th>이름</th>
             <th>전화번호</th>
             <th>이메일</th>
+            <th>세부정보</th>
 
         </tr>
         <c:forEach items="${students}" var="student">

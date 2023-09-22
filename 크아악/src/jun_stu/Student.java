@@ -124,10 +124,20 @@ public class Student {
 
 
 	public Student(int stuNo, String name, String phone, String email, String pw, String addr, String tel,
-            String dep_name, String major, int grade, int status) {
-		
+	        String dep_name, String major, int grade, int status) {
+	    
+		// 다른 생성자 호출
+	    this(stuNo, name, phone, email);
+	    // 나머지 필드 초기화
+	    this.pw = pw;
+	    this.addr = addr;
+	    this.tel = tel;
+	    this.dep_name = dep_name;
+	    this.major = major;
+	    this.grade = grade;
+	    this.status = status;
+	}
 
-}
 
 
 

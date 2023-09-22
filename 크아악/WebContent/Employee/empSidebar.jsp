@@ -22,20 +22,20 @@
                 <p>Account</p>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('empTable2.jsp')">
+            <div class="menu_item" onclick="loadServletData('/HakSaGwanLee/employee/list')">
                 <i class='bx bx-message-rounded-dots'></i>
-                <p>Subject</p>
+                <p>Employee</p>
                 <i class="fa-regular fa-circle-2"></i>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('empTable3.jsp')">
+            <div class="menu_item" onclick="loadServletData('/HakSaGwanLee/professor/list')">
                 <i class='bx bx-calendar'></i>
-                <p>Score</p>
+                <p>Professor</p>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('empTable4.jsp')">
+            <div class="menu_item" onclick="loadServletData('/HakSaGwanLee/student/list')">
                 <i class='bx bx-cog'></i>
-                <p>Settings</p>
+                <p>Student</p>
             </div>
             
             
