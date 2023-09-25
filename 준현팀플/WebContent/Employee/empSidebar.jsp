@@ -17,23 +17,23 @@
         </div>
 
         <div class="menu_items">
-            <div class="menu_item" onclick="loadServletData('/준현팀플/employee/indivDetail')">
+            <div class="menu_item" onclick="loadServletData('/HakSaGwanLee/employee/indivDetail')">
                 <i class='bx bxs-dashboard'></i>
                 <p>Account</p>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('/준현팀플/employee/list')">
+            <div class="menu_item" onclick="loadServletData('/HakSaGwanLee/employee/list')">
                 <i class='bx bx-message-rounded-dots'></i>
                 <p>Employee</p>
                 <i class="fa-regular fa-circle-2"></i>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('/준현팀플/professor/list')">
+            <div class="menu_item" onclick="loadServletData('/HakSaGwanLee/professor/list')">
                 <i class='bx bx-calendar'></i>
                 <p>Professor</p>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('/준현팀플/student/list')">
+            <div class="menu_item" onclick="loadServletData('/HakSaGwanLee/student/list')">
                 <i class='bx bx-cog'></i>
                 <p>Student</p>
             </div>

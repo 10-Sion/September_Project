@@ -70,9 +70,9 @@
       </div>
       <div class="tabs">
         <div class="tab_name">
-          <p onclick="loadServletData('/준현팀플/employee/list')">Employee</p>
-          <p onclick="loadServletData('/준현팀플/professor/list')">Professor</p>
-          <p onclick="loadServletData('/준현팀플/student/list')">Student</p>
+          <p onclick="loadServletData('/HakSaGwanLee/employee/list')">Employee</p>
+          <p onclick="loadServletData('/HakSaGwanLee/professor/list')">Professor</p>
+          <p onclick="loadServletData('/HakSaGwanLee/student/list')">Student</p>
         </div>
         <div class="three_dots">
           <i class='bx bx-dots-vertical-rounded'></i>
