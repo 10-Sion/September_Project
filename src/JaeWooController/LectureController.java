@@ -43,7 +43,7 @@ public class LectureController extends HttpServlet {
 	
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+
 		request.setCharacterEncoding("utf-8");
 		
 		response.setContentType("text/html;charset=utf-8");
@@ -64,7 +64,14 @@ public class LectureController extends HttpServlet {
 				
 			}else if(action.equals("/LectureList.do")){
 				
-				List Subject = lectureservice.getSublist();
+				String keyWord = "";
+				String keyField = "";
+				
+				if(request.getParameter("keyWord") != null){
+					keyField = request.getParameter("keyField");
+					keyWord = request.getParameter("keyWord");
+				}
+				List Subject = lectureservice.getSublist(keyField, keyWord);
 				
 				request.setAttribute("list", Subject);
 				request.setAttribute("center", "LectureList.jsp");
@@ -85,13 +92,19 @@ public class LectureController extends HttpServlet {
 				nextPage = "/AlBamProject/Main.jsp";
 				
 			}
-			
-		}
-		
-		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
-		
+			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);		
 			dispatch.forward(request, response);
-	}
+		}
+		}
+//		
+//	
+//			
+//		}catch (Exception e) {
+//			System.out.println( "오류 : " + e);
+//			e.printStackTrace();
+//		}
+		
+	
 
 	
 }

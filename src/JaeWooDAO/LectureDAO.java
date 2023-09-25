@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+
 import JaeWooVO.LectureVO;
 import JaeWooVO.PlanVO;
 
@@ -42,12 +43,20 @@ public class LectureDAO {
 		}
 	}//�옄�썝�빐�젣 �걹
 	
-	public ArrayList getSublist() {
+	public ArrayList getSublist(String keyField,String keyWord) {
 		ArrayList list = new ArrayList();
 		String sql = "";
 		try {
 		con = getConnection();
-		sql = "select * from subject_info";
+		
+		if(keyWord == null || keyWord.isEmpty()) {
+			sql = "select * from subject_info order by sub_no desc";
+			
+		}else {
+			sql = "select * from subject_info where " + keyField + 
+					" like '%" + keyWord + "%' order by sub_no desc";
+		}
+		
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		
@@ -76,6 +85,7 @@ public class LectureDAO {
 		}
 		return list;
 	}
+	
 	public LectureVO getSubject(int sub_no ) {
 			
 			LectureVO lv = new LectureVO();

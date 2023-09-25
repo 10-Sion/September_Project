@@ -14,9 +14,9 @@ public class LectureService {
 		lectureDao = new LectureDAO();
 	}
 
-	public ArrayList getSublist(){
-		return lectureDao.getSublist(); 
-	}
+	public ArrayList getSublist(String keyField,String keyWord){
+		return lectureDao.getSublist(keyField, keyWord); 
+	} 
 
 	public LectureVO getSubject(int sub_no) {
 		return lectureDao.getSubject(sub_no);

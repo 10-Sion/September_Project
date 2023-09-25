@@ -3,17 +3,17 @@ package JaeWooVO;
 public class LectureVO {
 	
 	private int	sub_no; // ê³¼ëª©ë²ˆí˜¸
-	private String	sub_name; // ê³¼ëª©?´ë¦?
+	private String	sub_name; // ê³¼ëª© ì´ë¦„
 	private int pro_no; // êµìˆ˜ë²ˆí˜¸
-	private String pro_name; // êµìˆ˜?´ë¦?
-	private String pro_email; //email
-	private String major; //? „ê³?
-	private int credit; // ?•™? 
-	private String comp_sort; // ?´?ˆ˜êµ¬ë¶„
-	private int grade ; // ?•™?…„
-	private String period; // ê°œì„¤ ?…„?„, ?•™ê¸?
+	private String pro_name; // êµìˆ˜ ì´ë¦„
+	private String pro_email; //êµìˆ˜ ì´ë©”ì¼
+	private String major; //ì „ê³µ
+	private int credit; // í•™ì 
+	private String comp_sort; // ì´ìˆ˜ êµ¬ë¶„
+	private int grade ; // í•™ë…„
+	private String period; // ê°œì„¤ í•™ê¸°
 	private String edu_goal; //êµìœ¡ ëª©í‘œ
-	private String place; //ê°•ì˜ ?¥?†Œ
+	private String place; //ê°•ì˜ ì¥ì†Œ
 	private String textbook; //êµì¬
 	
 	
