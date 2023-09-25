@@ -25,6 +25,7 @@
 			</tr>	
 		</table>
 			<tr>
+				<br><br><br><br>
 				<td><a href ="<%=contextPath%>/Lecture/LectureList.do">강의 리스트</a></td>
 				<td height="30%">하단 메뉴</td>
 			</tr>

@@ -54,18 +54,22 @@ public class LectureController extends HttpServlet {
 		System.out.println("주소 : "+action);
 		
 		String nextPage = "" ; 
-		
+		String keyWord = "";
+		String keyField = "";
 		
 		if(action != null) {
 		
 			if(action.equals("/Main")){ 
 				
 				nextPage = "/AlBamProject/Main.jsp";
+			
 				
 			}else if(action.equals("/LectureList.do")){
 				
-				String keyWord = "";
-				String keyField = "";
+			
+				
+				String nowPage = request.getParameter("nowPage");
+				String nowBlock = request.getParameter("nowBlock");
 				
 				if(request.getParameter("keyWord") != null){
 					keyField = request.getParameter("keyField");
@@ -73,10 +77,16 @@ public class LectureController extends HttpServlet {
 				}
 				List Subject = lectureservice.getSublist(keyField, keyWord);
 				
+				request.setAttribute("keyField", keyField);
+				request.setAttribute("keyWord", keyWord);
 				request.setAttribute("list", Subject);
 				request.setAttribute("center", "LectureList.jsp");
+				request.setAttribute("nowPage", nowPage);
+				request.setAttribute("nowBlock", nowBlock);
 				
 				nextPage = "/AlBamProject/Main.jsp";
+			
+				
 				
 			}else if(action.equals("/LecturePlan.do")) {
 				
