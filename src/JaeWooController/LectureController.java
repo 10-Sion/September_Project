@@ -60,7 +60,7 @@ public class LectureController extends HttpServlet {
 		if(action != null) {
 		
 			if(action.equals("/Main")){ 
-				
+				request.setAttribute("center", "Center.jsp");
 				nextPage = "/AlBamProject/Main.jsp";
 			
 				

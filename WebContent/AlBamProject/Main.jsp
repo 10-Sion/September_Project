@@ -2,16 +2,17 @@
     pageEncoding="UTF-8"%>
 <%
 	String center = request.getParameter("center");
-	if(center == null){
-		center = "LectureList.jsp";		
-	}
 	
-	String contextPath = request.getContextPath(); 
+	if(center == null){
+		center = "Center.jsp";		
+	}
+	String contextPath = request.getContextPath();
+	System.out.println( center );
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -22,13 +23,12 @@
 			</tr>
 			<tr>
 				<td height="40%"><jsp:include page="${center}" />	
+			</tr>
+			<tr>
+				<td height="30%">하단 메뉴</td>
 			</tr>	
 		</table>
-			<tr>
-				<br><br><br><br>
-				<td><a href ="<%=contextPath%>/Lecture/LectureList.do">강의 리스트</a></td>
-				<td height="30%">하단 메뉴</td>
-			</tr>
+			
 
 </body>
 </html>
