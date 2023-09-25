@@ -18,10 +18,11 @@ public class ProfessorDeleteServlet extends HttpServlet {
         // ProfessorService 초기화 코드
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // URL 파라미터에서 proNo 가져오기
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 파라미터에서 proNo 가져오기
         int proNo = Integer.parseInt(request.getParameter("proNo"));
 
+        System.out.println(professorService);
         // ProfessorService를 사용하여 교수 정보를 삭제
         if (professorService != null) {
             boolean success = professorService.deleteProfessor(proNo);

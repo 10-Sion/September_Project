@@ -11,13 +11,17 @@ import java.util.List;
 import javax.sql.DataSource;
 
 public class ProfessorService {
-    private DataSource dataSource;
+	private DataSource dataSource;
 
     public ProfessorService(DataSource dataSource) {
+    	this.dataSource = dataSource;
+    }
+
+    public void init(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
-    //	교수 리스트 조회
+    // 교수 리스트 조회
     public List<Professor> getAllProfessors() {
         if (dataSource == null) {
             // dataSource가 null인 경우 처리
@@ -42,7 +46,7 @@ public class ProfessorService {
         return professors;
     }
 
-    //	교수 세부정보
+    // 교수 세부정보
     public Professor getProfessorById(int proNo) {
         if (dataSource == null) {
             // dataSource가 null인 경우 처리
@@ -51,24 +55,24 @@ public class ProfessorService {
         }
 
         String sql = "SELECT * FROM professor WHERE pro_no = ?";
-        
+
         try (Connection dbConnection = dataSource.getConnection();
              PreparedStatement statement = dbConnection.prepareStatement(sql)) {
             statement.setInt(1, proNo);
             ResultSet resultSet = statement.executeQuery();
-            
+
             if (resultSet.next()) {
                 return createProfessorFromResultSet(resultSet);
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return null;
     }
-    
-    //	교수컷
+
+    // 교수 삭제
     public boolean deleteProfessor(int proNo) {
         if (dataSource == null) {
             // dataSource가 null인 경우 처리
@@ -86,12 +90,10 @@ public class ProfessorService {
             // 삭제된 행의 수를 확인하여 성공 여부를 반환
             return rowCount > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            // 오류 발생 시 RuntimeException으로 예외 던지기
+            throw new RuntimeException(e);
         }
-
-        return false;
     }
-
 
     private Professor createProfessorFromResultSet(ResultSet resultSet) throws SQLException {
         int proNo = resultSet.getInt("pro_no");
