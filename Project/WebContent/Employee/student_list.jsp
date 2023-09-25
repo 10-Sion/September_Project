@@ -3,16 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student 리스트 페이지</title>
+
 </head>
 <body>
-    <h1>Student 리스트 페이지</h1>
+    <h1>학생 목록</h1>
     <table>
         <tr>
             <th>학번</th>
             <th>이름</th>
             <th>전화번호</th>
             <th>이메일</th>
+            <th>세부정보</th>
 
         </tr>
         <c:forEach items="${students}" var="student">

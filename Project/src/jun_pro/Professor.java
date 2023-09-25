@@ -1,4 +1,3 @@
-// Professor.java
 package jun_pro;
 
 public class Professor {

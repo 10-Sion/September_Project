@@ -45,7 +45,6 @@ public class EmployeeListServlet extends HttpServlet {
         */
         request.setAttribute("employees", employees);
 
-        // JSP로 포워드하여 직원 목록을 표시합니다.
         request.getRequestDispatcher("/Employee/employee_list.jsp").forward(request, response);
     }
 
