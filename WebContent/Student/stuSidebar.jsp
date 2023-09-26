@@ -26,7 +26,7 @@
                 <p>학생정보</p>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('<%=contextPath%>/stu/selStudnet.do?stu_no=<%=session_no%>')">
+            <div class="menu_item" onclick="loadServletData('<%=contextPath%>/stu/selSubject.do?stu_no=<%=session_no%>')">
                 <i class='bx bx-message-rounded-dots'></i>
                 <p>수강신청</p>
                 <i class="fa-regular fa-circle-2"></i>

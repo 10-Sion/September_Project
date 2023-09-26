@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
- 
+
+import stuVO.SubVO;
 import dbcp.DBConnectionMgr;
 import stuVO.StuVO;
 
@@ -179,5 +180,42 @@ public class StuDAO {
 		}
 
 	}	// changeInfo ?��
+	
+	// 수강신정 할 수 있는 과목 가져오기
+		public ArrayList subList() {
+			
+			ArrayList slist = new ArrayList();
+			String sql = "";
+			try {
+				con = pool.getConnection();
+				sql = "select * from subject";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+				
+				
+				SubVO subVo = new SubVO();
+				subVo.setSub_no(rs.getInt("no"));// 강의코드
+				subVo.setSub_name(rs.getString("sub_name")); // 과목명
+				subVo.setPro_name(rs.getString("pro_name")); // 교수 이름
+				subVo.setPro_no(rs.getInt("pro_no")); // 교수 번호 	
+				subVo.setPlace(rs.getString("place")); //강의 장소
+				subVo.setPoint(rs.getInt("point"));	// 학점
+				subVo.setCapacity(rs.getInt("capacity")); //수강 가능 인원
+				subVo.setMajor(rs.getString("major")); //전공
+				subVo.setDep_name(rs.getString("dep_name")); //전공
+	
+				slist.add(subVo);
+			}
+			
+			}catch(Exception e) {
+				System.out.println("Subject/SubDao클래스에서 getList메소드 오류 " + e);
+				e.printStackTrace();
+			} finally{
+				pool.freeConnection(con, pstmt, rs);
+			}
+			
+			return slist;
+		}
 
 }
