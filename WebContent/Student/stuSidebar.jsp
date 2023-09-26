@@ -41,6 +41,10 @@
                 <i class='bx bx-cog'></i>
                 <p>Settings</p>
             </div>
+            <div class="menu_item" onclick="loadPage('stuTable4.jsp')">
+                <i class='bx bx-cog'></i>
+                <p>과제</p>
+            </div>
             
             
         </div>
