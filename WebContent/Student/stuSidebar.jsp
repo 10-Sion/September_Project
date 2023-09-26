@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String contextPath = request.getContextPath();
+	int session_no = (Integer)session.getAttribute("stu_no");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +21,14 @@
         </div>
 
         <div class="menu_items">
-            <div class="menu_item" onclick="loadPage('stuTable1.jsp')">
+            <div class="menu_item" onclick="loadServletData('<%=contextPath%>/stu/selStudnet.do?stu_no=<%=session_no%>')">
                 <i class='bx bxs-dashboard'></i>
-                <p>Account</p>
+                <p>학생정보</p>
             </div>
             
-            <div class="menu_item" onclick="loadPage('stuTable2.jsp')">
+            <div class="menu_item" onclick="loadServletData('<%=contextPath%>/stu/selStudnet.do?stu_no=<%=session_no%>')">
                 <i class='bx bx-message-rounded-dots'></i>
-                <p>Subject</p>
+                <p>수강신청</p>
                 <i class="fa-regular fa-circle-2"></i>
             </div>
             
