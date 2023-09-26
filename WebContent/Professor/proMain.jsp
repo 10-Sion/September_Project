@@ -60,7 +60,7 @@
       </div>
 
       <div class="table">
-        <!-- 불러올 페이지 동적 처리함 -->
+        fasdfsadfasfdsafasdf
       </div>
       
     </div>
@@ -73,6 +73,7 @@
           type: 'GET',
           dataType: 'html',
           success: function(data) {
+        	  $('.table').empty();
               $('.table').html(data);
           },
           error: function(xhr, status, error) {
