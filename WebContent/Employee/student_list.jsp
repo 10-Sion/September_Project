@@ -23,7 +23,7 @@
                 <td>${student.phone}</td>
                 <td>${student.email}</td>
                 <td>
-                    <a href="#" onclick="loadServletData('/HakSaGwanLee/student/detail?currentStudentId=${student.stuNo}')">세부 정보</a>
+                    <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/student/detail?currentStudentId=${student.stuNo}')">세부 정보</a>
                 </td>
             </tr>
         </c:forEach>
