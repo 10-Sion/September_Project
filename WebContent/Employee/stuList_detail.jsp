@@ -62,7 +62,7 @@
         <p>학생 정보를 가져오지 못했습니다.</p>
     </c:if>
     
-    <a href="#" onclick="loadServletData('/HakSaGwanLee/student/edit?currentStudentId=${student.stuNo}')">수정</a>
-    <a href="#" onclick="loadServletData('/HakSaGwanLee/student/list')">학생 목록으로 돌아가기</a>
+    <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/student/edit?currentStudentId=${student.stuNo}')">수정</a>
+    <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/student/list')">학생 목록으로 돌아가기</a>
 </body>
 </html>

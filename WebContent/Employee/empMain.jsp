@@ -11,14 +11,14 @@
 <body>
   <div class="container">
     <%
-    String currentEmployeeIdParam = request.getParameter("currentEmployeeId");
+    String currentEmployeeIdParam = request.getParameter("uniqueId");
     if (currentEmployeeIdParam != null && !currentEmployeeIdParam.isEmpty()) {
         int currentEmployeeId = Integer.parseInt(currentEmployeeIdParam);
         session.setAttribute("currentEmployeeId", currentEmployeeId);
     }
     %>
     <%-- 세션에서 값을 읽어와 출력 --%>
-    <% Integer currentEmployeeId = (Integer) session.getAttribute("currentEmployeeId"); %>
+    <% Integer currentEmployeeId = (Integer) session.getAttribute("uniqueId"); %>
     <% if (currentEmployeeId != null) { %>
         <p>현재 직원 ID: <%= currentEmployeeId %></p>
     <% } else { %>
@@ -70,9 +70,9 @@
       </div>
       <div class="tabs">
         <div class="tab_name">
-          <p onclick="loadServletData('/HakSaGwanLee/employee/list')">Employee</p>
-          <p onclick="loadServletData('/HakSaGwanLee/professor/list')">Professor</p>
-          <p onclick="loadServletData('/HakSaGwanLee/student/list')">Student</p>
+          <p onclick="loadServletData('<%=request.getContextPath()%>/employee/list')">Employee</p>
+          <p onclick="loadServletData('<%=request.getContextPath()%>/professor/list')">Professor</p>
+          <p onclick="loadServletData('<%=request.getContextPath()%>/student/list')">Student</p>
         </div>
         <div class="three_dots">
           <i class='bx bx-dots-vertical-rounded'></i>
@@ -107,7 +107,7 @@
 	    console.log(servletUrl);
 	    
 	    $.ajax({
-	        url: '<%=request.getContextPath()%>/employee/indivDetail',
+	        url: servletUrl,
 	        type: 'GET',
 	        dataType: 'html',
 	        success: function(data) {

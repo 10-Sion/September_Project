@@ -62,12 +62,12 @@
         <p>교수 정보를 가져오지 못했습니다.</p>
     </c:if>
     
-    <a href="#" onclick="loadServletData('/HakSaGwanLee/professor/edit?currentProfessorId=${professor.proNo}')">수정</a>
-    <form action="/HakSaGwanLee/professor/delete" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
+    <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/professor/edit?currentProfessorId=${professor.proNo}')">수정</a>
+    <form action="<%=request.getContextPath()%>/professor/delete" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
 	    <input type="hidden" name="proNo" value="${professor.proNo}">
 	    <input type="submit" value="삭제">
     </form>
 
-    <a href="#" onclick="loadServletData('/HakSaGwanLee/professor/list')">교수 목록으로 돌아가기</a>
+    <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/professor/list')">교수 목록으로 돌아가기</a>
 </body>
 </html>

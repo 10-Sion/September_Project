@@ -17,23 +17,23 @@
         </div>
 
         <div class="menu_items">
-            <div class="menu_item" onclick="loadServletData('/HakSaGwanLee/employee/indivDetail')">
+            <div class="menu_item" onclick="loadServletData('<%=request.getContextPath()%>/employee/indivDetail')">
                 <i class='bx bxs-dashboard'></i>
                 <p>Account</p>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('/HakSaGwanLee/employee/list')">
+            <div class="menu_item" onclick="loadServletData('<%=request.getContextPath()%>/employee/list')">
                 <i class='bx bx-message-rounded-dots'></i>
                 <p>Employee</p>
                 <i class="fa-regular fa-circle-2"></i>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('/HakSaGwanLee/professor/list')">
+            <div class="menu_item" onclick="loadServletData('<%=request.getContextPath()%>/professor/list')">
                 <i class='bx bx-calendar'></i>
                 <p>Professor</p>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('/HakSaGwanLee/student/list')">
+            <div class="menu_item" onclick="loadServletData('<%=request.getContextPath()%>/student/list')">
                 <i class='bx bx-cog'></i>
                 <p>Student</p>
             </div>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,7 @@
                     <td>${professor.phone}</td>
                     <td>${professor.email}</td>
                     <td>
-                        <a href="#" onclick="loadServletData('/HakSaGwanLee/professor/detail?currentProfessorId=${professor.proNo}')">세부 정보</a>
+                        <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/professor/detail?currentProfessorId=${professor.proNo}')">세부 정보</a>
                     </td>
                 </tr>
             </c:forEach>
@@ -38,7 +38,7 @@
     </c:if>
     
     <!-- 교수 정보 수정 및 목록으로 돌아가는 링크 추가 -->
-    <a href="#" onclick="loadServletData('/HakSaGwanLee/professor/edit?currentProfessorId=${professor.proNo}')">세부 정보</a>
-    <a href="#" onclick="loadServletData('/HakSaGwanLee/professor/list')">교수 목록으로 돌아가기</a>
+    <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/professor/edit?currentProfessorId=${professor.proNo}')">세부 정보</a>
+    <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/professor/list')">교수 목록으로 돌아가기</a>
 </body>
 </html>
