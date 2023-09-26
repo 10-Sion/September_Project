@@ -2,7 +2,7 @@
 <%@page import="JaeWooVO.SubBean"%>
 <%@page import="JaeWooDAO.SubDao"%>
 <%@page import="java.util.List"%>
-
+<link rel="stylesheet" href="../pageSetUp/mainStyle.css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -11,8 +11,8 @@
 <% 
   SubDao subDao = new SubDao();
    //테스트용 세션값
-  int pro_no = (int)session.getAttribute("pro_no"); //테스트용 세션값
-
+//  int pro_no = (int)session.getAttribute("pro_no"); //테스트용 세션값
+  int pro_no = 1002;
 %>
 <!DOCTYPE html>
 <html>
@@ -20,6 +20,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
 	.footer{
 	margin : 100px;
 	margin-bottom: 20px;
@@ -32,9 +33,9 @@
 </head>
 <body>
 	<h1 align="center">강의 목록</h1>
-	<div align="center">
+	<div align="center" class="table">
 	
-	<table border="2" width="80%" height="50px" class = "Sub_top">
+	<table border="1" class = "Sub_top">
 		<tr>
 			<th>과목코드</th>
 			<th>교수명</th>

@@ -23,7 +23,7 @@ public class ProfessorDAO {
             // DB 연결
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, i_id, i_pw);
-
+           
             // 교수 테이블에서 고유번호와 비밀번호 검색
             String professorSql = "SELECT * FROM Professor WHERE Pro_no = ? AND pw = ?";
             pstmt = conn.prepareStatement(professorSql);

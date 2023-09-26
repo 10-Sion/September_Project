@@ -97,7 +97,7 @@
 				type="hidden" name="page" value="0"></td>
 		</table>
 	</form>
-	<div align="center">
+	<div align="center" class="table">
 
 		<table border="2" width="80%" height="50px" class="Sub_top">
 			<tr>

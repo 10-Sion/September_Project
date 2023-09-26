@@ -21,7 +21,7 @@
   <body>
   
 	<%
-	
+	String contextPath = request.getContextPath();
 	//LoginServlet에서  세션에 로그인한 사람의 고유번호를 아래 줄과 같이 저장 했었습니다.
     //session.setAttribute("uniqueId", uniqueId);
 	
@@ -31,7 +31,11 @@
 	out.println("uniqueId: " + uniqueId); // uniqueId 값을 출력
 	
     if (uniqueId != null) {
-        
+    %>
+    
+    	<button type = "button" > 로그 아웃</button>
+    
+    <%
 	    // 여기서 userId를 사용하여 필요한 작업 수행 가능
 	} else {
 	    // 세션 없거나 사용자 정보가 없는 경우의 처리
@@ -45,13 +49,13 @@ function redirectToMyPage(uniqueId) {
 
     if (uniqueId >= 0 && uniqueId <= 1000) {
         // 교직원의 경우
-        redirectURL = "emp_main.html";
+        redirectURL = "../../Employee/empMain.jsp";
     } else if (uniqueId >= 1001 && uniqueId <= 2000) {
         // 교수의 경우
-        redirectURL = "pro_main.html";
+        redirectURL = "../../Professor/proMain.jsp";
     } else if (uniqueId >= 2001 && uniqueId <= 9999) {
         // 학생의 경우
-        redirectURL = "stu_main.html";
+        redirectURL = "../../Student/stuMain.jsp";
     } else {
         // 그 외의 경우
         redirectURL = "#"; // 혹은 다른 처리를 원하는 페이지로 이동

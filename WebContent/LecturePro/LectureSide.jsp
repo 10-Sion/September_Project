@@ -16,7 +16,7 @@
         </div>
 
         <div class="menu_items">
-            <div class="menu_item"  onclick="loadPage('proTable1.jsp')">
+            <div class="menu_item" onclick="loadPage('LectureList.jsp')">
                 <i class='bx bxs-dashboard'></i>
                 <p>Account</p>
             </div>
