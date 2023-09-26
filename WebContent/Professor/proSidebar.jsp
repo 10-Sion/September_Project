@@ -5,6 +5,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style type="text/css">
+	a { text-decoration-line: none; }
+</style>
 <body>
     <div class="left_sidebar">
         <div class="close_hamburger_btn">
@@ -18,7 +21,7 @@
         <div class="menu_items">
             <div class="menu_item"  onclick="loadPage('proTable1.jsp')">
                 <i class='bx bxs-dashboard'></i>
-                <p>Account</p>
+               <a><p>전체 강의 리스트</p></a>
             </div>
             
             <div class="menu_item" onclick="loadPage('proTable2.jsp')">

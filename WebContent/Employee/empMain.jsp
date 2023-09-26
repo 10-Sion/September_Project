@@ -55,7 +55,7 @@
       </div>
       <div class="menu_item_name_and_filter">
         <div class="menu_item_name">
-          <h2>Database</h2>
+          <h2>교직원 페이지</h2>
         </div>
         <div class="filter_and_sort">
           <div class="sort sort_and_filter">

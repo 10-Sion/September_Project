@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<%
+String contextPath = request.getContextPath(); 
+%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	a { text-decoration-line: none; }
+</style>
 </head>
 <body>
     <div class="left_sidebar">
@@ -16,12 +22,12 @@
         </div>
 
         <div class="menu_items">
-            <div class="menu_item" onclick="loadPage('LectureList.jsp')">
+            <div class="menu_item" >
                 <i class='bx bxs-dashboard'></i>
-                <p>Account</p>
+                <a href ="<%=contextPath%>/Lecture/LectureList.do"><p>Account</p></a>               	
             </div>
             
-            <div class="menu_item" onclick="loadPage('proTable2.jsp')">
+            <div class="menu_item" onclick="loadPage('/Lecture/LectureList.do')">
                 <i class='bx bx-message-rounded-dots'></i>
                 <p>Subject</p>
                 <i class="fa-regular fa-circle-2"></i>

@@ -2,7 +2,7 @@
 <%@page import="JaeWooDAO.LectureDAO"%>
 <%@page import="JaeWooVO.LectureVO"%>
 <%@page import="java.util.List"%>
-
+<link rel="stylesheet" href="../pageSetUp/mainStyle.css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -15,7 +15,7 @@
 	//페이징 처리 변수
 
 	int totalRecord = 0; //board테이블에 저장된 글의 총 개수
-	int numPerPage = 3; //한 페이지당 조회해서 보여줄 글 개수
+	int numPerPage = 5; //한 페이지당 조회해서 보여줄 글 개수
 	int pagePerBlock = 3; //한 블럭당 묶여질 페이지 번호 개수 
 							// 1 2 3 < - 한블럭으로 묶음
 
@@ -99,7 +99,7 @@
 	</form>
 	<div align="center" class="table">
 
-		<table border="2" width="80%" height="50px" class="Sub_top">
+		<table>
 			<tr>
 				<th>과목코드</th>
 				<th>학년</th>

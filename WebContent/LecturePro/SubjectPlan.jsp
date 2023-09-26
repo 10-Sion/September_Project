@@ -11,14 +11,14 @@
 <style type="text/css">
 
 
-th, th {
+th, td {
 	width : 300px;
 	padding: 2px ;
 	border: 1px solid #aaa;
 	background-clip: padding-box;
 	scroll-snap-align: start;
 	margin : 0;
-	text-align : center;
+	text-align: center;
 }
 
 </style>
@@ -39,37 +39,37 @@ th, th {
 			<table id = "tt" width = "900" border=1>
 				<tr>
 					<th>과목 이름</th>
-					<th><%=lv.getSub_name()%></th>
+					<td><%=lv.getSub_name()%></td>
 					<th>전공</th>
-					<th><%=lv.getMajor()%></th>
+					<td><%=lv.getMajor()%></td>
 					
 				</tr>
 				<tr>				
 					<th>대상 학년</th>
-					<th><%=lv.getGrade()%> 학년</th>
+					<td><%=lv.getGrade()%> 학년</td>
 					<th>이수 구분</th>
-					<th><%=lv.getComp_sort()%></th>
+					<td><%=lv.getComp_sort()%></td>
 				</tr>
 				<tr>
 					
 					<th>부여 학점</th>
-					<th><%=lv.getCredit()%> 학점</th>	
+					<td><%=lv.getCredit()%> 학점</td>	
 					<th>강의 장소 (건물명-호수)</th>
-					<th><%=lv.getPlace()%></th>			
+					<td><%=lv.getPlace()%></td>			
 				</tr>
 				<tr>
 					<th>교수 이름</th>
-					<th><%=lv.getPro_name()%></th>
+					<td><%=lv.getPro_name()%></td>
 					<th>연락처/이메일</th>
-					<th><%=lv.getPro_email()%></th>
+					<td><%=lv.getPro_email()%></td>
 				</tr>
 				<tr>
 					<th>교육 목표</th>
-					<th colspan = 3><%=lv.getEdu_goal()%></th>
+					<td colspan = 3><%=lv.getEdu_goal()%></td>
 				</tr>
 				<tr>
 					<th>주 교재</th>
-					<th colspan = 3><%=lv.getTextbook()%></th>
+					<td colspan = 3><%=lv.getTextbook()%></td>
 				</tr>
 			</table>
 		</div>

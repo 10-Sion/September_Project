@@ -61,7 +61,7 @@ public class LectureController extends HttpServlet {
 		
 			if(action.equals("/Main")){ 
 				request.setAttribute("center", "Center.jsp");
-				nextPage = "/LecturePro/Main.jsp";
+				nextPage = "/LecturePro/MainLecture.jsp";
 			
 				
 			}else if(action.equals("/LectureList.do")){
@@ -84,7 +84,7 @@ public class LectureController extends HttpServlet {
 				request.setAttribute("nowPage", nowPage);
 				request.setAttribute("nowBlock", nowBlock);
 				
-				nextPage = "/LecturePro/Main.jsp";
+				nextPage = "/LecturePro/MainLecture.jsp";
 			
 				
 				
@@ -99,12 +99,15 @@ public class LectureController extends HttpServlet {
 				request.setAttribute("lv", Lv);
 				request.setAttribute("center", "/LecturePro/SubjectPlan.jsp");
 				
-				nextPage = "/LecturePro/Main.jsp";
+				nextPage = "/LecturePro/MainLecture.jsp";
 				
 			}
-			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);		
-			dispatch.forward(request, response);
+			
+			
 		}
+		
+		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);		
+		dispatch.forward(request, response);
 		}
 //		
 //	

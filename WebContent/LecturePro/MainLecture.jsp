@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<%
+	String center = request.getParameter("center");
+	
+	
+	String contextPath = request.getContextPath();
+	System.out.println( center );
+%>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,7 +71,7 @@
       </div>
 
       <div class="table">
-        <!-- 불러올 페이지 동적 처리함 -->
+        <jsp:include page="${center}" />
       </div>
       
     </div>
@@ -84,6 +91,23 @@
           }
       });
   }
+
+  
+  function loadServletData(servletUrl) {
+	    $.ajax({
+	        url: servletUrl,
+	        type: 'GET',
+	        dataType: 'html',
+	        success: function(data) {
+	            // 서블릿에서 반환된 데이터를 화면에 표시
+	            $('.table').html(data);
+	        },
+	        error: function(xhr, status, error) {
+	            console.error(error);
+	        }
+	    });
+	}
+  
   </script>
 </body>
 </html>

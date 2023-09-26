@@ -58,7 +58,7 @@ function redirectToMyPage(uniqueId) {
         redirectURL = "../../Student/stuMain.jsp";
     } else {
         // 그 외의 경우
-        redirectURL = "#"; // 혹은 다른 처리를 원하는 페이지로 이동
+        redirectURL = "../../LecturePro/index.jsp"; // 혹은 다른 처리를 원하는 페이지로 이동
     }
 
     window.location.href = redirectURL; // JavaScript를 사용하여 페이지 이동

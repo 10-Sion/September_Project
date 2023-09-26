@@ -3,5 +3,6 @@
  
 <%
 	String contextPath = request.getContextPath();
+	System.out.println( contextPath );
 	response.sendRedirect(contextPath + "/Lecture/Main");
 %>
