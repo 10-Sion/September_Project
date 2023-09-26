@@ -19,14 +19,18 @@
         </div>
 
         <div class="menu_items">
+        	<div class="menu_item">
+        		<h1>나의 정보</h1>
+        	
+        	</div>
             <div class="menu_item"  onclick="loadPage('proTable1.jsp')">
                 <i class='bx bxs-dashboard'></i>
-               <a><p>전체 강의 리스트</p></a>
+               <a><p>나의 정보</p></a>
             </div>
             
             <div class="menu_item" onclick="loadPage('proTable2.jsp')">
                 <i class='bx bx-message-rounded-dots'></i>
-                <p>Subject</p>
+                <p>강의 관리</p>
                 <i class="fa-regular fa-circle-2"></i>
             </div>
             

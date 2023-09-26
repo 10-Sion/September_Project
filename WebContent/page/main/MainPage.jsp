@@ -27,7 +27,7 @@
 	
 	// 세션에서 uniqueId 값을 가져옴
     Integer uniqueId = (Integer) session.getAttribute("uniqueId");
-	
+ 
 	out.println("uniqueId: " + uniqueId); // uniqueId 값을 출력
 	
     if (uniqueId != null) {
@@ -53,6 +53,7 @@ function redirectToMyPage(uniqueId) {
     } else if (uniqueId >= 1001 && uniqueId <= 2000) {
         // 교수의 경우
         redirectURL = "../../Professor/proMain.jsp";
+        
     } else if (uniqueId >= 2001 && uniqueId <= 9999) {
         // 학생의 경우
         redirectURL = "../../Student/stuMain.jsp";

@@ -15,7 +15,8 @@
 	
  //	int pro_no = Integer.parseInt( request.getParameter("no")) ;
  //	String P_name = request.getParameter("name");
- 	int pro_no = (int)session.getAttribute("pro_no"); //로그인 된 교수의 정보를 가져오는 테스트용 세션값 가져오기
+ 	//int pro_no = (int)session.getAttribute("pro_no"); //로그인 된 교수의 정보를 가져오는 테스트용 세션값 가져오기
+ 	int pro_no = 1012;
  	System.out.println(pro_no);
  	
  	

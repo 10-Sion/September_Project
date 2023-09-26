@@ -12,7 +12,7 @@
   SubDao subDao = new SubDao();
    //테스트용 세션값
 //  int pro_no = (int)session.getAttribute("pro_no"); //테스트용 세션값
-  int pro_no = 1002;
+  int pro_no = 1012;
 %>
 <!DOCTYPE html>
 <html>
