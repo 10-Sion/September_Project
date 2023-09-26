@@ -4,18 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>글 작성</title>
 </head>
 <body>
-<form action="regBoard.do" method="post">
+<form action="regNotice.do" method="post">
    <table>
       <tr>
          <td>제목</td>
          <td><input type="text" name="title"></td>
-      </tr>
-      <tr>
-         <td>작성자</td>
-         <td><input type="text" name="writer"></td>
       </tr>
       <tr>
          <td>작성일</td>
@@ -28,7 +24,7 @@
          </td>
       </tr>
    </table>
-   <input type="submit" value="글등록">
+   <input type="submit" value="글 등록">
 </form>
 </body>
 </html>

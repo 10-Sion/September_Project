@@ -4,28 +4,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Update Notice</title>
 </head>
 <body>
-<form action="updateBoard.do" method="post">
-<input type="hidden" name="boardNum" value="${board.boardNum }">
+<form action="updateNotice.do" method="post">
+<input type="hidden" name="noticeNum" value="${notice.getNoticeNum() }">
 <table>
     <tr>
         <td>제목</td>
-        <td><input type="text" name="title" value="${board.title }"></td>
+        <td><input type="text" name="title" value="${notice.getTitle() }"></td>
     </tr>
     <tr>
         <td>작성자</td>
-        <td><input type="text" name="writer" value="${board.writer }"></td>
+        <td><input type="text" name="writer" value="${notice.getWriter() }"></td>
     </tr>
     <tr>
         <td>작성일</td>
-        <!-- read온리는 수정은 안되지만, 데이터가 넘어간다. -->
-        <td><input type="text" name="createDate" value="${board.createDate }" readonly></td>
+        <td><input type="text" name="createDate" value="${notice.getCreateDate() }" readonly></td>
     </tr>
     <tr>
-        <td>내용</td> <!--textarea는 value가 없다. 여는태그, 닫는태그 사이에 넣어준다.  -->
-        <td><textarea rows="5" cols="50">${board.content }</textarea></td>
+        <td>내용</td>
+        <td><textarea rows="5" cols="50">${notice.getContent() }</textarea></td>
     </tr>
 </table>
 <input type="submit" value="글수정">

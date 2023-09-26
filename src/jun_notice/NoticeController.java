@@ -10,8 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("*.do")
+@WebServlet("/Notice/*")
 public class NoticeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -43,7 +44,6 @@ public class NoticeController extends HttpServlet {
         String requestURI = request.getRequestURI();
         String contextPath = request.getContextPath();
         String command = requestURI.substring(contextPath.length());
-        System.out.println("command = " + command);
 
         String page = "";
         boolean isRedirect = false;
@@ -53,20 +53,25 @@ public class NoticeController extends HttpServlet {
             page = "noticeList.jsp";
         }
 
-        if (command.equals("/regnoticeForm.do")) {
-            page = "notice_write_form.jsp";
+        if (command.equals("/regNoticeForm.do")) {
+            page = "noticeWrite.jsp";
         }
 
-        if (command.equals("/regnotice.do")) {
+        if (command.equals("/regNotice.do")) {
             String title = request.getParameter("title");
             String content = request.getParameter("content");
-            String writer = request.getParameter("writer");
             String createDate = request.getParameter("createDate");
 
+            // 세션에서 사용자 정보 가져오기
+            HttpSession session = request.getSession();
+            String writer = (String) session.getAttribute("username");
+
+            // 데이터베이스에 글 정보 삽입 (자세한 구현은 NoticeDAO에 맡김)
             NoticeDTO notice = new NoticeDTO(noticeNum, title, content, writer, createDate);
             noticeNum++;
 
-            noticeList.add(notice);
+            NoticeDAO noticeDAO = new NoticeDAO();
+            noticeDAO.addNotice(notice);
 
             page = "noticeList.do";
             isRedirect = true;

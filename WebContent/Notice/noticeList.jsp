@@ -6,18 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style type="text/css">
-table{
-   border: 1px solid black;
-   border-collapse: collapse;
-   text-align: center;
-   width: 600px;
-}
-tr, td{
-   border: 1px solid black;
-}
-</style>
+<title>Notice List</title>
+
 </head>
 <body>
 <table>
@@ -29,25 +19,21 @@ tr, td{
    </colgroup>
    <tr>
       <td>글번호</td>
-      <td>제 목</td>
+      <td>제목</td>
       <td>작성자</td>
       <td>작성일</td>
    </tr>
    
-   <!-- a태그에서 데이터를 넘길때에는 ? 를 쓴다. 
-       boardNum이라는 글번호를 가지고 가겠다. -->
-      <!-- 게시글 개수만큼 만들어줘야한다.taglib만들어주고. -->
-      <c:forEach items="${list }" var="board">
+   <c:forEach items="${list}" var="notice">
       <tr>
-          <td>${board.boardNum }</td>
-          <td><a href="boardDetail.do?boardNum=${board.boardNum }">${board.title }</a></td>
-          <td>${board.writer }</td>
-          <td>${board.createDate }</td>
+          <td>${notice.getNoticeNum()}</td>
+          <td><a href="noticeDetail.do?noticeNum=${notice.getNoticeNum()}">${notice.getTitle()}</a></td>
+          <td>${notice.getWriter()}</td>
+          <td>${notice.getCreateDate()}</td>
       </tr>
-      </c:forEach>
+   </c:forEach>
          
-   
 </table>
-<input type="button" value="글쓰기" onclick="location.href='regBoardForm.do';">
+<input type="button" value="글쓰기" onclick="location.href='regNoticeForm.do';">
 </body>
 </html>

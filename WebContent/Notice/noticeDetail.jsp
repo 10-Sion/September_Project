@@ -5,19 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Notice Detail</title>
 </head>
 <body>
  
-글번호 : ${board.boardNum }<br>
-제목 : ${board.title } <br>
-내용 : ${board.content }<br>
-작성자 : ${board.writer }<br>
-작성일 : ${board.createDate }<br>
+글번호 : ${notice.getNoticeNum()}<br>
+제목 : ${notice.getTitle()} <br>
+내용 : ${notice.getContent()}<br>
+작성자 : ${notice.getWriter()}<br>
+작성일 : ${notice.getCreateDate()}<br>
  
-<input type="button" value="삭제하기" onclick="location.href='delete.do?boardNum=${board.boardNum }';">
-<!-- 어떤걸 삭제할건지 보드 번호를 가져가야해서 ?뒤에 문장이나옴. -->
-<input type="button" value="수정" onclick="location.href='updateBoardForm.do?boardNum=${board.boardNum }';">
-<!-- 상세보기 페이지로 넘어갈때도 글번호 데이터를 넘겨서 가져가야해서 ?뒤에 문장을쓴다. -->
+<input type="button" value="삭제하기" onclick="location.href='delete.do?noticeNum=${notice.getNoticeNum()}';">
+<input type="button" value="수정" onclick="location.href='updateNoticeForm.do?noticeNum=${notice.getNoticeNum()}';">
+
 </body>
 </html>

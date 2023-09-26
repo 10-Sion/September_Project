@@ -16,43 +16,45 @@ public class NoticeDTO {
         this.createDate = createDate;
     }
 
-    public int getNoticeNum() {
-        return noticeNum;
-    }
+	public int getNoticeNum() {
+		return noticeNum;
+	}
 
-    public void setNoticeNum(int noticeNum) {
-        this.noticeNum = noticeNum;
-    }
+	public void setNoticeNum(int noticeNum) {
+		this.noticeNum = noticeNum;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public String getContent() {
-        return content;
-    }
+	public String getContent() {
+		return content;
+	}
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-    public String getWriter() {
-        return writer;
-    }
+	public String getWriter() {
+		return writer;
+	}
 
-    public void setWriter(String writer) {
-        this.writer = writer;
-    }
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 
-    public String getCreateDate() {
-        return createDate;
-    }
+	public String getCreateDate() {
+		return createDate;
+	}
 
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
-    }
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+
+   
 }
