@@ -12,9 +12,10 @@ public class NoticeDTO {
         this.noticeNum = noticeNum;
         this.title = title;
         this.content = content;
-        this.writer = writer;
+        this.writer = writer; // 작성자를 String으로 받음
         this.createDate = createDate;
     }
+
 
 	public int getNoticeNum() {
 		return noticeNum;

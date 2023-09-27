@@ -49,28 +49,37 @@ public class NoticeController extends HttpServlet {
         boolean isRedirect = false;
 
         if (command.equals("/noticeList.do")) {
+        	// 세션에서 사용자 정보 가져오기
+        	HttpSession session = request.getSession();
+        	int writer = (Integer)session.getAttribute("uniqueId"); 
+
+        	
             request.setAttribute("list", noticeList);
             page = "noticeList.jsp";
         }
 
-        if (command.equals("/regNoticeForm.do")) {
+        if (command.equals("/regNotice.do")) {
             page = "noticeWrite.jsp";
         }
 
         if (command.equals("/regNotice.do")) {
+        	
+        	
+
+        	
             String title = request.getParameter("title");
             String content = request.getParameter("content");
             String createDate = request.getParameter("createDate");
 
             // 세션에서 사용자 정보 가져오기
             HttpSession session = request.getSession();
-            String writer = (String) session.getAttribute("username");
+            int writer = (int) session.getAttribute("uniqueId");
 
-            // 데이터베이스에 글 정보 삽입 (자세한 구현은 NoticeDAO에 맡김)
-            NoticeDTO notice = new NoticeDTO(noticeNum, title, content, writer, createDate);
-            noticeNum++;
-
+            // 데이터베이스에 글 정보 삽입
             NoticeDAO noticeDAO = new NoticeDAO();
+        	String writerName = noticeDAO.getWriterName(writer);	//	작성자 이름 가져오기
+            NoticeDTO notice = new NoticeDTO(noticeNum, title, content, writerName, createDate);
+
             noticeDAO.addNotice(notice);
 
             page = "noticeList.do";

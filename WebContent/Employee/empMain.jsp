@@ -110,9 +110,11 @@
 	        success: function(data) {
 	            // 서블릿에서 반환된 데이터를 화면에 표시
 	            $('.table').html(data);
+	            
 	        },
 	        error: function(xhr, status, error) {
 	            console.error(error);
+	            
 	        }
 	    });
 	}

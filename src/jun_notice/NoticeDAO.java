@@ -13,6 +13,47 @@ public class NoticeDAO {
     public NoticeDAO() {
         conn = DatabaseConnection.getConnection();
     }
+    
+    public String getWriterName(int writer) {	//	세션값을 db상 교직원, 교수 테이블 내에서 no 찾아봄
+    	
+        String name = null;
+        String professorSql = "SELECT name FROM professor WHERE pro_no = ?";
+        String employeeSql = "SELECT name FROM employee WHERE emp_no = ?";
+
+        try (PreparedStatement pstmt = conn.prepareStatement(professorSql)) {	//	교수 테이블 검색
+            pstmt.setInt(1, writer);
+            ResultSet rs = pstmt.executeQuery();
+            
+            if (rs.next()) {
+                name = rs.getString("name");
+                
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            
+        }
+
+        if (name == null) {
+            try (PreparedStatement pstmt = conn.prepareStatement(employeeSql)) {	//	교직원 테이블 검색
+            	
+                pstmt.setInt(1, writer);
+                ResultSet rs = pstmt.executeQuery();
+                
+                if (rs.next()) {
+                    name = rs.getString("name");
+                    
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                
+            }
+        }
+
+        return name;
+    }
+
+
 
     public void addNotice(NoticeDTO notice) {
         String sql = "INSERT INTO notice (title, content, writer, createDate) VALUES (?, ?, ?, ?)";
