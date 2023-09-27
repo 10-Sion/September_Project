@@ -36,3 +36,22 @@
     width: 1000px;
     height: 500px;
 }
+
+/* 로그인 회원가입 */
+.user-links {
+    display: flex; /* 추가: 내부 요소를 가로로 정렬 */
+    align-items: center; /* 추가: 내부 요소를 수직으로 중앙에 정렬 */
+    float: right;
+    margin-right: 10px;
+}
+
+.small-link {
+    font-size: 14px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333; /* 링크 색상 설정 */
+}
+
+.small-link:hover {
+    text-decoration: underline; /* 호버 시 밑줄 추가 */
+}
