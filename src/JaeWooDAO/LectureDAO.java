@@ -86,6 +86,49 @@ public class LectureDAO {
 		return list;
 	}
 	
+	public ArrayList getSublist(String keyField,String keyWord, int pro_no) {
+		ArrayList list = new ArrayList();
+		String sql = "";
+		try {
+		con = getConnection();
+		
+		if(keyWord == null || keyWord.isEmpty()) {
+			sql = "select * from subject_info where pro_no = " + pro_no + " order by sub_no desc";
+			
+		}else {
+			sql = "select * from subject_info where " + keyField + 
+					" like '%" + keyWord + "%' and pro_no = " + pro_no + " order by sub_no desc";
+		}
+		
+		pstmt = con.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			LectureVO lv = new LectureVO();
+			lv.setSub_no(rs.getInt("sub_no"));
+			lv.setSub_name(rs.getString("sub_name"));
+			lv.setPro_no(rs.getInt("pro_no"));
+			lv.setPro_name(rs.getString("pro_name"));
+			lv.setPro_email(rs.getString("pro_email"));
+			lv.setMajor(rs.getString("major"));
+			lv.setCredit(rs.getInt("credit"));
+			lv.setComp_sort(rs.getString("comp_sort"));
+			lv.setGrade(rs.getInt("grade"));
+			lv.setPeriod(rs.getString("period"));
+			lv.setEdu_goal(rs.getString("edu_goal"));
+			lv.setPlace(rs.getString("place"));
+			lv.setTextbook(rs.getString("textbook"));	
+			
+			list.add(lv);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			rs_Close();
+		}
+		return list;
+	}
+	
 	public LectureVO getSubject(int sub_no ) {
 			
 			LectureVO lv = new LectureVO();

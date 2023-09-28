@@ -12,13 +12,13 @@
 <body>
 	<div class="container">
 	<%
+	session.setAttribute("stu_no", 2008);
     String no = request.getParameter("stu_no");
     if ( no != null && !no.isEmpty()) {
         int stu_no = Integer.parseInt(no);
-        session.setAttribute("stu_no", stu_no);
+        session.setAttribute("stu_no", 2008);
     }
-    %>
-		<%-- 세션에서 값을 읽어와 출력 --%>
+    %>	
 		<% Integer stu_no = (Integer) session.getAttribute("stu_no"); %>
 		<% if (stu_no != null) { %>
 		<p>
