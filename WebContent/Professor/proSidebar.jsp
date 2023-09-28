@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+Integer pro_no = (Integer)session.getAttribute("uniqueId");
+String contextPath = request.getContextPath(); 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,9 +32,10 @@
                <a><p>나의 정보</p></a>
             </div>
             
-            <div class="menu_item" onclick="loadPage('proTable2.jsp')">
+            <div class="menu_item" onclick="loadServletData('<%=contextPath%>/Lecture/ProLectureList.do?pro_no=<%=pro_no%>')">
                 <i class='bx bx-message-rounded-dots'></i>
-                <p>강의 관리</p>
+<%--                 <a href ="<%=contextPath%>/Lecture/ProLectureList.do?pro_no=<%=pro_no%>"><p>개설 강의 관리</p></a> --%>
+                <p>개설 강의 관리</p>
                 <i class="fa-regular fa-circle-2"></i>
             </div>
             
