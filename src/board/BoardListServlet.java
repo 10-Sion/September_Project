@@ -59,9 +59,9 @@ public class BoardListServlet extends HttpServlet {
         List<Map<String, String>> boardList = new ArrayList<>();
         for (BoardBean board : boardVector) {
             Map<String, String> boardData = new HashMap<>();
-            boardData.put("num", String.valueOf(board.getNum()));
-            boardData.put("name", board.getName());
-            boardData.put("subject", board.getSubject());
+            boardData.put("num", String.valueOf(board.getNum())); // 글번호 
+            boardData.put("name", board.getName()); // 작성자
+            boardData.put("subject", board.getSubject()); // 글 제목
          //   boardData.put("regdate", board.getRegdate().toString()); // regdate를 문자열로 변환
             boardList.add(boardData);
         }

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="common.css">
+
 
     <meta charset="UTF-8">
     <title>게시물 상세 보기</title>
@@ -30,6 +30,19 @@
             <th>내용</th>
             <td>${board.content}</td>
         </tr>
+        
+        <!-- 수정 결과 메시지 표시 부분 -->
+		<tr>
+		    <td colspan="2">
+		        <% String message = (String)request.getAttribute("message"); %>
+		        <% if (message != null && !message.isEmpty()) { %>
+		            <div class="message">
+		                <%= message %>
+		            </div>
+		        <% } %>
+		    </td>
+		</tr>
+        
         <tr>
             <th>작성일</th>
             <td>${board.regdate}</td>
@@ -43,7 +56,7 @@
     <br>
     <a href="BoardListServlet">목록으로 돌아가기</a>
     <br>
-    <a href="BoardUpdateServlet">수정</a>
+    <a href="BoardUpdateServlet?num=${board.num}">수정</a>
     <br>
     <a href="BoardController?action=delete&num=${board.num}">삭제</a>
 </body>

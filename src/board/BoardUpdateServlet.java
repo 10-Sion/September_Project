@@ -1,6 +1,7 @@
 package board;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,22 +28,31 @@ public class BoardUpdateServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // 게시물 수정을 처리하는 코드를 여기에 추가
+        // 폼에서 전달된 수정된 데이터를 얻어옴
+        int num = Integer.parseInt(request.getParameter("num")); // 게시물 번호
+        String subject = request.getParameter("subject"); // 글 제목
+        String content = request.getParameter("content"); // 글 내용
 
-        // 예시: 폼에서 전달된 수정된 데이터를 얻어옴
-        int num = Integer.parseInt(request.getParameter("num"));
-        String subject = request.getParameter("subject");
-        String content = request.getParameter("content");
-
-        // BoardDAO를 사용하여 데이터베이스 업데이트 수행
+        // BoardBean 객체 생성 및 데이터 설정
         BoardBean boardBean = new BoardBean();
         boardBean.setNum(num);
         boardBean.setSubject(subject);
         boardBean.setContent(content);
 
+        // BoardDAO의 updateBoard 메서드를 사용하여 데이터베이스 업데이트 수행
+        boardDAO.updateBoard(boardBean);
+        
+        // 콘솔에 값을 출력
+        System.out.println("num: " + num);
+        System.out.println("subject: " + subject);
+        System.out.println("content: " + content);
+
+    	// 수정 결과 메시지 설정
+        request.setAttribute("message", "게시물이 수정되었습니다.");
 
         // 수정 결과를 보여줄 JSP로 포워딩
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Board-QnA/boardUpdateResult.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Board-QnA/boardView.jsp");
         dispatcher.forward(request, response);
+
     }
 }

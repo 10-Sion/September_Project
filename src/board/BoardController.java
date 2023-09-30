@@ -99,24 +99,38 @@ public class BoardController extends HttpServlet {
 
             nextPage = "/Board-QnA/boardList.jsp";
         }
-        	// 2단계 요청 주소-> /BoardEditPro.board 요청 주소는 게시물 수정을 처리하는 주소
-        	else if (action.equals("/BoardEditPro.board")) {
-            // 요청한 값 얻기
-            int num = Integer.parseInt(request.getParameter("num"));
-            String subject = request.getParameter("subject");
-            String content = request.getParameter("content");
+        	// 2단계 요청 주소-> /BoardUpdate.board 요청 주소는 게시물 수정 페이지를 보여주는 주소
+        	else if (action.equals("/BoardUpdate.board")) {
+        	    // 수정할 게시물의 번호를 얻어옴
+        	    int num = Integer.parseInt(request.getParameter("num"));
 
-            // BoardBean 객체 생성 및 데이터 설정
-            BoardBean boardBean = new BoardBean();
-            boardBean.setNum(num); // 수정 대상 게시물의 번호 설정
-            boardBean.setSubject(subject);
-            boardBean.setContent(content);
+        	    // 해당 게시물의 정보를 가져옴 (게시물 번호를 사용하여 데이터베이스에서 정보를 가져와야 함)
+        	    BoardBean board = boardService.viewArticle(num); // 수정
 
-            // BoardService의 메서드 호출하여 데이터 수정
-            boardService.modArticle(boardBean);
+        	    // 가져온 게시물 정보를 request 속성에 설정
+        	    request.setAttribute("board", board);
 
-            nextPage = "/Board-QnA/boardEditPro.jsp";
-        }
+        	    nextPage = "/Board-QnA/boardUpdate.jsp";
+        	}
+        	// 수정된 내용을 저장하는 요청을 처리
+        	else if (action.equals("/BoardUpdatePro.board")) {
+        	    // 수정된 내용을 받아와서 BoardBean 객체를 생성
+        	    int num = Integer.parseInt(request.getParameter("num"));
+        	    String subject = request.getParameter("subject");
+        	    String content = request.getParameter("content");
+
+        	    BoardBean boardBean = new BoardBean();
+        	    boardBean.setNum(num);
+        	    boardBean.setSubject(subject);
+        	    boardBean.setContent(content);
+
+        	    // BoardService의 modArticle 메서드 호출하여 수정
+        	    boardService.modArticle(boardBean);
+
+        	    nextPage = "/Board-QnA/boardUpdatePro.jsp"; // 수정 완료 후의 페이지
+        	}
+
+
 
         // ...
 

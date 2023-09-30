@@ -85,6 +85,7 @@ public class BoardDAO implements IBoardDAO {
         return vector;
     }
 
+    // 게시물 상세 내용
     @Override
     public BoardBean getBoard(int num) {
         BoardBean boardBean = null;
