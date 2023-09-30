@@ -17,6 +17,7 @@ public class BoardBean {
     private String ip; //글을 작성한 사람의 IP주소 
     private Timestamp regdate; //글 작성한 날짜 
     private String id; //가입한 글을 작성하는 사람의 아이디 
+    private String parentID; // 부모 게시물 ID (답글일 경우)
     
 	
 	//getter,setter메소드들 
@@ -88,7 +89,12 @@ public class BoardBean {
 		this.id = id;
 	}
 
-    
+	public String getparentID() {
+		return parentID;
+	}
+	public void setparentID(String parentID) {
+		this.parentID = parentID;
+	}
 	
 	
 }

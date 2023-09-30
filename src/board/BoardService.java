@@ -38,7 +38,14 @@ public class BoardService {
         boardDAO.deleteBoard(articleNO);
     }
 
-   
+
+    // 게시물 답글 달기
+	public void replyBoard(BoardBean boardBean) {
+		 boardDAO.replyBoard(boardBean);
+		
+	}
+	
+	
 /*
     
     	// 아래는 페이징을 고려한 게시물 목록 조회 메서드입니다.

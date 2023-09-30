@@ -261,8 +261,29 @@ public class BoardDAO implements IBoardDAO {
             freeResource();
         }
     }
+    
+    // 게시물 답글 달기 
+    @Override
+    public void replyBoard(BoardBean boardBean) {
+        try {
+            con = ds.getConnection();
+            // 답글 추가 SQL 쿼리
+            String sql = "INSERT INTO board (name, subject, content, id, passwd, parentID, ip) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, boardBean.getName());
+            pstmt.setString(2, boardBean.getSubject());
+            pstmt.setString(3, boardBean.getContent());
+            pstmt.setString(4, boardBean.getId());
+            pstmt.setString(5, boardBean.getPasswd());
+            pstmt.setString(6, boardBean.getparentID()); // 부모 게시물의 ID 설정
+            pstmt.setString(7, boardBean.getIp());
 
-	@Override
-	public void replyBoard(BoardBean boardBean) {
-	}
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("replyBoard 메서드 내부에서 SQL 문 실행 오류: " + e);
+        } finally {
+            freeResource();
+        }
+    }
+
 }
