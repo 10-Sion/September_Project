@@ -51,7 +51,7 @@
     </header>
 
     <!-- 나머지 HTML 내용을 계속 작성할 수 있습니다. -->
-    
+   <div class="main">
     <div class="container-fluid">
 	    <div class="row">
 	        <div class="col-md-12">
@@ -92,15 +92,10 @@
 
     <!-- 하단 화면 -->
     <footer>
-    	<div class="footer-left">
-    	
-    	</div>
-    	<div class="footer-right">
-    		<jsp:include page="mainList.jsp" />
-    	</div>
-        
+    		<jsp:include page="mainFooter.jsp" />
     </footer>
-
+	</div>
+	
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>

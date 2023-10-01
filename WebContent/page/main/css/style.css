@@ -1,3 +1,8 @@
+
+footer {
+	background-color: #dfe1e6;
+}
+
 /* navigation의 스타일 수정 */
 .navigation {
   background-color: #ffffff; /* 배경색 변경 */
@@ -12,7 +17,7 @@
 .menuItem {
   margin: 20px 15px;
   font-family: 'Montserrat', sans-serif;
-  color: #000000; /* 글자색 변경 */
+  color: #000000;
   font-size: 18px;
   text-decoration: none;
   transition: margin-bottom 0.15s ease-in-out, border-bottom 0.15s ease-in-out; /* 호버 효과 추가 */
@@ -27,19 +32,12 @@
 footer {
   display: flex;
   justify-content: space-between;
-  background-color: #333;
-  color: #ffffff; /* 글자색 변경 */
+  color: #ffffff;
   padding: 20px;
+  width: 100%; /* 가로 폭을 100%로 설정 */
+  bottom: 0; /* 하단에 고정 */
 }
 
-.footer-left {
-  flex: 1;
-}
-
-.footer-right {
-  flex: 1;
-  text-align: right;
-}
 
 /* 로그인 회원가입 링크 스타일 수정 */
 .user-links {
@@ -64,4 +62,15 @@ footer {
 
 a:hover {
 	text-decoration: none;
+}
+
+
+/* 부트스트랩쪽 건드는 스타일임	*/
+/* 슬라이더 */
+.carousel-control-prev, .carousel-control-next {
+    background: #eff2f4;
+    font-size: 30px;
+    color: #797a7a;
+    width: 50px;
+    height: 100%; 
 }

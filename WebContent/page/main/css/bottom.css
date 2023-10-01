@@ -1,21 +1,13 @@
 body {
   font-family: "Roboto", sans-serif;
-}
-
-body {
   font-size: 14px;
   font-weight: 400;
   line-height: 1.6em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-html {
   width: 100%;
   height: 100%;
 }
-
-
 
 [ripple] {
   z-index: 1;
@@ -48,28 +40,19 @@ html {
   z-index: 15;
   position: relative;
   background: #FFFFFF;
-  width: 600px;
+  width: 100%;
   border-radius: 4px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  margin: 100px auto 10px;
+  margin: 50px auto 10px;
   overflow: hidden;
 }
 
 .tabs-header {
   position: relative;
-  background: #4285F4;
+  background: #d9e0f5;
   overflow: hidden;
-}
-
-.tabs-header .border {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: #F4B142;
-  width: auto;
-  height: 2px;
-  transition: 0.3s ease;
+  width: 100%;
 }
 
 .tabs-header ul {
@@ -80,16 +63,16 @@ html {
   width: calc(100% - 68px);
 }
 
-.tabs-header li a{
+.tabs-header li a {
   transition: 0.3s ease;
 }
 
 .tabs-header li.active a {
-  background: rgba(255, 255, 255, 0.2); 
-  color: #4285F4; 
+  background: rgba(255, 255, 255, 0.2);
+  color: #7088af;
+  font-weight: 900;
   transition: background 1.5s ease;
 }
-
 
 .tabs-header a {
   z-index: 1;
@@ -106,7 +89,7 @@ html {
   position: absolute;
   top: 0;
   right: 0;
-  background: #4285F4;
+  background: #a3c2ff;
   display: flex;
   align-items: center;
   height: 100%;
@@ -122,7 +105,7 @@ html {
   top: 0;
   left: 0;
   height: 100%;
-  box-shadow: 0 0 20px 10px #4285F4;
+  box-shadow: 0 0 20px 10px #ced5ec;
 }
 
 .tabs-nav i {
@@ -132,9 +115,14 @@ html {
 
 .tabs-content {
   position: relative;
-  padding: 15px 20px;
+  padding: 30px 25px;
   transition: 0.3s ease;
   overflow: hidden;
+}
+
+/* 초기에 다른 탭 숨기기 */
+.tabs-content .tab:not(.active) {
+  display: none;
 }
 
 .tabs-content:after {
@@ -149,11 +137,47 @@ html {
 }
 
 .tabs-content .tab {
-  display: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .tabs-content .tab.active {
-  display: block;
+  display: flex;
+}
+
+
+.door-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.door-item {
+  flex-basis: calc(20% - 20px);
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.door-item img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px; /* 이미지와 제목 사이에 간격 추가 */
+}
+
+.door-item a {
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.tab.active li {
+  margin: 20px 0 13px 50px;
+  font-size: 1.2rem;
 }
 
 .pen-footer {
@@ -180,5 +204,5 @@ html {
 
 .cp-fab {
   background: #FFFFFF !important;
-  color: #4285F4 !important;
+  color: #ced5ec !important;
 }
