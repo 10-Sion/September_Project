@@ -1,6 +1,5 @@
-<!--
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
--->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,27 +17,16 @@
         </div>
 
         <div class="menu_items">
-            <div class="menu_item" onclick="loadPage('stuTable1.jsp')">
+            <div class="menu_item" onclick="loadPage('publicTable1.jsp')">
                 <i class='bx bxs-dashboard'></i>
-                <p>강의 정보</p>
+                <p>전체 강의 목록</p>
             </div>
             
-            <div class="menu_item" onclick="loadPage('stuTable2.jsp')">
+            <div class="menu_item" onclick="loadPage('publicTable2.jsp')">
                 <i class='bx bx-message-rounded-dots'></i>
-                <p>수업 활동</p>
+                <p>나의 강의 목록</p>
                 <i class="fa-regular fa-circle-2"></i>
             </div>
-            
-            <div class="menu_item" onclick="loadPage('stuTable3.jsp')">
-                <i class='bx bx-calendar'></i>
-                <p>커뮤니티</p>
-            </div>
-            
-            <div class="menu_item" onclick="loadPage('stuTable4.jsp')">
-                <i class='bx bx-cog'></i>
-                <p>강의실 관리</p>
-            </div>
-            
             
         </div>
     </div>

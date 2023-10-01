@@ -18,12 +18,12 @@
         </div>
 
         <div class="menu_items">
-            <div class="menu_item" onclick="loadPage('stuTable1.jsp')">
+            <div class="menu_item" onclick="loadPage(gangTable1.jsp')">
                 <i class='bx bxs-dashboard'></i>
                 <p>전체 강의 목록</p>
             </div>
             
-            <div class="menu_item" onclick="loadPage('stuTable2.jsp')">
+            <div class="menu_item" onclick="loadPage('gangTable2.jsp')">
                 <i class='bx bx-message-rounded-dots'></i>
                 <p>나의 강의</p>
                 <i class="fa-regular fa-circle-2"></i>
