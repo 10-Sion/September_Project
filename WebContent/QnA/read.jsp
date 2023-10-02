@@ -1,102 +1,87 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=EUC-KR" %>
 <%@page import="QnA.BoardBean"%>
-
+<jsp:useBean id="bMgr" class="QnA.BoardMgr" />
 <%
-	request.setCharacterEncoding("utf-8");
-	
-	// list.jspì—ì„œ ë„˜ì–´ì˜¨ numê°’ê³¼ nowPageê°’ ë°›ê¸°
-	int num = Integer.parseInt(request.getParameter("num"));
-	String nowPage = request.getParameter("nowPage");
-	
-	String keyField = request.getParameter("keyField");
-	String keyWord = request.getParameter("keyWord");
-	
-	bMgr.upCount(num); // ê²Œì‹œë¬¼ ì½ì–´ì˜¤ê¸° ì „ì— ì¡°íšŒìˆ˜ ì¦ê°€
-	BoardBean bean = bMgr.getBoard(num); // ìš”ì²­í•œ ê²Œì‹œë¬¼ ë¹ˆì¦ˆ ë‹¨ìœ„ë¡œ ê°€ì ¸ì˜¤ê¸°
-	
-	String name = bean.getName();
-	String subject = bean.getSubject();
-	String regdate = bean.getRegdate();
-	String content = bean.getContent();
-	String filename = bean.getFilename();
-	int filesize = bean.getFilesize();
-	String ip = bean.getIp();
-	int count = bean.getCount();
-	session.setAttribute("bean", bean);
+	  request.setCharacterEncoding("EUC-KR");
+	  int num = Integer.parseInt(request.getParameter("num"));
+	  String nowPage = request.getParameter("nowPage");
+	  String keyField = request.getParameter("keyField");
+	  String keyWord = request.getParameter("keyWord");
+	  bMgr.upCount(num);//Á¶È¸¼ö Áõ°¡
+	  BoardBean bean = bMgr.getBoard(num);//°Ô½Ã¹° °¡Á®¿À±â
+	  String name = bean.getName();
+	  String subject = bean.getSubject();
+      String regdate = bean.getRegdate();
+	  String content = bean.getContent();
+	  String filename = bean.getFilename();
+	  int filesize = bean.getFilesize();
+	  String ip = bean.getIp();
+	  int count = bean.getCount();
+	  session.setAttribute("bean", bean);//°Ô½Ã¹°À» ¼¼¼Ç¿¡ ÀúÀå
 %>
-
 <html>
 <head>
-<meta charset="UTF-8">
-<title>QnA</title>
-<link href="style.css" rel="stylesheet">
-
+<title>Q & A</title>
+<link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-	function list() {
-		document.listFrm.submit();
-	}
-
-	function down(filename) {
-		document.downFrm.filename.value=filename;
-		document.downFrm.submit();
-	}
+	function list(){
+	    document.listFrm.submit();
+	 } 
 	
+	function down(filename){
+		 document.downFrm.filename.value=filename;
+		 document.downFrm.submit();
+	}
 </script>
 </head>
-<body bgcolor="#FFFFCC">
-<br><br>
-<table align="center" width="70%" border=0 cellspacing="3" cellpadding="0">
-	<tr>
-	<td bgcolor="#9CA2EE" height="25" align="center">ê¸€ ì½ê¸°</td>
-	</tr>
-	
-	<tr>
-	<td colspan="2">
-	<table border="0" cellpadding="3" cellspacing="0" width="100%">
-	
-	<tr>
-	<td align="center" bgcolor="#DDDDDD" width="10%">ì´ ë¦„</td>
-	<td bgcolor="#FFFFE8"><%=name%></td>
-	<td align="center" bgcolor="#DDDDDD" width="10%">ë“±ë¡ë‚ ì§œ</td>
-	<td bgcolor="#FFFFE8"><%=regdate%></td>
-	</tr>
-	
-	<tr>
-	<td align="center" bgcolor="#DDDDDD">ì œ ëª©</td>
-	<td bgcolor="#FFFFE8" colspan="3"><%=subject%></td>
-	</tr>
-	
-	<tr>
-	<td align="center" bgcolor="#DDDDDD">ì²¨ë¶€íŒŒì¼</td>
-	<td bgcolor="#FFFFE8" colspan="3">
-	<%if (filename != null && !filename.equals("")) {%>
-	<a href="javascript:down('<%=filename%>')"><%=filename%></a>
-	&nbps;&nbps;<font color="blue">(<%=filesize%>KBytes)</font>
-	<%} else{%> ë“±ë¡ëœ íŒŒì¼ì´ ì—†ìŠµë‹ˆë‹¤. <%} %>
-	</td>
-	</tr>
-	
-	<tr>
-	<td colspan="4"><br><pre><%=content%></pre><br></td>
-	</tr>
-	<tr>
-	<td colspan="4" align="right">
-	<%=ip%>ë¡œ ë¶€í„° ê¸€ì„ ë‚¨ê¸°ì…¨ìŠµë‹ˆë‹¤./ ì¡°íšŒìˆ˜ <%=count%>
-	</td>
-	</tr>
-	</table>
-	</td>
-	</tr>
-	<tr>
-	<td align="center" colspan="2">
-	<hr>
-	[ <a href="javascript:list()">ë¦¬ìŠ¤íŠ¸</a> |
-	<a href="update.jsp?nowPage=<%=nowPage%>&num=<%=num%>">ìˆ˜ ì •</a> |
-	<a href="reply.jsp?nowPage=<%=nowPage%>">ë‹µ ë³€</a> |
-	<a href="delete.jsp?nowPage=<%=nowPage%>&num=<%=num%>">ì‚­ ì œ</a> ]<br>
-	</td>
-	</tr>
+<body>
+<br/><br/>
+<table align="center" width="600" cellspacing="3">
+ <tr>
+  <td bgcolor="#9CA2EE" height="25" align="center">±ÛÀĞ±â</td>
+ </tr>
+ <tr>
+  <td colspan="2">
+   <table cellpadding="3" cellspacing="0" width="100%"> 
+    <tr> 
+  <td align="center" bgcolor="#DDDDDD" width="10%"> ÀÌ ¸§ </td>
+  <td bgcolor="#FFFFE8"><%=name%></td>
+  <td align="center" bgcolor="#DDDDDD" width="10%"> µî·Ï³¯Â¥ </td>
+  <td bgcolor="#FFFFE8"><%=regdate%></td>
+ </tr>
+ <tr> 
+    <td align="center" bgcolor="#DDDDDD"> Á¦ ¸ñ</td>
+    <td bgcolor="#FFFFE8" colspan="3"><%=subject%></td>
+   </tr>
+   <tr> 
+     <td align="center" bgcolor="#DDDDDD">Ã·ºÎÆÄÀÏ</td>
+     <td bgcolor="#FFFFE8" colspan="3">
+     <% if( filename !=null && !filename.equals("")) {%>
+  		<a href="javascript:down('<%=filename%>')"><%=filename%></a>
+  		 &nbsp;&nbsp;<font color="blue">(<%=filesize%>KBytes)</font>  
+  		 <%} else{%> µî·ÏµÈ ÆÄÀÏÀÌ ¾ø½À´Ï´Ù.<%}%>
+     </td>
+   </tr>
+   <tr> 
+    <td colspan="4"><br/><pre><%=content%></pre><br/></td>
+   </tr>
+   <tr>
+    <td colspan="4" align="right">
+     <%=ip%>·Î ºÎÅÍ ±ÛÀ» ³²±â¼Ì½À´Ï´Ù./  Á¶È¸¼ö  <%=count%>
+    </td>
+   </tr>
+   </table>
+  </td>
+ </tr>
+ <tr>
+  <td align="center" colspan="2"> 
+ <hr/>
+ [ <a href="javascript:list()" >¸®½ºÆ®</a> | 
+ <a href="update.jsp?nowPage=<%=nowPage%>&num=<%=num%>" >¼ö Á¤</a> |
+ <a href="reply.jsp?nowPage=<%=nowPage%>" >´ä º¯</a> |
+ <a href="delete.jsp?nowPage=<%=nowPage%>&num=<%=num%>">»è Á¦</a> ]<br/>
+  </td>
+ </tr>
 </table>
 
 <form name="downFrm" action="download.jsp" method="post">
@@ -105,10 +90,10 @@
 
 <form name="listFrm" method="post" action="list.jsp">
 	<input type="hidden" name="nowPage" value="<%=nowPage%>">
-	<%if (!(keyWord==null || keyWord.equals(""))){ %>
+	<%if(!(keyWord==null || keyWord.equals(""))){ %>
 	<input type="hidden" name="keyField" value="<%=keyField%>">
 	<input type="hidden" name="keyWord" value="<%=keyWord%>">
-	<%} %>
+	<%}%>
 </form>
 </body>
 </html>
