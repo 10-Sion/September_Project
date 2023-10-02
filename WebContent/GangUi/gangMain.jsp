@@ -7,9 +7,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../pageSetUp/gangStyle.css">
+    <link rel="stylesheet" href="../pageSetUp/mainTopStyle.css">
+    <link rel="stylesheet" href="../pageSetUp/gangMainList.css">
     <title>강의실 메인 페이지</title>
 </head>
 <body>
+
+	<div class="top">
+		<jsp:include page="../page/main/mainTop.jsp" />
+	</div>
     <div class="container">
         <!-- 왼쪽 사이드바 (공용 강의실 링크 포함) -->
         <div class="left_sidebar">
@@ -28,11 +34,21 @@
                     <h2>강의실 메인 페이지</h2>
                 </div>
             </div>
+            
             <!-- 강의실 메인 페이지 내용 -->
             
+           	<div class="main-content">
+	           	<div class="gangMain-left">
+	           		<!-- 개인정보 페이지 -->
+	           	</div>
+	           	<div>
+	           		<jsp:include page="../page/main/mainRightFooter.jsp" />
+	           	</div>
+           	</div>
         </div>
     </div>
 
 
+	<script src="../pageSetUp/gangApp.js"></script>
 </body>
 </html>

@@ -12,53 +12,10 @@
     <link href="css/bottom.css" rel="stylesheet">
 </head>
 <body>
-    <%
-        String contextPath = request.getContextPath();
-        Integer uniqueId = (Integer) session.getAttribute("uniqueId");
-        
-        out.println("uniqueId: " + uniqueId); // uniqueId 값을 출력
-    %>
-    <header>
-    	
-    
-        <!-- 로그인과 회원가입 링크 -->
-   		 <div class="user-links">
-   		 
-        <%
-        if (uniqueId != null) {
-        %>
-        <a href="../../LoginServlet" id="logoutButton" class="small-link">로그아웃</a>
-        <%
-        } else {
-        %>
-        <a href="login.jsp" id="loginButton" class="small-link">로그인</a>
-        <a href="Form.jsp" id="FormButton" class="small-link">회원가입</a>
-        <%
-        }
-        %>
-    </div>
-
-        <!-- JavaScript 파일을 로드하면서 uniqueId 값을 포함하여 전달 -->
-        <script>
-            var uniqueId = <%= uniqueId %>;
-        </script>
-        <script src="js/login.js"></script>
-        
-        
-        <div class="navigation">
-        
-        <div class="logo">
-        	<a href="MainPage.jsp"><img src="image/Hogwarts-Crest.png" alt="로고 이미지"></a>
-        	<h1>AAAA대학교</h1>
+	<div class="top">
+    		<jsp:include page="mainTop.jsp" />
     	</div>
-        
-            <a href="#" class="menuItem">DOOR</a>
-            <a href="#" class="menuItem">강의실</a>
-            <a href="#" class="menuItem">공지사항</a>
-            <!-- uniqueId를 사용하여 My page로 이동하는 함수 호출 -->
-            <a href="#" class="menuItem" onclick="redirectToMyPage('<%= uniqueId %>')">마이페이지</a>
-        </div>
-    </header>
+    
 
     <!-- 나머지 HTML 내용을 계속 작성할 수 있습니다. -->
    <div class="main">
@@ -111,7 +68,19 @@
     	
     </footer>
 	</div>
-	
+	<div class="real-footer">
+		<div class="footer-page">
+			<a>대학 홈페이지</a>
+			<a>대학원 홈페이지</a>
+		</div>
+		
+		<div class="footer-content">
+			<h6>머글캠퍼스</h6>
+			<p>(00000ㅁㅁㅁㅁ ㅇㅇㅇㅇ ㄹㄹㄹ</p>
+			<p>tel. 00 0000 0000</p> 
+		</div>
+		COPYRIGHT ⓒ 2023 UNIVERSITY. ALL RIGHTS RESERVED.
+	</div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>

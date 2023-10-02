@@ -51,7 +51,7 @@ body {
 
 .tabs-header {
   position: relative;
-  background: #d9e0f5;
+  background: #E3F4F4;
   overflow: hidden;
   width: 100%;
 }
@@ -69,10 +69,10 @@ body {
 }
 
 .tabs-header li.active a {
-  background: rgba(255, 255, 255, 0.2);
-  color: #7088af;
+  background: rgba(255, 255, 255, 0.7);
+  color: #6375c7;
   font-weight: 900;
-  transition: background 1.5s ease;
+  transition: background 1s ease;
 }
 
 .tabs-header a {
@@ -90,23 +90,13 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  background: #a3c2ff;
+  background: #D2E9E9;
   display: flex;
   align-items: center;
   height: 100%;
   padding: 0 10px;
   color: #FFFFFF;
   user-select: none;
-}
-
-.tabs-nav:before {
-  content: '';
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  box-shadow: 0 0 20px 10px #ced5ec;
 }
 
 .tabs-nav i {
@@ -210,8 +200,6 @@ body {
   color: #ced5ec !important;
 }
 
-
-/* right-footer	*/
 /* 변수 */
 :root {
   --gray-darker: #444444;
