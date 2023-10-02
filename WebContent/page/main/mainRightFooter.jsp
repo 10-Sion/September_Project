@@ -55,10 +55,7 @@
 	                    <img src="thumbnail4.jpg" alt="Thumbnail 4">
 	                    <a href="#">신규 DOOR 4</a>
 	                </div>
-	                <div class="door-item">
-	                    <img src="thumbnail5.jpg" alt="Thumbnail 5">
-	                    <a href="#">신규 DOOR 5</a>
-	                </div>
+
 	            </div>
 	        </div>
 	        <div class="tab" tab-id="3">
@@ -80,9 +77,6 @@
 	                    <img src="thumbnail4.jpg" alt="Thumbnail 4">
 	                    <a href="#">추천 DOOR 4</a>
 	                </div>
-	                <div class="door-item">
-	                    <img src="thumbnail5.jpg" alt="Thumbnail 5">
-	                    <a href="#">추천 DOOR 5</a>
 	                </div>
 	            </div>
 	        </div>

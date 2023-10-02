@@ -19,8 +19,11 @@
         out.println("uniqueId: " + uniqueId); // uniqueId 값을 출력
     %>
     <header>
+    	
+    
         <!-- 로그인과 회원가입 링크 -->
    		 <div class="user-links">
+   		 
         <%
         if (uniqueId != null) {
         %>
@@ -41,7 +44,14 @@
         </script>
         <script src="js/login.js"></script>
         
+        
         <div class="navigation">
+        
+        <div class="logo">
+        	<a href="MainPage.jsp"><img src="image/Hogwarts-Crest.png" alt="로고 이미지"></a>
+        	<h1>AAAA대학교</h1>
+    	</div>
+        
             <a href="#" class="menuItem">DOOR</a>
             <a href="#" class="menuItem">강의실</a>
             <a href="#" class="menuItem">공지사항</a>
@@ -92,7 +102,13 @@
 
     <!-- 하단 화면 -->
     <footer>
-    		<jsp:include page="mainFooter.jsp" />
+    	<div class="right-footer">
+    		<jsp:include page="mainLeftFooter.jsp" />
+    	</div>
+    	<div class="left-footer">
+    		<jsp:include page="mainRightFooter.jsp" />
+    	</div>
+    	
     </footer>
 	</div>
 	

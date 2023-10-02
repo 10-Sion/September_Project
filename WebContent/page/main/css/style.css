@@ -1,67 +1,80 @@
-
-footer {
-	background-color: #dfe1e6;
+.logo {
+    margin-right: auto;
 }
 
-/* navigation의 스타일 수정 */
+.logo img {
+    height: 85px; 
+    width: auto; 
+    cursor: pointer;
+}
+.logo h1 {
+	float: right;
+	margin: 20px;
+}
+
 .navigation {
-  background-color: #ffffff; /* 배경색 변경 */
-  padding: 10px 30px;
-  height: 70px;
-  border-bottom: 1px solid #eeeeee; /* 하단 경계선 색상 변경 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background-color: #ffffff; 
+    padding: 10px 30px;
+    height: 70px;
+    border-bottom: 1px solid #eeeeee; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
 }
 
 .menuItem {
-  margin: 20px 15px;
-  font-family: 'Montserrat', sans-serif;
-  color: #000000;
-  font-size: 18px;
-  text-decoration: none;
-  transition: margin-bottom 0.15s ease-in-out, border-bottom 0.15s ease-in-out; /* 호버 효과 추가 */
+    margin: 20px 30px;
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    font-size: 18px;
+    text-decoration: none;
+    transition: margin-bottom 0.15s ease-in-out, border-bottom 0.15s ease-in-out; /* 호버 효과 추가 */
 }
 
 .menuItem:hover {
-  margin-bottom: 17px;
-  border-bottom: 3px solid #000000; /* 호버 시 밑줄 색상 및 굵기 변경 */
-}
-
-/* footer 스타일 수정 */
-footer {
-  display: flex;
-  justify-content: space-between;
-  color: #ffffff;
-  padding: 20px;
-  width: 100%; /* 가로 폭을 100%로 설정 */
-  bottom: 0; /* 하단에 고정 */
+    margin-bottom: 17px;
+    border-bottom: 3px solid #000000; /* 호버 시 밑줄 색상 및 굵기 변경 */
 }
 
 
 /* 로그인 회원가입 링크 스타일 수정 */
 .user-links {
-  display: flex;
-  align-items: center;
-  float: right;
-  margin-right: 10px;
+    display: flex;
+    align-items: center;
+    float: right;
+    margin-right: 10px;
 }
 
 .small-link {
-  font-size: 14px;
-  margin-left: 10px;
-  text-decoration: none;
-  color: #333;
-  transition: text-decoration 0.15s ease-in-out; /* 호버 효과 추가 */
+    font-size: 14px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: text-decoration 0.15s ease-in-out; /* 호버 효과 추가 */
 }
 
 .small-link:hover {
-  text-decoration: underline;
-  
+    text-decoration: underline;
 }
 
 a:hover {
-	text-decoration: none;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #dfe1e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.left-footer,
+.right-footer {
+    flex: 1; /* 동일한 비율로 가로 정렬 및 너비 절반 유지 */
 }
 
 
