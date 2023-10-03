@@ -44,13 +44,12 @@ public class DBConnectionMgr {
     }
 
 
-    /** Returns a Vector of java.sql.Connection objects */
     public Vector getConnectionList() {
         return connections;
     }
 
 
-    /** Opens specified "count" of connections and adds them to the existing pool */
+
     public synchronized void setInitOpenConnections(int count)
             throws SQLException {
         Connection c = null;
@@ -66,13 +65,13 @@ public class DBConnectionMgr {
     }
 
 
-    /** Returns a count of open connections */
+
     public int getConnectionCount() {
         return connections.size();
     }
 
 
-    /** Returns an unused existing or new connection.  */
+
     public synchronized Connection getConnection()
             throws Exception {
         if (!initialized) {
@@ -91,7 +90,7 @@ public class DBConnectionMgr {
         for (int i = 0; i < connections.size(); i++) {
             co = (ConnectionObject) connections.elementAt(i);
 
-            // If connection is not in use, test to ensure it's still valid!
+   
             if (!co.inUse) {
                 try {
                     badConnection = co.connection.isClosed();
@@ -102,7 +101,7 @@ public class DBConnectionMgr {
                     e.printStackTrace();
                 }
 
-                // Connection is bad, remove from pool
+          
                 if (badConnection) {
                     connections.removeElementAt(i);
                     trace("ConnectionPoolManager: Remove disconnected DB connection #" + i);
@@ -129,7 +128,7 @@ public class DBConnectionMgr {
     }
 
 
-    /** Marks a flag in the ConnectionObject to indicate this connection is no longer in use */
+
     public synchronized void freeConnection(Connection c) {
         if (c == null)
             return;
@@ -190,7 +189,6 @@ public class DBConnectionMgr {
     }
 
 
-    /** Marks a flag in the ConnectionObject to indicate this connection is no longer in use */
     public synchronized void removeConnection(Connection c) {
         if (c == null)
             return;
@@ -236,7 +234,7 @@ public class DBConnectionMgr {
     }
 
 
-    /** Closes all connections and clears out the connection pool */
+
     public void releaseFreeConnections() {
         trace("ConnectionPoolManager.releaseFreeConnections()");
 
@@ -251,7 +249,7 @@ public class DBConnectionMgr {
     }
 
 
-    /** Closes all connections and clears out the connection pool */
+
     public void finalize() {
         trace("ConnectionPoolManager.finalize()");
 
