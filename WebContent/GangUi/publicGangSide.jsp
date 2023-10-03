@@ -20,22 +20,12 @@
                 <li>
                     <a href="javascript:void(0);">
                     <i class="far fa-clone">
-                    </i>성적 관리</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                    <i class="far fa-calendar-alt">
                     </i>공지사항</a>
                 </li>
                 <li>
                     <a href="javascript:void(0);">
-                    <i class="far fa-chart-bar">
-                    </i>Q&A 게시판</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                    <i class="far fa-copy">
-                    </i>과제 게시판</a>
+                    <i class="far fa-calendar-alt">
+                    </i>마이페이지</a>
                 </li>
 
             </ul>
