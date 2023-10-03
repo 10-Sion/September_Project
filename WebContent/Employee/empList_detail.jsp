@@ -48,5 +48,6 @@
     
     <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/employee/edit?currentEmployeeId=${employee.empNo}')">수정</a>
     <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/employee/list')">직원 목록으로 돌아가기</a>
+    
 </body>
 </html>

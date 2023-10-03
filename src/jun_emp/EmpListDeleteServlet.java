@@ -35,16 +35,25 @@ public class EmpListDeleteServlet extends HttpServlet {
 
         // EmployeeService를 이용하여 직원 정보 삭제
         if (employeeService != null) {
-            employeeService.deleteEmployee(empNo);
+            boolean deleted = employeeService.deleteEmployee(empNo);
 
-            // 삭제 성공 메시지 설정
-            request.setAttribute("successMessage", "직원 정보가 삭제되었습니다.");
+            if (deleted) {
+                // 삭제 성공 메시지 설정
+                request.setAttribute("successMessage", "직원 정보가 삭제되었습니다.");
+                // 성공적으로 삭제되었음을 클라이언트에 응답
+                response.getWriter().write("success");
+            } else {
+                // 삭제 실패 메시지 설정
+                request.setAttribute("errorMessage", "직원 정보 삭제 실패.");
+                // 삭제 실패함을 클라이언트에 응답
+                response.getWriter().write("failure");
+            }
         } else {
             // EmployeeService가 초기화되지 않은 경우 처리
             System.err.println("EmployeeService is not initialized.");
+            // 초기화 오류를 클라이언트에 응답
+            response.getWriter().write("failure");
         }
-
-        // 직원 목록 페이지로 리다이렉트
-        response.sendRedirect(request.getContextPath() + "/employee/list");
     }
+
 }
