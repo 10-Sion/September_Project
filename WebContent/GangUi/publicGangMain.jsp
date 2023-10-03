@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../pageSetUp/gangStyle.css">
+    <link rel="stylesheet" href="../pageSetUp/ganSubStyle.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <title>공용 강의실 메인 페이지</title>
 </head>
 <body>

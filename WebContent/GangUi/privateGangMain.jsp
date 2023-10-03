@@ -5,12 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../pageSetUp/gangStyle.css">
+    <link rel="stylesheet" href="../pageSetUp/gangSubStyle.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <title>개인 강의실 메인 페이지</title>
 </head>
 <body>
     <div class="container">
-        <!-- 왼쪽 사이드바 (개인 강의실 페이지 링크 포함) -->
+        <!-- 왼쪽 사이드바 -->
         <div class="left_sidebar">
             <jsp:include page="privateGangSide.jsp" />
         </div>
@@ -41,5 +42,7 @@
             </ul>
         </div>
     </div>
+    
+    <script src="../pageSetUp/gangSubApp.js"></script>
 </body>
 </html>
