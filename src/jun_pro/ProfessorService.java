@@ -80,7 +80,7 @@ public class ProfessorService {
             return false;
         }
 
-        String sql = "UPDATE professor SET pw = ?, name = ?, addr = ?, phone = ?, tel = ?, email = ? WHERE pro_no = ?";
+        String sql = "UPDATE professor SET pw = ?, name = ?, addr = ?, phone = ?, tel = ?, email = ?, dep_name = ?, major = ?, labNum = ? WHERE pro_no = ?";
 
         try (Connection dbConnection = dataSource.getConnection();
              PreparedStatement statement = dbConnection.prepareStatement(sql)) {
@@ -90,7 +90,10 @@ public class ProfessorService {
             statement.setString(4, professor.getPhone());
             statement.setString(5, professor.getTel());
             statement.setString(6, professor.getEmail());
-            statement.setInt(7, professor.getProNo());
+            statement.setString(7, professor.getDepName());
+            statement.setString(8, professor.getMajor());
+            statement.setInt(9, professor.getLabNum());
+            statement.setInt(10, professor.getProNo());
 
             int rowCount = statement.executeUpdate();
 
@@ -101,6 +104,7 @@ public class ProfessorService {
             throw new RuntimeException(e);
         }
     }
+
 
     // 교수 삭제
     public boolean deleteProfessor(int proNo) {

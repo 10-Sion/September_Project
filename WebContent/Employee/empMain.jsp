@@ -26,7 +26,8 @@
         <% request.setAttribute("errorMessage", "직원 정보를 가져오지 못했습니다."); %>
         <% request.getRequestDispatcher("/Employee/error.jsp").forward(request, response); %>
     <% } %>
-  
+  	
+  	
     <div class="left_sidebar">
       <jsp:include page="empSidebar.jsp" />
     </div>

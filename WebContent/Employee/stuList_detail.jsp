@@ -1,8 +1,12 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        .edit_form {display: none;}
+    </style>
+    
     <meta charset="UTF-8">
     <title>학생 세부 정보</title>
 </head>
@@ -11,7 +15,42 @@
     
     <c:if test="${student != null}">
         <table>
-            <!-- 학생 정보 표시 부분 (이전 코드와 동일) -->
+            <tr>
+                <th>학번:</th>
+                <td>${student.stuNo}</td>
+            </tr>
+            <tr>
+                <th>이름:</th>
+                <td>${student.name}</td>
+            </tr>
+            <tr>
+                <th>비밀번호:</th>
+                <td>${student.pw}</td>
+            </tr>
+            <tr>
+                <th>주소:</th>
+                <td>${student.addr}</td>
+            </tr>
+            <tr>
+                <th>전화번호:</th>
+                <td>${student.phone}</td>
+            </tr>
+            <tr>
+                <th>휴대폰번호:</th>
+                <td>${student.tel}</td>
+            </tr>
+            <tr>
+                <th>이메일:</th>
+                <td>${student.email}</td>
+            </tr>
+            <tr>
+                <th>학부:</th>
+                <td>${student.dep_name}</td>
+            </tr>
+            <tr>
+                <th>전공:</th>
+                <td>${student.major}</td>
+            </tr>
         </table>
     
         <!-- 수정 폼 -->
@@ -35,15 +74,16 @@
     
             <label for="newEmail">새로운 이메일:</label>
             <input type="text" id="newEmail" name="newEmail" value="${student.email}"><br>
+            
+            <label for="newDepName">새로운 학부:</label>
+            <input type="text" id="newDepName" name="newDepName" value="${student.dep_name}"><br>
+            
+            <label for="newMajor">새로운 전공:</label>
+            <input type="text" id="newMajor" name="newMajor" value="${student.major}"><br>
     
             <input type="submit" value="수정">
         </form>
         
-        <!-- 삭제 폼 -->
-        <form action="<%=request.getContextPath()%>/student/delete" method="POST" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
-            <input type="hidden" name="stuNo" value="${student.stuNo}">
-            <input type="submit" value="삭제">
-        </form>
     </c:if>
     
     <c:if test="${student == null}">
@@ -51,5 +91,7 @@
     </c:if>
     
     <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/student/list')">학생 목록으로 돌아가기</a>
+    
+    <script src="../pageSetUp/myPage.js"></script>
 </body>
 </html>

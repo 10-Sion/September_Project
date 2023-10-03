@@ -27,16 +27,8 @@ public class ProfessorEditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-        // 세션에서 현재 로그인된 사용자의 교수 정보 가져오기
-        HttpSession session = request.getSession();
-        Integer currentProfessorId = (Integer) session.getAttribute("currentProfessorId");
-
-        if (currentProfessorId == null) {
-            // 로그인되지 않은 경우 또는 세션에 교수 정보가 없는 경우 처리
-            request.setAttribute("errorMessage", "로그인이 필요합니다.");
-            request.getRequestDispatcher("/Professor/error.jsp").forward(request, response);
-            return;
-        }
+        // 폼에서 currentProfessorId 값을 가져오기
+        int currentProfessorId = Integer.parseInt(request.getParameter("currentProfessorId"));
 
         // ProfessorService를 사용하여 교수 정보를 가져오기
         if (professorService != null) {
@@ -49,6 +41,9 @@ public class ProfessorEditServlet extends HttpServlet {
             String newPhone = request.getParameter("newPhone");
             String newTel = request.getParameter("newTel");
             String newEmail = request.getParameter("newEmail");
+            String newDepName = request.getParameter("newDepName");
+            String newMajor = request.getParameter("newMajor"); 
+            int newLabNum = Integer.parseInt(request.getParameter("newLabNum"));
 
             // 교수 정보 수정
             currentProfessor.setPw(newPw);
@@ -57,6 +52,9 @@ public class ProfessorEditServlet extends HttpServlet {
             currentProfessor.setPhone(newPhone);
             currentProfessor.setTel(newTel);
             currentProfessor.setEmail(newEmail);
+            currentProfessor.setDepName(newDepName);
+            currentProfessor.setMajor(newMajor);
+            currentProfessor.setLabNum(newLabNum);
 
             // 수정된 데이터를 ProfessorService를 사용하여 업데이트
             professorService.updateProfessor(currentProfessor);
