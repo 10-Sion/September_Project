@@ -48,7 +48,7 @@
         <button class="editBtn" onclick="showEditForm()">수정</button>
 
         <!-- 수정 폼 -->
-        <form action="<%=request.getContextPath()%>/employee/update" method="POST" onsubmit="return confirm('수정하시겠습니까?')" class="edit_form">
+        <form action="<%=request.getContextPath()%>/employee/update" method="POST" class="edit_form">
             <input type="hidden" name="currentEmployeeId" value="${employee.empNo}">
     
             <label for="newPw">새로운 비밀번호:</label>
