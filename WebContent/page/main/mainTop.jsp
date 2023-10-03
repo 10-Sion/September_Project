@@ -40,7 +40,7 @@
         	<h1>AAAA대학교</h1>
     	</div>
         
-            <a href="#" class="menuItem">DOOR</a>
+            <a href="../../GangUi/gangMain.jsp" class="menuItem">학사관리시스템</a>
             <a href="#" class="menuItem">강의실</a>
             <a href="#" class="menuItem">공지사항</a>
             <!-- uniqueId를 사용하여 My page로 이동하는 함수 호출 -->

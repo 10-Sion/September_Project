@@ -1,109 +1,57 @@
-$(document).ready(function () {
+Vue.config.devtools = true;
 
-  // 초기 Border 위치 설정
-  var activePos = $('.tabs-header .active').position();
+// Vue component를 jQuery로 변경
+$.fn.card = function () {
+  return this.each(function () {
+    const $cardWrap = $(this);
+    const $card = $cardWrap.find('.card');
+    const $cardBg = $cardWrap.find('.card-bg');
+    const $cardInfo = $cardWrap.find('.card-info');
+    const width = $cardWrap.width();
+    const height = $cardWrap.height();
+    let mouseX = 0;
+    let mouseY = 0;
+    let mouseLeaveDelay = null;
 
-  // 위치 변경 함수
-  function changePos() {
-    // 위치 업데이트
-    activePos = $('.tabs-header .active').position();
+    // 마우스 이벤트 처리
+    $cardWrap.on('mousemove', handleMouseMove);
+    $cardWrap.on('mouseenter', handleMouseEnter);
+    $cardWrap.on('mouseleave', handleMouseLeave);
 
-    // 위치 및 너비 변경
-    $('.border').stop().css({
-      left: activePos.left,
-      width: $('.tabs-header .active').width()
-    });
-  }
-
-  changePos();
-
-  // 탭 변경 함수
-  function changeTab() {
-    var getTabId = $('.tabs-header .active a').attr('tab-id');
-
-    // 활성 탭 상태 제거
-    $('.tab').stop().fadeOut(300, function () {
-      // 클래스 제거
-      $(this).removeClass('active');
-    }).hide();
-
-    $('.tab[tab-id=' + getTabId + ']').stop().fadeIn(300, function () {
-      // 클래스 추가
-      $(this).addClass('active');
-    });
-  }
-
-  // 탭 클릭 이벤트
-  $('.tabs-header a').on('click', function (e) {
-    e.preventDefault();
-
-    // 탭 ID
-    var tabId = $(this).attr('tab-id');
-
-    // 활성 상태 제거
-    $('.tabs-header a').stop().parent().removeClass('active');
-
-    // 활성 상태 추가
-    $(this).stop().parent().addClass('active');
-
-    changePos();
-
-    // 현재 아이템 업데이트
-    tabCurrentItem = tabItems.filter('.active');
-
-    // 활성 상태 제거
-    $('.tab').stop().fadeOut(300, function () {
-      // 클래스 제거
-      $(this).removeClass('active');
-    }).hide();
-
-    // 활성 상태 추가
-    $('.tab[tab-id="' + tabId + '"]').stop().fadeIn(300, function () {
-      // 클래스 추가
-      $(this).addClass('active');
-    });
-  });
-
-  // 탭 아이템
-  var tabItems = $('.tabs-header ul li');
-
-  // 현재 탭 아이템
-  var tabCurrentItem = tabItems.filter('.active');
-
-  // 다음 버튼
-  $('#next').on('click', function (e) {
-    e.preventDefault();
-
-    var nextItem = tabCurrentItem.next();
-
-    tabCurrentItem.removeClass('active');
-
-    if (nextItem.length) {
-      tabCurrentItem = nextItem.addClass('active');
-    } else {
-      tabCurrentItem = tabItems.first().addClass('active');
+    function handleMouseMove(e) {
+      mouseX = e.pageX - $cardWrap.offset().left - width / 2;
+      mouseY = e.pageY - $cardWrap.offset().top - height / 2;
+      updateCardStyle();
     }
 
-    changePos();
-    changeTab();
-  });
-
-  // 이전 버튼
-  $('#prev').on('click', function (e) {
-    e.preventDefault();
-
-    var prevItem = tabCurrentItem.prev();
-
-    tabCurrentItem.removeClass('active');
-
-    if (prevItem.length) {
-      tabCurrentItem = prevItem.addClass('active');
-    } else {
-      tabCurrentItem = tabItems.last().addClass('active');
+    function handleMouseEnter() {
+      clearTimeout(mouseLeaveDelay);
     }
 
-    changePos();
-    changeTab();
-  });
+    function handleMouseLeave() {
+      mouseLeaveDelay = setTimeout(() => {
+        mouseX = 0;
+        mouseY = 0;
+        updateCardStyle();
+      }, 1000);
+    }
 
-});
+    function updateCardStyle() {
+      const rX = (mouseX / width) * 30;
+      const rY = (mouseY / height) * -30;
+      const tX = (mouseX / width) * -40;
+      const tY = (mouseY / height) * -40;
+
+      $card.css({
+        transform: `rotateY(${rX}deg) rotateX(${rY}deg)`
+      });
+
+      $cardBg.css({
+        transform: `translateX(${tX}px) translateY(${tY}px)`
+      });
+    }
+  });
+};
+
+// 컴포넌트 적용
+$('.card-wrap').card();
