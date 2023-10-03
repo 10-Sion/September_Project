@@ -14,7 +14,8 @@
 	        <th>이름</th>
 	        <th>전화번호</th>
 	        <th>이메일</th>
-	        <th>조회/수정/삭제</th>
+	        <th>조회/수정</th>
+	       	<th>삭제</th>
 	    </tr>
 	    <c:forEach items="${employees}" var="employee">
 	        <tr>
