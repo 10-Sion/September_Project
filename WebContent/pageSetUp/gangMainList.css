@@ -1,0 +1,146 @@
+.tabs {
+  z-index: 15;
+  position: relative;
+  background: #FFFFFF;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin: 50px auto 10px;
+  overflow: hidden;
+}
+
+.tabs-header {
+  position: relative;
+  background: #d9e0f5;
+  overflow: hidden;
+  width: 100%;
+}
+
+.tabs-header ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  width: calc(100% - 68px);
+}
+
+.tabs-header li a {
+  transition: 0.3s ease;
+}
+
+.tabs-header li.active a {
+  background: rgba(255, 255, 255, 0.2);
+  color: #7088af;
+  font-weight: 900;
+  transition: background 1.5s ease;
+}
+
+.tabs-header a {
+  z-index: 1;
+  display: block;
+  box-sizing: border-box;
+  padding: 15px 20px;
+  color: #FFFFFF;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.tabs-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #a3c2ff;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 10px;
+  color: #FFFFFF;
+  user-select: none;
+}
+
+.tabs-nav:before {
+  content: '';
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  box-shadow: 0 0 20px 10px #ced5ec;
+}
+
+.tabs-nav i {
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.tabs-content {
+  position: relative;
+  padding: 30px 25px;
+  transition: 0.3s ease;
+  overflow: hidden;
+}
+
+/* 초기에 다른 탭 숨기기 */
+.tabs-content .tab:not(.active) {
+  display: none;
+}
+
+.tabs-content:after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 1px;
+  box-shadow: 0 0 20px 10px #FFFFFF;
+}
+
+.tabs-content .tab {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.tabs-content .tab.active {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* 중앙 정렬 추가 */
+}
+
+.door-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%; /* 전체 너비를 차지하도록 수정 */
+}
+
+.door-item {
+  flex-basis: calc(50% - 20px); /* 한 줄에 2개씩 표시하도록 수정 */
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.door-item img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.door-item a {
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.tab.active li {
+  margin: 20px 0 13px 50px;
+  font-size: 1.2rem;
+}

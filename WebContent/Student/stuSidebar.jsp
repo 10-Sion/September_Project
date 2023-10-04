@@ -26,7 +26,7 @@
                 <p>학생정보</p>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('<%=contextPath%>/stu/selStudnet.do?stu_no=<%=session_no%>')">
+            <div class="menu_item" onclick="loadServletData('<%=contextPath%>/stu/selSubject.do?stu_no=<%=session_no%>')">
                 <i class='bx bx-message-rounded-dots'></i>
                 <p>수강신청</p>
                 <i class="fa-regular fa-circle-2"></i>
@@ -41,12 +41,11 @@
                 <i class='bx bx-cog'></i>
                 <p>Settings</p>
             </div>
-            <div class="menu_item" onclick="loadPage('stuTable4.jsp')">
+            
+            <div class="menu_item" onclick="loadServletData('<%=contextPath%>/ReportBoard/ReportList.jsp')">
                 <i class='bx bx-cog'></i>
                 <p>과제</p>
             </div>
-            
-            
         </div>
     </div>
 </body>

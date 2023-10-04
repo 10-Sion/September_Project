@@ -24,24 +24,24 @@
             
             <div class="menu_item" onclick="loadServletData('<%=request.getContextPath()%>/employee/list')">
                 <i class='bx bx-message-rounded-dots'></i>
-                <p>Employee</p>
+                <p>통합 관리</p>
                 <i class="fa-regular fa-circle-2"></i>
             </div>
             
             <div class="menu_item" onclick="loadServletData('<%=request.getContextPath()%>/professor/list')">
                 <i class='bx bx-calendar'></i>
-                <p>Professor</p>
+                <p>공지사항 작성(미완)</p>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('<%=request.getContextPath()%>/student/list')">
+            <div class="menu_item" onclick="window.location.href='../GangUi/gangMain.jsp'">
                 <i class='bx bx-cog'></i>
-                <p>Student</p>
+                <p>학사관리시스템</p>
             </div>
             
             
         </div>
     </div>
     
-
+    <script src="../pageSetUp/myPage.js"></script>
 </body>
 </html>

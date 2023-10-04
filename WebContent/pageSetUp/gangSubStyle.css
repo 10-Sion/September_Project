@@ -1,0 +1,649 @@
+.top {
+	height: 10%;
+}
+
+/* 사이드바	*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+	font-family: 'Roboto', sans-serif;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+i {
+	margin-right: 10px;
+}
+h2{
+	margin:0px;
+}
+
+h6{
+	margin:0px;
+	color:#777;
+}
+
+#accordian {
+	background: #C0DBEA;
+	width: 250px;
+	padding: 10px;
+	float: left;
+	height: 100vh;
+	overflow-x: hidden;
+	position: relative;
+	padding-right: 0px;
+}
+.main-navbar{
+	position: relative;
+}
+
+#accordian li {
+	list-style-type: none;
+}
+
+#accordian ul li a{
+	color: #C8B6A6;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bolder;
+    line-height: 45px;
+    display: block;
+    padding: 0px 20px;
+    transition-duration:0.6s;
+	transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+}
+
+#accordian>ul>li.active>a{
+	color: #7185bb;
+	font-weight: bolder;
+	background-color: transparent;
+	transition: all 0.7s;
+}
+
+
+#accordian a:not(:only-child):after {
+	content: "\f105";
+	position: absolute;
+	right: 20px;
+	top: 10%;
+	font-size: 14px;
+	font-family: "Font Awesome 5 Free";
+	display: inline-block;
+	padding-right: 3px;
+	vertical-align: middle;
+	font-weight: 900;
+	transition: 0.5s;
+}
+
+#accordian .active>a:not(:only-child):after {
+	transform: rotate(90deg);
+}
+.selector-active{
+	width: 100%;
+	display:inline-block;
+	position:absolute;
+	height: 37px;
+	top: 0px;
+	left: 0px;
+	transition-duration:0.6s;
+	transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	background-color: #fff;
+	border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+.selector-active .top,
+.selector-active .bottom{
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	background-color: #fff;
+	right: 0;
+}
+.selector-active .top{
+	top: -25px;
+}
+.selector-active .bottom{
+	bottom: -25px;
+}
+.selector-active .top:before,
+.selector-active .bottom:before{
+	content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #C0DBEA;
+}
+.selector-active .top:before{
+	left: -25px;
+	top: -25px;
+}
+.selector-active .bottom:before{
+	bottom: -25px;
+	left: -25px;
+}
+
+/* 메인 컨텐츠	*/
+
+
+/*----- base_content -----*/
+
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+body {
+  margin: 0;
+  padding: 0;
+  background: #f3f3f3;
+  font-family: Quicksand, sans-serif;
+}
+
+
+#arlina {
+  margin: 5% auto;
+  width: 100%;
+  max-width: 920px;
+  box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.03);
+}
+
+#header {
+  height: 200px;
+  margin: 0;
+  background: #fdfdfd;
+}
+
+#header h1 {
+  display: table;
+  color: #999;
+  font-weight: 400;
+  text-align: center;
+  margin: auto;
+  padding: 50px 50px 0 50px;
+  font-size: 55px;
+}
+
+#header p {
+  display: table;
+  color: #999;
+  font-weight: 400;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+  font-size: 20px;
+}
+
+#menu {
+  position: relative;
+  height: 60px;
+  margin: 0;
+  background: #3cc091;
+}
+
+#menu:before {
+  position: absolute;
+  content: '';
+  display: inline-block;
+  left: 0;
+  top: 0;
+  height: 60px;
+  width: 80px;
+  margin: 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+#menu:after {
+  position: absolute;
+  content: '\f015';
+  display: inline-block;
+  font-family: FontAwesome;
+  left: 0;
+  top: 0;
+  height: 60px;
+  line-height: 60px;
+  width: 80px;
+  margin: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+}
+
+#content {
+  position: relative;
+  width: 100%;
+  height: 1260px;
+  margin: 0;
+  background: #fff;
+  padding: 20px 0;
+}
+
+#main {
+  position: relative;
+  float: left;
+  width: 70%;
+  background: #fff;
+}
+
+#box {
+  position: relative;
+  width: 93.5%;
+  height: 150px;
+  display: block;
+  background: #f6f6f6;
+  margin: 0 20px 20px 20px;
+}
+
+#box:before {
+  position: absolute;
+  content: '';
+  display: inline-block;
+  left: 0;
+  top: 0;
+  height: 150px;
+  width: 200px;
+  margin: 0;
+  background: #e6e6e6;
+}
+
+#box:after {
+  position: absolute;
+  content: '\f1cb';
+  font-family: FontAwesome;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  top: 0;
+  text-align: center;
+  height: 150px;
+  line-height: 150px;
+  width: 200px;
+  margin: 0;
+  color: #bbb;
+  font-size: 50px;
+}
+
+#side {
+  background: #fff;
+  width: 30%;
+  float: right;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+#sidecontent {
+  width: 255px;
+  height: 200px;
+  margin: auto;
+  background: #999;
+  position: absolute;
+}
+
+#sidecontent span {
+  display: table;
+  color: #fff;
+  text-align: center;
+  margin: auto;
+  padding: 20px 0;
+  font-size: 25px;
+}
+
+#sidecontent2 {
+  width: 255px;
+  height: 200px;
+  margin: 0 20px 20px auto;
+  background: #999;
+  position: relative;
+}
+
+#sidecontent2 span {
+  display: table;
+  color: #fff;
+  text-align: center;
+  margin: auto;
+  padding: 20px 0;
+  font-size: 25px;
+}
+
+#footer {
+  height: 200px;
+  clear: both;
+  background: #374760;
+}
+
+#credit {
+  height: 60px;
+  margin: 0;
+  background: #fff;
+}
+
+#credit span {
+  display: table;
+  color: #999;
+  text-align: center;
+  font-size: 20px;
+  line-height: 60px;
+  margin: auto;
+}
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+#sidecontent.fixed {
+  position: fixed;
+  top: 20px;
+}
+
+
+/* Back to top */
+
+.back-to-top {
+  visibility: hidden;
+  background-color: #374760;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 34px;
+  position: fixed;
+  bottom: 65px;
+  right: 35px;
+  z-index: 90;
+  cursor: pointer;
+  border-radius: 1px;
+  opacity: 0;
+  -webkit-transform: translateZ(0);
+  transition: all .6s
+}
+
+.back-to-top .fa {
+  font-size: 16px;
+  color: #fff;
+  vertical-align: middle;
+}
+
+.back-to-top:hover {
+  background-color: #3cc091;
+  opacity: 1
+}
+
+.back-to-top.show {
+  visibility: visible;
+  bottom: 35px;
+  opacity: 1;
+}
+
+
+/* CSS News Ticker */
+
+.ticker-wrap {
+  display: block;
+  text-align: center;
+  margin: 0 20px 20px 20px;
+  padding: 2px;
+  background: #fefefe;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #3cc091
+}
+
+.ticker-wrap>span {
+  display: inline-block;
+  background: #fefefe;
+  padding: 0;
+  font: 700 13px 'roboto', sans-serif;
+}
+
+.ticker-wrap>span>a {
+  color: #222;
+  text-decoration: none
+}
+
+#ticker {
+  height: 45px;
+  overflow: hidden;
+  background: #fefefe;
+  text-align: left
+}
+
+#ticker ul {
+  padding: 0;
+  margin: 0;
+  list-style: none
+}
+
+#ticker ul li {
+  height: 45px;
+  white-space: nowrap
+}
+
+#ticker ul li img {
+  float: left;
+  width: 35px;
+  height: 35px;
+  margin: 5px 7px 5px 5px
+}
+
+#ticker ul li h3 {
+  margin: 0;
+  font: 700 16px 'roboto', sans-serif
+}
+
+#ticker ul li h3 a {
+  color: #333;
+  text-decoration: none;
+  line-height: 25px!important
+}
+
+#ticker ul li .tickermeta {
+  font: 400 13px 'roboto', sans-serif;
+  line-height: 20px!important;
+  color: #999
+}
+
+/*----- Main Content -----*/
+
+/* .main_content 스타일 */
+.main_content {
+    flex-basis: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    transition: all .3s ease-in-out;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    background: #f3f3f3; 
+}
+
+
+/* 스크롤바 스타일을 수정하여 숨김 */
+.main_content::-webkit-scrollbar {
+    width: 0.5em; 
+}
+
+.main_content::-webkit-scrollbar-track {
+    background-color: transparent; 
+}
+
+.main_content::-webkit-scrollbar-thumb {
+    background-color: transparent; 
+}
+
+.main_content .main_navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.main_content .main_navbar .dark_mode_icon i {
+    background: var(--border-color);
+    color: #000;
+    font-size: 18px;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.main_content .main_navbar .dark_mode_icon .bx-sun {
+    display: none;
+}
+
+.main_content .left_right_sidebar_opener {
+    font-size: 45px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: none;
+}
+
+.main_content .left_right_sidebar_opener .student {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.student {
+    position: sticky;
+    right: 3%;
+    top: 3%;
+}
+
+.main_content .left_right_sidebar_opener .student img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-position: center;
+    margin-top: 15px;
+}
+
+.main_content .left_right_sidebar_opener .student p {
+    font-size: 18px;
+}
+
+.search_box {
+    background: var(--border-color);
+    display: flex;
+    gap: 15px;
+    padding: 12px;
+    margin-top: 20px;
+    align-items: center;
+    color: #000;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 90%;
+}
+
+.search_box input {
+    width: 100%;
+    border: none;
+    background: #e9eaec;
+    outline: none;
+}
+
+.menu_item_name_and_filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px 0;
+}
+
+.menu_item_name_and_filter .menu_item_name h2 {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.menu_item_name_and_filter .filter_and_sort {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.menu_item_name_and_filter .filter_and_sort .sort_and_filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--border-color);
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.tabs .tab_name {
+    display: flex;
+    gap: 50px;
+    width: 100%;
+    padding-bottom: 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.tabs .tab_name p {
+    margin-left: 12px;
+}
+
+.tabs .tab_name::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 12%;
+    height: 2px;
+    background-color: #808080;
+}
+
+.main_content .table {
+    overflow-x: auto;
+}
+
+.main_content table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table td,
+.table th {
+    padding: 25px 20px;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.table tr:nth-child(even) {
+    background: #f1f8f8;
+}
+
+.table img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.table .profile_name {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+
+
+
