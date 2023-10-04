@@ -80,7 +80,7 @@ public class ProDao {
 			
 		}
 		public ProBean getProInfo(int pro_no) {
-			//과교?�� ?��?��?�� �??��?���?
+			
 			String sql = "";
 			ProBean pb = new ProBean();
 			try {
@@ -117,18 +117,18 @@ public class ProDao {
 		}
 		
 		public void InsertSubject(SubBean sub) {
-			// 과목 ?��록하�?
+			// 과목 등록
 			String sql = "";			
 			
 			try {
-				//DB?���?
+				
 				con = getConnection();
-				// 과목 ?���? SQL�? ?��?��
+				
 				sql = "insert into Subject(sub_name, pro_name, pro_no, place, point, capacity, major, dep_name)"+
 				"values(?,?,?,?,?,?,?,?)"; 
-				// 미리 sql�? ?��?��
+				
 				pstmt = con.prepareStatement(sql);
-				// ??�� ???��?�� �? ?��?��
+				
 				pstmt.setString(1, sub.getSub_name());
 				pstmt.setString(2, sub.getPro_name());
 				pstmt.setInt(3, sub.getPro_no());
@@ -142,13 +142,13 @@ public class ProDao {
 				pstmt.executeUpdate();
 				
 			}catch (Exception e) {
-				System.out.println("Professor/ProDao?���??�� InsertSubject?��?�� ?��류�? 발생 ?��?��?��?��. " + e);
+				System.out.println("Professor/ProDao내부 InsertSubject 메소드 오류" + e);
 				e.printStackTrace();
 			}finally {
 				rs_Close();		
 			}
 		
-		}//InsertSubject() ?��
+		}//InsertSubject() 끝
 		
 		public SubBean getSubject(int sub_no) {
 			String sql = "";
@@ -174,7 +174,7 @@ public class ProDao {
 				}
 				
 			}catch(Exception e) {
-				System.out.println("Professor/ProDao ?���??�� getSubject ?�� ?��류�? 발생?��?��?��?��." + e);
+				System.out.println("Professor/ProDao 내부 getSubject내부에 오류" + e);
 				e.printStackTrace();
 				
 			}finally {

@@ -63,16 +63,7 @@
       </div>
 
       <div class="table">
-      		
-<%-- <%			if(center == null ){  --%>
-<%--  %>  --%>
-<!--  				기본 페이지	 dddddddddddd -->
-<%-- <%			}else{				  --%>
-<%--  %> --%>
-<%--  				<jsp:include page="${center}" /> --%>
-<!--  				<p>서블릿 요청함</p> -->
-<%-- <%			}		 --%>
-<%--  %>     	       	  --%>
+       	교수 기본 페이지
       </div>
       
     </div>
@@ -94,23 +85,7 @@
       });
   }
   
-  function loadServletData(servletUrl) {
-	  
-	    console.log(servletUrl);
-	    
-	    $.ajax({
-	        url: servletUrl,
-	        type: 'GET',
-	        dataType: 'html',
-	        success: function(data) {
-	            // 서블릿에서 반환된 데이터를 화면에 표시
-	            $('.table').html(data);
-	        },
-	        error: function(xhr, status, error) {
-	            console.error(error);
-	        }
-	    });
-	}
+  
   </script>
 </body>
 </html>

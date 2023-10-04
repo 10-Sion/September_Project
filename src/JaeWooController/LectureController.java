@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import JaeWooService.LectureService;
 import JaeWooVO.LectureVO;
 import JaeWooVO.PlanVO;
+import JaeWooVO.WeekVO;
 
 
 
@@ -136,7 +137,41 @@ public class LectureController extends HttpServlet {
 				
 				nextPage = "/Professor/SubjectPlan.jsp";
 				
+			}else if(action.equals("/ProLectureDetail.do")) {
+				
+				int sub_no = Integer.parseInt( request.getParameter("sub_no") );
+				
+				List weeklist = lectureservice.getWeekList(sub_no);
+				
+				request.setAttribute("weeklist", weeklist);
+				
+				nextPage = "/Professor/SubjectWeek.jsp?sub_no=" + sub_no;
+				
+			}else if(action.equals("/InsertWeek.do")) {
+				
+				System.out.println("서블릿 연결 성공");
+				WeekVO kw = new WeekVO();
+				int sub_no = Integer.parseInt( request.getParameter("sub_no") );				
+				int week = Integer.parseInt( request.getParameter("week") );	
+				int class_hour =Integer.parseInt( request.getParameter("class_hour") );
+				Boolean assignment = Boolean.parseBoolean(request.getParameter("assignment"));
+				
+				kw.setWeek(week);
+				kw.setSub_no(sub_no);
+				kw.setClass_hour(class_hour);
+				kw.setWeek_name(request.getParameter("week_name"));
+				kw.setClass_type(request.getParameter("class_type"));
+				kw.setAssignment(assignment);
+				kw.setLecture_link(request.getParameter("lecture_link"));
+				
+				lectureservice.InsertWeek(kw);
+				
+				
+				
+				nextPage = "/Professor/SubjectWeek.jsp?sub_no=" + sub_no;
 			}
+			
+			
 			
 			
 		}

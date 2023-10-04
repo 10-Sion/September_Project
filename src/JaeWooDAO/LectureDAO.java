@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 import JaeWooVO.LectureVO;
 import JaeWooVO.PlanVO;
+import JaeWooVO.WeekVO;
 
 
 
@@ -200,4 +201,67 @@ public class LectureDAO {
 		}
 		return Pv;
 	}
-}
+
+	public void InsertWeek(WeekVO kw) {
+		
+		String sql = "";
+		try {
+			con = getConnection();
+			
+			sql = "insert into weekInfo (sub_no, week, class_type, class_hour, week_name, assignment, lecture_link)" +
+					"values(?, ?, ?, ?, ?, ?, ?)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, kw.getSub_no());
+			pstmt.setInt(2, kw.getWeek());
+			pstmt.setString(3, kw.getClass_type());
+			pstmt.setInt(4, kw.getClass_hour());
+			pstmt.setString(5, kw.getWeek_name());
+			pstmt.setBoolean(6, kw.isAssignment());
+			pstmt.setString(7, kw.getLecture_link());
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			System.out.println("LectureDAO 내부 InsertWeek 메소드 내부에서 오류 " + e);
+			e.printStackTrace();
+			
+		}finally {
+			rs_Close();
+		}
+	}
+
+	public List getWeekList(int sub_no) {
+		ArrayList list = new ArrayList();
+		String sql = "";
+		try {
+			
+			con = getConnection();
+			sql = "select * from weekInfo where sub_no = " + sub_no;
+		
+			while(rs.next()) {
+				WeekVO kw = new WeekVO();				
+				
+				kw.setWeek(rs.getInt("week"));
+				kw.setSub_no(rs.getInt("week"));
+				kw.setClass_hour(rs.getInt("class_hour"));
+				kw.setWeek_name(rs.getString("week_name"));
+				kw.setClass_type(rs.getString("class_type"));
+				kw.setAssignment(rs.getBoolean("assignment"));
+				kw.setLecture_link(rs.getString("lecture_link"));
+				
+				list.add(kw);
+			}
+		}catch(Exception e) {
+			System.out.println("LectureDAO 내부 getWeekList 메소드 내부에서 오류 " + e);
+			e.printStackTrace();
+		}finally {
+			rs_Close();
+		}
+		return null;
+	}
+	
+	
+	
+}//DAO끝

@@ -6,6 +6,7 @@ import java.util.List;
 import JaeWooDAO.LectureDAO;
 import JaeWooVO.LectureVO;
 import JaeWooVO.PlanVO;
+import JaeWooVO.WeekVO;
 
 public class LectureService {
 	LectureDAO lectureDao;
@@ -29,6 +30,15 @@ public class LectureService {
 	public PlanVO getPlan(int sub_no) {
 		// TODO Auto-generated method stub
 		return lectureDao.getPlan(sub_no);
+	}
+
+	public void InsertWeek(WeekVO kw) {
+		lectureDao.InsertWeek(kw);	
+	}
+
+	public List getWeekList(int sub_no) {
+		// TODO Auto-generated method stub
+		return lectureDao.getWeekList(sub_no);
 	}
 	
 	

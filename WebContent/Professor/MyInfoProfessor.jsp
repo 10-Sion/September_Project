@@ -117,10 +117,8 @@
 		</div>
 		<div id="buttons" align="center">
 			<input type="submit" value="수정하기" class="submit" /> 
-			<input type="reset" value="수정취소" class="cancel" /><br>
+			<input type="reset" value="수정취소" class="cancel" />
 			<br>
-			<br> 
-			<input type="submit" value="이전 페이지" class="cancel" 	onclick="history.back()" />
 			<button type = "button" onclick ="location.href='DelProfessorPro.jsp?no=<%=pb.getNo()%>'"> 탈퇴  </button>
 		</div>
 			
