@@ -1,0 +1,62 @@
+.logo {
+    margin-right: auto;
+}
+
+.logo img {
+    height: 85px; 
+    width: auto; 
+    cursor: pointer;
+}
+
+.logo h1 {
+	float: right;
+	margin: 20px;
+}
+
+.navigation {
+    background-color: #ffffff; 
+    padding: 10px 30px;
+    height: 70px;
+    border-bottom: 1px solid #eeeeee; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.menuItem {
+    margin: 20px 30px;
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    font-size: 18px;
+    text-decoration: none;
+    transition: margin-bottom 0.15s ease-in-out, border-bottom 0.15s ease-in-out; /* 호버 효과 추가 */
+}
+
+.menuItem:hover {
+    margin-bottom: 17px;
+    border-bottom: 3px solid #000000; /* 호버 시 밑줄 색상 및 굵기 변경 */
+}
+
+/* 로그인 회원가입 링크 스타일 수정 */
+.user-links {
+    display: flex;
+    align-items: center;
+    float: right;
+    margin-right: 10px;
+}
+
+.small-link {
+    font-size: 14px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: text-decoration 0.15s ease-in-out; /* 호버 효과 추가 */
+}
+
+.small-link:hover {
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}

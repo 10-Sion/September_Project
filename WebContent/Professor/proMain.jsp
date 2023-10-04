@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% 
-   Integer pro_no = (Integer)session.getAttribute("uniqueId");
-   String center = request.getParameter("center");
- %>
 <!DOCTYPE html>
+<%
+	String center = request.getParameter("center");
+	
+	
+	String contextPath = request.getContextPath();
+	System.out.println( center );
+%>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -16,7 +19,7 @@
   <div class="container">
   
     <div class="left_sidebar">
-      <jsp:include page="proSidebar.jsp" />
+      <jsp:include page="LectureSide.jsp" />
     </div>
 
     <div class="main_content">
@@ -43,7 +46,7 @@
       </div>
       <div class="menu_item_name_and_filter">
         <div class="menu_item_name">
-          <h2>교수 페이지</h2>
+          <h2>Database</h2>
         </div>
         <div class="filter_and_sort">
           <div class="sort sort_and_filter">
@@ -57,22 +60,18 @@
         </div>
       </div>
       <div class="tabs">
+        <div class="tab_name">
+          <p>Student</p>
+          <p>Teacher</p>
+          <p>Employee</p>
+        </div>
         <div class="three_dots">
           <i class='bx bx-dots-vertical-rounded'></i>
         </div>
       </div>
 
       <div class="table">
-      		
-<%-- <%			if(center == null ){  --%>
-<%--  %>  --%>
-<!--  				기본 페이지	 dddddddddddd -->
-<%-- <%			}else{				  --%>
-<%--  %> --%>
-<%--  				<jsp:include page="${center}" /> --%>
-<!--  				<p>서블릿 요청함</p> -->
-<%-- <%			}		 --%>
-<%--  %>     	       	  --%>
+        <jsp:include page="${center}" />
       </div>
       
     </div>
@@ -85,7 +84,6 @@
           type: 'GET',
           dataType: 'html',
           success: function(data) {
-        	  $('.table').empty();
               $('.table').html(data);
           },
           error: function(xhr, status, error) {
@@ -93,11 +91,9 @@
           }
       });
   }
+
   
   function loadServletData(servletUrl) {
-	  
-	    console.log(servletUrl);
-	    
 	    $.ajax({
 	        url: servletUrl,
 	        type: 'GET',
@@ -111,6 +107,7 @@
 	        }
 	    });
 	}
+  
   </script>
 </body>
 </html>

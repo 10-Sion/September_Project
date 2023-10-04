@@ -71,6 +71,40 @@ public class ProfessorService {
 
         return null;
     }
+    
+    // 교수 정보 업데이트
+    public boolean updateProfessor(Professor professor) {
+        if (dataSource == null) {
+            // dataSource가 null인 경우 처리
+            System.err.println("DataSource is not initialized.");
+            return false;
+        }
+
+        String sql = "UPDATE professor SET pw = ?, name = ?, addr = ?, phone = ?, tel = ?, email = ?, dep_name = ?, major = ?, labNum = ? WHERE pro_no = ?";
+
+        try (Connection dbConnection = dataSource.getConnection();
+             PreparedStatement statement = dbConnection.prepareStatement(sql)) {
+            statement.setString(1, professor.getPw());
+            statement.setString(2, professor.getName());
+            statement.setString(3, professor.getAddr());
+            statement.setString(4, professor.getPhone());
+            statement.setString(5, professor.getTel());
+            statement.setString(6, professor.getEmail());
+            statement.setString(7, professor.getDepName());
+            statement.setString(8, professor.getMajor());
+            statement.setInt(9, professor.getLabNum());
+            statement.setInt(10, professor.getProNo());
+
+            int rowCount = statement.executeUpdate();
+
+            // 업데이트된 행의 수를 확인하여 성공 여부를 반환
+            return rowCount > 0;
+        } catch (SQLException e) {
+            // 오류 발생 시 RuntimeException으로 예외 던지기
+            throw new RuntimeException(e);
+        }
+    }
+
 
     // 교수 삭제
     public boolean deleteProfessor(int proNo) {
@@ -95,6 +129,8 @@ public class ProfessorService {
         }
     }
 
+    
+    
     private Professor createProfessorFromResultSet(ResultSet resultSet) throws SQLException {
         int proNo = resultSet.getInt("pro_no");
         String pw = resultSet.getString("pw");
