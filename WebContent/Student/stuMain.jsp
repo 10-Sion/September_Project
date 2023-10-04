@@ -16,7 +16,7 @@
   <div class="container">
   
     <div class="left_sidebar">
-      <jsp:include page="proSidebar.jsp" />
+      <jsp:include page="stuSidebar.jsp" />
     </div>
 
     <div class="main_content">

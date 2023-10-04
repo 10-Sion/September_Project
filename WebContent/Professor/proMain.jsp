@@ -19,7 +19,7 @@
   <div class="container">
   
     <div class="left_sidebar">
-      <jsp:include page="LectureSide.jsp" />
+      <jsp:include page="../LecturePro/LectureSide.jsp" />
     </div>
 
     <div class="main_content">
