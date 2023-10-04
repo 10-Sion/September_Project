@@ -87,9 +87,7 @@
                       </div>
                     </div>
                     <div id="footer" class="cf"></div>
-                    <div id="credit">
-                      <span>by. Arlina Code All Right Reserved</span>
-                    </div>
+
                   </div>
 
                 

@@ -26,7 +26,7 @@ h6{
 }
 
 #accordian {
-	background: #5161ce;
+	background: #C0DBEA;
 	width: 250px;
 	padding: 10px;
 	float: left;
@@ -44,9 +44,10 @@ h6{
 }
 
 #accordian ul li a{
-	color: rgba(255,255,255,0.5);
+	color: #C8B6A6;
     text-decoration: none;
     font-size: 15px;
+    font-weight: bolder;
     line-height: 45px;
     display: block;
     padding: 0px 20px;
@@ -56,7 +57,8 @@ h6{
 }
 
 #accordian>ul>li.active>a{
-	color: #5161ce;
+	color: #7185bb;
+	font-weight: bolder;
 	background-color: transparent;
 	transition: all 0.7s;
 }
@@ -113,7 +115,7 @@ h6{
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #5161ce;
+    background-color: #C0DBEA;
 }
 .selector-active .top:before{
 	left: -25px;
