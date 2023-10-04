@@ -40,7 +40,6 @@
                 <td><%=non %>1</td>
                 <td><%=non %>0/8</td>
                 <td><%=check %></td>
-                
             </tr>
         </table>
     </div>

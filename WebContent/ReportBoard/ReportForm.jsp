@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1>과제 등록</h1>
-	<form action="<%=contextPath%>/Report/ReportUpload.do"
+	<form action="<%=contextPath%>/Report/ReportUpload.do?stu_no=<%=stu_no%>"
 		method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
@@ -33,7 +33,7 @@
 			<tr>
 				<th>첨부파일</th>
 				<td><input type="file" name="reportfile" value="첨부파일 찾기" /></td>
-				<td colspan="4"><input type="submit" value="과제등록"></td>
+				<td colspan="4"><input type="submit" value="과제등록" onclick="loadServletData('<%=contextPath%>/ReportBoard/ReportList.jsp')"></td>
 			</tr>
 		</table>
 	</form>

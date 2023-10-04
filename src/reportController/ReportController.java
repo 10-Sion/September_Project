@@ -69,6 +69,8 @@ public class ReportController extends HttpServlet {
 			nextPage = "/ReportBoard/ReportList.jsp";
 		
 		} else if ( action.equals("/ReportUpload.do") ) {
+			System.out.println(request.getParameter("stu_no"));
+			
 			//upload()메소드를 호출해 글쓰기 화면에서 전송된 글관련 정보를 HashMap에 key/value 한쌍으로 저장시킵니다.
 			//그런후.. 글 입력시 추가적으로 업로드한 파일을 선택하여 글쓰기 요청을 했다면
 			//업로드할 파일명, 입력한 글제목, 입력한 글내용을 key/value 형태의 값들로 저장되어 있는 HashMap을 리턴 받는다.
@@ -92,7 +94,9 @@ public class ReportController extends HttpServlet {
 			rVo.setFileName(fileName);
 			
 			// ReportService 객체의 addReport() 메소드 호출 시 매개변수로 DB 에 추가할 새글 정보를 가지고 있는 ReportVO 객체를 전달
-			rService.addReport(rVo);
+			int result = rService.addReport(rVo);
+			
+			System.out.println(result);
 			
 			nextPage = "/ReportBoard/ReportList.jsp";
 		}
@@ -105,7 +109,8 @@ public class ReportController extends HttpServlet {
 	//파일업로드 처리를 위한 메소드 
 	private Map<String, String>  upload(HttpServletRequest request, HttpServletResponse  response) 
 									throws ServletException, IOException {
-
+		
+		
 		String encoding = "utf-8";
 		
 		Map<String, String> ReportMap = new HashMap<String, String>();

@@ -88,7 +88,7 @@ public class ReportDAO {
 	}
 	
 	
-	public void insertReport(ReportVO rVo) {
+	public int insertReport(ReportVO rVo) {
 		
 		String sql = "";
 		
@@ -96,6 +96,8 @@ public class ReportDAO {
 		
 		if( check.equals("제출") ) {
 			System.out.println("이미 제출함");
+			return 0;
+			
 		} else {
 			try {
 				con = pool.getConnection();
@@ -106,13 +108,14 @@ public class ReportDAO {
 				String content = rVo.getContent();
 				String fileName = rVo.getFileName();
 				
-				sql = "insert into report (sub_no, stu_no, stu_name, week, title, content, secret, filename) " 
-				+ "values(?,?,?,?,?,?,?,?)"; 
+				sql = "insert into report (sub_no, stu_no, stu_name, week, title, content, secret, filename, submit) " 
+				+ "values(?,?,?,?,?,?,?,?,?)"; 
 				
 				pstmt = con.prepareStatement(sql);
 				
 				// 더미 (다른 테이블 select 값 얻어와야 조회가능)
 				pstmt.setInt(1, 10001);
+				
 				pstmt.setInt(2, stu_no);
 				// 더미
 				pstmt.setString(3, "이학생");
@@ -122,14 +125,19 @@ public class ReportDAO {
 				pstmt.setString(6, content);
 				pstmt.setString(7, secret);
 				pstmt.setString(8, fileName);
+				pstmt.setString(9, check);
 				
 				pstmt.executeUpdate();
+				
+				
 				
 			} catch (Exception e) {
 				System.out.println("insertReport() 메소드 내부 오류 : " + e );
 			} finally {
 				pool.freeConnection(con, pstmt, rs);
 			}
+			return 1;
+			
 		}	// if 문 끝
 		
 	}	// insertReport 끝

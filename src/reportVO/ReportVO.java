@@ -10,6 +10,7 @@ public class ReportVO {
 	private String secret;
 	private String fileName;
 	private String fileRealName;
+	private String submit;
 	
 	public int getSub_no() {
 		return Sub_no;
@@ -58,6 +59,12 @@ public class ReportVO {
 	}
 	public void setFileRealName(String fileRealName) {
 		this.fileRealName = fileRealName;
+	}
+	public String getSubmit() {
+		return submit;
+	}
+	public void setSubmit(String submit) {
+		this.submit = submit;
 	}
 
 }

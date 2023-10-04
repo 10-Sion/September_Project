@@ -11,9 +11,17 @@ public class ReportService {
 		rDao = new ReportDAO();
 	}
 	
-	public void addReport(ReportVO rVo) {
+	public int addReport(ReportVO rVo) {
+		System.out.println("Service 안쪽" + rVo.getContent());
+		
+		// addReport 할때 과목번호, 학생 이름, 주차 정보를 rVo 에 저장
+		
 		// 과제 업로드 메소드
-		rDao.insertReport(rVo);	
+		int result = rDao.insertReport(rVo);
+		
+		
+		return result;
+			
 	}
 
 }
