@@ -121,18 +121,24 @@ public class EmployeeService {
 
 
     // Employee 삭제
-    public void deleteEmployee(int empNo) {
+    public boolean deleteEmployee(int empNo) {
         String sql = "DELETE FROM employee WHERE emp_no = ?";
         
         try (Connection dbConnection = dataSource.getConnection();
              PreparedStatement statement = dbConnection.prepareStatement(sql)) {
             statement.setInt(1, empNo);
-            statement.executeUpdate();
+            int rowsAffected = statement.executeUpdate();
+            
+            // 삭제된 행의 수(rowsAffected)를 확인
+            return rowsAffected > 0;
             
         } catch (SQLException e) {
             e.printStackTrace();
+            return false; // 예외 발생 시 삭제 실패로 처리
         }
     }
+
+
 
     // ResultSet에서 Employee 객체 생성
     private Employee createEmployeeFromResultSet(ResultSet resultSet) throws SQLException {

@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% Integer pro_no = (Integer) session.getAttribute("uniqueId"); %>
 <!DOCTYPE html>
+<%
+	String center = request.getParameter("center");
+	
+	
+	String contextPath = request.getContextPath();
+	System.out.println( center );
+%>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -13,7 +19,7 @@
   <div class="container">
   
     <div class="left_sidebar">
-      <jsp:include page="proSidebar.jsp" />
+      <jsp:include page="../LecturePro/LectureSide.jsp" />
     </div>
 
     <div class="main_content">
@@ -40,7 +46,7 @@
       </div>
       <div class="menu_item_name_and_filter">
         <div class="menu_item_name">
-          <h2>교수 페이지</h2>
+          <h2>Database</h2>
         </div>
         <div class="filter_and_sort">
           <div class="sort sort_and_filter">
@@ -54,13 +60,18 @@
         </div>
       </div>
       <div class="tabs">
+        <div class="tab_name">
+          <p>Student</p>
+          <p>Teacher</p>
+          <p>Employee</p>
+        </div>
         <div class="three_dots">
           <i class='bx bx-dots-vertical-rounded'></i>
         </div>
       </div>
 
       <div class="table">
-        fasdfsadfasfdsafasdf
+        <jsp:include page="${center}" />
       </div>
       
     </div>
@@ -73,7 +84,6 @@
           type: 'GET',
           dataType: 'html',
           success: function(data) {
-        	  $('.table').empty();
               $('.table').html(data);
           },
           error: function(xhr, status, error) {
@@ -81,6 +91,23 @@
           }
       });
   }
+
+  
+  function loadServletData(servletUrl) {
+	    $.ajax({
+	        url: servletUrl,
+	        type: 'GET',
+	        dataType: 'html',
+	        success: function(data) {
+	            // 서블릿에서 반환된 데이터를 화면에 표시
+	            $('.table').html(data);
+	        },
+	        error: function(xhr, status, error) {
+	            console.error(error);
+	        }
+	    });
+	}
+  
   </script>
 </body>
 </html>

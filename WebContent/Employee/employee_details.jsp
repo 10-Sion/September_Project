@@ -3,7 +3,6 @@
 <html>
 <head>
     <link rel="stylesheet" href="../pageSetUp/mainStyle.css">
-
     <style>
         .edit_form {display: none;}
     </style>
@@ -41,37 +40,35 @@
             <td>${employee.getEmail()}</td>
         </tr>
     </table>
-    <button class="editBtn">수정</button>
-
-    <!-- 폼을 이용하여 정보 수정 -->
-	<form class="edit_form" action="/Employee/employee/indivDetail" method="POST">
-	    <label for="pw">비밀번호:</label>
-	    <input type="text" id="pw" name="pw" value="${employee.getPw()}"><br>
-	
-	    <label for="name">이름:</label>
-	    <input type="text" id="name" name="name" value="${employee.getName()}"><br>
-	
-	    <label for="addr">주소:</label>
-	    <input type="text" id="addr" name="addr" value="${employee.getAddr()}"><br>
-	
-	    <label for="phone">전화번호:</label>
-	    <input type="text" id="phone" name="phone" value="${employee.getPhone()}"><br>
-	
-	    <label for="tel">휴대폰번호:</label>
-	    <input type="text" id="tel" name="tel" value="${employee.getTel()}"><br>
-	
-	    <label for="email">이메일:</label>
-	    <input type="text" id="email" name="email" value="${employee.getEmail()}"><br>
-	
-	    <input type="submit" value="수정">
-	    <button class="edit_cancle">취소</button>
-	</form>
-
     
+    <button class="editBtn" onclick="showEditForm()">수정</button>
     
-<script src="../pageSetUp/edit.js"></script>
+    <!-- 수정 폼 -->
+    <form class="edit_form" action="${pageContext.request.contextPath}/employee/update" method="POST" accept-charset="UTF-8">
+        <input type="hidden" name="currentEmployeeId" value="${employee.getEmpNo()}">
+        
+        <label for="newPw">비밀번호:</label>
+        <input type="text" id="newPw" name="newPw" value="${employee.getPw()}"><br>
+    
+        <label for="newName">이름:</label>
+        <input type="text" id="newName" name="newName" value="${employee.getName()}"><br>
+    
+        <label for="newAddr">주소:</label>
+        <input type="text" id="newAddr" name="newAddr" value="${employee.getAddr()}"><br>
+    
+        <label for="newPhone">전화번호:</label>
+        <input type="text" id="newPhone" name="newPhone" value="${employee.getPhone()}"><br>
+    
+        <label for="newTel">휴대폰번호:</label>
+        <input type="text" id="newTel" name="newTel" value="${employee.getTel()}"><br>
+    
+        <label for="newEmail">이메일:</label>
+        <input type="text" id="newEmail" name="newEmail" value="${employee.getEmail()}"><br>
+    
+        <input type="submit" value="수정">
+        <button class="edit_cancle" onclick="cancelEditForm()">취소</button>
+    </form>
 
-
-
+    <script src="../pageSetUp/myPage.js"></script>
 </body>
 </html>

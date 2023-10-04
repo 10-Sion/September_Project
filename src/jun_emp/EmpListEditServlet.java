@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 import javax.servlet.ServletException;
 import java.io.IOException;
 
-@WebServlet("/employee/edit")
+@WebServlet("/employee/listEdit")
 public class EmpListEditServlet extends HttpServlet {
     private EmployeeService employeeService;
 
@@ -64,8 +64,9 @@ public class EmpListEditServlet extends HttpServlet {
         // 수정된 데이터를 EmployeeService를 사용하여 업데이트
         if (employeeService != null) {
             employeeService.updateEmployee(currentEmployee);
-            // 업데이트 성공한 경우, 다시 세부 정보 페이지로 이동
-            response.sendRedirect(request.getContextPath() + "/employee/indivDetail");
+            // 업데이트 성공한 경우, 다시 empMain.jsp로 이동
+            response.sendRedirect(request.getContextPath() + "/employee/empMain.jsp");
+
         } else {
             // EmployeeService가 초기화되지 않은 경우 처리
             System.err.println("EmployeeService is not initialized.");

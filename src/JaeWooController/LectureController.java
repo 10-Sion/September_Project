@@ -101,6 +101,41 @@ public class LectureController extends HttpServlet {
 				
 				nextPage = "/LecturePro/MainLecture.jsp";
 				
+			}else if(action.equals("/ProLectureList.do")){
+				
+				int pro_no = Integer.parseInt(request.getParameter("pro_no"));
+				String nowPage = request.getParameter("nowPage");
+				String nowBlock = request.getParameter("nowBlock");
+				
+				if(request.getParameter("keyWord") != null){
+					keyField = request.getParameter("keyField");
+					keyWord = request.getParameter("keyWord");
+				}
+				List Subject = lectureservice.getSublist(keyField, keyWord, pro_no );
+				
+				request.setAttribute("keyField", keyField);
+				request.setAttribute("keyWord", keyWord);
+				request.setAttribute("list", Subject);
+				request.setAttribute("center", "LectureList.jsp");
+				request.setAttribute("nowPage", nowPage);
+				request.setAttribute("nowBlock", nowBlock);
+				
+				nextPage = "/Professor/SubIndex.jsp";
+			
+				
+				
+			}else if(action.equals("/ProLecturePlan.do")) {
+				
+				int sub_no = Integer.parseInt(request.getParameter("sub_no"));
+				
+				LectureVO Lv = lectureservice.getSubject(sub_no);
+				PlanVO Pv = lectureservice.getPlan(sub_no);
+						
+				request.setAttribute("plan", Pv);		
+				request.setAttribute("lv", Lv);
+				
+				nextPage = "/Professor/SubjectPlan.jsp";
+				
 			}
 			
 			
@@ -116,8 +151,5 @@ public class LectureController extends HttpServlet {
 //			System.out.println( "오류 : " + e);
 //			e.printStackTrace();
 //		}
-		
-	
-
 	
 }

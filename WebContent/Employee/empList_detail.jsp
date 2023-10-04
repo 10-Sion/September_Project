@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<style>
+        .edit_form {display: none;}
+    </style>
+    
     <meta charset="UTF-8">
     <title>직원 세부 정보</title>
 </head>
@@ -40,13 +44,42 @@
                 <td>${employee.email}</td>
             </tr>
         </table>
+        
+        <button class="editBtn" onclick="showEditForm()">수정</button>
+
+        <!-- 수정 폼 -->
+        <form action="<%=request.getContextPath()%>/employee/update" method="POST" class="edit_form">
+            <input type="hidden" name="currentEmployeeId" value="${employee.empNo}">
+    
+            <label for="newPw">새로운 비밀번호:</label>
+            <input type="text" id="newPw" name="newPw" value="${employee.pw}"><br>
+    
+            <label for="newName">새로운 이름:</label>
+            <input type="text" id="newName" name="newName" value="${employee.name}"><br>
+    
+            <label for="newAddr">새로운 주소:</label>
+            <input type="text" id="newAddr" name="newAddr" value="${employee.addr}"><br>
+    
+            <label for="newPhone">새로운 전화번호:</label>
+            <input type="text" id="newPhone" name="newPhone" value="${employee.phone}"><br>
+    
+            <label for="newTel">새로운 휴대폰번호:</label>
+            <input type="text" id="newTel" name="newTel" value="${employee.tel}"><br>
+    
+            <label for="newEmail">새로운 이메일:</label>
+            <input type="text" id="newEmail" name="newEmail" value="${employee.email}"><br>
+    
+            <input type="submit" value="수정">
+            <button class="edit_cancle" onclick="cancelEditForm()">취소</button>
+        </form>
     </c:if>
     
     <c:if test="${employee == null}">
         <p>직원 정보를 가져오지 못했습니다.</p>
     </c:if>
     
-    <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/employee/edit?currentEmployeeId=${employee.empNo}')">수정</a>
     <a href="#" onclick="loadServletData('<%=request.getContextPath()%>/employee/list')">직원 목록으로 돌아가기</a>
+    
+    <script src="../pageSetUp/myPage.js"></script>
 </body>
 </html>

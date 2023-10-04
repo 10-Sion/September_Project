@@ -16,6 +16,10 @@ public class LectureService {
 
 	public ArrayList getSublist(String keyField,String keyWord){
 		return lectureDao.getSublist(keyField, keyWord); 
+	}
+	
+	public ArrayList getSublist(String keyField,String keyWord, int pro_no){
+		return lectureDao.getSublist(keyField, keyWord, pro_no); 
 	} 
 
 	public LectureVO getSubject(int sub_no) {

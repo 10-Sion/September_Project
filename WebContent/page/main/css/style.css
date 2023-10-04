@@ -1,46 +1,45 @@
+.logo {
+    margin-right: auto;
+}
+
+.logo img {
+    height: 85px;
+    width: auto;
+    cursor: pointer;
+}
+
+.logo h1 {
+    float: right;
+    margin: 20px;
+}
+
 .navigation {
-	background-color: white;
-	padding: 10px 30px;
-	height: 70px;
-	border-bottom: 1px solid white;
-  
-  /*blocks are aligned using flex*/
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    background-color: #fff;
+    padding: 10px 30px;
+    height: 70px;
+    border-bottom: 1px solid #D2E9E9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .menuItem {
-	margin: 20px 15px;
-  /*Montserrat font by googlefonts*/
-	font-family: 'Montserrat', sans-serif;
-	color: black;
-	font-size: 18px;
-	text-decoration: none;
+    margin: 20px 30px;
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    font-size: 18px;
+    text-decoration: none;
+    transition: margin-bottom 0.15s ease-in-out, border-bottom 0.15s ease-in-out;
 }
 
 .menuItem:hover {
-	margin-bottom: 17px;
-	border-bottom: 3px solid black;
-  /*CCS3 element for hover effect*/
-	-webkit-transition: all .15s ease-in-out;
-  -moz-transition: all .15s ease-in-out;
-  -ms-transition: all .15s ease-in-out;
-  -o-transition: all .15s ease-in-out;
-  transition: all .15s ease-in-out;
+    margin-bottom: 17px;
+    border-bottom: 3px solid #E3F4F4;
 }
 
-
-
-.carousel-item img {
-    width: 1000px;
-    height: 500px;
-}
-
-/* 로그인 회원가입 */
 .user-links {
-    display: flex; /* 추가: 내부 요소를 가로로 정렬 */
-    align-items: center; /* 추가: 내부 요소를 수직으로 중앙에 정렬 */
+    display: flex;
+    align-items: center;
     float: right;
     margin-right: 10px;
 }
@@ -49,9 +48,40 @@
     font-size: 14px;
     margin-left: 10px;
     text-decoration: none;
-    color: #333; /* 링크 색상 설정 */
+    color: #333;
+    transition: text-decoration 0.15s ease-in-out;
 }
 
 .small-link:hover {
-    text-decoration: underline; /* 호버 시 밑줄 추가 */
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+footer {
+    background-color: #F8F6F4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.left-footer,
+.right-footer {
+    flex: 1;
+}
+
+/* 부트스트랩 슬라이더 */
+.carousel-control-prev,
+.carousel-control-next {
+    background: #eff2f4;
+    font-size: 30px;
+    color: #797a7a;
+    width: 50px;
+    height: 100%;
 }
