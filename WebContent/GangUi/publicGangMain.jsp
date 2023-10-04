@@ -12,70 +12,100 @@
 </head>
 <body>
 	
-    <div class="total_container">
-    	<div class="top">
-    		<jsp:include page="../page/main/mainTop.jsp" />
-    	</div>
+    <div class="container">
+
     
-        <!-- 왼쪽 사이드바 (공용 강의실 링크 포함) -->
+        <!-- 왼쪽 사이드바 -->
         <div class="left_sidebar">
             <jsp:include page="publicGangSide.jsp" />
         </div>
 
-        <!-- 메인 콘텐츠 영역 (전체 강의 목록 표시) -->
+        <!-- 메인 콘텐츠 영역 (개인 강의실 내용) -->
         <div class="main_content">
+            
+            <div class="top">
+                <jsp:include page="privateGangTop.jsp" />
+            </div>
+            
+            <div class="base_content">
+                <div id="arlina">
+                  <div id="header">
+                    <h1>Univ News</h1></br>
+                    <p>AAAA BBBB CCCC</div>
+                  <div id="menu"></div>
+                  <div id="content">
+                <div class='ticker-wrap' data-domain='www.halosehat.xyz'>
+                <div id='ticker'>
+                </div>
+                </div>
+                    <div id="main">
+                        <div id="box" class="news-box">
+                          <!-- 첫 번째 뉴스 -->
+                          <h3>첫 번째 뉴스 제목</h3>
+                          <p>첫 번째 뉴스 내용...</p>
+                        </div>
+                        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
+                        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
+                        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
+                        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
+                        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
 
-			<table class="container">
-				<thead>
-					<tr>
-						<th><h1>Sites</h1></th>
-						<th><h1>Views</h1></th>
-						<th><h1>Clicks</h1></th>
-						<th><h1>Average</h1></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Google</td>
-						<td>9518</td>
-						<td>6369</td>
-						<td>01:32:50</td>
-					</tr>
-					<tr>
-						<td>Twitter</td>
-						<td>7326</td>
-						<td>10437</td>
-						<td>00:51:22</td>
-					</tr>
-					<tr>
-						<td>Amazon</td>
-						<td>4162</td>
-						<td>5327</td>
-						<td>00:24:34</td>
-					</tr>
-			    <tr>
-						<td>LinkedIn</td>
-						<td>3654</td>
-						<td>2961</td>
-						<td>00:12:10</td>
-					</tr>
-			    <tr>
-						<td>CodePen</td>
-						<td>2002</td>
-						<td>4135</td>
-						<td>00:46:19</td>
-					</tr>
-			    <tr>
-						<td>GitHub</td>
-						<td>4623</td>
-						<td>3486</td>
-						<td>00:31:52</td>
-					</tr>
-				</tbody>
-			</table>
+                      </div>
+                      <div id="side">
+                        <div id="sidecontent2" class="cf">
+                          <span>Widget 1</span>
+                        </div>
+                        <div id="sidecontent2" class="cf">
+                          <span>Widget 2</span>
+                        </div>
+                        <div id="sidecontent2" class="cf">
+                          <span>Widget 3</span>
+                        </div>
+                        <div id="sidecontent">
+                          <span>Widget 4</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="footer" class="cf"></div>
+                    <div id="credit">
+                      <span>by. Arlina Code All Right Reserved</span>
+                    </div>
+                  </div>
+
+                
+                <div class='back-to-top' id='back-to-top' title='Back to top'><i class='fa fa-chevron-up' /></div>
+            </div>
+            
+              <div class="table">
+                <!-- 불러올 페이지 동적 처리함 -->
+              </div>
+            
+            
+            
         </div>
     </div>
     
     <script src="../pageSetUp/gangSubApp.js"></script>
+    <script src="../pageSetUp/myPage.js"></script>
 </body>
 </html>

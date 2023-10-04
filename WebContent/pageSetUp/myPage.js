@@ -30,17 +30,19 @@
 	    });
 	}
 
-function showEditForm() {
-        // 수정 폼을 보이게 하고 버튼을 숨김
-        document.querySelector('.edit_form').style.display = 'block';
-		document.querySelector('table').style.display = 'none';
-        document.querySelector('.editBtn').style.display = 'none';
-    }
+$(document).ready(function() {
+    // 수정 폼을 보이게 하고 버튼을 숨김
+    $(".editBtn").click(function() {
+        $('.edit_form').show();
+        $('table').hide();
+        $('.editBtn').hide();
+    });
 
-    function cancelEditForm() {
-        // 테이블 보이게 하고 수정 폼을 숨김
-        document.querySelector('table').style.display = 'table';
-        document.querySelector('.edit_form').style.display = 'none';
-        // 수정 버튼 다시 보이게 함
-        document.querySelector('.editBtn').style.display = 'block';
-    }
+    // 취소 버튼을 클릭하면 테이블을 보이게 하고 수정 폼을 숨김
+    $(".cancelBtn").click(function() {
+        $('table').show();
+        $('.edit_form').hide();
+        $('.editBtn').show();
+    });
+});
+    

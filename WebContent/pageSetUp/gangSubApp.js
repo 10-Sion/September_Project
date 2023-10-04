@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
     });
   }
 
-  // Set active item style on page load
+  // 페이지 로딩시 기본
   setActiveItemStyle(activeItemVerticalInner);
 
   $("#accordian").on("click", "li", function(e) {
@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
     setActiveItemStyle($(this));
   });
 
-  // Add active class to target link on another-page move
+  
   var path = window.location.pathname.split("/").pop();
 
   if (path == '') {
@@ -35,4 +35,12 @@ jQuery(document).ready(function($) {
 
   var target = $('#accordian ul li a[href="' + path + '"]').parent();
   target.addClass('active');
+});
+
+$(document).ready(function() {
+    // 각 li 요소에 대한 클릭 이벤트 처리
+    $("#accordian ul li").click(function() {
+        // .base_content를 숨깁니다.
+        $(".base_content").hide();
+    });
 });

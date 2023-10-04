@@ -11,6 +11,8 @@
 </head>
 <body>
     <div class="container">
+
+    
         <!-- 왼쪽 사이드바 -->
         <div class="left_sidebar">
             <jsp:include page="privateGangSide.jsp" />
@@ -18,31 +20,90 @@
 
         <!-- 메인 콘텐츠 영역 (개인 강의실 내용) -->
         <div class="main_content">
-            <!-- 메인 네비게이션 바 -->
-            <div class="main_navbar">
-                <!-- 네비게이션 바 내용 -->
+            
+	        <div class="top">
+	            <jsp:include page="privateGangTop.jsp" />
+	        </div>
+	        
+	        <div class="base_content">
+                <div id="arlina">
+				  <div id="header">
+				    <h1>Univ News</h1></br>
+				    <p>AAAA BBBB CCCC</div>
+				  <div id="menu"></div>
+				  <div id="content">
+				<div class='ticker-wrap' data-domain='www.halosehat.xyz'>
+				<div id='ticker'>
+				</div>
+				</div>
+				    <div id="main">
+				        <div id="box" class="news-box">
+				          <!-- 첫 번째 뉴스 -->
+				          <h3>첫 번째 뉴스 제목</h3>
+				          <p>첫 번째 뉴스 내용...</p>
+				        </div>
+				        <div id="box" class="news-box">
+				          <!-- 두 번째 뉴스 -->
+				          <h3>두 번째 뉴스 제목</h3>
+				          <p>두 번째 뉴스 내용...</p>
+				        </div>
+				        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
+                        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
+                        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
+                        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
+
+				      </div>
+				      <div id="side">
+				        <div id="sidecontent2" class="cf">
+				          <span>Widget 1</span>
+				        </div>
+				        <div id="sidecontent2" class="cf">
+				          <span>Widget 2</span>
+				        </div>
+				        <div id="sidecontent2" class="cf">
+				          <span>Widget 3</span>
+				        </div>
+				        <div id="sidecontent">
+				          <span>Widget 4</span>
+				        </div>
+				      </div>
+				    </div>
+				    <div id="footer" class="cf"></div>
+				    <div id="credit">
+				      <span>by. Arlina Code All Right Reserved</span>
+				    </div>
+				  </div>
+
+				
+				<div class='back-to-top' id='back-to-top' title='Back to top'><i class='fa fa-chevron-up' /></div>
             </div>
-            <div class="menu_item_name_and_filter">
-                <!-- 콘텐츠 제목 및 필터 영역 -->
-                <div class="menu_item_name">
-                    <h2>개인 강의실 메인 페이지</h2>
-                </div>
-            </div>
-            <!-- 개인 강의실 페이지 내용 -->
-            <h3>공지사항</h3>
-            <p>공지사항 내용</p>
-            <h3>과제</h3>
-            <p>과제 목록 및 내용</p>
-            <!-- 개인 강의 목록 -->
-            <h3>개인 강의 목록</h3>
-            <ul>
-                <li><a href="my_course1.jsp">내 강의 1</a></li>
-                <li><a href="my_course2.jsp">내 강의 2</a></li>
-                <!-- 추가 개인 강의 목록 -->
-            </ul>
+            
+              <div class="table">
+		        <!-- 불러올 페이지 동적 처리함 -->
+		      </div>
+            
+            
+            
         </div>
     </div>
     
     <script src="../pageSetUp/gangSubApp.js"></script>
+    <script src="../pageSetUp/myPage.js"></script>
 </body>
 </html>
