@@ -10,6 +10,7 @@
 <head>
     <title>세션 값 전달</title>
 </head>
+
 <body>
     <h1>세션 값</h1>
     <form action="../Student/stuMain.jsp" method="POST">
