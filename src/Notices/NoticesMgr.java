@@ -41,8 +41,8 @@ public class NoticesMgr {
                 bean.setTitle(rs.getString("title"));
                 bean.setContent(rs.getString("content"));
                 bean.setRegdate(rs.getString("regdate"));
-                bean.setSub_no(rs.getInt("sub_no"));
-                bean.setPro_no(rs.getInt("pro_no"));
+              //  bean.setSub_no(rs.getInt("sub_no"));
+              //  bean.setPro_no(rs.getInt("pro_no"));
                 vlist.add(bean);
             }
         } catch (Exception e) {
