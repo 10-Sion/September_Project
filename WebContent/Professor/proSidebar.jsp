@@ -27,12 +27,12 @@ String contextPath = request.getContextPath();
         		<h1>나의 정보</h1>
         	
         	</div>
-            <div class="menu_item"  onclick="loadPage('proTable1.jsp')">
+            <div class="menu_item"  onclick="loadPage('MyInfoProfessor.jsp')">
                 <i class='bx bxs-dashboard'></i>
                <a><p>나의 정보</p></a>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('<%=contextPath%>/Lecture/ProLectureList.do?pro_no=<%=pro_no%>')">
+            <div class="menu_item" onclick="loadPage('<%=contextPath%>/Lecture/ProLectureList.do?pro_no=<%=pro_no%>')">
                 <i class='bx bx-message-rounded-dots'></i>
 <%--                 <a href ="<%=contextPath%>/Lecture/ProLectureList.do?pro_no=<%=pro_no%>"><p>개설 강의 관리</p></a> --%>
                 <p>개설 강의 관리</p>
@@ -52,5 +52,24 @@ String contextPath = request.getContextPath();
             
         </div>
     </div>
+    <script>
+    function loadServletData(servletUrl) {
+	  
+	    console.log(servletUrl);
+	    
+	    $.ajax({
+	        url: servletUrl,
+	        type: 'GET',
+	        dataType: 'html',
+	        success: function(data) {
+	            // 서블릿에서 반환된 데이터를 화면에 표시
+	            $('.table').html(data);
+	        },
+	        error: function(xhr, status, error) {
+	            console.error(error);
+	        }
+	    });
+	}
+  </script>
 </body>
 </html>
