@@ -6,9 +6,9 @@
 </head>
 <body>
     <h1>세션 값</h1>
-    <form action="gangMain.jsp" method="POST">
+    <form action="../page/main/MainPage.jsp" method="POST">
         <label for="sessionValue">세션 값 입력:</label>
-        <input type="text" id="sessionValue" name="currentSession">
+        <input type="text" id="sessionValue" name="currentEmployeeId">
         <button type="submit">전송</button>
     </form>
 </body>

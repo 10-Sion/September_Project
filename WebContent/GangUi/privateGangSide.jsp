@@ -20,7 +20,7 @@
                 <li onclick="loadPage('privGangSub3.jsp')">
                     <a href="javascript:void(0);">
                     <i class="far fa-clone">
-                    </i>성적 관리</a>
+                    </i>강의 관리</a>
                 </li>
                 <li onclick="loadPage('privGangSub4.jsp')">
                     <a href="javascript:void(0);">
