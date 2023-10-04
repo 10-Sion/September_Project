@@ -78,7 +78,18 @@
  <hr/>
  [ <a href="javascript:list()" >리스트</a> | 
  <a href="update.jsp?nowPage=<%=nowPage%>&num=<%=num%>" >수 정</a> |
+ 
+ <% 
+// 사용자 역할 확인
+HttpSession userSession = request.getSession(false);
+String userRole = (userSession != null && userSession.getAttribute("userRole") != null) ? (String) userSession.getAttribute("userRole") : "";
+
+
+if (userRole.equals("교수")) {
+%>
  <a href="reply.jsp?nowPage=<%=nowPage%>" >답 변</a> |
+<%}%>
+ 
  <a href="delete.jsp?nowPage=<%=nowPage%>&num=<%=num%>">삭 제</a> ]<br/>
   </td>
  </tr>

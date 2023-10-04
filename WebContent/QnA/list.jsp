@@ -134,7 +134,6 @@
 								}
 						%>
 						  <a href="javascript:read('<%=num%>')"><%=subject%></a>
-						</td>
 						<td align="center"><%=name%></td>
 						<td align="center"><%=regdate%></td>
 						<td align="center"><%=count%></td>
@@ -171,7 +170,23 @@
  				<!-- 페이징 및 블럭 처리 End-->
 				</td>
 				<td align="right">
-					<a href="post.jsp">[글쓰기]</a> 
+					<% 
+				    // 사용자 역할 확인
+				    HttpSession userSession = request.getSession(false);
+				    String userRole = (userSession != null && userSession.getAttribute("userRole") != null) ? (String) userSession.getAttribute("userRole") : "";
+				%>
+				
+				<td align="right">
+				    <%
+				        if (userRole.equals("학생")) {
+				    %>
+				        <a href="post.jsp">[글쓰기]</a> 
+				    <%
+				        }
+				    %>
+				</td>
+
+
 					<a href="javascript:list()">[처음으로]</a>
 				</td>
 			</tr>
