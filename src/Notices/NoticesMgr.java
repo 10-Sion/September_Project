@@ -1,5 +1,6 @@
 package Notices;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +9,11 @@ import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import Notices.DBConnectionMgr;
+import QnA.UtilMgr;
 
 public class NoticesMgr {
     private DBConnectionMgr pool;
