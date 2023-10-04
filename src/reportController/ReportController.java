@@ -33,6 +33,7 @@ public class ReportController extends HttpServlet {
 	// 과제 글에 첨부할 파일 저장위치를 상수로 선언
 	private static String ARTICLE_IMAGE_REPO = "C:\\Report\\ReportUplosd";
 	
+	
 	ReportVO rVo;
 	ReportService rService;
 	
@@ -66,15 +67,15 @@ public class ReportController extends HttpServlet {
 		
 		if( action == null || action.equals("")) {
 			nextPage = "/ReportBoard/ReportList.jsp";
-			
-		} else if ( action.equalsIgnoreCase("/reportUpload.do") ) {
-			
+		
+		} else if ( action.equals("/ReportUpload.do") ) {
 			//upload()메소드를 호출해 글쓰기 화면에서 전송된 글관련 정보를 HashMap에 key/value 한쌍으로 저장시킵니다.
 			//그런후.. 글 입력시 추가적으로 업로드한 파일을 선택하여 글쓰기 요청을 했다면
 			//업로드할 파일명, 입력한 글제목, 입력한 글내용을 key/value 형태의 값들로 저장되어 있는 HashMap을 리턴 받는다.
 			//그렇지 않을 경우에는???????
 			//업로드할 파일명을 제외한 ~~ 입력한 글제목, 입력한 글내용을 key/value형태의 값들로 저장되어 있는 HashMap을 리턴 받는다.
 			Map<String, String> RepostMap = upload(request,response);
+			
 			
 			// HashMap에 저장된 글 정보 (업로드한 파일명, 입력한 글제목, 입력한 글내용)을 HashMap에서 다시 가져온다.
 			String title = RepostMap.get("title");
@@ -98,6 +99,7 @@ public class ReportController extends HttpServlet {
 		
 		System.out.println("반환되는 주소 : " + nextPage);
 		request.getRequestDispatcher(nextPage).forward(request, response);
+		
 	}//doHandle메소드 닫는 기호
 	
 	//파일업로드 처리를 위한 메소드 
@@ -109,7 +111,7 @@ public class ReportController extends HttpServlet {
 		Map<String, String> ReportMap = new HashMap<String, String>();
 		
 		//글쓰기 할때 첨부한 이미지파일을 저장할 폴더 경로에 접근할 File객체 생성
-		File currentDirPath = new File(ARTICLE_IMAGE_REPO);//"C:\\board\\article_image"
+		File currentDirPath = new File(ARTICLE_IMAGE_REPO);//"C:\\Report\\ReportUplosd"
 		
 		//업로드할 파일 데이터를 임시로 저장할 객체 메모리 생성
 		DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -123,12 +125,12 @@ public class ReportController extends HttpServlet {
 		//DiskFileItemFactory클래스는 업로드할 파일의 크기가 지정한 임시메모리의 크기를 넘기전까지는
 		//업로드한 파일 데이터를 임시메모리에 저장하고  지정한 크기를 넘길 경우  업로드할 file_repo폴더로 업로드해서 저장시키는 역할을 함.
 		
-		//파일을 업로드할 임시 메모리 객체의 주소를 생성자쪾으로 전달해 저장한  파일업로드를 실제 처리할 객체 생성
+		//파일을 업로드할 임시 메모리 객체의 주소를 생성자쪽으로 전달해 저장한  파일업로드를 실제 처리할 객체 생성
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		
 		try {
 			/*
-				articleForm.jsp 파일업로드 요청하는 디자인 페이지에서  첨부한 파일1개와   입력한 파라미터2개의 정보들
+				ReportForm.jsp 파일업로드 요청하는 디자인 페이지에서  첨부한 파일1개와   입력한 파라미터들의 정보들
 				request객체에서 꺼내와서  각각의 DiskFileItem객체들에 저장한 후 
 				각각의 DiskFileItem객체들을  ArrayList배열에 추가 하게 됩니다. 그후 ~ ArrayList배열 자체를 반환 해 줍니다.
 			*/
@@ -145,7 +147,7 @@ public class ReportController extends HttpServlet {
 					
 					System.out.println( fileItem.getFieldName() + "=" + fileItem.getString(encoding) );
 				
-					//articleForm.jsp페이지에서 입력한 글제목, 글내용만 따로  HashMap에  (key=value)형식으로 저장합니다.
+					//RreportForm.jsp페이지에서 입력한 글제목, 글내용만 따로  HashMap에  (key=value)형식으로 저장합니다.
 					//HashMap에 저장된 모습 ->  {"title"="입력한글제목", "content"="입력한글내용" }
 					ReportMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
 					
@@ -157,7 +159,7 @@ public class ReportController extends HttpServlet {
 					System.out.println("업로드 요청한 첨부 이미지 파일 크기 : " + fileItem.getSize() + "bytes");
 
 					
-					//articleForm.jsp페이지에서 입력한 글제목, 글내용, 요청한 업로드 파일 정보 등.. 모든 요청정보들을 HashMap에 key=value한쌍 씩 저장
+					//ReportForm.jsp페이지에서 입력한 글제목, 글내용, 요청한 업로드 파일 정보 등.. 모든 요청정보들을 HashMap에 key=value한쌍 씩 저장
 					//HashMap에 저장된 모습 ->  {"imageFileName"="3.png",   "title"="입력한글제목",  "content"="입력한글내용"}
 					ReportMap.put(fileItem.getFieldName(), fileItem.getName());
 					
@@ -197,4 +199,7 @@ public class ReportController extends HttpServlet {
 		return ReportMap;
 		
 	}//upload메소드 닫는 부분 
+	
+	
+	
 }

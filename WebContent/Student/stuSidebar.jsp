@@ -42,7 +42,7 @@
                 <p>Settings</p>
             </div>
             
-            <div class="menu_item" onclick="loadPage('../ReportBoard/ReportList.jsp')">
+            <div class="menu_item" onclick="loadServletData('<%=contextPath%>/ReportBoard/ReportList.jsp')">
                 <i class='bx bx-cog'></i>
                 <p>과제</p>
             </div>

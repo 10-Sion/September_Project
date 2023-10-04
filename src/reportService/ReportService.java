@@ -12,11 +12,8 @@ public class ReportService {
 	}
 	
 	public void addReport(ReportVO rVo) {
+		// 과제 업로드 메소드
 		rDao.insertReport(rVo);	
 	}
 
-	
-	
-	
-	
 }

@@ -12,9 +12,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>과제 등록</h1>                      
+	<h1>과제 등록</h1>
 	<form action="<%=contextPath%>/Report/ReportUpload.do"
-		method="post"enctype="multipart/form-data">
+		method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<th>제목</th>

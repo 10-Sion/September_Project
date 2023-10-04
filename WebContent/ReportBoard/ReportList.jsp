@@ -7,6 +7,8 @@
 	request.setCharacterEncoding("utf-8");
 	String contextPath = request.getContextPath();
 	String non = "";
+	String check = "";
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -26,6 +28,7 @@
                 <th>공개여부</th>
                 <th>제출인원</th>
                 <th>평가인원</th>
+                <th>제출여부</th>
             </tr>
             <tr>
                 <td><%=non %>1-1</td>
@@ -36,6 +39,8 @@
                 <td><%=non %>공개</td>
                 <td><%=non %>1</td>
                 <td><%=non %>0/8</td>
+                <td><%=check %></td>
+                
             </tr>
         </table>
     </div>

@@ -56,46 +56,83 @@ public class ReportDAO {
 		}
 		return -1; // insert에 실패하면 -1을 반환
 	}
-
-	public void insertReport(ReportVO rVo) {
-		
+	
+	// DB에 insert 하기 전에 DB에 과제가 존재하는지 check 하는 메소드
+	private String checkReport() {
+		String check = "";
 		String sql = "";
 		
 		try {
 			con = pool.getConnection();
 			
-			String title = rVo.getTitle();
-			int stu_no = rVo.getStu_no();
-			String secret = rVo.getSecret();
-			String content = rVo.getContent();
-			String fileName = rVo.getFileName();
-			
-			sql = "insert into report (sub_no, stu_no, stu_name, week, title, content, secret, filename) " 
-			+ "values(?,?,?,?,?,?,?,?)"; 
+			sql = "select * from report where sub_no = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			// 더미 (다른 테이블 select 값 얻어와야 조회가능)
 			pstmt.setInt(1, 10001);
-			pstmt.setInt(2, stu_no);
-			// 더미
-			pstmt.setString(3, "이학생");
-			// 더미
-			pstmt.setInt(4, 1);
-			pstmt.setString(5, title);
-			pstmt.setString(6, content);
-			pstmt.setString(7, secret);
-			pstmt.setString(8, fileName);
 			
-			pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				check = "제출";
+			} else {
+				check = "미제출";
+			}
 			
 		} catch (Exception e) {
-			System.out.println("insertReport() 메소드 내부 오류 : " + e );
+			System.out.println("checkReport() 메소드 내부 오류 : " + e );
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
-		
-		
+		return check;
 	}
+	
+	
+	public void insertReport(ReportVO rVo) {
+		
+		String sql = "";
+		
+		String check = checkReport();
+		
+		if( check.equals("제출") ) {
+			System.out.println("이미 제출함");
+		} else {
+			try {
+				con = pool.getConnection();
+				
+				String title = rVo.getTitle();
+				int stu_no = rVo.getStu_no();
+				String secret = rVo.getSecret();
+				String content = rVo.getContent();
+				String fileName = rVo.getFileName();
+				
+				sql = "insert into report (sub_no, stu_no, stu_name, week, title, content, secret, filename) " 
+				+ "values(?,?,?,?,?,?,?,?)"; 
+				
+				pstmt = con.prepareStatement(sql);
+				
+				// 더미 (다른 테이블 select 값 얻어와야 조회가능)
+				pstmt.setInt(1, 10001);
+				pstmt.setInt(2, stu_no);
+				// 더미
+				pstmt.setString(3, "이학생");
+				// 더미
+				pstmt.setInt(4, 1);
+				pstmt.setString(5, title);
+				pstmt.setString(6, content);
+				pstmt.setString(7, secret);
+				pstmt.setString(8, fileName);
+				
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				System.out.println("insertReport() 메소드 내부 오류 : " + e );
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+		}	// if 문 끝
+		
+	}	// insertReport 끝
+	
+}	// ReportDAO 끝
 
-}
