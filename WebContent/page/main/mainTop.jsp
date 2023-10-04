@@ -41,8 +41,8 @@
     	</div>
         
             <a href="../../GangUi/gangMain.jsp" class="menuItem">학사관리시스템</a>
-            <a href="#" class="menuItem">강의실</a>
-            <a href="#" class="menuItem">공지사항</a>
+            <a href="../../QnA/list.jsp" class="menuItem">강의실</a>
+            <a href="../../Notices/list.jsp" class="menuItem">공지사항</a>
             <!-- uniqueId를 사용하여 My page로 이동하는 함수 호출 -->
             <a href="#" class="menuItem" onclick="redirectToMyPage('<%= uniqueId %>')">마이페이지</a>
         </div>
