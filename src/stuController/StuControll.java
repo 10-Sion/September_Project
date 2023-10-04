@@ -2,6 +2,7 @@ package stuController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -60,21 +61,15 @@ public class StuControll extends HttpServlet {
 		
 		switch (action) {
 			case "/login.do":
-				
 				center = stuService.serviceStudentLogin();
-				
 				// System.out.println(center);
-				
 				// 중앙화면 주소 바인딩
 				request.setAttribute("center", center);
-				
 				// 전체 메인화면 주소 저장
 				nextPage = "/student/Main.jsp";
-				
 				break;
 				
 			case "/loginPro.do":
-				
 				int check = stuService.serviceStudentCheck(request);
 				
 				if(check == 0) {	// 아이디 맞고 비번틀림
@@ -90,23 +85,19 @@ public class StuControll extends HttpServlet {
 					out.println("</script>");
 					return;
 				}
-				
 				nextPage = "/student/Main.jsp";
 				break;
 
 			case "/logOut.do":
-				
 				stuService.serviceStudentLogOut(request);
-
 				// 전체 메인화면 주소 저장
-				nextPage = "/student/Main.jsp";
-				
+				nextPage = "/student/Main.jsp";	
 				break;
 			
 			case "/selStudnet.do":
 				// s_Sidebar.jsp 로 부터 받은 session 값을 int 형태로 저장
 				int stu_no = Integer.parseInt(request.getParameter("stu_no")) ;
-				System.out.println("셀렉트.do " + stu_no);	// 값 넘어옴 
+				//System.out.println("셀렉트.do " + stu_no);	// 값 넘어옴 
 				
 				// stu_no 값을 이용해 DB 에 저장된 학생 한명의 정보를 조회하기위해
 				// stuDAO 객체의 studnetInfo(int stu_no) 호출 시 학생 번호전달
@@ -121,12 +112,31 @@ public class StuControll extends HttpServlet {
 				nextPage = "/stuTable1.jsp";
 				
 				break;
-
+				
+			case "/selSubject.do":
+				ArrayList subList = new ArrayList();
+				
+				subList = stuDao.subList();
+				
+				request.setAttribute("subList", subList);
+				
+				nextPage = "stuTable2.jsp";
+				
+				break;
+			
+			case "/addSubject.do":
+				//String[] addSub = request.getParameterValues("addSub");
+				
+				System.out.println("에드서브잭트 : " + request.getParameterValues("addSub"));
+			
+			
+			
+			
 		default:
 			break;
 		}
 		
-		System.out.println(nextPage);
+		System.out.println("반환되는 주소 : " + nextPage);
 		// 포워딩 (디스패처 방식)
 		//equestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		//dispatcher.forward(request, response);

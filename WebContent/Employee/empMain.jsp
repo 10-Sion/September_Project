@@ -26,7 +26,8 @@
         <% request.setAttribute("errorMessage", "직원 정보를 가져오지 못했습니다."); %>
         <% request.getRequestDispatcher("/Employee/error.jsp").forward(request, response); %>
     <% } %>
-  
+  	
+  	
     <div class="left_sidebar">
       <jsp:include page="empSidebar.jsp" />
     </div>
@@ -55,7 +56,7 @@
       </div>
       <div class="menu_item_name_and_filter">
         <div class="menu_item_name">
-          <h2>교직원 페이지</h2>
+          <h2>Database</h2>
         </div>
         <div class="filter_and_sort">
           <div class="sort sort_and_filter">
@@ -70,9 +71,9 @@
       </div>
       <div class="tabs">
         <div class="tab_name">
-          <p onclick="loadServletData('/HakSaGwanLee/employee/list')">Employee</p>
-          <p onclick="loadServletData('/HakSaGwanLee/professor/list')">Professor</p>
-          <p onclick="loadServletData('/HakSaGwanLee/student/list')">Student</p>
+          <p onclick="loadServletData('<%=request.getContextPath()%>/employee/list')">Employee</p>
+          <p onclick="loadServletData('<%=request.getContextPath()%>/professor/list')">Professor</p>
+          <p onclick="loadServletData('<%=request.getContextPath()%>/student/list')">Student</p>
         </div>
         <div class="three_dots">
           <i class='bx bx-dots-vertical-rounded'></i>
@@ -86,40 +87,7 @@
     </div>
   </div>
 
-  <script>
-  //    페이지 로딩 함수
-  function loadPage(pageUrl) {
-      $.ajax({
-          url: pageUrl,
-          type: 'GET',
-          dataType: 'html',
-          success: function(data) {
-              $('.table').html(data);
-          },
-          error: function(xhr, status, error) {
-              console.error(error);
-          }
-      });
-  }
-  //    서블릿 데이터 처리 함수
-  function loadServletData(servletUrl) {
-	  
-	    console.log(servletUrl);
-	    
-	    $.ajax({
-	        url: '<%=request.getContextPath()%>/employee/indivDetail',
-	        type: 'GET',
-	        dataType: 'html',
-	        success: function(data) {
-	            // 서블릿에서 반환된 데이터를 화면에 표시
-	            $('.table').html(data);
-	        },
-	        error: function(xhr, status, error) {
-	            console.error(error);
-	        }
-	    });
-	}
 
-  </script>
+  <script src="../pageSetUp/myPage.js"></script>
 </body>
 </html>

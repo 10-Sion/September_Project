@@ -37,7 +37,7 @@ public class EmployeeDetailsServlet extends HttpServlet {
     	
     	// 세션에서 현재 로그인된 사용자의 직원 No. 가져오기
         HttpSession session = request.getSession();
-        Integer currentEmployeeId = (Integer) session.getAttribute("currentEmployeeId");
+        Integer currentEmployeeId = (Integer) session.getAttribute("uniqueId");
 
         // 범위를 벗어난 경우 처리
         if (currentEmployeeId == null || currentEmployeeId <= 0 || currentEmployeeId >= 1000) {
