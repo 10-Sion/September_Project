@@ -80,7 +80,8 @@
             <td>
             </td>
             <td align="right">
-                <a href="post.jsp">[글쓰기]</a>
+                <a href="post.jsp">[글쓰기] </a>
+                <a href="../page/main/MainPage.jsp">[메인화면으로]</a> <!-- 메인화면으로 링크 추가 -->
             </td>
         </tr>
     </table>

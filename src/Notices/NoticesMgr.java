@@ -41,8 +41,8 @@ public class NoticesMgr {
                 bean.setTitle(rs.getString("title"));
                 bean.setContent(rs.getString("content"));
                 bean.setRegdate(rs.getString("regdate"));
-              //  bean.setSub_no(rs.getInt("sub_no"));
-              //  bean.setPro_no(rs.getInt("pro_no"));
+                bean.setSub_no(rs.getInt("sub_no"));
+                bean.setPro_no(rs.getInt("pro_no"));
                 vlist.add(bean);
             }
         } catch (Exception e) {
@@ -130,26 +130,24 @@ public class NoticesMgr {
         return bean;
     }
 
-    // 공지사항 수정
+ // 공지사항 수정
     public void updateNotice(NoticesBean bean) {
         Connection con = null;
         PreparedStatement pstmt = null;
         try {
             con = pool.getConnection();
-            String sql = "UPDATE notice SET title=?, content=?, regdate=NOW(), sub_no=?, pro_no=? WHERE num=?";
+            String sql = "UPDATE notice SET title=?, content=?, regdate=NOW(), WHERE num=?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, bean.getTitle());
             pstmt.setString(2, bean.getContent());
-            pstmt.setInt(3, bean.getSub_no());
-            pstmt.setInt(4, bean.getPro_no());
-            pstmt.setInt(5, bean.getNum());
+       
+            pstmt.setInt(3, bean.getNum());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
+            e.printStackTrace();
+        } finally {
             pool.freeConnection(con, pstmt);
         }
     }
@@ -173,4 +171,33 @@ public class NoticesMgr {
             pool.freeConnection(con, pstmt);
         }
     }
+    
+    // 공지사항 번호와 제목 가져오기
+    public Vector<NoticesBean> getsimple(int start, int end) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = null;
+        Vector<NoticesBean> vlist = new Vector<NoticesBean>();
+        try {
+            con = pool.getConnection();
+            sql = "SELECT num, title FROM notice ORDER BY regdate DESC LIMIT ?, ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, start);
+            pstmt.setInt(2, end);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                NoticesBean bean = new NoticesBean();
+                bean.setNum(rs.getInt("num"));
+                bean.setTitle(rs.getString("title"));
+                vlist.add(bean);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            pool.freeConnection(con, pstmt, rs);
+        }
+        return vlist;
+    }
+
 }

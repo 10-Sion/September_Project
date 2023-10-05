@@ -1,4 +1,27 @@
 <%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page import="Member.StudentDAO" %>
+
+
+
+<%! String userName = null; // 사용자 이름을 저장할 변수 %>
+
+<%
+   HttpSession userSession = request.getSession(false); // 세션이 없으면 새로 생성하지 않음
+
+   if (userSession != null) {
+      // 세션이 존재하면 사용자 정보를 가져와서 이름을 설정합니다.
+      String userRole = (String) userSession.getAttribute("userRole");
+      int uniqueId = (int) userSession.getAttribute("uniqueId");
+
+      // 사용자 역할이 학생인 경우만 학생 이름을 가져옵니다.
+      if ("학생".equals(userRole)) {
+         StudentDAO studentDAO = new StudentDAO();
+         userName = studentDAO.getStudentName(uniqueId);
+      }
+   }
+%>
+
 <html>
 <head>
 <!-- 게시물 쓰기 페이지 -->
@@ -20,9 +43,9 @@
 		<td align=center>
 		<table align="center">
 			<tr>
-				<td width="10%">성 명</td>
+				<td width="10%">작 성 자</td>
 				<td width="90%">
-				<input name="name" size="10" maxlength="8"></td>
+				<input name="name" size="10" maxlength="8" value="<%= userName %>" readonly></td>
 			</tr>
 			<tr>
 				<td>제 목</td>
@@ -33,10 +56,10 @@
 				<td>내 용</td>
 				<td><textarea name="content" rows="10" cols="50"></textarea></td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td>비밀 번호</td>
 				<td><input type="password" name="pass" size="15" maxlength="15"></td>
-			</tr>
+			</tr> -->
 			<tr>
 			 <tr>
      			<td>파일찾기</td> 

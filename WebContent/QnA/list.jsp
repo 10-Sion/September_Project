@@ -187,7 +187,7 @@
 				</td>
 
 
-					<a href="javascript:list()">[처음으로]</a>
+					<a href="../page/main/MainPage.jsp">[처음으로]</a>
 				</td>
 			</tr>
 		</table>

@@ -1,9 +1,14 @@
 <%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page import="Member.ProfessorDAO" %>
 <jsp:useBean id="bean" class="QnA.BoardBean" scope="session"/>
 <%
 	  String nowPage = request.getParameter("nowPage");
 	  String subject = bean.getSubject();
 	  String content = bean.getContent(); 
+	  
+		// 교수 이름 가져오기
+	    String professorName = (String) session.getAttribute("username");
 %>
 <html>
 <head>
@@ -26,7 +31,7 @@
     <tr>
      <td width="20%">성 명</td>
      <td width="80%">
-	  <input name="name" size="30" maxlength="20"></td>
+	  <input name="name" size="30" maxlength="20" value="<%= professorName %> 교수님" readonly></td>
     </tr>
     <tr>
      <td>제 목</td>
@@ -42,11 +47,11 @@
       	</textarea>
       </td>
     </tr>
-    <tr>
+    <!-- <tr>
      <td>비밀 번호</td> 
      <td>
 	  <input type="password" name="pass" size="15" maxlength="15"></td> 
-    </tr>
+    </tr> -->
     <tr>
      <td colspan="2" height="5"><hr/></td>
     </tr>

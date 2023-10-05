@@ -32,17 +32,18 @@
 	    <div class="tabs-content">
 	        <div class="tab active" tab-id="1">
 	            <!-- 공지사항 컨텐츠 -->
-	            <ul>
-	                <% 
-                    NoticesMgr noticesMgr = new NoticesMgr();
-                    Vector<NoticesBean> noticeList = noticesMgr.getNoticesList(0, 5); // 예시로 처음 5개 공지사항 가져오기
-                    for (NoticesBean notice : noticeList) {
-                %>
-                <li><a href="#"><%= notice.getTitle() %></a></li>
-                <%
-                    }
-                %>
-	            </ul>
+				<ul>
+				    <% 
+				    NoticesMgr noticesMgr = new NoticesMgr();
+				    Vector<NoticesBean> noticeList = noticesMgr.getsimple(0, 5); // 처음 5개 공지사항 번호와 제목 가져오기
+				    for (NoticesBean notice : noticeList) {
+				    %>
+				    <li><a href="#"><%= notice.getTitle() %></a></li>
+				    <%
+				    }
+				    %>
+				</ul>
+
 	        </div>
 	        
 	        

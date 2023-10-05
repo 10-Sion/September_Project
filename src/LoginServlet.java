@@ -28,15 +28,22 @@ public class LoginServlet extends HttpServlet {
         boolean professorLogin = professorDAO.checkLogin(uniqueId, userPassword);
         
         String userRole = null; // 사용자 역할을 저장할 변수
+        String userName = null; // 사용자 이름을 저장할 변수
 
         if (studentLogin) {
             // 학생으로 로그인한 경우
         	
         	userRole = "학생";
         	
+        	// 데이터베이스에서 사용자 이름 가져오기
+            userName = studentDAO.getStudentName(uniqueId);
+        	
             HttpSession session = request.getSession(true);
             session.setAttribute("uniqueId", uniqueId);
             session.setAttribute("userRole", "학생"); // 사용자 역할 설정
+            
+            session.setAttribute("username", userName);
+            
 
 
             // 로그인 성공 시 메인 페이지로 리다이렉트
@@ -47,15 +54,26 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute("uniqueId", uniqueId);
             session.setAttribute("userRole", "직원"); // 사용자 역할 설정
+            
+            session.setAttribute("username", userName);
+            
+
 
             // 로그인 성공 시 메인 페이지로 리다이렉트
             response.sendRedirect("page/main/MainPage.jsp");
+      
         } else if (professorLogin) {
             // 교수로 로그인한 경우
         	userRole = "교수";
+        	
+        	// 데이터베이스에서 교수 이름 가져오기
+            userName = professorDAO.getProfessorName(uniqueId);
+            
             HttpSession session = request.getSession(true);
             session.setAttribute("uniqueId", uniqueId);
             session.setAttribute("userRole", "교수"); // 사용자 역할 설정
+            
+            session.setAttribute("username", userName);
 
             // 로그인 성공 시 메인 페이지로 리다이렉트
             response.sendRedirect("page/main/MainPage.jsp");
