@@ -20,6 +20,6 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="Notices/noticesWriteForm.jsp">글쓰기</a>
+    <a href="Notice/Not_write.jsp">글쓰기</a>
 </body>
 </html>

@@ -1,12 +1,12 @@
 package jun_notice;
+
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Notices.NoticesBean;
-import Notices.NoticesMgr;
 
 @WebServlet("/Notices/noticesRead")
 public class NoticesReadServlet extends HttpServlet {
@@ -16,10 +16,10 @@ public class NoticesReadServlet extends HttpServlet {
     	
         int num = Integer.parseInt(request.getParameter("num"));
         
-        NoticesMgr noticesMgr = new NoticesMgr();
-        NoticesBean notice = noticesMgr.getNotice(num);
+        MyService myService = new MyService();
+        Notice notice = myService.getNotice(num);
         
         request.setAttribute("notice", notice);
-        request.getRequestDispatcher("/read.jsp").forward(request, response);
+        request.getRequestDispatcher("/Notice/Not_read.jsp").forward(request, response);
     }
 }

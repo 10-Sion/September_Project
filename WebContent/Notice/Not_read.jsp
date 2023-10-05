@@ -23,6 +23,6 @@
             <td>${notice.regdate}</td>
         </tr>
     </table>
-    <a href="list.jsp">목록으로 돌아가기</a>
+    <a href="Not_list.jsp">목록으로 돌아가기</a>
 </body>
 </html>

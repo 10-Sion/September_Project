@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>공지사항 작성</h1>
-    <form action="Notices/noticesWrite" method="post">
+    <form action="Notice/Not_write" method="post">
         제목: <input type="text" name="title"><br>
         내용: <textarea name="content" rows="5" cols="40"></textarea><br>
         <input type="submit" value="작성">
