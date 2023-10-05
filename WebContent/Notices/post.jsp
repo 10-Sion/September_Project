@@ -1,4 +1,25 @@
 <%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page import="Member.ProfessorDAO" %>
+
+<%! String userName = null; // 사용자 이름을 저장할 변수 %>
+
+<%
+   HttpSession userSession = request.getSession(false); // 세션이 없으면 새로 생성하지 않음
+
+   if (userSession != null) {
+      // 세션이 존재하면 사용자 정보를 가져와서 이름을 설정합니다.
+      String userRole = (String) userSession.getAttribute("userRole");
+      int uniqueId = (int) userSession.getAttribute("uniqueId");
+
+      // 사용자 역할이 교수인 경우만 학생 이름을 가져옵니다.
+      if ("교수".equals(userRole)) {
+    	  ProfessorDAO professorDAO = new ProfessorDAO();
+         userName = professorDAO.getProfessorName(uniqueId);
+      }
+   }
+%>
+
 <html>
 <head>
     <!-- 공지사항 쓰기 페이지 -->
@@ -22,7 +43,7 @@
                         <tr>
                             <td width="10%">작성자</td>
                             <td width="90%">
-                                <input name="name" size="10" maxlength="8">
+                                <input name="name" size="10" maxlength="8" value="<%= userName %> 교수님" readonly>
                             </td>
                         </tr>
                         <tr>
