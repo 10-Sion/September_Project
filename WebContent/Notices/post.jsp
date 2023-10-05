@@ -12,7 +12,7 @@
       String userRole = (String) userSession.getAttribute("userRole");
       int uniqueId = (int) userSession.getAttribute("uniqueId");
 
-      // 사용자 역할이 교수인 경우만 학생 이름을 가져옵니다.
+      // 사용자 역할이 교수인 경우만 교수 이름을 가져옵니다.
       if ("교수".equals(userRole)) {
     	  ProfessorDAO professorDAO = new ProfessorDAO();
          userName = professorDAO.getProfessorName(uniqueId);

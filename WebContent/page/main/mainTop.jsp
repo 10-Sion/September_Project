@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
+    
 <%
         String contextPath = request.getContextPath();
         Integer uniqueId = (Integer) session.getAttribute("uniqueId");
-        
-        out.println("uniqueId: " + uniqueId); // uniqueId 값을 출력
+   
+        String userRole = (String) session.getAttribute("userRole"); // 사용자 역할을 가져옴
+
+      //  out.println("uniqueId: " + uniqueId); // uniqueId 값을 출력
     %>
     <header>
     	
@@ -13,17 +18,24 @@
    		 <div class="user-links">
    		 
         <%
-        if (uniqueId != null) {
-        %>
-        <a href="../../LoginServlet" id="logoutButton" class="small-link">로그아웃</a>
-        <%
-        } else {
-        %>
-        <a href="login.jsp" id="loginButton" class="small-link">로그인</a>
-        <a href="Form.jsp" id="FormButton" class="small-link">회원가입</a>
-        <%
+    if (uniqueId != null) {
+    %>
+    <a href="../../LoginServlet" id="logoutButton" class="small-link">로그아웃</a>
+    <%
+        // "직원"으로 로그인한 경우에만 회원가입 버튼을 표시
+        if ("직원".equals(userRole)) {
+    %>
+    <a href="Form.jsp" id="FormButton" class="small-link">회원가입</a>
+    <%
         }
-        %>
+    %>
+    <%
+    } else {
+    %>
+    <a href="login.jsp" id="loginButton" class="small-link">로그인</a>
+    <%
+    }
+    %>
     </div>
 
         <!-- JavaScript 파일을 로드하면서 uniqueId 값을 포함하여 전달 -->
