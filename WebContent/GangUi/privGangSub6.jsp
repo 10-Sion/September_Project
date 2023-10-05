@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	
-	String contextPath = request.getContextPath();
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,27 +9,39 @@
 <body>
     <table>
             <tr>
-            	<th>주차-차시</th>
-                <th>과제번호</th>
-                <th>과제명</th>
-                <th>제출방법</th>
-                <th>제출기한</th>
-                <th>공개여부</th>
-                <th>제출인원</th>
-                <th>평가인원</th>
-                <th>제출여부</th>
+                <th>Name</th>
+                <th>No</th>
+                <th>Major</th>
+                <th>Grade</th>
+                <th>Gender</th>
+                <th>Email</th>
+            </tr>
+            
+            <tr>
+                <td class="profile_name"> Gururaj</td>
+                <td>00666</td>
+                <td>SY BCA</td>
+                <td>19</td>
+                <td>Male</td>
+                <td>gururaj@gmail.com</td>
             </tr>
             <tr>
-                <td class="profile_name"> 주차</td>
-                <td>과제번호</td>
-                <td>과제명</td>
-                <td>제출방법</td>
-                <td>제출기한</td>
-                <td>비공개</td>
-                <td>0</td>
-                <td>1</td>
-                <td><a href="javascript:void(0);" onclick="loadServletData('<%=contextPath%>/ReportBoard/ReportForm.jsp')">미제출</a></td>
+                <td class="profile_name"> Gururaj</td>
+                <td>001</td>
+                <td>SY BCA</td>
+                <td>19</td>
+                <td>Male</td>
+                <td>gururaj@gmail.com</td>
             </tr>
+            <tr>
+                <td class="profile_name"> Gururaj</td>
+                <td>001</td>
+                <td>SY BCA</td>
+                <td>19</td>
+                <td>Male</td>
+                <td>gururaj@gmail.com</td>
+            </tr>
+            
         </table>
 </body>
 </html>

@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
 <%
+Integer pro_no = (Integer)session.getAttribute("uniqueId");
 String contextPath = request.getContextPath(); 
 %>
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+</head>
 <style type="text/css">
 	a { text-decoration-line: none; }
 </style>
-</head>
 <body>
     <div class="left_sidebar">
         <div class="close_hamburger_btn">
@@ -22,14 +23,19 @@ String contextPath = request.getContextPath();
         </div>
 
         <div class="menu_items">
-            <div class="menu_item" >
+        	<div class="menu_item">
+        		<h1>나의 정보</h1>
+        	
+        	</div>
+            <div class="menu_item"  onclick="loadPage('MyInfoProfessor.jsp')">
                 <i class='bx bxs-dashboard'></i>
-                <a href ="<%=contextPath%>/Lecture/LectureList.do"><p>Account</p></a>               	
+               <a><p>나의 정보</p></a>
             </div>
             
-            <div class="menu_item" onclick="loadPage('/Lecture/LectureList.do')">
+            <div class="menu_item" onclick="loadPage('<%=contextPath%>/Lecture/ProLectureList.do?pro_no=<%=pro_no%>')">
                 <i class='bx bx-message-rounded-dots'></i>
-                <p>Subject</p>
+<%--                 <a href ="<%=contextPath%>/Lecture/ProLectureList.do?pro_no=<%=pro_no%>"><p>개설 강의 관리</p></a> --%>
+                <p>개설 강의 관리</p>
                 <i class="fa-regular fa-circle-2"></i>
             </div>
             
@@ -46,5 +52,24 @@ String contextPath = request.getContextPath();
             
         </div>
     </div>
+    <script>
+    function loadServletData(servletUrl) {
+	  
+	    console.log(servletUrl);
+	    
+	    $.ajax({
+	        url: servletUrl,
+	        type: 'GET',
+	        dataType: 'html',
+	        success: function(data) {
+	            // 서블릿에서 반환된 데이터를 화면에 표시
+	            $('.table').html(data);
+	        },
+	        error: function(xhr, status, error) {
+	            console.error(error);
+	        }
+	    });
+	}
+  </script>
 </body>
 </html>
