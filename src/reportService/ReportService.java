@@ -28,9 +28,7 @@ public class ReportService {
 		// 과제 업로드 메소드
 		int result = rDao.insertReport(rVo);
 		
-		
-		return result;
-			
+		return result;	
 	}
 
 	// 과제 list 불러오기

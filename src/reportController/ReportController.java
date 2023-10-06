@@ -64,7 +64,7 @@ public class ReportController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String action = request.getPathInfo();
 		ServletContext application = request.getServletContext();
-		System.out.println("요청한 주소 : " + action);
+		("요청한 주소 : " + action);
 			
 		String nextPage = null;
 		
@@ -84,7 +84,7 @@ public class ReportController extends HttpServlet {
 		
 		// 과제 제출 했을 경우
 		} else if ( action.equals("/ReportUpload.do") ) {
-			System.out.println(request.getParameter("stu_no"));
+			(request.getParameter("stu_no"));
 			
 			//upload()메소드를 호출해 글쓰기 화면에서 전송된 글관련 정보를 HashMap에 key/value 한쌍으로 저장시킵니다.
 			//그런후.. 글 입력시 추가적으로 업로드한 파일을 선택하여 글쓰기 요청을 했다면
@@ -111,7 +111,8 @@ public class ReportController extends HttpServlet {
 			// ReportService 객체의 addReport() 메소드 호출 시 매개변수로 DB 에 추가할 새글 정보를 가지고 있는 ReportVO 객체를 전달
 			int result = rService.addReport(rVo);
 			
-			System.out.println(result);
+
+(result);
 			
 			nextPage = "/GangUi/privateGangMain.jsp";
 		}
@@ -155,36 +156,27 @@ public class ReportController extends HttpServlet {
 				각각의 DiskFileItem객체들을  ArrayList배열에 추가 하게 됩니다. 그후 ~ ArrayList배열 자체를 반환 해 줍니다.
 			*/
 			List items = upload.parseRequest(request);
-			
+
 			//ArrayList배열에 저장된 DiskFileItem객체(요청한 아이템하나)의 갯수만큼 반복
 			for(int i=0;   i<items.size();   i++) {
-				
 				//ArrayList배열에서 DiskFileItem객체를 얻는다
-				FileItem  fileItem = (FileItem)items.get(i);
-				
+				FileItem  fileItem = (FileItem)items.get(i);	
 				//얻은 DiskFileItem객체의 정보가 첨부한 파일 요청이 아닐 경우
-				if( fileItem.isFormField()) {
-					
+				if( fileItem.isFormField()) {		
 					System.out.println( fileItem.getFieldName() + "=" + fileItem.getString(encoding) );
-				
 					//RreportForm.jsp페이지에서 입력한 글제목, 글내용만 따로  HashMap에  (key=value)형식으로 저장합니다.
 					//HashMap에 저장된 모습 ->  {"title"="입력한글제목", "content"="입력한글내용" }
 					ReportMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
-	
-				}else {//얻은 DiskFileItem객체의 정보가  첨부한 파일일 경우
-					
+				}else {//얻은 DiskFileItem객체의 정보가  첨부한 파일일 경우		
 //					System.out.println("요청한 <input>의 name속성값 : " + fileItem.getFieldName());
 //					System.out.println("업로드 요청한 첨부 이미지 파일명 : " + fileItem.getName());
 //					System.out.println("업로드 요청한 첨부 이미지 파일 크기 : " + fileItem.getSize() + "bytes");
-
 					//ReportForm.jsp페이지에서 입력한 글제목, 글내용, 요청한 업로드 파일 정보 등.. 모든 요청정보들을 HashMap에 key=value한쌍 씩 저장
 					//HashMap에 저장된 모습 ->  {"imageFileName"="3.png",   "title"="입력한글제목",  "content"="입력한글내용"}
 					ReportMap.put(fileItem.getFieldName(), fileItem.getName());
-					
-					
+
 					//업로드시 첨부한 파일의 크기가 0보다 크다면?
 					if(fileItem.getSize() > 0 ) {
-						
 						//업로드할 파일명을 얻어  파일명의 뒤에서부터 \\문자열이 들어 있는지 index위치를 알려주는데..
 						//없으면  -1을 반환함.
 						int idx = fileItem.getName().lastIndexOf("\\");//파일명의 뒤에서 부터 \\문자열이 들어 있는지 검색해서
@@ -203,21 +195,12 @@ public class ReportController extends HttpServlet {
 						
 						//실제 파일업로드
 						fileItem.write(uploadFile);
-			
 					} // 가장 안쪽 if
-				
 				}//안쪽 if else중에서 else
-		
 			}//for
-		
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return ReportMap;
-		
 	}//upload메소드 닫는 부분 
-	
-	
-	
 }
