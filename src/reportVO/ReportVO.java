@@ -4,6 +4,7 @@ public class ReportVO {
 	
 	private int Sub_no;
 	private int Stu_no;
+	private String stu_name;
 	private int Week;
 	private String title;
 	private String content;
@@ -65,6 +66,12 @@ public class ReportVO {
 	}
 	public void setSubmit(String submit) {
 		this.submit = submit;
+	}
+	public String getStu_name() {
+		return stu_name;
+	}
+	public void setStu_name(String stu_name) {
+		this.stu_name = stu_name;
 	}
 
 }

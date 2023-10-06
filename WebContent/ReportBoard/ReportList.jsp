@@ -21,7 +21,7 @@
         <table>
             <tr>
                 <th>주차-차시</th>
-                <th>dddd</th>
+                <th>과제번호</th>
                 <th>과제제목</th>
                 <th>제출방법</th>
                 <th>제출기한</th>
