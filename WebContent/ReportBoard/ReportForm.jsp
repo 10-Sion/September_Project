@@ -34,7 +34,6 @@
 				<th>비밀글 설정</th>
 				<td ><input type="checkbox" name=secret /></td>
 			</tr>
-
 			<tr>
 				<td colspan="6">
 				<textarea cols="30" rows="5" name="content"></textarea></td>
