@@ -17,11 +17,7 @@
                     <i class="far fa-address-book">
                     </i>신청한 강의</a>
                 </li>
-                <li onclick="loadPage('../Notices/list.jsp')">
-                    <a href="javascript:void(0);">
-                    <i class="far fa-clone">
-                    </i>공지사항</a>
-                </li>
+                
                 <li onclick="loadPage('../QnA/list.jsp')">
                     <a href="javascript:void(0);">
                     <i class="far fa-chart-bar">

@@ -60,7 +60,7 @@
                     <tr>
                         <td align="center"><%= i + 1 %></td>
                         <td>
-                            <a href="#" onclick="loadPage('/HakSaGwanLee/Notices/read.jsp?num=<%= num %>')"><%= title %></a>
+                           <a href="read.jsp?num=<%= num %>"><%= title %></a>
                         </td>
                         <td align="center"><%= regdate %></td>
                     </tr>

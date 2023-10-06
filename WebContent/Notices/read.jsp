@@ -45,9 +45,9 @@
     <tr>
         <td align="center" colspan="2">
             <hr/>
-            [ <a href="#" onclick="loadPage('/HakSaGwanLee/Notices/list.jsp')">리스트</a> |
-            <a href="#" onclick="loadPage('/HakSaGwanLee/Notices/update.jsp?num=<%= num %>')">수정</a> |
-            <a href="#" onclick="loadPage('/HakSaGwanLee/Notices/delete.jsp?num=<%= num %>')">삭제</a> ]
+            [ <a href="list.jsp">리스트</a> |
+            <a href="update.jsp?num=<%=num%>">수정</a> |
+            <a href="delete.jsp?num=<%=num%>">삭제</a> ]
         </td>
     </tr>
 </table>
