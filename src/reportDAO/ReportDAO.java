@@ -3,9 +3,11 @@ package reportDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import dbcp.DBConnectionMgr;
 import reportVO.ReportVO;
+import reportVO.ReportlistVO;
 
 // DB 와 연동해서 작업을 하는 DAO 클래스
 public class ReportDAO {
@@ -65,7 +67,7 @@ public class ReportDAO {
 		try {
 			con = pool.getConnection();
 			
-			sql = "select * from report where sub_no = ?";
+			sql = "select * from report where stu_no = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -141,6 +143,68 @@ public class ReportDAO {
 		}	// if 문 끝
 		
 	}	// insertReport 끝
+
+	// stu_no, sub_no 을 기준으로 학생 이름
+	public ReportVO selectInfo(ReportVO rVo) {
+		
+		String sql = "";
+		
+		try {
+			con = pool.getConnection();
+			sql = "select name from student where stu_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, rVo.getStu_no());		
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				rVo.setStu_name(rs.getString("name"));
+			}
+		} catch (Exception e) {
+			System.out.println("selectInfo() 메소드 내부 오류 : " + e );
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return rVo;
+	} // selectInfo() 끝
+	
+	
+	// 개설 과제 전부 가져오는 메소드
+	public ArrayList selectreport(ReportlistVO rLiVo) {
+		
+		ArrayList reportlist = new ArrayList();
+		
+		String sql = "";
+		
+		try {
+			con = pool.getConnection();
+			
+			sql = "select * from reportboard";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				rLiVo.setWeek(rs.getInt("week"));
+				rLiVo.setSub_no(rs.getInt("sub_no"));
+				rLiVo.setSub_name(rs.getString("sub_name"));
+				rLiVo.setMethod(rs.getString("method"));
+				rLiVo.setPeriod(rs.getString("period"));
+				rLiVo.setDisclosure(rs.getString("disclosure"));
+				rLiVo.setPersonnel(rs.getInt("personnel"));
+				rLiVo.setEvaluation(rs.getInt("evaluation"));
+				rLiVo.setSubmit(rs.getString("submit"));
+				
+				reportlist.add(rLiVo);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("selectInfo() 메소드 내부 오류 : " + e );
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+
+		return reportlist;
+	}
 	
 }	// ReportDAO 끝
 

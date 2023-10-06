@@ -3,6 +3,8 @@
     pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
+	Integer uniqueId = (Integer) session.getAttribute("uniqueId");
+	System.out.println(uniqueId);
 %>
 <!DOCTYPE html>
 <html>
@@ -19,7 +21,7 @@
 				<th>제목</th>
 				<td><input type="text" name="title"></td>
 				<td>작성자</td>
-				<td ><input type="text" name="stu_no" /></td>
+				<td ><input type="text" name="stu_no" value="<%=uniqueId %>" /></td>
 			</tr>
 			<tr>
 				<th>비밀글 설정</th>
