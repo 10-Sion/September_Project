@@ -176,7 +176,7 @@ public class ReportDAO {
 		try {
 			con = pool.getConnection();
 			
-			sql = "select * from reportboard";
+			sql = "select * from reportboard order by week asc";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -186,19 +186,18 @@ public class ReportDAO {
 				ReportlistVO rLiVo = new ReportlistVO();			
 				rLiVo.setWeek(rs.getInt("week"));
 				rLiVo.setSub_no(rs.getInt("sub_no"));
-				rLiVo.setSub_name(rs.getString("sub_name"));
+				rLiVo.setSub_name(rs.getString("report_name"));
 				rLiVo.setMethod(rs.getString("method"));
 				rLiVo.setPeriod(rs.getString("period"));
 				rLiVo.setDisclosure(rs.getString("disclosure"));
 				rLiVo.setPersonnel(rs.getInt("personnel"));
-				rLiVo.setEvaluation(rs.getInt("evaluation"));
-				rLiVo.setSubmit(rs.getString("submit"));
-				
+				rLiVo.setPro_name(rs.getString("pro_name"));
+
 				reportlist.add(rLiVo);
 			}
 			
 		} catch (Exception e) {
-			System.out.println("selectInfo() 메소드 내부 오류 : " + e );
+			System.out.println("selectreport() 메소드 내부 오류 : " + e );
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
