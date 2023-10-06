@@ -12,6 +12,8 @@ public class ReportlistVO {
     private int personnel;		// 제출인원
     private int evaluation;		// 평가인원
     private String submit;		// 제출여부
+    private String pro_name;	// 교수이름
+    private String reposrt_name;	// 과제명
     
 	public int getWeek() {
 		return week;
@@ -67,6 +69,19 @@ public class ReportlistVO {
 	public void setSubmit(String submit) {
 		this.submit = submit;
 	}
+	public String getPro_name() {
+		return pro_name;
+	}
+	public void setPro_name(String pro_name) {
+		this.pro_name = pro_name;
+	}
+	public String getReposrt_name() {
+		return reposrt_name;
+	}
+	public void setReposrt_name(String reposrt_name) {
+		this.reposrt_name = reposrt_name;
+	}
+	
 	
     
     

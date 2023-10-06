@@ -4,7 +4,12 @@
 <%
 	String contextPath = request.getContextPath();
 	Integer uniqueId = (Integer) session.getAttribute("uniqueId");
-	System.out.println(uniqueId);
+	System.out.println("ReportForm.jsp 내부 세션 값 : " + uniqueId);
+	session.setAttribute("uniqueId", uniqueId);
+	
+	String report_name = request.getParameter("report_name");
+	System.out.println("list 페이지에서 넘어오는 과제명 값 : " + report_name);
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -18,17 +23,19 @@
 		method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
+				<th>과제명</th>
+				<td colspan="5"><input type="text" name="report_name" value="<%=report_name%>" readonly="readonly"></td>
+			</tr>
+			<tr>
 				<th>제목</th>
 				<td><input type="text" name="title"></td>
 				<td>작성자</td>
-				<td ><input type="text" name="stu_no" value="<%=uniqueId %>" /></td>
-			</tr>
-			<tr>
+				<td ><input type="text" name="stu_no" value="<%=uniqueId %>" readonly="readonly" /></td>
 				<th>비밀글 설정</th>
-				<td colspan="3"><input type="checkbox" name=secret /></td>
+				<td ><input type="checkbox" name=secret /></td>
 			</tr>
 			<tr>
-				<td colspan="4">
+				<td colspan="6">
 				<textarea cols="30" rows="5" name="content"></textarea></td>
 			</tr>
 			<tr>
