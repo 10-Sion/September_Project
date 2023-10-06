@@ -86,10 +86,11 @@
 				%>
             <td align="right">
                 <%
-				        if (userRole.equals("교수")) {
+                if (userRole.equals("직원") || userRole.equals("교수")) {
+				        	
 				        	
 				    %>
-				        <a href="#" onclick="loadPage('/HakSaGwanLee/Notices/post.jsp')">[글쓰기]</a> 
+				        <a href="post.jsp">[글쓰기]</a> 
 				    <%
 				        }
 				    %>
