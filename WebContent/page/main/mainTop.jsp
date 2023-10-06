@@ -7,7 +7,7 @@
         Integer uniqueId = (Integer) session.getAttribute("uniqueId");
    
         String userRole = (String) session.getAttribute("userRole"); // 사용자 역할을 가져옴
-
+		String username = (String) session.getAttribute("username");
       //  out.println("uniqueId: " + uniqueId); // uniqueId 값을 출력
     %>
     <header>
@@ -19,8 +19,8 @@
         <%
     if (uniqueId != null) {
     %>
-    <p><%=userRole%>로그인 중</p>
-    <a href="../../LoginServlet" id="logoutButton" class="small-link">로그아웃</a>
+    <p><%=username%>로그인 중
+    <a href="../../LoginServlet" id="logoutButton" class="small-link">로그아웃</a></p>
     <%
         // "직원"으로 로그인한 경우에만 회원가입 버튼을 표시
         if ("직원".equals(userRole)) {
