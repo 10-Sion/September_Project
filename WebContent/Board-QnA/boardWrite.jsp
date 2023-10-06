@@ -34,6 +34,6 @@
     </form>
     
     <br>
-    <a href="BoardController?action=list">목록으로 돌아가기</a>
+    <a href="BoardListServlet">목록으로 돌아가기</a>
 </body>
 </html>

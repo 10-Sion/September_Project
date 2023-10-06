@@ -30,6 +30,10 @@ public interface IBoardDAO { //각기능별로 추상메소드들의 이름을 �
 	public void replyBoard(BoardBean boardBean); //작성한 하나의 답변새글정보를 BoardBean객체에 담아 매개변수로 받음 
 
 	
+
+	
+
+	
 }
 
 

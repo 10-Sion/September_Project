@@ -52,22 +52,30 @@ public class BoardListServlet extends HttpServlet {
         // 게시물 목록을 가져오는 메서드 호출
         Vector<BoardBean> boardVector = boardDAO.getAllBoards();
         
+        // 콘솔에 게시물 수 출력
+        System.out.println("게시물 수: " + boardVector.size());
+        
         // Vector를 List로 변환
         List<Map<String, String>> boardList = new ArrayList<>();
         for (BoardBean board : boardVector) {
             Map<String, String> boardData = new HashMap<>();
-            boardData.put("num", String.valueOf(board.getNum()));
-            boardData.put("name", board.getName());
-            boardData.put("subject", board.getSubject());
-            boardData.put("regdate", board.getRegdate().toString()); // regdate를 문자열로 변환
+            boardData.put("num", String.valueOf(board.getNum())); // 글번호 
+            boardData.put("name", board.getName()); // 작성자
+            boardData.put("subject", board.getSubject()); // 글 제목
+         //   boardData.put("regdate", board.getRegdate().toString()); // regdate를 문자열로 변환
             boardList.add(boardData);
         }
 
         // 추출한 정보를 request 속성에 설정
         request.setAttribute("boardList", boardList);
 
+ 
+        
         // 게시물 목록 화면으로 포워딩
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Board-QnA/BoardList.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Board-QnA/boardList.jsp");
         dispatcher.forward(request, response);
+        
+     // boardList를 콘솔로 출력
+        System.out.println("boardList: " + boardList);
     }
 }

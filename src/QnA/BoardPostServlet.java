@@ -1,4 +1,4 @@
-package Notices;
+package QnA;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Notices/noticesPost")
-public class NoticesPostServlet extends HttpServlet {
+@WebServlet("/QnA/boardPost")
+public class BoardPostServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		request.setCharacterEncoding("EUC-KR");
-		NoticesMgr nMgr = new NoticesMgr();
-		
-		System.out.println(request.getParameter("title"));
-		System.out.println(request.getParameter("content"));
-		
-		
-		nMgr.insertNotice(request);
+		BoardMgr bMgr = new BoardMgr();
+		bMgr.insertBoard(request);
 		response.sendRedirect("list.jsp");
 	}
 }

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+BODY {
+    FONT-SIZE: 15pt;
+    COLOR: black;
+    LINE-HEIGHT: 160%;
+    FONT-FAMILY: 'Noto Sans KR', sans-serif;
+    background-color: white; /* 바탕화면 색상을 흰색으로 변경 */
+}
+
+TD {
+    FONT-SIZE: 10pt;
+    COLOR: black;
+    LINE-HEIGHT: 160%;
+    FONT-FAMILY: 'Noto Sans KR', sans-serif;
+}
+
+SELECT {
+    FONT-SIZE: 10pt;
+    COLOR: black;
+    LINE-HEIGHT: 160%;
+    FONT-FAMILY: 'Noto Sans KR', sans-serif;
+}
+
+DIV {
+    FONT-SIZE: 10pt;
+    COLOR: black;
+    LINE-HEIGHT: 160%;
+    FONT-FAMILY: 'Noto Sans KR', sans-serif;
+}
+
+FORM {
+    FONT-SIZE: 10pt;
+    COLOR: black;
+    LINE-HEIGHT: 160%;
+    FONT-FAMILY: 'Noto Sans KR', sans-serif;
+}
+
+TEXTAREA {
+    BORDER-RIGHT: 1px solid #999999;
+    BORDER-TOP: 1px solid #999999;
+    FONT-SIZE: 10pt;
+    BORDER-LEFT: 1px solid #999999;
+    COLOR: BLACK;
+    BORDER-BOTTOM: 1px solid #999999;
+    FONT-FAMILY: 'Noto Sans KR', sans-serif;
+    BACKGROUND-COLOR: white;
+}
+
+INPUT {
+    BORDER-RIGHT: 1px solid #999999;
+    BORDER-TOP: 1px solid #999999;
+    FONT-SIZE: 10pt;
+    BORDER-LEFT: 1px solid #999999;
+    COLOR: BLACK;
+    BORDER-BOTTOM: 1px solid #999999;
+    FONT-FAMILY: 'Noto Sans KR', sans-serif;
+    HEIGHT: 19px;
+    BACKGROUND-COLOR: white;
+}
+
+A:link {
+    text-decoration: none;
+    color: #696969;
+}
+
+A:hover {
+    text-decoration: underline; /* 호버 상태에서 밑줄 추가 */
+    color: #66CCFF;
+}
+
+A:visited {
+    text-decoration: none;
+    color: #330066;
+}

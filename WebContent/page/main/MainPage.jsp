@@ -75,9 +75,9 @@
 		</div>
 		
 		<div class="footer-content">
-			<h6>머글캠퍼스</h6>
-			<p>(00000ㅁㅁㅁㅁ ㅇㅇㅇㅇ ㄹㄹㄹ</p>
-			<p>tel. 00 0000 0000</p> 
+			<h6>부산캠퍼스</h6>
+			<p>pax. 123-4567</p>
+			<p>tel. 12 3456 7890</p> 
 		</div>
 		COPYRIGHT ⓒ 2023 UNIVERSITY. ALL RIGHTS RESERVED.
 	</div>

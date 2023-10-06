@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="common.css">
-
+ 
     <meta charset="UTF-8">
     <title>게시물 수정</title>
 </head>
 <body>
     <h1>게시물 수정</h1>
     
-    <form action="BoardController?action=edit" method="post">
+    <form action="BoardController" method="post">
         <input type="hidden" name="num" value="${board.num}">
         <table>
             <tr>
@@ -35,6 +36,6 @@
     </form>
     
     <br>
-    <a href="BoardController?action=list">목록으로 돌아가기</a>
+    <a href="BoardListServlet">목록으로 돌아가기</a>
 </body>
 </html>
