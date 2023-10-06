@@ -6,15 +6,19 @@ import java.util.List;
 import org.json.simple.JSONArray;
 
 import JaeWooDAO.LectureDAO;
+import JaeWooDAO.ProDao;
 import JaeWooVO.LectureVO;
 import JaeWooVO.PlanVO;
 import JaeWooVO.WeekVO;
 
 public class LectureService {
 	LectureDAO lectureDao;
+	ProDao prodao;
 	
 	public LectureService() {
 		lectureDao = new LectureDAO();
+		prodao = new ProDao();
+		
 	}
 
 	public ArrayList getSublist(String keyField,String keyWord){
@@ -41,6 +45,10 @@ public class LectureService {
 	public List getWeekList(int sub_no) {
 		// TODO Auto-generated method stub
 		return lectureDao.getWeekList(sub_no);
+	}
+
+	public void InsertSubject(LectureVO lv) {
+		prodao.InsertSubject(lv);
 	}
 	
 	

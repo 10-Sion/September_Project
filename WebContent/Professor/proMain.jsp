@@ -1,96 +1,107 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% 
-   session.setAttribute("uniqueId", 1002);
-   Integer pro_no = (Integer)session.getAttribute("uniqueId");
-   String contextPath = request.getContextPath();
-   String center = request.getParameter("center");
-  
- %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-  <link rel="stylesheet" href="../pageSetUp/mainStyle.css">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../pageSetUp/gangSubStyle.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <title>개인 강의실 메인 페이지</title>
 </head>
 <body>
-  <div class="container">
-  
-    <div class="left_sidebar">
-      <jsp:include page="proSidebar.jsp" />
-    </div>
+    <div class="container">
 
-    <div class="main_content">
     
-      <div class="left_right_sidebar_opener">
-      
-        <div class="hamburger">
-          <i class='bx bx-menu'></i>
+        <!-- 왼쪽 사이드바 -->
+        <div class="left_sidebar">
+            <jsp:include page="privateGangSide.jsp" /> 
         </div>
-        
-        <div class="student">
-          <div class="profile_img">
-            <img src="https://i.postimg.cc/Sxb6gssQ/img-1.jpg" alt="profile img">
-          </div>
-          
-          <div class="profile_name">
-            <p>Num</p>
-          </div>
-          
+
+        <!-- 메인 콘텐츠 영역 (개인 강의실 내용) -->
+        <div class="main_content">
+            
+	        <div class="top">
+	            
+	        </div>
+	        
+	        <div class="base_content">
+                <div id="arlina">
+				  <div id="header">
+				    <h1>Univ News</h1></br>
+				    <p>AAAA BBBB CCCC</div>
+				  <div id="menu"></div>
+				  <div id="content">
+				<div class='ticker-wrap' data-domain='www.halosehat.xyz'>
+				<div id='ticker'>
+				</div>
+				</div>
+				    <div id="main">
+				        <div id="box" class="news-box">
+				          <!-- 첫 번째 뉴스 -->
+				          <h3>첫 번째 뉴스 제목</h3>
+				          <p>첫 번째 뉴스 내용...</p>
+				        </div>
+				        <div id="box" class="news-box">
+				          <!-- 두 번째 뉴스 -->
+				          <h3>두 번째 뉴스 제목</h3>
+				          <p>두 번째 뉴스 내용...</p>
+				        </div>
+				        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
+                        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
+                        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
+                        <div id="box" class="news-box">
+                          <!-- 두 번째 뉴스 -->
+                          <h3>두 번째 뉴스 제목</h3>
+                          <p>두 번째 뉴스 내용...</p>
+                        </div>
+
+				      </div>
+				      <div id="side">
+				        <div id="sidecontent2" class="cf">
+				          <span>Widget 1</span>
+				        </div>
+				        <div id="sidecontent2" class="cf">
+				          <span>Widget 2</span>
+				        </div>
+				        <div id="sidecontent2" class="cf">
+				          <span>Widget 3</span>
+				        </div>
+				        <div id="sidecontent">
+				          <span>Widget 4</span>
+				        </div>
+				      </div>
+				    </div>
+				    <div id="footer" class="cf"></div>
+
+				  </div>
+
+				
+				<div class='back-to-top' id='back-to-top' title='Back to top'><i class='fa fa-chevron-up' /></div>
+            </div>
+            
+              <div class="table">
+		        <!-- 불러올 페이지 동적 처리함 -->
+		      </div>
+            
+            
+            
         </div>
-      </div>
-      <div class="main_navbar">
-        
-      </div>
-      <div class="menu_item_name_and_filter">
-        <div class="menu_item_name">
-          <h2>교수 페이지</h2>
-        </div>
-        <div class="filter_and_sort">
-          <div class="sort sort_and_filter">
-            <p>Sort</p>
-            <i class='bx bx-sort-down'></i>
-          </div>
-          <div class="filter sort_and_filter">
-            <p>Filter</p>
-            <i class='bx bx-filter'></i>
-          </div>
-        </div>
-      </div>
-      <div class="tabs">
-        <div class="three_dots">
-          <i class='bx bx-dots-vertical-rounded'></i>
-        </div>
-      </div>
-		<%=contextPath%>
-      <div class="table">
-       	교수 기본 페이지
-       	
-      </div>
     </div>
-  </div>
-
-  <script>
-  function loadPage(pageUrl) {
-      $.ajax({
-          url: pageUrl,
-          type: 'GET',
-          dataType: 'html',
-          success: function(data) { 
-        	  
-        	  $('.table').empty();
-              $('.table').html(data);
-          },
-          error: function(xhr, status, error) {
-              console.error(error);
-          }
-      });
-  }
-  
- 
-
-  </script>
+    
+    <script src="../pageSetUp/gangSubApp.js"></script>
+    <script src="../pageSetUp/myPage.js"></script>
 </body>
 </html>
