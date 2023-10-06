@@ -234,6 +234,7 @@ public class BoardMgr {
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}

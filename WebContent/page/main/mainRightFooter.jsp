@@ -43,6 +43,7 @@
 				    }
 				    %>
 				</ul>
+				<a  href="../../Notices/list.jsp">자세히 보기</a>
 
 	        </div>
 	        

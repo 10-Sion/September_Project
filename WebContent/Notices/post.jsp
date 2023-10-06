@@ -35,7 +35,7 @@
         </tr>
     </table>
     <br/>
-    <form name="postFrm" method="post" action="noticesPost" enctype="multipart/form-data">
+    <form name="postFrm" method="post" action="noticesPost">
         <table width="600" cellpadding="3" align="center">
             <tr>
                 <td align=center>

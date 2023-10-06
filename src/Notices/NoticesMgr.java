@@ -1,5 +1,6 @@
 package Notices;
-
+import java.io.BufferedInputStream;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +9,11 @@ import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import Notices.DBConnectionMgr;
+import QnA.UtilMgr;
 
 public class NoticesMgr {
     private DBConnectionMgr pool;
@@ -76,28 +81,38 @@ public class NoticesMgr {
         return totalCount;
     }
 
- // 공지사항 추가
+
+ // 공지사항 입력
     public void insertNotice(HttpServletRequest req) {
         Connection con = null;
         PreparedStatement pstmt = null;
+        String sql = "INSERT INTO notice (title, content, regdate) VALUES (?, ?, NOW())";
+
         try {
             con = pool.getConnection();
-            String sql = "INSERT INTO notice (title, content, regdate, sub_no, pro_no) VALUES (?, ?, NOW(), ?, ?)";
+           
+
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, req.getParameter("title"));
             pstmt.setString(2, req.getParameter("content"));
-            pstmt.setInt(3, Integer.parseInt(req.getParameter("sub_no")));
-            pstmt.setInt(4, Integer.parseInt(req.getParameter("pro_no")));
             pstmt.executeUpdate();
+
+            String content = req.getParameter("content");
+            System.out.println("content: " + content);
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} finally {
             pool.freeConnection(con, pstmt);
         }
     }
+
+
+
+
 
     // 공지사항 상세 정보 가져오기
     public NoticesBean getNotice(int num) {
@@ -131,26 +146,27 @@ public class NoticesMgr {
     }
 
  // 공지사항 수정
-    public void updateNotice(NoticesBean bean) {
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        try {
-            con = pool.getConnection();
-            String sql = "UPDATE notice SET title=?, content=?, regdate=NOW(), WHERE num=?";
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, bean.getTitle());
+ 	public void updateNotice(NoticesBean bean) {
+ 		Connection con = null;
+ 		PreparedStatement pstmt = null;
+ 		String sql = null;
+ 		try {
+ 			con = pool.getConnection();
+ 			sql = "UPDATE notice SET title=?, content=?, regdate=NOW() WHERE num=?";
+
+ 			pstmt = con.prepareStatement(sql);
+ 			pstmt.setString(1, bean.getTitle());
             pstmt.setString(2, bean.getContent());
-       
+        
             pstmt.setInt(3, bean.getNum());
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            pool.freeConnection(con, pstmt);
-        }
-    }
+
+ 			pstmt.executeUpdate();
+ 		} catch (Exception e) {
+ 			e.printStackTrace();
+ 		} finally {
+ 			pool.freeConnection(con, pstmt);
+ 		}
+ 	}
 
     // 공지사항 삭제
     public void deleteNotice(int num) {

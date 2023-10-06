@@ -25,7 +25,7 @@
         // "직원"으로 로그인한 경우에만 회원가입 버튼을 표시
         if ("직원".equals(userRole)) {
     %>
-    <a href="Form.jsp" id="FormButton" class="small-link">회원가입</a>
+    <a href="Form.jsp" id="FormButton" class="small-link">회원추가</a>
     <%
         }
     %>
@@ -49,7 +49,7 @@
         
         <div class="logo">
         	<a href="<%=request.getContextPath()%>/page/main/MainPage.jsp"><img src="image/Hogwarts-Crest.png" alt="로고 이미지"></a>
-        	<h1>AAAA대학교</h1>
+        	<h1>동명대학교</h1>
     	</div>
         
             <a href="../../GangUi/gangMain.jsp" class="menuItem">학사관리시스템</a>
