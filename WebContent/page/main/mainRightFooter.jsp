@@ -38,7 +38,7 @@
 				    Vector<NoticesBean> noticeList = noticesMgr.getsimple(0, 5); // 처음 5개 공지사항 번호와 제목 가져오기
 				    for (NoticesBean notice : noticeList) {
 				    %>
-				    <li><a href="#"><%= notice.getTitle() %></a></li>
+				    <li><a href="/HakSaGwanLee/Notices/read.jsp?num=<%=notice.getNum()%>"><%= notice.getTitle() %></a></li>
 				    <%
 				    }
 				    %>

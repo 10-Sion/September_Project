@@ -8,8 +8,7 @@ public class NoticesBean {
 	private String regdate;     
 	private int sub_no;            
 	private int pro_no;
-	
-	
+
 	
 	public int getNum() {
 		return num;
