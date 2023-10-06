@@ -71,7 +71,7 @@ public class ProDao {
 				pstmt.executeUpdate();
 				
 			}catch(Exception e) {
-				System.out.print("Professor/ProDAO ?���? 교수 ?��?�� �??�� sql ?���? " + e);
+				System.out.print("Professor/ProDAO 내부 교수 회원가입 오류 " + e);
 				e.printStackTrace();
 			}finally {
 				rs_Close();
@@ -106,7 +106,7 @@ public class ProDao {
 					}
 				
 			} catch(Exception e) {
-				System.out.println("ProDao/Professor?���??�� getProInfo메소?�� 구문 ?���?" + e);
+				System.out.println("ProDao/Professor 내부 교수 정보 받아오기 오류" + e);
 				e.printStackTrace(); 
 			} finally {
 				rs_Close();
@@ -245,7 +245,7 @@ public class ProDao {
 				list.add(dBean); 
 			 }
 			}catch(Exception e) {
-				System.out.println("Professor/ProDao ?���??�� GetDep메소?�� ?���?" + e);
+				System.out.println("Professor/ProDao 내부 GetDep메소드 오류" + e);
 				e.printStackTrace();
 			}finally {
 				rs_Close();

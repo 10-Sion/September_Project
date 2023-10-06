@@ -42,7 +42,7 @@
 				 $('#mj_sel').empty();
 				
 				for(var j = 0; j< data.length; j++){
-				 $('#mj_sel').append("<option value = '"+ data[j].major + "'>" + data[j].major +"</option>");
+				  $('#mj_sel').append("<option value = '"+ data[j].major + "'>" + data[j].major +"</option>");
 				}
 				}
 			}

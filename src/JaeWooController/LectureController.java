@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import JaeWooDAO.ProDao;
 import JaeWooService.LectureService;
 import JaeWooVO.LectureVO;
 import JaeWooVO.PlanVO;
@@ -145,8 +149,10 @@ public class LectureController extends HttpServlet {
 				
 				request.setAttribute("weeklist", weeklist);
 				
-				nextPage = "/Professor/SubjectWeek.jsp?sub_no=" + sub_no;
 				
+				nextPage = "/Professor/SubjectWeek.jsp?sub_no=" + sub_no;			
+				
+			    
 			}else if(action.equals("/InsertWeek.do")) {
 				
 				System.out.println("서블릿 연결 성공");
@@ -166,9 +172,14 @@ public class LectureController extends HttpServlet {
 				
 				lectureservice.InsertWeek(kw);
 				
+				List weeklist = lectureservice.getWeekList(sub_no);
+				
+				request.setAttribute("weeklist", weeklist);
 				
 				
-				nextPage = "/Professor/SubjectWeek.jsp?sub_no=" + sub_no;
+				nextPage = "/Professor/SubjectWeek.jsp?sub_no=" + sub_no;		
+				
+				
 			}
 			
 			
@@ -178,6 +189,7 @@ public class LectureController extends HttpServlet {
 		
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);		
 		dispatch.forward(request, response);
+		
 		}
 //		
 //	

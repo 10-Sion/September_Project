@@ -3,6 +3,8 @@ package JaeWooService;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.JSONArray;
+
 import JaeWooDAO.LectureDAO;
 import JaeWooVO.LectureVO;
 import JaeWooVO.PlanVO;

@@ -106,7 +106,7 @@
 				<th>학점</th>
 				<th>수업계획서</th>
 			</tr>
-			<%
+ 			<%
 				if (list.isEmpty()) {
 			%>
 			<tr>
@@ -126,7 +126,8 @@
 				<th><%=lv.getSub_no()%></th>
 				<th><%=lv.getGrade()%></th>
 				<th><a
-					href="<%=contextPath%>/Lecture/ProLectureDetail.do?sub_no=<%=lv.getSub_no()%>"><%=lv.getSub_name()%></a></th>
+					onclick="loadServletData('<%=contextPath%>/Lecture/ProLectureDetail.do?sub_no=<%=lv.getSub_no()%>')">
+					<%=lv.getSub_name()%></a></th>
 				<th><%=lv.getPro_name()%></th>
 				<th><%=lv.getMajor()%></th>
 				<th><%=lv.getPlace()%></th>

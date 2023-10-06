@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% 
+   session.setAttribute("uniqueId", 1002);
    Integer pro_no = (Integer)session.getAttribute("uniqueId");
+   String contextPath = request.getContextPath();
    String center = request.getParameter("center");
+  
  %>
 <!DOCTYPE html>
 <html>
@@ -61,11 +64,11 @@
           <i class='bx bx-dots-vertical-rounded'></i>
         </div>
       </div>
-
+		<%=contextPath%>
       <div class="table">
        	교수 기본 페이지
+       	
       </div>
-      
     </div>
   </div>
 
@@ -75,7 +78,8 @@
           url: pageUrl,
           type: 'GET',
           dataType: 'html',
-          success: function(data) {
+          success: function(data) { 
+        	  
         	  $('.table').empty();
               $('.table').html(data);
           },
@@ -85,7 +89,8 @@
       });
   }
   
-  
+ 
+
   </script>
 </body>
 </html>
