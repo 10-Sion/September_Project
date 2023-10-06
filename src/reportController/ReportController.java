@@ -3,6 +3,7 @@ package reportController;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,11 +21,11 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
+ 
 import reportDAO.ReportDAO;
 import reportVO.ReportVO;
 import reportService.ReportService;
-
+import reportVO.ReportlistVO;
 
 @WebServlet("/Report/*")
 public class ReportController extends HttpServlet {
@@ -36,10 +37,12 @@ public class ReportController extends HttpServlet {
 	
 	ReportVO rVo;
 	ReportService rService;
+	ReportlistVO rLiVo;
 	
     public ReportController() {
     	rVo = new ReportVO();
     	rService = new ReportService();
+    	rLiVo = new ReportlistVO();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -68,6 +71,18 @@ public class ReportController extends HttpServlet {
 		if( action == null || action.equals("")) {
 			nextPage = "/ReportBoard/ReportList.jsp";
 		
+		// 개설 과제 리스트 조회
+		} else if ( action.equals("/ReportList.do")) {
+			
+			ArrayList reportList = new ArrayList();
+			
+			reportList = rService.reportInfo();
+			
+			request.setAttribute("reportlist", reportList);
+			
+			nextPage = "/GangUi/privGangSub6.jsp";
+		
+		// 과제 제출 했을 경우
 		} else if ( action.equals("/ReportUpload.do") ) {
 			System.out.println(request.getParameter("stu_no"));
 			
@@ -98,7 +113,7 @@ public class ReportController extends HttpServlet {
 			
 			System.out.println(result);
 			
-			nextPage = "/ReportBoard/ReportList.jsp";
+			nextPage = "/GangUi/privateGangMain.jsp";
 		}
 		
 		System.out.println("반환되는 주소 : " + nextPage);
@@ -155,15 +170,13 @@ public class ReportController extends HttpServlet {
 					//RreportForm.jsp페이지에서 입력한 글제목, 글내용만 따로  HashMap에  (key=value)형식으로 저장합니다.
 					//HashMap에 저장된 모습 ->  {"title"="입력한글제목", "content"="입력한글내용" }
 					ReportMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
-					
-								
+	
 				}else {//얻은 DiskFileItem객체의 정보가  첨부한 파일일 경우
 					
-					System.out.println("요청한 <input>의 name속성값 : " + fileItem.getFieldName());
-					System.out.println("업로드 요청한 첨부 이미지 파일명 : " + fileItem.getName());
-					System.out.println("업로드 요청한 첨부 이미지 파일 크기 : " + fileItem.getSize() + "bytes");
+//					System.out.println("요청한 <input>의 name속성값 : " + fileItem.getFieldName());
+//					System.out.println("업로드 요청한 첨부 이미지 파일명 : " + fileItem.getName());
+//					System.out.println("업로드 요청한 첨부 이미지 파일 크기 : " + fileItem.getSize() + "bytes");
 
-					
 					//ReportForm.jsp페이지에서 입력한 글제목, 글내용, 요청한 업로드 파일 정보 등.. 모든 요청정보들을 HashMap에 key=value한쌍 씩 저장
 					//HashMap에 저장된 모습 ->  {"imageFileName"="3.png",   "title"="입력한글제목",  "content"="입력한글내용"}
 					ReportMap.put(fileItem.getFieldName(), fileItem.getName());
@@ -176,18 +189,18 @@ public class ReportController extends HttpServlet {
 						//없으면  -1을 반환함.
 						int idx = fileItem.getName().lastIndexOf("\\");//파일명의 뒤에서 부터 \\문자열이 들어 있는지 검색해서
 																	   //만약 있으면 \의 index위치를 int로 반환,없으면 -1을 반환
-						
 						System.out.println(idx);
 						
 						if(idx == -1) {
 							idx = fileItem.getName().lastIndexOf("/"); //-1얻기
-							System.out.println("첨부할 파일명에  /없다 : " + idx);
+//							System.out.println("첨부할 파일명에  /없다 : " + idx);
 						}
 						
 						//업로드할 파일명 얻기
 						String fileName = fileItem.getName().substring(idx + 1);
 						//업로드할 파일경로  + 파일명 을 주소로 만들어서 접근할 File객체 생성
 						File uploadFile = new File(currentDirPath + "\\"  + fileName);
+						
 						//실제 파일업로드
 						fileItem.write(uploadFile);
 			

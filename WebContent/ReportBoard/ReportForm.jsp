@@ -3,7 +3,8 @@
     pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
-	int stu_no = (Integer)session.getAttribute("stu_no");
+	Integer uniqueId = (Integer) session.getAttribute("uniqueId");
+	System.out.println(uniqueId);
 %>
 <!DOCTYPE html>
 <html>
@@ -13,14 +14,14 @@
 </head>
 <body>
 	<h1>과제 등록</h1>
-	<form action="<%=contextPath%>/Report/ReportUpload.do?stu_no=<%=stu_no%>"
+	<form action="<%=contextPath%>/Report/ReportUpload.do"
 		method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<th>제목</th>
 				<td><input type="text" name="title"></td>
 				<td>작성자</td>
-				<td ><input type="text" readonly="readonly" name="stu_no" value="<%=stu_no%>" /></td>
+				<td ><input type="text" name="stu_no" value="<%=uniqueId %>" /></td>
 			</tr>
 			<tr>
 				<th>비밀글 설정</th>
@@ -33,7 +34,7 @@
 			<tr>
 				<th>첨부파일</th>
 				<td><input type="file" name="reportfile" value="첨부파일 찾기" /></td>
-				<td colspan="4"><input type="submit" value="과제등록" onclick="loadServletData('<%=contextPath%>/ReportBoard/ReportList.jsp')"></td>
+				<td colspan="4"><input type="submit" value="과제등록" ></td>
 			</tr>
 		</table>
 	</form>
