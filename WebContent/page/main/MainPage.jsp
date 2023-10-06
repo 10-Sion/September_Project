@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +7,7 @@
     <title>Main Page</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">   
     <link href="css/bottom.css" rel="stylesheet">
 </head>
 <body>
@@ -75,9 +74,9 @@
 		</div>
 		
 		<div class="footer-content">
-			<h6>머글캠퍼스</h6>
-			<p>(00000ㅁㅁㅁㅁ ㅇㅇㅇㅇ ㄹㄹㄹ</p>
-			<p>tel. 00 0000 0000</p> 
+			<h6>부산캠퍼스</h6>
+			<p>pax. 123-4567</p>
+			<p>tel. 12 3456 7890</p> 
 		</div>
 		COPYRIGHT ⓒ 2023 UNIVERSITY. ALL RIGHTS RESERVED.
 	</div>

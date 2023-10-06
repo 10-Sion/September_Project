@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=EUC-KR" %>
 <%@ page import="Notices.NoticesBean" %>
-<jsp:useBean id="nMgr" class="Notices.NoticesMgr" />
+
 <%
     int num = Integer.parseInt(request.getParameter("num"));
     String nowPage = request.getParameter("nowPage");
@@ -29,7 +29,7 @@
             <td bgcolor="#FF9018"  height="21" align="center">수정하기</td>
         </tr>
     </table>
-    <form name="updateFrm" method="post" action="NoticesUpdate">
+    <form name="updateFrm" method="post" action="noticesUpdate">
 
         <table width="600" cellpadding="7">
             <tr>

@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% 
+   session.setAttribute("uniqueId", 1002);
+   Integer pro_no = (Integer)session.getAttribute("uniqueId");
+   String contextPath = request.getContextPath();
+   String center = request.getParameter("center");
+  
+ %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +46,7 @@
       </div>
       <div class="menu_item_name_and_filter">
         <div class="menu_item_name">
-          <h2>Database</h2>
+          <h2>교수 페이지</h2>
         </div>
         <div class="filter_and_sort">
           <div class="sort sort_and_filter">
@@ -53,20 +60,15 @@
         </div>
       </div>
       <div class="tabs">
-        <div class="tab_name">
-          <p>Student</p>
-          <p>Teacher</p>
-          <p>Employee</p>
-        </div>
         <div class="three_dots">
           <i class='bx bx-dots-vertical-rounded'></i>
         </div>
       </div>
-
+		<%=contextPath%>
       <div class="table">
-        <!-- 불러올 페이지 동적 처리함 -->
+       	교수 기본 페이지
+       	
       </div>
-      
     </div>
   </div>
 
@@ -76,7 +78,9 @@
           url: pageUrl,
           type: 'GET',
           dataType: 'html',
-          success: function(data) {
+          success: function(data) { 
+        	  
+        	  $('.table').empty();
               $('.table').html(data);
           },
           error: function(xhr, status, error) {
@@ -84,6 +88,9 @@
           }
       });
   }
+  
+ 
+
   </script>
 </body>
 </html>

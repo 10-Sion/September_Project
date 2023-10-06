@@ -1,6 +1,6 @@
-<%@page import="Subject.SubBean"%>
-<%@page import="Professor.ProDao"%>
-<%@page import="Professor.ProBean"%>
+
+<%@page import="JaeWooVO.SubBean"%>
+<%@page import="JaeWooDAO.ProDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

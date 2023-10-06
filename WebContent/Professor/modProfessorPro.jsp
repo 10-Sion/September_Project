@@ -1,4 +1,6 @@
-<%@page import="Professor.ProDao"%>
+
+<%@page import="JaeWooVO.ProBean"%>
+<%@page import="JaeWooDAO.ProDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8");%>
@@ -8,7 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title></head>
 <body>
-<jsp:useBean id="ProBean" class="Professor.ProBean"/>
+<jsp:useBean id="ProBean" class="JaeWooVO.ProBean"/>
 <jsp:setProperty property="*" name="ProBean"/>
 <%
 	ProDao pDao = new ProDao();

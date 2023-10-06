@@ -10,6 +10,9 @@
     <title>강의 메인</title>
 </head>
 <body>
+	<div class="top">
+    		<jsp:include page="../page/main/mainTop.jsp" />
+    </div>
     <section class="hero-section">
         <div class="card-grid">
             <a class="card" href="publicGangMain.jsp">

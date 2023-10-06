@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% 
+   Integer stu_no = (Integer)session.getAttribute("uniqueId");
+   String center = request.getParameter("center");
+ %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +16,7 @@
   <div class="container">
   
     <div class="left_sidebar">
-      <jsp:include page="stuSidebar.jsp" />
+      <jsp:include page="./stuSidebar.jsp" />
     </div>
 
     <div class="main_content">
@@ -39,7 +43,7 @@
       </div>
       <div class="menu_item_name_and_filter">
         <div class="menu_item_name">
-          <h2>Database</h2>
+          <h2>교수 페이지</h2>
         </div>
         <div class="filter_and_sort">
           <div class="sort sort_and_filter">
@@ -53,18 +57,22 @@
         </div>
       </div>
       <div class="tabs">
-        <div class="tab_name">
-          <p>Student</p>
-          <p>Teacher</p>
-          <p>Employee</p>
-        </div>
         <div class="three_dots">
           <i class='bx bx-dots-vertical-rounded'></i>
         </div>
       </div>
 
       <div class="table">
-        <!-- 불러올 페이지 동적 처리함 -->
+      		
+<%-- <%			if(center == null ){  --%>
+<%--  %>  --%>
+<!--  				기본 페이지	 dddddddddddd -->
+<%-- <%			}else{				  --%>
+<%--  %> --%>
+<%--  				<jsp:include page="${center}" /> --%>
+<!--  				<p>서블릿 요청함</p> -->
+<%-- <%			}		 --%>
+<%--  %>     	       	  --%>
       </div>
       
     </div>
@@ -77,6 +85,7 @@
           type: 'GET',
           dataType: 'html',
           success: function(data) {
+        	  $('.table').empty();
               $('.table').html(data);
           },
           error: function(xhr, status, error) {
@@ -84,6 +93,24 @@
           }
       });
   }
+  
+  function loadServletData(servletUrl) {
+	  
+	    console.log(servletUrl);
+	    
+	    $.ajax({
+	        url: servletUrl,
+	        type: 'GET',
+	        dataType: 'html',
+	        success: function(data) {
+	            // 서블릿에서 반환된 데이터를 화면에 표시
+	            $('.table').html(data);
+	        },
+	        error: function(xhr, status, error) {
+	            console.error(error);
+	        }
+	    });
+	}
   </script>
 </body>
 </html>

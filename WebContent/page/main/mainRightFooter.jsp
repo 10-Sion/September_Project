@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="Notices.NoticesMgr"%>
+<%@page import="Notices.NoticesBean"%>
+<%@page import="java.util.*" %>
+<%@page import="Notices.DBConnectionMgr" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,14 +32,22 @@
 	    <div class="tabs-content">
 	        <div class="tab active" tab-id="1">
 	            <!-- 공지사항 컨텐츠 -->
-	            <ul>
-	                <li><a href="#">공지사항 1</a></li>
-	                <li><a href="#">공지사항 2</a></li>
-	                <li><a href="#">공지사항 3</a></li>
-	                <li><a href="#">공지사항 4</a></li>
-	                <li><a href="#">공지사항 5</a></li>
-	            </ul>
+				<ul>
+				    <% 
+				    NoticesMgr noticesMgr = new NoticesMgr();
+				    Vector<NoticesBean> noticeList = noticesMgr.getsimple(0, 5); // 처음 5개 공지사항 번호와 제목 가져오기
+				    for (NoticesBean notice : noticeList) {
+				    %>
+				    <li><a href="/HakSaGwanLee/Notices/read.jsp?num=<%=notice.getNum()%>"><%= notice.getTitle() %></a></li>
+				    <%
+				    }
+				    %>
+				</ul>
+				<a  href="../../Notices/list.jsp">자세히 보기</a>
+
 	        </div>
+	        
+	        
 	        <div class="tab" tab-id="2">
 	            <!-- 신규 DOOR 컨텐츠 -->
 	            <div class="door-content">

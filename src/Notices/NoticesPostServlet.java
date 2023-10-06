@@ -14,6 +14,11 @@ public class NoticesPostServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("EUC-KR");
 		NoticesMgr nMgr = new NoticesMgr();
+		
+		System.out.println(request.getParameter("title"));
+		System.out.println(request.getParameter("content"));
+		
+		
 		nMgr.insertNotice(request);
 		response.sendRedirect("list.jsp");
 	}
