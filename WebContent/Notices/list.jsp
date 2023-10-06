@@ -79,8 +79,20 @@
         <tr>
             <td>
             </td>
+            <% 
+				    // 사용자 역할 확인
+				    HttpSession userSession = request.getSession(false);
+				    String userRole = (userSession != null && userSession.getAttribute("userRole") != null) ? (String) userSession.getAttribute("userRole") : "";
+				%>
             <td align="right">
-                <a href="post.jsp">[글쓰기]</a>
+                <%
+				        if (userRole.equals("교수")) {
+				    %>
+				        <a href="post.jsp">[글쓰기]</a> 
+				    <%
+				        }
+				    %>
+                <a href="../page/main/MainPage.jsp">[메인화면으로]</a> <!-- 메인화면으로 링크 추가 -->
             </td>
         </tr>
     </table>

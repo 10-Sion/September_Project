@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="common.css">
+
 
     <meta charset="UTF-8">
     <title>게시물 상세 보기</title>
@@ -28,6 +30,19 @@
             <th>내용</th>
             <td>${board.content}</td>
         </tr>
+        
+        <!-- 수정 결과 메시지 표시 부분 -->
+		<tr>
+		    <td colspan="2">
+		        <% String message = (String)request.getAttribute("message"); %>
+		        <% if (message != null && !message.isEmpty()) { %>
+		            <div class="message">
+		                <%= message %>
+		            </div>
+		        <% } %>
+		    </td>
+		</tr>
+        
         <tr>
             <th>작성일</th>
             <td>${board.regdate}</td>
@@ -39,9 +54,9 @@
     </table>
     </form>
     <br>
-    <a href="BoardController?action=list">목록으로 돌아가기</a>
+    <a href="BoardListServlet">목록으로 돌아가기</a>
     <br>
-    <a href="BoardController?action=edit&num=${board.num}">수정</a>
+    <a href="BoardUpdateServlet?num=${board.num}">수정</a>
     <br>
     <a href="BoardController?action=delete&num=${board.num}">삭제</a>
 </body>

@@ -30,8 +30,7 @@ public class NoticesUpdateServlet extends HttpServlet {
         upBean.setNum(Integer.parseInt(request.getParameter("num")));
         upBean.setTitle(request.getParameter("title"));
         upBean.setContent(request.getParameter("content"));
-        upBean.setSub_no(Integer.parseInt(request.getParameter("sub_no"))); 
-        upBean.setPro_no(Integer.parseInt(request.getParameter("pro_no"))); 
+      
 
         nMgr.updateNotice(upBean);
         String url = "read.jsp?nowPage=" + nowPage + "&num=" + upBean.getNum();

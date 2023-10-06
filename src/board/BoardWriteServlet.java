@@ -19,7 +19,6 @@ public class BoardWriteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	
-        
       doHandle(request, response);
       
     }
@@ -27,36 +26,28 @@ public class BoardWriteServlet extends HttpServlet {
             throws ServletException, IOException {
         doHandle(request, response);
     }
+   
     protected void doHandle(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	
-    	 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Board-QnA/boardWrite.jsp");
-        dispatcher.forward(request, response);
-        
-    	
         // 사용자가 입력한 데이터 받아오기
-        String name = request.getParameter("name");
-        String subject = request.getParameter("subject");
-        String content = request.getParameter("content");
-        
-        
+        String name = request.getParameter("name"); // 작성자
+        String subject = request.getParameter("subject"); // 제목
+        String content = request.getParameter("content"); // 글내용
+
         String id = request.getParameter("id"); // 사용자 아이디, 예: "admin"
         // 사용자가 입력한 비밀번호 설정
         String passwd = request.getParameter("passwd"); // 사용자가 입력한 비밀번호 받아오기
-        
+
         // 콘솔에 값을 출력
         System.out.println("name: " + name);
         System.out.println("subject: " + subject);
         System.out.println("content: " + content);
-        
-        
 
         // BoardBean 객체 생성 및 정보 설정
         BoardBean boardBean = new BoardBean();
         boardBean.setName(name);
         boardBean.setId(id);
-        boardBean.setPasswd(passwd); // 사용자가 입력한 비밀번호 설정	
+        boardBean.setPasswd(passwd); // 사용자가 입력한 비밀번호 설정
         boardBean.setSubject(subject);
         boardBean.setContent(content);
         boardBean.setIp(request.getRemoteAddr()); // 사용자 IP 주소 설정
@@ -66,8 +57,9 @@ public class BoardWriteServlet extends HttpServlet {
 
         // insertBoard 메서드 호출하여 게시물 추가
         boardDAO.insertBoard(boardBean);
-       
-        
-        
+
+        // 페이지 이동 코드
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Board-QnA/boardWrite.jsp");
+        dispatcher.forward(request, response);
     }
 }
