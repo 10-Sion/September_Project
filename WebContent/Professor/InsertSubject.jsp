@@ -33,10 +33,11 @@
  	
 %>
 
-<form action= '<%=contextPath%>/Lecture/InsertSubject.do' method ="post">
-	<div align="center" class="table">
+<form action= '<%=contextPath%>/Lecture/InsertSubject.do' method ="post" >
 	<h1>과목 등록</h1>
-	<table>
+	<div align="center" class="table">
+	
+	<table border="1">
 		<tr>
 			<th>과목명</th>
 			<td><input type = "text" name = "sub_name"></td>
