@@ -3,6 +3,7 @@ package reportController;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.channels.SeekableByteChannel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,11 +15,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 
+import com.mysql.cj.Session;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
  
@@ -33,8 +37,7 @@ public class ReportController extends HttpServlet {
 	
 	// 과제 글에 첨부할 파일 저장위치를 상수로 선언
 	private static String ARTICLE_IMAGE_REPO = "C:\\Report\\ReportUplosd";
-	
-	
+
 	ReportVO rVo;
 	ReportService rService;
 	ReportlistVO rLiVo;
@@ -64,8 +67,11 @@ public class ReportController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String action = request.getPathInfo();
 		ServletContext application = request.getServletContext();
-		("요청한 주소 : " + action);
-			
+		System.out.println("요청한 주소 : " + action);
+		HttpSession session = request.getSession();
+		Integer uniqueId = (Integer)session.getAttribute("uniqueId");
+		System.out.println("세션 값 : " + uniqueId);
+		
 		String nextPage = null;
 		
 		if( action == null || action.equals("")) {
@@ -80,11 +86,10 @@ public class ReportController extends HttpServlet {
 			
 			request.setAttribute("reportlist", reportList);
 			
-			nextPage = "/GangUi/privGangSub6.jsp";
+			nextPage = "/Student/privGangSub6.jsp";
 		
 		// 과제 제출 했을 경우
 		} else if ( action.equals("/ReportUpload.do") ) {
-			(request.getParameter("stu_no"));
 			
 			//upload()메소드를 호출해 글쓰기 화면에서 전송된 글관련 정보를 HashMap에 key/value 한쌍으로 저장시킵니다.
 			//그런후.. 글 입력시 추가적으로 업로드한 파일을 선택하여 글쓰기 요청을 했다면
@@ -93,29 +98,37 @@ public class ReportController extends HttpServlet {
 			//업로드할 파일명을 제외한 ~~ 입력한 글제목, 입력한 글내용을 key/value형태의 값들로 저장되어 있는 HashMap을 리턴 받는다.
 			Map<String, String> RepostMap = upload(request,response);
 			
-			
 			// HashMap에 저장된 글 정보 (업로드한 파일명, 입력한 글제목, 입력한 글내용)을 HashMap에서 다시 가져온다.
 			String title = RepostMap.get("title");
 			String stu_no = RepostMap.get("stu_no");
 			String secret = RepostMap.get("secret");
 			String content = RepostMap.get("content");
 			String fileName = RepostMap.get("reportfile");
+			String report_name = RepostMap.get("report_name");
 			
 			// DB에 추가하기 위해 사용자가 입력한 글 정보 + 업로드한 파일명을 ReportVO 객체의 각 변수에 저장
 			rVo.setTitle(title);
 			rVo.setStu_no(Integer.parseInt(stu_no));
 			rVo.setSecret(secret);
 			rVo.setContent(content);
-			rVo.setFileName(fileName);
+			rVo.setFilename(fileName); 
+			rVo.setReport_name(report_name);
 			
 			// ReportService 객체의 addReport() 메소드 호출 시 매개변수로 DB 에 추가할 새글 정보를 가지고 있는 ReportVO 객체를 전달
-			int result = rService.addReport(rVo);
+			int no = rService.addReport(rVo);
 			
-
-(result);
+			if (fileName != null && fileName.length() != 0) {
+				File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + fileName);
+				File destDir = new File(ARTICLE_IMAGE_REPO + "\\" + no);
+				destDir.mkdirs();
+				FileUtils.moveFileToDirectory(srcFile, destDir, true);
+			}
 			
-			nextPage = "/GangUi/privateGangMain.jsp";
-		}
+			// nextPage = "/GangUi/privateGangMain.jsp";
+			response.sendRedirect("/HakSaGwanLee/GangUi/privateGangMain.jsp");
+			return;
+		
+		}	// ReportUpload.do 메소드 끝
 		
 		System.out.println("반환되는 주소 : " + nextPage);
 		request.getRequestDispatcher(nextPage).forward(request, response);
@@ -125,14 +138,12 @@ public class ReportController extends HttpServlet {
 	//파일업로드 처리를 위한 메소드 
 	private Map<String, String>  upload(HttpServletRequest request, HttpServletResponse  response) 
 									throws ServletException, IOException {
-		
-		
 		String encoding = "utf-8";
 		
 		Map<String, String> ReportMap = new HashMap<String, String>();
 		
-		//글쓰기 할때 첨부한 이미지파일을 저장할 폴더 경로에 접근할 File객체 생성
-		File currentDirPath = new File(ARTICLE_IMAGE_REPO);//"C:\\Report\\ReportUplosd"
+		// 업로드 할때 첨부한 이미지파일을 저장할 폴더 경로에 접근할 File객체 생성
+		File currentDirPath = new File(ARTICLE_IMAGE_REPO );//"C:\\Report\\ReportUplosd"
 		
 		//업로드할 파일 데이터를 임시로 저장할 객체 메모리 생성
 		DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -159,14 +170,17 @@ public class ReportController extends HttpServlet {
 
 			//ArrayList배열에 저장된 DiskFileItem객체(요청한 아이템하나)의 갯수만큼 반복
 			for(int i=0;   i<items.size();   i++) {
+				
 				//ArrayList배열에서 DiskFileItem객체를 얻는다
 				FileItem  fileItem = (FileItem)items.get(i);	
+				
 				//얻은 DiskFileItem객체의 정보가 첨부한 파일 요청이 아닐 경우
 				if( fileItem.isFormField()) {		
 					System.out.println( fileItem.getFieldName() + "=" + fileItem.getString(encoding) );
 					//RreportForm.jsp페이지에서 입력한 글제목, 글내용만 따로  HashMap에  (key=value)형식으로 저장합니다.
 					//HashMap에 저장된 모습 ->  {"title"="입력한글제목", "content"="입력한글내용" }
 					ReportMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
+					
 				}else {//얻은 DiskFileItem객체의 정보가  첨부한 파일일 경우		
 //					System.out.println("요청한 <input>의 name속성값 : " + fileItem.getFieldName());
 //					System.out.println("업로드 요청한 첨부 이미지 파일명 : " + fileItem.getName());
@@ -174,7 +188,7 @@ public class ReportController extends HttpServlet {
 					//ReportForm.jsp페이지에서 입력한 글제목, 글내용, 요청한 업로드 파일 정보 등.. 모든 요청정보들을 HashMap에 key=value한쌍 씩 저장
 					//HashMap에 저장된 모습 ->  {"imageFileName"="3.png",   "title"="입력한글제목",  "content"="입력한글내용"}
 					ReportMap.put(fileItem.getFieldName(), fileItem.getName());
-
+					
 					//업로드시 첨부한 파일의 크기가 0보다 크다면?
 					if(fileItem.getSize() > 0 ) {
 						//업로드할 파일명을 얻어  파일명의 뒤에서부터 \\문자열이 들어 있는지 index위치를 알려주는데..

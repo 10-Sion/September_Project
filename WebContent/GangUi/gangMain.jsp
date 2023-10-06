@@ -22,7 +22,7 @@
                     <h3 class="card__heading">공통 강의실 페이지</h3>
                 </div>
             </a>
-            <a class="card" href="privateGangMain.jsp">
+            <a class="card" href="../Student/stuMain.jsp">
                 <div class="card__background" style="background-image: url(../pageSetUp/img/gang2.jpg)"></div>
                 <div class="card__content">
                     <p class="card__category">강의</p>
