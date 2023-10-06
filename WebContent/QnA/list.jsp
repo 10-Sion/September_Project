@@ -133,7 +133,7 @@
 									}
 								}
 						%>
-						  <a href="javascript:read('<%=num%>')"><%=subject%></a>
+						  <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/read.jsp?num=<%= num %>')" ><%=subject%></a>
 						<td align="center"><%=name%></td>
 						<td align="center"><%=regdate%></td>
 						<td align="center"><%=count%></td>
@@ -180,7 +180,7 @@
 				    <%
 				        if (userRole.equals("학생")) {
 				    %>
-				        <a href="post.jsp">[글쓰기]</a> 
+				        <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/post.jsp')">[글쓰기]</a> 
 				    <%
 				        }
 				    %>

@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="../pageSetUp/gangMainStyle.css"> 
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <title>강의 메인</title>
+<% 
+	String userRole = (String) session.getAttribute("userRole");
+
+	String PrivatePage = "privateGangMain.jsp";
+
+	if(userRole == "교수"){
+		
+		PrivatePage = "../Professor/proMain.jsp";
+		
+	}else if(userRole == "학생"){
+		
+		PrivatePage = "../Student/stuMain.jsp";
+		
+	}else if(userRole == "직원"){
+		
+		PrivatePage = "../Employee/empMain.jsp";
+	}
+%>
 </head>
 <body>
 	<div class="top">
@@ -15,14 +33,14 @@
     </div>
     <section class="hero-section">
         <div class="card-grid">
-            <a class="card" href="publicGangMain.jsp">
+            <a class="card" href= "publicGangMain.jsp">
                 <div class="card__background" style="background-image: url(../pageSetUp/img/gang1.jpg)"></div>
                 <div class="card__content">
                     <p class="card__category">강의</p>
                     <h3 class="card__heading">공통 강의실 페이지</h3>
                 </div>
             </a>
-            <a class="card" href="privateGangMain.jsp">
+            <a class="card" href="<%=PrivatePage%>">
                 <div class="card__background" style="background-image: url(../pageSetUp/img/gang2.jpg)"></div>
                 <div class="card__content">
                     <p class="card__category">강의</p>

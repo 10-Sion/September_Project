@@ -38,13 +38,14 @@
 			<td><%=rlistVo.getWeek() %></td>
 			<td><%=rlistVo.getSub_no() %></td>
 			<td><%=rlistVo.getSub_name() %></td>
-		
+			<td><%=rlistVo.getReposrt_name() %></td>
 			<td><%=rlistVo.getMethod() %></td>
 			<td><%=rlistVo.getPeriod() %></td>
 			<td><%=rlistVo.getDisclosure() %></td>
 			<td><%=rlistVo.getPersonnel() %></td>
 			<td><%=rlistVo.getPro_name() %></td>
-			<td><a href="javascript:void(0);" onclick="loadPage('<%=contextPath%>/ReportBoard/ReportForm.jsp')">제출하기</a></td>
+			<td><a href="javascript:void(0);" 
+			onclick="loadPage('<%=contextPath%>/ReportBoard/ReportForm.jsp?report_name=<%=rlistVo.getReposrt_name()%>')">제출하기</a></td>
 		</tr>
 <% 
 	}

@@ -60,7 +60,7 @@
                     <tr>
                         <td align="center"><%= i + 1 %></td>
                         <td>
-                            <a href="read.jsp?num=<%= num %>"><%= title %></a>
+                            <a href="#" onclick="loadPage('/HakSaGwanLee/Notices/read.jsp?num=<%= num %>')"><%= title %></a>
                         </td>
                         <td align="center"><%= regdate %></td>
                     </tr>
@@ -87,8 +87,9 @@
             <td align="right">
                 <%
 				        if (userRole.equals("교수")) {
+				        	
 				    %>
-				        <a href="post.jsp">[글쓰기]</a> 
+				        <a href="#" onclick="loadPage('/HakSaGwanLee/Notices/post.jsp')">[글쓰기]</a> 
 				    <%
 				        }
 				    %>
@@ -112,5 +113,6 @@
         </table>
     </form>
 </div>
+	<script src="../pageSetUp/myPage.js"></script>
 </body>
 </html>

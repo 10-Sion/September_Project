@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-
+<%
+	String contextPath = request.getContextPath();
+	Integer pro_no = (Integer)session.getAttribute("uniqueId");
+%>
 <div id="accordian">
             <ul class="show-dropdown main-navbar">
             
@@ -7,36 +10,28 @@
                 	<div class="top"></div>
                 	<div class="bottom"></div>
                 </div>
-                <li onclick="loadPage('pubGangSub1.jsp')">
+                <br>
+                <li onclick="loadPage('<%=contextPath%>/Lecture/ProLectureList.do?pro_no=<%=pro_no%>')">
                     <a href="javascript:void(0);">
                     <i class="fas fa-tachometer-alt">
-                    </i>강의 목록</a>
+                    </i>강의실</a>
                 </li>
-                <li onclick="loadPage('pubGangSub2.jsp')">
+                <li onclick="loadPage('MyInfoProfessor.jsp')">
                     <a href="javascript:void(0);">
                     <i class="far fa-address-book">
-                    </i>신청한 강의</a>
+                    </i>나의 정보</a>
                 </li>
-                <li onclick="loadPage('../Notices/list.jsp')">
+                <li onclick="loadPage('InsertSubject.jsp')">
                     <a href="javascript:void(0);">
                     <i class="far fa-clone">
-                    </i>공지사항</a>
+                    </i>수업추가</a>
                 </li>
-                <li onclick="loadPage('../QnA/list.jsp')">
-                    <a href="javascript:void(0);">
-                    <i class="far fa-chart-bar">
-                    </i>Q&A 게시판</a>
-                </li>
-                <li onclick="loadPage('pubGangSub4.jsp')">
-                    <a href="javascript:void(0);">
-                    <i class="far fa-calendar-alt">
-                    </i>마이페이지</a>
-                </li>
-                <li class="active" >
-                    <a href="gangMain.jsp">
+                <li  class="active">
+                    <a href="../GangUi/gangMain.jsp">
                     <i class="far fa-copy">
                     </i>학사관리시스템 메인</a>
                 </li>
 
             </ul>
         </div>
+        
