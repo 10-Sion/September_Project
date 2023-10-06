@@ -10,6 +10,7 @@ public class NoticesBean {
 	private int pro_no;
 	
 	
+	
 	public int getNum() {
 		return num;
 	}
