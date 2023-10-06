@@ -22,16 +22,7 @@
                     <i class="far fa-clone">
                     </i>강의 관리</a>
                 </li>
-                <li onclick="loadPage('../Notices/list.jsp')">
-                    <a href="javascript:void(0);">
-                    <i class="far fa-calendar-alt">
-                    </i>공지사항</a>
-                </li>
-                <li onclick="loadPage('../QnA/list.jsp')">
-                    <a href="javascript:void(0);">
-                    <i class="far fa-chart-bar">
-                    </i>Q&A 게시판</a>
-                </li>
+                
                 <li onclick="loadPage('privGangSub6.jsp')">
                     <a href="javascript:void(0);">
                     <i class="far fa-copy">
