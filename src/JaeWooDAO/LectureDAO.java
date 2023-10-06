@@ -10,6 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import JaeWooVO.LectureVO;
 import JaeWooVO.PlanVO;
@@ -232,6 +234,8 @@ public class LectureDAO {
 		}
 	}
 
+
+		
 	public List getWeekList(int sub_no) {
 		ArrayList list = new ArrayList();
 		String sql = "";
@@ -239,7 +243,9 @@ public class LectureDAO {
 			
 			con = getConnection();
 			sql = "select * from weekInfo where sub_no = " + sub_no;
-		
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				WeekVO kw = new WeekVO();				
 				
@@ -259,7 +265,7 @@ public class LectureDAO {
 		}finally {
 			rs_Close();
 		}
-		return null;
+		return list;
 	}
 	
 	

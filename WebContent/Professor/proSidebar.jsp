@@ -70,6 +70,8 @@ String contextPath = request.getContextPath();
 	        }
 	    });
 	}
+    
+   
   </script>
 </body>
 </html>
