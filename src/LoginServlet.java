@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet {
 
             // 로그인 성공 시 메인 페이지로 리다이렉트
             response.sendRedirect("page/main/MainPage.jsp");
+            
         } else if (employeeLogin) {
             // 직원으로 로그인한 경우
         	userRole = "직원";
