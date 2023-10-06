@@ -9,7 +9,6 @@
 	
 	ReportlistVO rlistVo = new ReportlistVO();
 	
-	System.out.println(rlist.get(1));
 %>
 <!DOCTYPE html>
 <html>
@@ -38,13 +37,12 @@
 			<td><%=rlistVo.getWeek() %></td>
 			<td><%=rlistVo.getSub_no() %></td>
 			<td><%=rlistVo.getSub_name() %></td>
+			<td><%=rlistVo.getMethod() %></td>
 			<td><%=rlistVo.getPeriod() %></td>
-			<td><%=rlist.get(i) %></td>
-			<td><%=rlist.get(i) %></td>
-			<td><%=rlist.get(i) %></td>
-			<td><%=rlist.get(i) %></td>
-			<td><a href="javascript:void(0);"
-				onclick="loadPage('<%=contextPath%>/ReportBoard/ReportForm.jsp')">미제출</a></td>
+			<td><%=rlistVo.getDisclosure() %></td>
+			<td><%=rlistVo.getPersonnel() %></td>
+			<td><%=rlistVo.getEvaluation() %></td>
+			<td><a href="javascript:void(0);" onclick="loadPage('<%=contextPath%>/ReportBoard/ReportForm.jsp')">제출하기</a></td>
 		</tr>
 <% 
 	}

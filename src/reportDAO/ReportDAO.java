@@ -168,10 +168,9 @@ public class ReportDAO {
 	
 	
 	// 개설 과제 전부 가져오는 메소드
-	public ArrayList selectreport(ReportlistVO rLiVo) {
+	public ArrayList selectreport() {
 		
 		ArrayList reportlist = new ArrayList();
-		
 		String sql = "";
 		
 		try {
@@ -184,6 +183,7 @@ public class ReportDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
+				ReportlistVO rLiVo = new ReportlistVO();			
 				rLiVo.setWeek(rs.getInt("week"));
 				rLiVo.setSub_no(rs.getInt("sub_no"));
 				rLiVo.setSub_name(rs.getString("sub_name"));

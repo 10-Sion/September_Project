@@ -34,11 +34,11 @@ public class ReportService {
 	}
 
 	// 과제 list 불러오기
-	public ArrayList reportInfo(ReportlistVO rLiVo) {
+	public ArrayList reportInfo() {
 		
 		ArrayList reportlist = new ArrayList();
 		
-		reportlist = rDao.selectreport(rLiVo);
+		reportlist = rDao.selectreport();
 		
 		return reportlist;
 	}
