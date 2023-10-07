@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +13,8 @@
 </head>
 <body>
 	<div class="top">
-    		<jsp:include page="mainTop.jsp" />
-    	</div>
-    
+		<jsp:include page="mainTop.jsp" />
+	</div>
 
     <!-- 나머지 HTML 내용을 계속 작성할 수 있습니다. -->
    <div class="main">
@@ -54,8 +54,6 @@
 	    </div>
 	</div>
 
-
-
     <!-- 하단 화면 -->
     <footer>
     	<div class="right-footer">
@@ -64,7 +62,6 @@
     	<div class="left-footer">
     		<jsp:include page="mainRightFooter.jsp" />
     	</div>
-    	
     </footer>
 	</div>
 	<div class="real-footer">
@@ -103,7 +100,7 @@
 	
 	        // 팝업 창이 닫힐 때 이벤트 처리
 	        loginPopup.onunload = function() {
-				
+
 	        };
 	    }
 	</script>

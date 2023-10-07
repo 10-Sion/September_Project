@@ -37,13 +37,47 @@
                 <%
                 } else {
                 %>
-                <a href="login.jsp" id="loginButton" class="small-link">로그인</a>
+                <!-- <a href="login.jsp" id="loginButton" class="small-link">로그인</a> -->
+                <a onclick="openLoginPopup()">로그인</a>
                 <%
                 }
                 %>
             </div>
         </div>
     </header>
+
+
+	<script>
+	    // 팝업 창에서 데이터를 받는 함수
+	    function receiveLoginData(event) {
+	        if (event.data) {
+	            var uniqueId = event.data.uniqueId;
+	            var userPassword = event.data.userPassword;
+	
+	            // 받은 데이터를 사용하여 서블릿에 요청
+	            var xhr = new XMLHttpRequest();
+	            xhr.open("POST", "../../LoginServlet", true);
+	            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	            xhr.onreadystatechange = function () {
+	                if (xhr.readyState === 4 && xhr.status === 200) {
+	                    var loginResult = xhr.responseText;
+	                    if (loginResult === "success") {
+	                        // 로그인 성공 시 처리
+	                        location.reload(); // 예: 새로고침
+	                    } else {
+	                        // 로그인 실패 시 처리
+	                        alert("로그인 실패");
+	                    }
+	                }
+	            };
+	            xhr.send("no=" + uniqueId + "&pw=" + userPassword);
+	        }
+	    }
+	
+	    // 팝업 창에서 메시지를 받을 때 호출할 함수 등록
+	    window.addEventListener("message", receiveLoginData, false);
+	</script>
+
 
 </body>
 </html>
