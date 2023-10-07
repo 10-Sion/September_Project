@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@page import="Notices.NoticesMgr"%>
+<%@page import="Notices.NoticesMgr"%>
 <%@page import="Notices.NoticesBean"%>
 <%@page import="java.util.*" %>
 <%@page import="Notices.DBConnectionMgr" %>
+<%@ page import="jun_chamgo.DatabaseConfig, jun_chamgo.SubjectInfoDAO" %>
+<%@ page import="jun_chamgo.WeekInfo" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +23,7 @@
 	        <ul>
 	            <li class="active"><a href="#tab-1" tab-id="1">공지사항</a></li>
 	            <li><a href="#tab-2" tab-id="2">신규 DOOR</a></li>
-	            <li><a href="#tab-3" tab-id="3">추천 DOOR</a></li>
+	            <li><a href="#tab-3" tab-id="3">신설 강의</a></li>
 	        </ul>
 	        <!-- 버튼  -->
 	        <nav class="tabs-nav">
@@ -49,48 +52,45 @@
 	        
 	        
 	        <div class="tab" tab-id="2">
-	            <!-- 신규 DOOR 컨텐츠 -->
-	            <div class="door-content">
-	                <div class="door-item">
-	                    <img src="thumbnail1.jpg" alt="Thumbnail 1">
-	                    <a href="#">신규 DOOR 1</a>
-	                </div>
-	                <div class="door-item">
-	                    <img src="thumbnail2.jpg" alt="Thumbnail 2">
-	                    <a href="#">신규 DOOR 2</a>
-	                </div>
-	                <div class="door-item">
-	                    <img src="thumbnail3.jpg" alt="Thumbnail 3">
-	                    <a href="#">신규 DOOR 3</a>
-	                </div>
-	                <div class="door-item">
-	                    <img src="thumbnail4.jpg" alt="Thumbnail 4">
-	                    <a href="#">신규 DOOR 4</a>
-	                </div>
+			    <!-- 신규 DOOR 컨텐츠 -->
+			    <div class="door-content">
+			        <% 
+			        WeekInfoDAO weekInfoDAO = new WeekInfoDAO(DatabaseConfig.getDataSource());
+			        List<WeekInfo> recentWeekInfo = weekInfoDAO.getRecentWeekInfo(4); // 최근 4개의 WeekInfo 가져오기
+			        
+			        for (WeekInfo weekInfo : recentWeekInfo) {
+			            String weekName = weekInfo.getWeekName();
+			            String lectureLink = weekInfo.getLectureLink();
+			        %>
+			        <div class="door-item">
+			            <img src="thumbnail1.jpg" alt="Thumbnail 1">
+			            <a href="<%= lectureLink %>"><%= weekName %></a> <!-- weekName을 표시하고 lectureLink를 링크로 사용 -->
+			        </div>
+			        <%
+			        }
+			        %>
+			    </div>
+			</div>
 
-	            </div>
-	        </div>
 	        <div class="tab" tab-id="3">
-	            <!-- 추천 DOOR 컨텐츠 -->
-	            <div class="door-content">
-	                <div class="door-item">
-	                    <img src="thumbnail1.jpg" alt="Thumbnail 1">
-	                    <a href="#">추천 DOOR 1</a>
-	                </div>
-	                <div class="door-item">
-	                    <img src="thumbnail2.jpg" alt="Thumbnail 2">
-	                    <a href="#">추천 DOOR 2</a>
-	                </div>
-	                <div class="door-item">
-	                    <img src="thumbnail3.jpg" alt="Thumbnail 3">
-	                    <a href="#">추천 DOOR 3</a>
-	                </div>
-	                <div class="door-item">
-	                    <img src="thumbnail4.jpg" alt="Thumbnail 4">
-	                    <a href="#">추천 DOOR 4</a>
-	                </div>
-	                </div>
-	            </div>
+			    <!-- 신설 강의 컨텐츠 -->
+			    <div class="door-content">
+			        <% 
+			        SubjectInfoDAO subjectInfoDAO = new SubjectInfoDAO(DatabaseConfig.getDataSource());
+			        List<String> recentSubjectNames = subjectInfoDAO.getRecentSubjectNames(4); // sub_name 4개 가져옴
+			        
+			        for (String subName : recentSubjectNames) {
+			        %>
+			        <div class="door-item">
+			            <img src="thumbnail1.jpg" alt="Thumbnail 1">
+			            <a href="#"><%= subName %></a> <!-- sub_name 값을 표시 -->
+			        </div>
+			        <%
+			        }
+			        %>
+			    </div>
+			</div>
+
 	        </div>
 	    </div>
 	</div>
