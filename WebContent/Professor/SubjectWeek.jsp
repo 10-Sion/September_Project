@@ -124,7 +124,7 @@
 	            const popup = window.open('', 'Popup', 'width=800,height=600');
 	            const form = document.createElement('form');
 	            
-	            form.action = 'subVideo.jsp';
+	            form.action = 'SubVideo.jsp';
 	            form.method = 'post';
 	            form.target = 'Popup';
 	
