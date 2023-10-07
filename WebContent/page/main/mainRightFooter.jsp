@@ -68,14 +68,19 @@ List<jun_chamgo.WeekInfo> recentWeekInfo = weekInfoDAO.getRecentWeekInfo(4); // 
                 <!-- 신규 DOOR 컨텐츠 -->
                 <div class="door-content">
                     <%
-                    for (jun_chamgo.WeekInfo weekInfo : recentWeekInfo) {
-                        String weekName = weekInfo.getWeekName();
-                        String lectureLink = weekInfo.getLectureLink();
-                        String videoId = weekInfo.getLectureLink(); // 비디오 ID 추출
-                    %>
-                    <div class="door-item">
-                        <img src="https://img.youtube.com/vi/<%= videoId %>/mqdefault.jpg" alt="Thumbnail"> <!-- 추출된 비디오 ID 사용 -->
-                        <a href="#" class="video-link" data-video-url="<%= lectureLink %>"><%= weekName %></a>
+
+						for (jun_chamgo.WeekInfo weekInfo : recentWeekInfo) {
+						    String weekName = weekInfo.getWeekName();
+						    String lectureLink = weekInfo.getLectureLink();
+						    String videoId = weekInfoDAO.extractVideoId(lectureLink); // 비디오 ID 추출
+						%>
+
+                    <div class="door-item">                      
+                        <a href="#" class="video-link" data-video-url="<%= lectureLink %>">
+                        	<img src="https://img.youtube.com/vi/<%= videoId %>/mqdefault.jpg" alt="Thumbnail">
+                        <%= weekName %></a>
+                        <p><%= lectureLink %><br> <%= videoId %></p>
+                        
                     </div>
                     <%
                     }
