@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +13,8 @@
 </head>
 <body>
 	<div class="top">
-    		<jsp:include page="mainTop.jsp" />
-    	</div>
-    
+		<jsp:include page="mainTop.jsp" />
+	</div>
 
     <!-- 나머지 HTML 내용을 계속 작성할 수 있습니다. -->
    <div class="main">
@@ -54,8 +54,6 @@
 	    </div>
 	</div>
 
-
-
     <!-- 하단 화면 -->
     <footer>
     	<div class="right-footer">
@@ -64,7 +62,6 @@
     	<div class="left-footer">
     		<jsp:include page="mainRightFooter.jsp" />
     	</div>
-    	
     </footer>
 	</div>
 	<div class="real-footer">
@@ -83,5 +80,31 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
+    
+    <script>
+	    function openLoginPopup() {
+	        // 팝업 창의 URL을 지정
+	        var loginPopupURL = "login.jsp";
+	
+	        // 팝업 창의 크기와 위치 계산
+	        var popupWidth = 400;
+	        var popupHeight = 400;
+	        var leftPosition = (window.screen.width - popupWidth) / 2;
+	        var topPosition = (window.screen.height - popupHeight) / 2;
+	
+	        // 팝업 창의 속성 설정
+	        var popupOptions = "width=" + popupWidth + ",height=" + popupHeight + ",left=" + leftPosition + ",top=" + topPosition + ",status=no,toolbar=no,scrollbars=no";
+	
+	        // 팝업 창 열기
+	        var loginPopup = window.open(loginPopupURL, "Login", popupOptions);
+	
+	        // 팝업 창이 닫힐 때 이벤트 처리
+	        loginPopup.onunload = function() {
+	            // 팝업 창이 닫히면 이곳에서 원하는 동작을 수행
+	            // 예: 팝업 창에서 로그인 결과 데이터를 가져와서 기존 창에서 처리
+	            // AJAX를 사용하여 서블릿에 로그인 데이터를 전송하고 결과를 받아와 처리
+	        };
+	    }
+	</script>
 </body>
 </html>
