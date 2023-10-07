@@ -162,6 +162,11 @@ body {
   margin-bottom: 10px;
 }
 
+.door-item .gangThumb{
+	max-height: 120px;
+	filter: grayscale(100%);
+	
+}
 .door-item a {
   text-align: center;
   text-decoration: none;

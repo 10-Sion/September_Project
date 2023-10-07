@@ -93,9 +93,9 @@ List<jun_chamgo.WeekInfo> recentWeekInfo = weekInfoDAO.getRecentWeekInfo(4); // 
 
                     for (String subName : recentSubjectNames) {
                     %>
-                    <div class="door-item">
-                        <img src="thumbnail1.jpg" alt="Thumbnail 1">
-                        <a href="#"><%= subName %></a> <!-- sub_name 값을 표시 -->
+                    <div class="door-item">                      
+                        <a href="#"><img src="image/lecture.jpeg" class="gangThumb"><br>
+                        <%= subName %></a> <!-- sub_name 값을 표시 -->
                     </div>
                     <%
                     }
