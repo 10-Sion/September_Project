@@ -83,5 +83,29 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
+    
+    <script>
+	    function openLoginPopup() {
+	        // 팝업 창의 URL을 지정
+	        var loginPopupURL = "login.jsp";
+	
+	        // 팝업 창의 크기와 위치 계산
+	        var popupWidth = 400;
+	        var popupHeight = 400;
+	        var leftPosition = (window.screen.width - popupWidth) / 2;
+	        var topPosition = (window.screen.height - popupHeight) / 2;
+	
+	        // 팝업 창의 속성 설정
+	        var popupOptions = "width=" + popupWidth + ",height=" + popupHeight + ",left=" + leftPosition + ",top=" + topPosition + ",status=no,toolbar=no,scrollbars=no";
+	
+	        // 팝업 창 열기
+	        var loginPopup = window.open(loginPopupURL, "Login", popupOptions);
+	
+	        // 팝업 창이 닫힐 때 이벤트 처리
+	        loginPopup.onunload = function() {
+				
+	        };
+	    }
+	</script>
 </body>
 </html>

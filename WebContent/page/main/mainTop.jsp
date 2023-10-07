@@ -9,7 +9,7 @@
         <div class="navigation">
             <div class="logo">
                 <a href="<%=request.getContextPath()%>/page/main/MainPage.jsp"><img src="image/Hogwarts-Crest.png" alt="로고 이미지"></a>
-                <h1>동명대학교</h1>
+                <h1>교학대학교</h1>
             </div>
             <a href="../../GangUi/gangMain.jsp" class="menuItem">학사관리시스템</a>
             <a href="../../QnA/list.jsp" class="menuItem">강의실</a>
