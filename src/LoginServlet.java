@@ -52,6 +52,10 @@ public class LoginServlet extends HttpServlet {
         } else if (employeeLogin) {
             // 직원으로 로그인한 경우
         	userRole = "직원";
+        	
+        	// 데이터베이스에서 사용자 이름 가져오기
+            userName = employeeDAO.getEmployeeName(uniqueId);
+        	
             HttpSession session = request.getSession(true);
             session.setAttribute("uniqueId", uniqueId);
             session.setAttribute("userRole", "직원"); // 사용자 역할 설정
