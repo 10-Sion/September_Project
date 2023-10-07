@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/mainTop.css">
+    <link rel="stylesheet" type="text/css" href="/HakSaGwanLee/page/main/css/mainTop.css">
 </head>
 <body>
     <header>
         <div class="navigation">
             <div class="logo">
-                <a href="<%=request.getContextPath()%>/page/main/MainPage.jsp"><img src="image/Hogwarts-Crest.png" alt="로고 이미지"></a>
+                <a href="<%=request.getContextPath()%>/page/main/MainPage.jsp"><img src="/HakSaGwanLee/page/main/image/Hogwarts-Crest.png" alt="로고 이미지"></a>
                 <h1>교학대학교</h1>
             </div>
             <a href="../../GangUi/gangMain.jsp" class="menuItem">학사관리시스템</a>
