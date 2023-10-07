@@ -114,38 +114,6 @@
 	</table>
 	</div>
 	
-	<script>
-		// 버튼에 폼 기능 부여하는 함수
-		$(document).ready(function() {
-	    	
-	        $("button").click(function() {
-	        	
-	            const videoUrl = $(this).data("video-url");
-	            const popup = window.open('', 'Popup', 'width=800,height=600');
-	            const form = document.createElement('form');
-	            
-	            form.action = 'SubVideo.jsp';
-	            form.method = 'post';
-	            form.target = 'Popup';
-	
-	            const input = document.createElement('input');
-	            
-	            input.type = 'hidden';
-	            input.name = 'videoUrl';
-	            input.value = videoUrl;
-	
-	            const button = document.createElement('input');
-	            
-	            button.type = 'submit';
-	            button.value = '강의 시청';
-	
-	            form.appendChild(input);
-	            form.appendChild(button);
-	
-	            popup.document.body.appendChild(form);
-	            form.submit();
-	        });
-	    });
-	</script>
+	<script src="../pageSetUp/videoPage.js"></script>
 </body>
 </html>

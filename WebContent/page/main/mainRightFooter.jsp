@@ -1,11 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="Notices.NoticesMgr"%>
 <%@page import="Notices.NoticesBean"%>
+
 <%@page import="java.util.*" %>
+<%@ page import="javax.sql.DataSource" %>
 <%@page import="Notices.DBConnectionMgr" %>
-<%@ page import="jun_chamgo.DatabaseConfig, jun_chamgo.SubjectInfoDAO" %>
-<%@ page import="jun_chamgo.WeekInfo" %>
+
+<%@ page import="jun_chamgo.DatabaseConfig" %>
+<%@ page import="jun_chamgo.SubjectInfoDAO" %>
+
+<%
+// DataSource 생성
+DataSource dataSource = DatabaseConfig.getDataSource();
+
+// WeekInfoDAO 객체 생성
+jun_chamgo.WeekInfoDAO weekInfoDAO = new jun_chamgo.WeekInfoDAO(dataSource);
+
+// WeekInfo 데이터 가져오기
+List<jun_chamgo.WeekInfo> recentWeekInfo = weekInfoDAO.getRecentWeekInfo(4);
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,33 +63,29 @@
 
 	        </div>
 	        
-	        
 	        <div class="tab" tab-id="2">
-			    <!-- 신규 DOOR 컨텐츠 -->
-			    <div class="door-content">
-			        <% 
-			        WeekInfoDAO weekInfoDAO = new WeekInfoDAO(DatabaseConfig.getDataSource());
-			        List<WeekInfo> recentWeekInfo = weekInfoDAO.getRecentWeekInfo(4); // 최근 4개의 WeekInfo 가져오기
-			        
-			        for (WeekInfo weekInfo : recentWeekInfo) {
-			            String weekName = weekInfo.getWeekName();
-			            String lectureLink = weekInfo.getLectureLink();
-			        %>
-			        <div class="door-item">
-			            <img src="thumbnail1.jpg" alt="Thumbnail 1">
-			            <a href="<%= lectureLink %>"><%= weekName %></a> <!-- weekName을 표시하고 lectureLink를 링크로 사용 -->
-			        </div>
-			        <%
-			        }
-			        %>
-			    </div>
-			</div>
+	            <!-- 신규 DOOR 컨텐츠 -->
+	            <div class="door-content">
+	                <%
+	                for (jun_chamgo.WeekInfo weekInfo : recentWeekInfo) {
+	                    String weekName = weekInfo.getWeekName();
+	                    String lectureLink = weekInfo.getLectureLink();
+	                %>
+	                <div class="door-item">
+	                    <img src="thumbnail1.jpg" alt="Thumbnail 1">
+	                    <a href="#" class="video-link" data-video-url="<%= lectureLink %>"><%= weekName %></a>
+	                </div>
+	                <%
+	                }
+	                %>
+	            </div>
+	        </div>
 
 	        <div class="tab" tab-id="3">
 			    <!-- 신설 강의 컨텐츠 -->
 			    <div class="door-content">
-			        <% 
-			        SubjectInfoDAO subjectInfoDAO = new SubjectInfoDAO(DatabaseConfig.getDataSource());
+			        <%
+			        jun_chamgo.SubjectInfoDAO subjectInfoDAO = new jun_chamgo.SubjectInfoDAO(dataSource); // 객체 생성 방식 변경
 			        List<String> recentSubjectNames = subjectInfoDAO.getRecentSubjectNames(4); // sub_name 4개 가져옴
 			        
 			        for (String subName : recentSubjectNames) {
@@ -91,11 +100,13 @@
 			    </div>
 			</div>
 
+
 	        </div>
 	    </div>
 	</div>
 
 
 	<script src="js/contentAnimate.js"></script>
+	<script src="../../pageSetUp/videoPage.js"></script>
 </body>
 </html>
