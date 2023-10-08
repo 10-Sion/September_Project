@@ -11,9 +11,9 @@
                 <a href="<%=request.getContextPath()%>/page/main/MainPage.jsp"><img src="/HakSaGwanLee/page/main/image/Hogwarts-Crest.png" alt="로고 이미지"></a>
                 <h1>교학대학교</h1>
             </div>
-            <a href="../../GangUi/gangMain.jsp" class="menuItem">학사관리시스템</a>
-            <a href="../../QnA/list.jsp" class="menuItem">강의실</a>
-            <a href="../../Notices/list.jsp" class="menuItem">공지사항</a>
+            <a href="/HakSaGwanLee/GangUi/gangMain.jsp" class="menuItem">학사관리시스템</a>
+            <a href="/HakSaGwanLee/QnA/list.jsp" class="menuItem">강의실</a>
+            <a href="/HakSaGwanLee/Notices/list.jsp" class="menuItem">공지사항</a>
 
             <!-- 로그인 상태에 따라 다르게 표시 -->
             <div class="user-links">

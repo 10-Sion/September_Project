@@ -1,21 +1,21 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page import="Member.StudentDAO" %>
 
 
 
-<%! String userName = null; // »ç¿ëÀÚ ÀÌ¸§À» ÀúÀåÇÒ º¯¼ö %>
+<%! String userName = null; // ì‚¬ìš©ìž ì´ë¦„ì„ ì €ìž¥í•  ë³€ìˆ˜ %>
 
 <%
-   HttpSession userSession = request.getSession(false); // ¼¼¼ÇÀÌ ¾øÀ¸¸é »õ·Î »ý¼ºÇÏÁö ¾ÊÀ½
+   HttpSession userSession = request.getSession(false); // ì„¸ì…˜ì´ ì—†ìœ¼ë©´ ìƒˆë¡œ ìƒì„±í•˜ì§€ ì•ŠìŒ
 
    if (userSession != null) {
-      // ¼¼¼ÇÀÌ Á¸ÀçÇÏ¸é »ç¿ëÀÚ Á¤º¸¸¦ °¡Á®¿Í¼­ ÀÌ¸§À» ¼³Á¤ÇÕ´Ï´Ù.
+      // ì„¸ì…˜ì´ ì¡´ìž¬í•˜ë©´ ì‚¬ìš©ìž ì •ë³´ë¥¼ ê°€ì ¸ì™€ì„œ ì´ë¦„ì„ ì„¤ì •í•©ë‹ˆë‹¤.
       String userRole = (String) userSession.getAttribute("userRole");
       int uniqueId = (int) userSession.getAttribute("uniqueId");
 
-      // »ç¿ëÀÚ ¿ªÇÒÀÌ ÇÐ»ýÀÎ °æ¿ì¸¸ ÇÐ»ý ÀÌ¸§À» °¡Á®¿É´Ï´Ù.
-      if ("ÇÐ»ý".equals(userRole)) {
+      // ì‚¬ìš©ìž ì—­í• ì´ í•™ìƒì¸ ê²½ìš°ë§Œ í•™ìƒ ì´ë¦„ì„ ê°€ì ¸ì˜µë‹ˆë‹¤.
+      if ("í•™ìƒ".equals(userRole)) {
          StudentDAO studentDAO = new StudentDAO();
          userName = studentDAO.getStudentName(uniqueId);
       }
@@ -24,7 +24,7 @@
 
 <html>
 <head>
-<!-- °Ô½Ã¹° ¾²±â ÆäÀÌÁö -->
+<!-- ê²Œì‹œë¬¼ ì“°ê¸° íŽ˜ì´ì§€ -->
 <title>Q & A</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
@@ -33,7 +33,7 @@
 <br/><br/>
 <table width="600" cellpadding="3">
 	<tr>
-		<td bgcolor="84F399" height="25" align="center">±Û¾²±â</td>
+		<td bgcolor="84F399" height="25" align="center">ê¸€ì“°ê¸°</td>
 	</tr>
 </table>
 <br/>
@@ -43,30 +43,30 @@
 		<td align=center>
 		<table align="center">
 			<tr>
-				<td width="10%">ÀÛ ¼º ÀÚ</td>
+				<td width="10%">ìž‘ ì„± ìž</td>
 				<td width="90%">
 				<input name="name" size="10" maxlength="8" value="<%= userName %>" readonly></td>
 			</tr>
 			<tr>
-				<td>Á¦ ¸ñ</td>
+				<td>ì œ ëª©</td>
 				<td>
 				<input name="subject" size="50" maxlength="30"></td>
 			</tr>
 			<tr>
-				<td>³» ¿ë</td>
+				<td>ë‚´ ìš©</td>
 				<td><textarea name="content" rows="10" cols="50"></textarea></td>
 			</tr>
 			<!-- <tr>
-				<td>ºñ¹Ð ¹øÈ£</td>
+				<td>ë¹„ë°€ ë²ˆí˜¸</td>
 				<td><input type="password" name="pass" size="15" maxlength="15"></td>
 			</tr> -->
 			<tr>
 			 <tr>
-     			<td>ÆÄÀÏÃ£±â</td> 
+     			<td>íŒŒì¼ì°¾ê¸°</td> 
      			<td><input type="file" name="filename" size="50" maxlength="50"></td>
     		</tr>
  			<tr>
- 				<td>³»¿ëÅ¸ÀÔ</td>
+ 				<td>ë‚´ìš©íƒ€ìž…</td>
  				<td> HTML<input type=radio name="contentType" value="HTTP" >&nbsp;&nbsp;&nbsp;
   			 	TEXT<input type=radio name="contentType" value="TEXT" checked>
   			 	</td>
@@ -76,9 +76,9 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					 <input type="submit" value="µî·Ï">
-					 <input type="reset" value="´Ù½Ã¾²±â">
-					 <input type="button" value="¸®½ºÆ®" onClick="javascript:location.href='list.jsp'">
+					 <input type="submit" value="ë“±ë¡">
+					 <input type="reset" value="ë‹¤ì‹œì“°ê¸°">
+					 <input type="button" value="ë¦¬ìŠ¤íŠ¸" onClick="javascript:location.href='list.jsp'">
 				</td>
 			</tr>
 		</table>

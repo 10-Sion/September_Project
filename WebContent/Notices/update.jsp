@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="Notices.NoticesBean" %>
 
 <%
@@ -10,11 +10,11 @@
 %>
 <html>
 <head>
-    <title>°øÁö»çÇ× ¼öÁ¤</title>
+    <title>ê³µì§€ì‚¬í•­ ìˆ˜ì •</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <script>
         function confirmUpdate() {
-            var result = confirm("¼öÁ¤ÇÏ½Ã°Ú½À´Ï±î?");
+            var result = confirm("ìˆ˜ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
             if (result) {
                 document.updateFrm.submit();
             }
@@ -26,7 +26,7 @@
     <br/><br/>
     <table width="600" cellpadding="3">
         <tr>
-            <td bgcolor="#FF9018"  height="21" align="center">¼öÁ¤ÇÏ±â</td>
+            <td bgcolor="#FF9018"  height="21" align="center">ìˆ˜ì •í•˜ê¸°</td>
         </tr>
     </table>
     <form name="updateFrm" method="post" action="noticesUpdate">
@@ -36,13 +36,13 @@
                 <td>
                     <table>
                         <tr>
-                            <td width="20%">Á¦ ¸ñ</td>
+                            <td width="20%">ì œ ëª©</td>
                             <td width="80%">
                                 <input name="title" size="50" value="<%=title%>" maxlength="100">
                             </td>
                         </tr>
                         <tr>
-                            <td>³» ¿ë</td>
+                            <td>ë‚´ ìš©</td>
                             <td>
                                 <textarea name="content" rows="10" cols="50"><%=content%></textarea>
                             </td>
@@ -52,9 +52,9 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="button" value="¼öÁ¤ÇÏ±â" onClick="confirmUpdate()">
-                                <input type="reset" value="´Ù½Ã¼öÁ¤">
-                                <input type="button" value="µÚ·Î" onClick="history.go(-1)">
+                                <input type="button" value="ìˆ˜ì •í•˜ê¸°" onClick="confirmUpdate()">
+                                <input type="reset" value="ë‹¤ì‹œìˆ˜ì •">
+                                <input type="button" value="ë’¤ë¡œ" onClick="history.go(-1)">
                             </td>
                         </tr>
                     </table>

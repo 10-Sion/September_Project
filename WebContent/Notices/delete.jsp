@@ -1,10 +1,10 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="Notices.NoticesBean" %>
 <%@ page import="Notices.NoticesMgr" %>
 <jsp:useBean id="nMgr" class="Notices.NoticesMgr" />
 <html>
 <head>
-    <title>°øÁö»çÇ× »èÁ¦</title>
+    <title>ê³µì§€ì‚¬í•­ ì‚­ì œ</title>
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -13,7 +13,7 @@
     <table width="600" cellpadding="3">
         <tr>
             <td bgcolor="#dddddd" height="21" align="center">
-                °øÁö»çÇ× »èÁ¦
+                ê³µì§€ì‚¬í•­ ì‚­ì œ
             </td>
         </tr>
     </table>
@@ -23,9 +23,9 @@
         int num = Integer.parseInt(request.getParameter("num"));
     %>
     <script type="text/javascript">
-        if (confirm("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?")) {
+        if (confirm("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
             <% nMgr.deleteNotice(num); %>
-            alert("°øÁö»çÇ×ÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.");
+            alert("ê³µì§€ì‚¬í•­ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
             location.href = "list.jsp?nowPage=<%=nowPage%>";
         } else {
             history.back();

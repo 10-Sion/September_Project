@@ -28,7 +28,7 @@
                 <i class="fa-regular fa-circle-2"></i>
             </div>
             
-            <div class="menu_item" onclick="loadServletData('<%=request.getContextPath()%>/professor/list')">
+            <div class="menu_item" onclick="loadPage('/HakSaGwanLee/Notices/post.jsp')">
                 <i class='bx bx-calendar'></i>
                 <p>공지사항 작성(미완)</p>
             </div>
