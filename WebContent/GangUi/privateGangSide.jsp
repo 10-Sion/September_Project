@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-<%
-	String contextPath = request.getContextPath();
-%>
+
 <div id="accordian">
             <ul class="show-dropdown main-navbar">
             
@@ -24,17 +22,8 @@
                     <i class="far fa-clone">
                     </i>강의 관리</a>
                 </li>
-                <li onclick="loadPage('privGangSub4.jsp')">
-                    <a href="javascript:void(0);">
-                    <i class="far fa-calendar-alt">
-                    </i>공지사항</a>
-                </li>
-                <li onclick="loadPage('privGangSub5.jsp')">
-                    <a href="javascript:void(0);">
-                    <i class="far fa-chart-bar">
-                    </i>Q&A 게시판</a>
-                </li>
-                <li onclick="loadServletData('<%=contextPath%>/Report/ReportList.do')">
+                
+                <li onclick="loadPage('privGangSub6.jsp')">
                     <a href="javascript:void(0);">
                     <i class="far fa-copy">
                     </i>과제 게시판</a>

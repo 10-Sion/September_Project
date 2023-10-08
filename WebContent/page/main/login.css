@@ -1,48 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
-        * {
-            font-family: 'Noto Sans KR', sans-serif;
-        }
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
 
-        body {
-            margin: 0;
-            background-color: white;
-            
-        }
-        
-        .login-form{
-            border-radius: 5px;
-          width: 300px;
-          background-color: #eeeff1;
-          padding: 20px;
-          margin: 50px auto;
-          text-align: center; /* 가운데 정렬 추가 */
-        }
-     
-        
-        .text-field{
-            font-size: 14px;
-            padding : 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border : none;
-            width : 100%;
-            box-sizing: border-box;
-        }
-        /* 같은 width 100% 인데 submit 은 박스사이징을 안해도 되는 이유는
-        submit에는 자동으로 border-box가 적용이 된다 */
-        .submit-btn {
-            font-size : 14px;
-            color : #fff;
-            padding : 10px;
-            border-radius: 5px;
-            background-color: #1bbc9b;
-            border : none;
-            width : 100%;
-        }
+body {
+    margin: 0;
+    background-color: white;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    background-color: #d5d6d8;
+}
 
-       
-        .submit-btn:hover {
-            box-shadow: 2px 4px 5px rgba(0,0,0,0.5);
-        }
-        
+#login-form {
+    border-radius: 10px;
+    width: 80%; 
+    max-width: 400px; 
+    background-color: #eeeff1;
+    padding: 20px;
+    text-align: center;
+}
+
+.text-field {
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    font-size: 14px;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #1bbc9b;
+    border: none;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.5);
+}

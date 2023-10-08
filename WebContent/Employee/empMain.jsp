@@ -18,7 +18,7 @@
     }
     %>
     <%-- 세션에서 값을 읽어와 출력 --%>
-    <% Integer currentEmployeeId = (Integer) session.getAttribute("currentEmployeeId"); %>
+    <% Integer currentEmployeeId = (Integer) session.getAttribute("uniqueId"); %>
     <% if (currentEmployeeId != null) { %>
         <p>현재 직원 ID: <%= currentEmployeeId %></p>
     <% } else { %>

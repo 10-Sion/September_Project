@@ -162,6 +162,11 @@ body {
   margin-bottom: 10px;
 }
 
+.door-item .gangThumb{
+	max-height: 120px;
+	filter: grayscale(100%);
+	
+}
 .door-item a {
   text-align: center;
   text-decoration: none;
@@ -311,16 +316,21 @@ img {
   position: relative;
   transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
 }
+.card__image img {
+  height: 200px;
+  width: 100%;
+  vertical-align: middle;
+}
 
 .card__image::before {
   content: "";
   display: block;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
+  padding-top: 5%; /* 16:9 aspect ratio */
 }
 
 @media (min-width: 40rem) {
   .card__image::before {
-    padding-top: 66.6%; /* 3:2 aspect ratio */
+    padding-top: 10%; /* 3:2 aspect ratio */
   }
 }
 
@@ -330,6 +340,7 @@ img {
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
+  margin: 20px 0;
 }
 
 .card__text {

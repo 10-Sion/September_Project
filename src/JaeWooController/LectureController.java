@@ -177,9 +177,38 @@ public class LectureController extends HttpServlet {
 				request.setAttribute("weeklist", weeklist);
 				
 				
-				nextPage = "/Professor/SubjectWeek.jsp?sub_no=" + sub_no;		
+				nextPage = "/Professor/proMain.jsp";		
+				response.sendRedirect("/HakSaGwanLee/Professor/proMain.jsp");
+				return;
+				
+			}else if(action.equals("/InsertSubject.do")) {
 				
 				
+				LectureVO lv = new LectureVO();
+				
+				
+				int pro_no = Integer.parseInt(request.getParameter("pro_no"));
+				int credit = Integer.parseInt(request.getParameter("credit"));
+				int grade = Integer.parseInt(request.getParameter("grade"));
+				
+				lv.setComp_sort(request.getParameter("comp_sort"));
+				lv.setSub_name(request.getParameter("sub_name"));
+				lv.setPeriod(request.getParameter("period"));
+				lv.setEdu_goal(request.getParameter("edu_goal"));
+				lv.setPlace(request.getParameter("place"));
+				lv.setTextbook(request.getParameter("textbook"));
+				lv.setPro_name(request.getParameter("pro_name"));
+				lv.setPro_email(request.getParameter("pro_email"));
+				lv.setMajor(request.getParameter("major"));
+				lv.setPro_no(pro_no);
+				lv.setCredit(credit);
+				lv.setGrade(grade);
+				 
+				lectureservice.InsertSubject(lv);
+				
+				nextPage = "/Professor/proMain.jsp";		
+				response.sendRedirect("/HakSaGwanLee/Professor/proMain.jsp");
+				return;
 			}
 			
 			

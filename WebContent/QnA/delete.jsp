@@ -6,7 +6,7 @@
 <title>Q & A</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <%
-	request.setCharacterEncoding("EUC-KR");
+	request.setCharacterEncoding("UTF-8");
 	String nowPage = request.getParameter("nowPage");
 	int num = Integer.parseInt(request.getParameter("num"));
 	if (request.getParameter("pass") != null) {

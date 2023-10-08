@@ -3,8 +3,10 @@
 <%@ page import="java.util.Vector" %>
 <jsp:useBean id="nMgr" class="Notices.NoticesMgr" />
 
+<jsp:include page="../page/main/mainTop.jsp" />
+
 <%
-    request.setCharacterEncoding("EUC-KR");
+    request.setCharacterEncoding("UTF-8");
 
     String keyWord = "", keyField = "";
     Vector<NoticesBean> vlist = null;
@@ -23,6 +25,7 @@
 %>
 <html>
 <head>
+
     <title>공지사항</title>
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
@@ -60,7 +63,7 @@
                     <tr>
                         <td align="center"><%= i + 1 %></td>
                         <td>
-                            <a href="read.jsp?num=<%= num %>"><%= title %></a>
+                           <a href="read.jsp?num=<%= num %>"><%= title %></a>
                         </td>
                         <td align="center"><%= regdate %></td>
                     </tr>
@@ -86,7 +89,9 @@
 				%>
             <td align="right">
                 <%
-				        if (userRole.equals("교수")) {
+                if (userRole.equals("직원") || userRole.equals("교수")) {
+				        	
+				        	
 				    %>
 				        <a href="post.jsp">[글쓰기]</a> 
 				    <%
@@ -112,5 +117,6 @@
         </table>
     </form>
 </div>
+	<script src="../pageSetUp/myPage.js"></script>
 </body>
 </html>

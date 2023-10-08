@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=EUC-KR" %>
 <%
-      request.setCharacterEncoding("EUC-KR");
+      request.setCharacterEncoding("UTF-8");
 	  int totalRecord = Integer.parseInt(request.getParameter("totalRecord"));
 	  int numPerPage = 10; // 페이지당 레코드 수 
 	  int pagePerBlock = 15;  //블럭당 페이지수 

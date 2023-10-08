@@ -2,7 +2,7 @@
 <%@page import="QnA.BoardBean"%>
 <jsp:useBean id="bMgr" class="QnA.BoardMgr" />
 <%
-	  request.setCharacterEncoding("EUC-KR");
+	  request.setCharacterEncoding("UTF-8");
 	  int num = Integer.parseInt(request.getParameter("num"));
 	  String nowPage = request.getParameter("nowPage");
 	  String keyField = request.getParameter("keyField");
@@ -76,8 +76,8 @@
  <tr>
   <td align="center" colspan="2"> 
  <hr/>
- [ <a href="javascript:list()" >리스트</a> | 
- <a href="update.jsp?nowPage=<%=nowPage%>&num=<%=num%>" >수 정</a> |
+ [ <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/list.jsp')">리스트</a> | 
+ <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/update.jsp?num=<%= num %>')">수 정</a> |
  
  <% 
 // 사용자 역할 확인
@@ -87,10 +87,10 @@ String userRole = (userSession != null && userSession.getAttribute("userRole") !
 
 if (userRole.equals("교수")) {
 %>
- <a href="reply.jsp?nowPage=<%=nowPage%>" >답 변</a> |
+ <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/reply.jsp?num=<%= num %>')">답 변</a> |
 <%}%>
  
- <a href="delete.jsp?nowPage=<%=nowPage%>&num=<%=num%>">삭 제</a> ]<br/>
+ <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/delete.jsp?num=<%= num %>')">삭 제</a> ]<br/>
   </td>
  </tr>
 </table>

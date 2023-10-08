@@ -105,6 +105,7 @@
 				<th>강의 장소</th>
 				<th>학점</th>
 				<th>수업계획서</th>
+				<th>수정</th>
 			</tr>
  			<%
 				if (list.isEmpty()) {
@@ -135,6 +136,9 @@
 				<th><a
 					onclick="loadServletData('<%=contextPath%>/Lecture/ProLecturePlan.do?sub_no=<%=lv.getSub_no()%>')">
 					수업계획</a></th>
+				<th><a
+					onclick="loadServletData('<%=contextPath%>/Lecture/ProLecturePlan.do?sub_no=<%=lv.getSub_no()%>')">
+					삭제</a></th>
 			</tr>
 
 			<%

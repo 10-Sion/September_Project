@@ -17,7 +17,7 @@ public class StudentDAO {
 
      try {
          // 데이터베이스 연결 설정
-         String url = "jdbc:mysql://localhost:3306/GwanLee";
+         String url = "jdbc:mysql://localhost:3306/GwanLee?serverTimezone=UTC";
          String i_id = "pid";
          String i_pw = "1234";
 
@@ -58,7 +58,7 @@ public class StudentDAO {
 
 	        try {
 	            // 데이터베이스 연결 설정
-	            String url = "jdbc:mysql://localhost:3306/GwanLee";
+	            String url = "jdbc:mysql://localhost:3306/GwanLee?serverTimezone=UTC";
 	            String i_id = "pid";
 	            String i_pw = "1234";
 

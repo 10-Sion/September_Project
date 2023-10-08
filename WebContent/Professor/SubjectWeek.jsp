@@ -67,7 +67,6 @@
         setInterval(refreshList, 5000); // 5초마다 갱신 (1000ms = 1초)
     });
 
-
 </script>
 </head>
 <body align = "center" onload="set();">
@@ -105,8 +104,8 @@
 			<td><%=kw.getClass_hour()%></td>
 			<td><%=kw.getWeek_name()%></td>
 			<td><%=kw.getClass_type()%></td>
-			<td><%if( kw.isAssignment() == true){%>유<%}	else{%>무<%}%></td>
-			<td><%=kw.getLecture_link()%></td>
+			<td><%if( kw.isAssignment() == true){%>유<%}	else{%>무<%}%></td>			
+			<td><button data-video-url="<%=kw.getLecture_link()%>">강의 시청</button></td>
 		</tr>
 <%
 		}
@@ -114,5 +113,7 @@
 %>
 	</table>
 	</div>
+	
+	<script src="../pageSetUp/videoPage.js"></script>
 </body>
 </html>

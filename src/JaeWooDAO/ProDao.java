@@ -15,6 +15,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import JaeWooVO.DepBean;
+import JaeWooVO.LectureVO;
 import JaeWooVO.ProBean;
 import JaeWooVO.SubBean;
 
@@ -116,7 +117,7 @@ public class ProDao {
 			
 		}
 		
-		public void InsertSubject(SubBean sub) {
+		public void InsertSubject(LectureVO sub) {
 			// 과목 등록
 			String sql = "";			
 			
@@ -124,21 +125,24 @@ public class ProDao {
 				
 				con = getConnection();
 				
-				sql = "insert into Subject(sub_name, pro_name, pro_no, place, point, capacity, major, dep_name)"+
-				"values(?,?,?,?,?,?,?,?)"; 
+				sql = "INSERT INTO Subject_Info (sub_name, credit, pro_no, grade, comp_sort,  period, edu_goal, place, textbook, pro_name, pro_email, major) " +
+					" values(?,?,?,?,?,?,?,?,?,?,?,?)"; 
 				
 				pstmt = con.prepareStatement(sql);
 				
 				pstmt.setString(1, sub.getSub_name());
-				pstmt.setString(2, sub.getPro_name());
+				pstmt.setInt(2, sub.getCredit());
 				pstmt.setInt(3, sub.getPro_no());
-				pstmt.setString(4, sub.getPlace());
-				pstmt.setInt(5, sub.getPoint());
-				pstmt.setInt(6, sub.getCapacity());
-				pstmt.setString(7, sub.getMajor());
-				pstmt.setString(8, sub.getDep_name());
+				pstmt.setInt(4, sub.getGrade());
+				pstmt.setString(5, sub.getComp_sort());
+				pstmt.setString(6, sub.getPeriod());
+				pstmt.setString(7, sub.getEdu_goal());
+				pstmt.setString(8, sub.getPlace());
+				pstmt.setString(9, sub.getTextbook());
+				pstmt.setString(10, sub.getPro_name());
+				pstmt.setString(11, sub.getPro_email());
+				pstmt.setString(12, sub.getMajor());
 				
-				// SQL�? ?��?��
 				pstmt.executeUpdate();
 				
 			}catch (Exception e) {
@@ -149,39 +153,6 @@ public class ProDao {
 			}
 		
 		}//InsertSubject() 끝
-		
-		public SubBean getSubject(int sub_no) {
-			String sql = "";
-			SubBean sb= new SubBean();
-			try {
-				
-				con = getConnection();
-				sql = "select * from subject where no=" + sub_no;
-				pstmt = con.prepareStatement(sql);
-				
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-				sb.setPro_name(rs.getString("pro_name"));
-				sb.setSub_name(rs.getString("sub_name"));
-				sb.setSub_no(rs.getInt("no"));
-				sb.setPro_no(rs.getInt("pro_no"));
-				sb.setCapacity(rs.getInt("capacity"));
-				sb.setPlace(rs.getString("place"));
-				sb.setPoint(rs.getInt("point"));
-				sb.setMajor(rs.getString("major"));
-				sb.setDep_name(rs.getString("dep_name"));
-				}
-				
-			}catch(Exception e) {
-				System.out.println("Professor/ProDao 내부 getSubject내부에 오류" + e);
-				e.printStackTrace();
-				
-			}finally {
-				rs_Close();
-			}
-			return sb;
-		}
 		
 		public int ModProfessor(ProBean pb) {
 			

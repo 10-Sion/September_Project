@@ -20,10 +20,9 @@
 <body>
 <%
 	request.setCharacterEncoding("UTF-8");
- //	int pro_no = Integer.parseInt( request.getParameter("no")) ;
- //	String P_name = request.getParameter("name");
+
  	int pro_no = (int)session.getAttribute("pro_no");
- //	String p_name = (String)session.getAttribute("pro_no");
+
  
  	//Subindex에서 수정 버튼을 클릭할때 넘겨받은 sub_no 을 저장
  	int sub_no = Integer.parseInt( request.getParameter("sub_no")) ;

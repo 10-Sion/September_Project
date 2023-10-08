@@ -15,7 +15,7 @@
 	요청할 서블릿 :
 	<%=contextPath%>
 
-	<form id="week" action= '<%=contextPath%>/Lecture/InsertWeek.do?sub_no=<%=sub_no%>')>
+	<form id="week" action= '<%=contextPath%>/Lecture/InsertWeek.do?sub_no=<%=sub_no%>'>
 		<div class="table">
 			<table align="center" rowspan="2">
 				<tr>

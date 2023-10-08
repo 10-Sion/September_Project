@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'Test2' of https://github.com/10-Sion/September_Project.git
 package Notices;
 
 public class NoticesBean {
@@ -50,6 +53,7 @@ public class NoticesBean {
 	
 	
 	
+<<<<<<< HEAD
 }
 
 package Notices;
@@ -105,3 +109,6 @@ public class NoticesBean {
 	
 }
 
+=======
+}
+>>>>>>> branch 'Test2' of https://github.com/10-Sion/September_Project.git
