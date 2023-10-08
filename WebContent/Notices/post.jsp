@@ -2,6 +2,8 @@
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page import="Member.ProfessorDAO" %>
 
+<jsp:include page="../page/main/mainTop.jsp" />
+
 <%! String userName = null; // 사용자 이름을 저장할 변수 %>
 
 <%

@@ -3,7 +3,7 @@
 <%@page import="java.util.Vector"%>
 <jsp:useBean id="bMgr" class="QnA.BoardMgr" />
 <%	
-	  request.setCharacterEncoding("EUC-KR");
+	  request.setCharacterEncoding("UTF-8");
 	  
       int totalRecord=0; //전체레코드수
 	  int numPerPage=10; // 페이지당 레코드 수 

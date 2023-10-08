@@ -3,8 +3,10 @@
 <%@ page import="java.util.Vector" %>
 <jsp:useBean id="nMgr" class="Notices.NoticesMgr" />
 
+<jsp:include page="../page/main/mainTop.jsp" />
+
 <%
-    request.setCharacterEncoding("EUC-KR");
+    request.setCharacterEncoding("UTF-8");
 
     String keyWord = "", keyField = "";
     Vector<NoticesBean> vlist = null;
@@ -23,6 +25,7 @@
 %>
 <html>
 <head>
+
     <title>공지사항</title>
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>

@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=EUC-KR" %>
 <%@ page import="Notices.NoticesBean" %>
 
+<jsp:include page="../page/main/mainTop.jsp" />
+
 <%
     int num = Integer.parseInt(request.getParameter("num"));
     String nowPage = request.getParameter("nowPage");

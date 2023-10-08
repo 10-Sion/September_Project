@@ -2,7 +2,7 @@
 <%@page import="QnA.BoardBean"%>
 <jsp:useBean id="bMgr" class="QnA.BoardMgr" />
 <%
-	  request.setCharacterEncoding("EUC-KR");
+	  request.setCharacterEncoding("UTF-8");
 	  int num = Integer.parseInt(request.getParameter("num"));
 	  String nowPage = request.getParameter("nowPage");
 	  String keyField = request.getParameter("keyField");

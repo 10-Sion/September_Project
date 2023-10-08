@@ -1,8 +1,11 @@
 <%@ page contentType="text/html; charset=EUC-KR" %>
 <%@page import="Notices.NoticesBean"%>
 <jsp:useBean id="nMgr" class="Notices.NoticesMgr" />
+
+<jsp:include page="../page/main/mainTop.jsp" />
+
 <%
-    request.setCharacterEncoding("EUC-KR");
+    request.setCharacterEncoding("UTF-8");
     int num = Integer.parseInt(request.getParameter("num"));
     NoticesBean bean = nMgr.getNotice(num); // 공지사항 가져오기
     String title = bean.getTitle();
