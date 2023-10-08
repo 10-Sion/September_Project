@@ -13,6 +13,8 @@
             </div>
             <a href="../../GangUi/gangMain.jsp" class="menuItem">학사관리시스템</a>
             <a href="../../QnA/list.jsp" class="menuItem">강의실</a>
+            <a href="/HakSaGwanLee/GangUi/gangMain.jsp" class="menuItem">학사관리시스템</a>
+            <a href="/HakSaGwanLee/QnA/list.jsp" class="menuItem">강의실</a>
             <a href="/HakSaGwanLee/Notices/list.jsp" class="menuItem">공지사항</a>
 
             <!-- 로그인 상태에 따라 다르게 표시 -->
