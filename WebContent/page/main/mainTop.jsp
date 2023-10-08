@@ -55,7 +55,7 @@ if(userRole == "교수"){
                 } else {
                 %>
                 <!-- <a href="login.jsp" id="loginButton" class="small-link">로그인</a> -->
-                <a onclick="openLoginPopup()">로그인</a>
+                <a href="#" onclick="openLoginPopup()">로그인</a>
                 <%
                 }
                 %>

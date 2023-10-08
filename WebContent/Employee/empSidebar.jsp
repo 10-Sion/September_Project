@@ -30,7 +30,7 @@
             
             <div class="menu_item" onclick="loadPage('/HakSaGwanLee/Notices/post.jsp')">
                 <i class='bx bx-calendar'></i>
-                <p>공지사항 작성(미완)</p>
+                <p>공지사항 작성</p>
             </div>
             
             <div class="menu_item" onclick="window.location.href='empMainGang.jsp'">
