@@ -1,14 +1,14 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="QnA.BoardBean"%>
 <jsp:useBean id="bMgr" class="QnA.BoardMgr" />
 <%
-	  request.setCharacterEncoding("EUC-KR");
+	  request.setCharacterEncoding("UTF-8");
 	  int num = Integer.parseInt(request.getParameter("num"));
 	  String nowPage = request.getParameter("nowPage");
 	  String keyField = request.getParameter("keyField");
 	  String keyWord = request.getParameter("keyWord");
-	  bMgr.upCount(num);//Á¶È¸¼ö Áõ°¡
-	  BoardBean bean = bMgr.getBoard(num);//°Ô½Ã¹° °¡Á®¿À±â
+	  bMgr.upCount(num);//ì¡°íšŒìˆ˜ ì¦ê°€
+	  BoardBean bean = bMgr.getBoard(num);//ê²Œì‹œë¬¼ ê°€ì ¸ì˜¤ê¸°
 	  String name = bean.getName();
 	  String subject = bean.getSubject();
       String regdate = bean.getRegdate();
@@ -17,7 +17,7 @@
 	  int filesize = bean.getFilesize();
 	  String ip = bean.getIp();
 	  int count = bean.getCount();
-	  session.setAttribute("bean", bean);//°Ô½Ã¹°À» ¼¼¼Ç¿¡ ÀúÀå
+	  session.setAttribute("bean", bean);//ê²Œì‹œë¬¼ì„ ì„¸ì…˜ì— ì €ìž¥
 %>
 <html>
 <head>
@@ -38,28 +38,28 @@
 <br/><br/>
 <table align="center" width="600" cellspacing="3">
  <tr>
-  <td bgcolor="#9CA2EE" height="25" align="center">±ÛÀÐ±â</td>
+  <td bgcolor="#9CA2EE" height="25" align="center">ê¸€ì½ê¸°</td>
  </tr>
  <tr>
   <td colspan="2">
    <table cellpadding="3" cellspacing="0" width="100%"> 
     <tr> 
-  <td align="center" bgcolor="#DDDDDD" width="10%"> ÀÌ ¸§ </td>
+  <td align="center" bgcolor="#DDDDDD" width="10%"> ì´ ë¦„ </td>
   <td bgcolor="#FFFFE8"><%=name%></td>
-  <td align="center" bgcolor="#DDDDDD" width="10%"> µî·Ï³¯Â¥ </td>
+  <td align="center" bgcolor="#DDDDDD" width="10%"> ë“±ë¡ë‚ ì§œ </td>
   <td bgcolor="#FFFFE8"><%=regdate%></td>
  </tr>
  <tr> 
-    <td align="center" bgcolor="#DDDDDD"> Á¦ ¸ñ</td>
+    <td align="center" bgcolor="#DDDDDD"> ì œ ëª©</td>
     <td bgcolor="#FFFFE8" colspan="3"><%=subject%></td>
    </tr>
    <tr> 
-     <td align="center" bgcolor="#DDDDDD">Ã·ºÎÆÄÀÏ</td>
+     <td align="center" bgcolor="#DDDDDD">ì²¨ë¶€íŒŒì¼</td>
      <td bgcolor="#FFFFE8" colspan="3">
      <% if( filename !=null && !filename.equals("")) {%>
   		<a href="javascript:down('<%=filename%>')"><%=filename%></a>
   		 &nbsp;&nbsp;<font color="blue">(<%=filesize%>KBytes)</font>  
-  		 <%} else{%> µî·ÏµÈ ÆÄÀÏÀÌ ¾ø½À´Ï´Ù.<%}%>
+  		 <%} else{%> ë“±ë¡ëœ íŒŒì¼ì´ ì—†ìŠµë‹ˆë‹¤.<%}%>
      </td>
    </tr>
    <tr> 
@@ -67,7 +67,7 @@
    </tr>
    <tr>
     <td colspan="4" align="right">
-     <%=ip%>·Î ºÎÅÍ ±ÛÀ» ³²±â¼Ì½À´Ï´Ù./  Á¶È¸¼ö  <%=count%>
+     <%=ip%>ë¡œ ë¶€í„° ê¸€ì„ ë‚¨ê¸°ì…¨ìŠµë‹ˆë‹¤./  ì¡°íšŒìˆ˜  <%=count%>
     </td>
    </tr>
    </table>
@@ -76,21 +76,21 @@
  <tr>
   <td align="center" colspan="2"> 
  <hr/>
- [ <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/list.jsp')">¸®½ºÆ®</a> | 
- <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/update.jsp?num=<%= num %>')">¼ö Á¤</a> |
+ [ <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/list.jsp')">ë¦¬ìŠ¤íŠ¸</a> | 
+ <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/update.jsp?num=<%= num %>')">ìˆ˜ ì •</a> |
  
  <% 
-// »ç¿ëÀÚ ¿ªÇÒ È®ÀÎ
+// ì‚¬ìš©ìž ì—­í•  í™•ì¸
 HttpSession userSession = request.getSession(false);
 String userRole = (userSession != null && userSession.getAttribute("userRole") != null) ? (String) userSession.getAttribute("userRole") : "";
 
 
-if (userRole.equals("±³¼ö")) {
+if (userRole.equals("êµìˆ˜")) {
 %>
- <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/reply.jsp?num=<%= num %>')">´ä º¯</a> |
+ <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/reply.jsp?num=<%= num %>')">ë‹µ ë³€</a> |
 <%}%>
  
- <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/delete.jsp?num=<%= num %>')">»è Á¦</a> ]<br/>
+ <a href="#" onclick="loadPage('/HakSaGwanLee/QnA/delete.jsp?num=<%= num %>')">ì‚­ ì œ</a> ]<br/>
   </td>
  </tr>
 </table>

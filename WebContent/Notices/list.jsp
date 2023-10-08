@@ -1,10 +1,12 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="Notices.NoticesBean" %>
 <%@ page import="java.util.Vector" %>
 <jsp:useBean id="nMgr" class="Notices.NoticesMgr" />
 
+<jsp:include page="../page/main/mainTop.jsp" />
+
 <%
-    request.setCharacterEncoding("EUC-KR");
+    request.setCharacterEncoding("UTF-8");
 
     String keyWord = "", keyField = "";
     Vector<NoticesBean> vlist = null;
@@ -19,17 +21,18 @@
         }
     }
 
-    vlist = nMgr.getNoticesList(0, Integer.MAX_VALUE); // ¸ðµç °øÁö»çÇ× °¡Á®¿À±â
+    vlist = nMgr.getNoticesList(0, Integer.MAX_VALUE); // ëª¨ë“  ê³µì§€ì‚¬í•­ ê°€ì ¸ì˜¤ê¸°
 %>
 <html>
 <head>
-    <title>°øÁö»çÇ×</title>
+    <title>ê³µì§€ì‚¬í•­</title>
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<jsp:include page="../page/main/mainTop.jsp" />
 <div align="center">
     <br/>
-    <h2>°øÁö»çÇ×</h2>
+    <h2>ê³µì§€ì‚¬í•­</h2>
     <br/>
     <table align="center" width="600">
         <tr>
@@ -41,14 +44,14 @@
             <td align="center" colspan="2">
                 <%
                     if (vlist.isEmpty()) {
-                        out.println("µî·ÏµÈ °øÁö»çÇ×ÀÌ ¾ø½À´Ï´Ù.");
+                        out.println("ë“±ë¡ëœ ê³µì§€ì‚¬í•­ì´ ì—†ìŠµë‹ˆë‹¤.");
                     } else {
                 %>
                 <table width="100%" cellpadding="2" cellspacing="0">
                     <tr align="center" bgcolor="#D0D0D0" height="120%">
-                        <td>¹øÈ£</td>
-                        <td>Á¦¸ñ</td>
-                        <td>³¯Â¥</td>
+                        <td>ë²ˆí˜¸</td>
+                        <td>ì œëª©</td>
+                        <td>ë‚ ì§œ</td>
                     </tr>
                     <%
                         for (int i = 0; i < vlist.size(); i++) {
@@ -80,21 +83,21 @@
             <td>
             </td>
             <% 
-				    // »ç¿ëÀÚ ¿ªÇÒ È®ÀÎ
+				    // ì‚¬ìš©ìž ì—­í•  í™•ì¸
 				    HttpSession userSession = request.getSession(false);
 				    String userRole = (userSession != null && userSession.getAttribute("userRole") != null) ? (String) userSession.getAttribute("userRole") : "";
 				%>
             <td align="right">
                 <%
-                if (userRole.equals("Á÷¿ø") || userRole.equals("±³¼ö")) {
+                if (userRole.equals("ì§ì›") || userRole.equals("êµìˆ˜")) {
 				        	
 				        	
 				    %>
-				        <a href="post.jsp">[±Û¾²±â]</a> 
+				        <a href="post.jsp">[ê¸€ì“°ê¸°]</a> 
 				    <%
 				        }
 				    %>
-                <a href="../page/main/MainPage.jsp">[¸ÞÀÎÈ­¸éÀ¸·Î]</a> <!-- ¸ÞÀÎÈ­¸éÀ¸·Î ¸µÅ© Ãß°¡ -->
+                <a href="../page/main/MainPage.jsp">[ë©”ì¸í™”ë©´ìœ¼ë¡œ]</a> <!-- ë©”ì¸í™”ë©´ìœ¼ë¡œ ë§í¬ ì¶”ê°€ -->
             </td>
         </tr>
     </table>
@@ -104,11 +107,11 @@
             <tr>
                 <td align="center" valign="bottom">
                     <select name="keyField" size="1" >
-                        <option value="title">Á¦¸ñ</option>
-                        <option value="content">³»¿ë</option>
+                        <option value="title">ì œëª©</option>
+                        <option value="content">ë‚´ìš©</option>
                     </select>
                     <input size="16" name="keyWord">
-                    <input type="button"  value="Ã£±â" onClick="javascript:check()">
+                    <input type="button"  value="ì°¾ê¸°" onClick="javascript:check()">
                 </td>
             </tr>
         </table>

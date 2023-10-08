@@ -1,37 +1,46 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="javax.servlet.http.HttpSession" %>
-<%@ page import="Member.ProfessorDAO" %>
+<%@ page import="Member.*" %>
 
-<%! String userName = null; // ªÁøÎ¿⁄ ¿Ã∏ß¿ª ¿˙¿Â«“ ∫Øºˆ %>
 
 <%
-   HttpSession userSession = request.getSession(false); // ººº«¿Ã æ¯¿∏∏È ªı∑Œ ª˝º∫«œ¡ˆ æ ¿Ω
+   String userName = null; // ÏÇ¨Ïö©Ïûê Ïù¥Î¶ÑÏùÑ Ï†ÄÏû•Ìï† Î≥ÄÏàò 
+   String userRole = null;
+   
+   HttpSession userSession = request.getSession(false); // ÏÑ∏ÏÖòÏù¥ ÏóÜÏúºÎ©¥ ÏÉàÎ°ú ÏÉùÏÑ±ÌïòÏßÄ ÏïäÏùå
 
    if (userSession != null) {
-      // ººº«¿Ã ¡∏¿Á«œ∏È ªÁøÎ¿⁄ ¡§∫∏∏¶ ∞°¡ÆøÕº≠ ¿Ã∏ß¿ª º≥¡§«’¥œ¥Ÿ.
-      String userRole = (String) userSession.getAttribute("userRole");
+      // ÏÑ∏ÏÖòÏù¥ Ï°¥Ïû¨ÌïòÎ©¥ ÏÇ¨Ïö©Ïûê Ï†ïÎ≥¥Î•º Í∞ÄÏ†∏ÏôÄÏÑú Ïù¥Î¶ÑÏùÑ ÏÑ§Ï†ïÌï©ÎãàÎã§.
+      userRole = (String) userSession.getAttribute("userRole");
       int uniqueId = (int) userSession.getAttribute("uniqueId");
 
-      // ªÁøÎ¿⁄ ø™«“¿Ã ±≥ºˆ¿Œ ∞ÊøÏ∏∏ ±≥ºˆ ¿Ã∏ß¿ª ∞°¡Æø…¥œ¥Ÿ.
-      if ("±≥ºˆ".equals(userRole)) {
+      // ÏÇ¨Ïö©Ïûê Ïó≠Ìï†Ïù¥ ÍµêÏàòÏù∏ Í≤ΩÏö∞Îßå ÍµêÏàò Ïù¥Î¶ÑÏùÑ Í∞ÄÏ†∏ÏòµÎãàÎã§.
+      if ("ÍµêÏàò".equals(userRole)) {
     	  ProfessorDAO professorDAO = new ProfessorDAO();
          userName = professorDAO.getProfessorName(uniqueId);
+         
+      }
+      if ("ÏßÅÏõê".equals(userRole)) {
+    	  EmployeeDAO employeeDAO = new EmployeeDAO();
+         userName = employeeDAO.getEmployeeName(uniqueId);
       }
    }
 %>
 
+
 <html>
 <head>
-    <!-- ∞¯¡ˆªÁ«◊ æ≤±‚ ∆‰¿Ã¡ˆ -->
-    <title>∞¯¡ˆªÁ«◊</title>
+    <!-- Í≥µÏßÄÏÇ¨Ìï≠ Ïì∞Í∏∞ ÌéòÏù¥ÏßÄ -->
+    <title>Í≥µÏßÄÏÇ¨Ìï≠</title>
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<jsp:include page="../page/main/mainTop.jsp" />
 <div align="center">
     <br/><br/>
     <table width="600" cellpadding="3">
         <tr>
-            <td bgcolor="84F399" height="25" align="center">±€æ≤±‚</td>
+            <td bgcolor="84F399" height="25" align="center">Í∏ÄÏì∞Í∏∞</td>
         </tr>
     </table>
     <br/>
@@ -41,19 +50,19 @@
                 <td align=center>
                     <table align="center">
                         <tr>
-                            <td width="10%">¿€º∫¿⁄</td>
+                            <td width="10%">ÏûëÏÑ±Ïûê</td>
                             <td width="90%">
-                                <input name="name" size="10" maxlength="8" value="<%= userName %> ±≥ºˆ¥‘" readonly>
+                                <input name="name" size="10" maxlength="8" value="<%= userName %> <%= userRole %>Îãò" readonly>
                             </td>
                         </tr>
                         <tr>
-                            <td>¡¶∏Ò</td>
+                            <td>Ï†úÎ™©</td>
                             <td>
                                 <input name="title" size="50" maxlength="100">
                             </td>
                         </tr>
                         <tr>
-                            <td>≥ªøÎ</td>
+                            <td>ÎÇ¥Ïö©</td>
                             <td><textarea name="content" rows="10" cols="50"></textarea></td>
                         </tr>
                        
@@ -62,9 +71,9 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="submit" value="µÓ∑œ">
-                                <input type="reset" value="¥ŸΩ√æ≤±‚">
-                                <input type="button" value="∏ÆΩ∫∆Æ" onClick="javascript:location.href='list.jsp'">
+                                <input type="submit" value="Îì±Î°ù">
+                                <input type="reset" value="Îã§ÏãúÏì∞Í∏∞">
+                                <input type="button" value="Î¶¨Ïä§Ìä∏" onClick="javascript:location.href='/HakSaGwanLee/Notices/list.jsp'">
                             </td>
                         </tr>
                     </table>

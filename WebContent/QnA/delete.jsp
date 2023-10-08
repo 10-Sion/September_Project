@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@page import="QnA.BoardBean"%>
 <jsp:useBean id="bMgr" class="QnA.BoardMgr" />
 <html>
@@ -6,7 +6,7 @@
 <title>Q & A</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <%
-	request.setCharacterEncoding("EUC-KR");
+	request.setCharacterEncoding("UTF-8");
 	String nowPage = request.getParameter("nowPage");
 	int num = Integer.parseInt(request.getParameter("num"));
 	if (request.getParameter("pass") != null) {
@@ -20,7 +20,7 @@
 		} else {
 %>
 <script type="text/javascript">
-	alert("ÀÔ·ÂÇÏ½Å ºñ¹Ğ¹øÈ£°¡ ¾Æ´Õ´Ï´Ù.");
+	alert("ì…ë ¥í•˜ì‹  ë¹„ë°€ë²ˆí˜¸ê°€ ì•„ë‹™ë‹ˆë‹¤.");
 	history.back();
 </script>
 <%}
@@ -29,7 +29,7 @@
 <script type="text/javascript">
 	function check() {
 		if (document.delFrm.pass.value == "") {
-			alert("ÆĞ½º¿öµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+			alert("íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 			document.delFrm.pass.focus();
 			return false;
 		}
@@ -43,7 +43,7 @@
 		<table width="600" cellpadding="3">
 			<tr>
 				<td bgcolor=#dddddd height="21" align="center">
-					»ç¿ëÀÚÀÇ ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.
+					ì‚¬ìš©ìì˜ ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.
 				</td>
 			</tr>
 		</table>
@@ -62,9 +62,9 @@
 							</tr>
 							<tr>
 								<td align="center">
-									<input type="button" value="»èÁ¦¿Ï·á" onClick="check()"> 
-									<input type="reset" value="´Ù½Ã¾²±â">
-									<input type="button" value="µÚ·Î" onClick="history.go(-1)">
+									<input type="button" value="ì‚­ì œì™„ë£Œ" onClick="check()"> 
+									<input type="reset" value="ë‹¤ì‹œì“°ê¸°">
+									<input type="button" value="ë’¤ë¡œ" onClick="history.go(-1)">
 								</td>
 							</tr>
 						</table>

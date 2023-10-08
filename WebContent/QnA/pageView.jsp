@@ -1,18 +1,18 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%
-      request.setCharacterEncoding("EUC-KR");
+      request.setCharacterEncoding("UTF-8");
 	  int totalRecord = Integer.parseInt(request.getParameter("totalRecord"));
-	  int numPerPage = 10; // ÆäÀÌÁö´ç ·¹ÄÚµå ¼ö 
-	  int pagePerBlock = 15;  //ºí·°´ç ÆäÀÌÁö¼ö 
-	  int totalPage = 0; //ÀüÃ¼ ÆäÀÌÁö ¼ö
-      int totalBlock = 0;  //ÀüÃ¼ ºí·°¼ö 
-      int nowPage = 1; // ÇöÀçÆäÀÌÁö
-      int nowBlock = 1;  //ÇöÀçºí·°
+	  int numPerPage = 10; // íŽ˜ì´ì§€ë‹¹ ë ˆì½”ë“œ ìˆ˜ 
+	  int pagePerBlock = 15;  //ë¸”ëŸ­ë‹¹ íŽ˜ì´ì§€ìˆ˜ 
+	  int totalPage = 0; //ì „ì²´ íŽ˜ì´ì§€ ìˆ˜
+      int totalBlock = 0;  //ì „ì²´ ë¸”ëŸ­ìˆ˜ 
+      int nowPage = 1; // í˜„ìž¬íŽ˜ì´ì§€
+      int nowBlock = 1;  //í˜„ìž¬ë¸”ëŸ­
 
-      int start=0; //µðºñÀÇ select ½ÃÀÛ¹øÈ£
-      int end=10; //½ÃÀÛ¹øÈ£·Î ºÎÅÍ °¡Á®¿Ã select °¹¼ö
+      int start=0; //ë””ë¹„ì˜ select ì‹œìž‘ë²ˆí˜¸
+      int end=10; //ì‹œìž‘ë²ˆí˜¸ë¡œ ë¶€í„° ê°€ì ¸ì˜¬ select ê°¯ìˆ˜
 
-      int listSize=0; //ÇöÀç ÀÐ¾î¿Â °Ô½Ã¹°ÀÇ ¼ö
+      int listSize=0; //í˜„ìž¬ ì½ì–´ì˜¨ ê²Œì‹œë¬¼ì˜ ìˆ˜
 	  
   	  if (request.getParameter("nowPage") != null) {
 		nowPage = Integer.parseInt(request.getParameter("nowPage"));
@@ -20,14 +20,14 @@
 	  start = (nowPage * numPerPage)-numPerPage;
 	  end = numPerPage;
 
-	  totalPage =(int)Math.ceil((double)totalRecord / numPerPage);//ÀüÃ¼ÆäÀÌÁö¼ö
-	  nowBlock= (int)Math.ceil((double)nowPage/pagePerBlock);//ÇöÀçºí·° °è»ê
+	  totalPage =(int)Math.ceil((double)totalRecord / numPerPage);//ì „ì²´íŽ˜ì´ì§€ìˆ˜
+	  nowBlock= (int)Math.ceil((double)nowPage/pagePerBlock);//í˜„ìž¬ë¸”ëŸ­ ê³„ì‚°
 	  
-	  totalBlock =(int)Math.ceil((double)totalPage / pagePerBlock);//ÀüÃ¼ºí·°°è»ê
+	  totalBlock =(int)Math.ceil((double)totalPage / pagePerBlock);//ì „ì²´ë¸”ëŸ­ê³„ì‚°
 %>
 <html>
 <head>
-<title>ÆäÀÌÂ¡ & ºí·° Ã³¸® Å×½ºÆ®</title>
+<title>íŽ˜ì´ì§• & ë¸”ëŸ­ ì²˜ë¦¬ í…ŒìŠ¤íŠ¸</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function pageing(page) {
@@ -44,7 +44,7 @@
 <body bgcolor="#FFFFCC">
 <div align="center">
 <br/>
-<h2>ÆäÀÌÂ¡ & ºí·° Ã³¸® Å×½ºÆ®</h2>
+<h2>íŽ˜ì´ì§• & ë¸”ëŸ­ ì²˜ë¦¬ í…ŒìŠ¤íŠ¸</h2>
 <br/>
 	<table width="600">
 			<tr align="center">
@@ -54,7 +54,7 @@
 	</table>
 	<table>
 	<tr>
-		<td>°Ô½Ã¹° ¹øÈ£ : &nbsp;</td>
+		<td>ê²Œì‹œë¬¼ ë²ˆí˜¸ : &nbsp;</td>
 		<%
 			listSize = totalRecord-start;
 			for(int i = 0;i<numPerPage; i++){
@@ -67,15 +67,15 @@
 		<td align="center">&nbsp;</td>
 	</tr>
 </table>
-<!-- ÆäÀÌÂ¡ ¹× ºí·° -->
+<!-- íŽ˜ì´ì§• ë° ë¸”ëŸ­ -->
 <table>
 	<tr>
 		<td>
-			<!-- ÆäÀÌÂ¡ ¹× ºí·° Ã³¸® Start--> 
+			<!-- íŽ˜ì´ì§• ë° ë¸”ëŸ­ ì²˜ë¦¬ Start--> 
 			<%
-   				  int pageStart = (nowBlock -1)*pagePerBlock + 1 ; //ÇÏ´Ü ÆäÀÌÁö ½ÃÀÛ¹øÈ£
+   				  int pageStart = (nowBlock -1)*pagePerBlock + 1 ; //í•˜ë‹¨ íŽ˜ì´ì§€ ì‹œìž‘ë²ˆí˜¸
    				  int pageEnd = ((pageStart + pagePerBlock ) <= totalPage) ?  (pageStart + pagePerBlock): totalPage+1; 
-   				  //ÇÏ´Ü ÆäÀÌÁö ³¡¹øÈ£
+   				  //í•˜ë‹¨ íŽ˜ì´ì§€ ëë²ˆí˜¸
    				  if(totalPage !=0){
     			  	if (nowBlock > 1) {%>
     			  		<a href="javascript:block('<%=nowBlock-1%>')">prev...</a><%}%>&nbsp; 
@@ -91,7 +91,7 @@
     					<a href="javascript:block('<%=nowBlock+1%>')">.....next</a>
     				<%}%>&nbsp;  
    				<%}%>
- 			<!-- ÆäÀÌÂ¡ ¹× ºí·° Ã³¸® End-->
+ 			<!-- íŽ˜ì´ì§• ë° ë¸”ëŸ­ ì²˜ë¦¬ End-->
 		</td>
 	</tr>
 </table>
@@ -109,7 +109,7 @@ totalBlock : <%=totalBlock%>&nbsp;
 nowPage : <%=nowPage%>&nbsp;
 nowBlock : <%=nowBlock%>&nbsp;</b>
 <p/>
-<input type="button" value="TotalRecord ÀÔ·ÂÆû" onClick="javascript:location.href='pageView.html'">
+<input type="button" value="TotalRecord ìž…ë ¥í¼" onClick="javascript:location.href='pageView.html'">
 </div>
 </body>
 </html>

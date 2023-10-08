@@ -74,6 +74,6 @@ public class LoginServlet extends HttpServlet {
         }
 
         // 로그아웃 후 메인 페이지로 리다이렉트
-        response.sendRedirect("page/main/MainPage.jsp");
+        response.sendRedirect("/HakSaGwanLee/page/main/MainPage.jsp");
     }
 }

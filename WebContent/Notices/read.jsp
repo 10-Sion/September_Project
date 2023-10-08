@@ -1,38 +1,42 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="Notices.NoticesBean"%>
 <jsp:useBean id="nMgr" class="Notices.NoticesMgr" />
+
+<jsp:include page="../page/main/mainTop.jsp" />
+
 <%
-    request.setCharacterEncoding("EUC-KR");
+    request.setCharacterEncoding("UTF-8");
     int num = Integer.parseInt(request.getParameter("num"));
-    NoticesBean bean = nMgr.getNotice(num); // °øÁö»çÇ× °¡Á®¿À±â
+    NoticesBean bean = nMgr.getNotice(num); // ê³µì§€ì‚¬í•­ ê°€ì ¸ì˜¤ê¸°
     String title = bean.getTitle();
     String regdate = bean.getRegdate();
     String content = bean.getContent();
 
     int sub_no = bean.getSub_no();
     int pro_no = bean.getPro_no();
-    session.setAttribute("bean", bean); // °øÁö»çÇ×À» ¼¼¼Ç¿¡ ÀúÀå
+    session.setAttribute("bean", bean); // ê³µì§€ì‚¬í•­ì„ ì„¸ì…˜ì— ì €ìž¥
 %>
 <html>
 <head>
-    <title>°øÁö»çÇ×</title>
+    <title>ê³µì§€ì‚¬í•­</title>
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<jsp:include page="../page/main/mainTop.jsp" />
 <br/><br/>
 <table align="center" width="600" cellspacing="3">
     <tr>
-        <td bgcolor="#9CA2EE" height="25" align="center">±ÛÀÐ±â</td>
+        <td bgcolor="#9CA2EE" height="25" align="center">ê¸€ì½ê¸°</td>
     </tr>
     <tr>
         <td colspan="2">
             <table cellpadding="3" cellspacing="0" width="100%">
                 <tr>
-                    <td align="center" bgcolor="#DDDDDD" width="10%"> Á¦¸ñ </td>
+                    <td align="center" bgcolor="#DDDDDD" width="10%"> ì œëª© </td>
                     <td bgcolor="#FFFFE8" colspan="3"><%=title%></td>
                 </tr>
                 <tr>
-                    <td align="center" bgcolor="#DDDDDD"> µî·Ï³¯Â¥ </td>
+                    <td align="center" bgcolor="#DDDDDD"> ë“±ë¡ë‚ ì§œ </td>
                     <td bgcolor="#FFFFE8"><%=regdate%></td>
                 </tr>
                 <tr>
@@ -45,9 +49,9 @@
     <tr>
         <td align="center" colspan="2">
             <hr/>
-            [ <a href="list.jsp">¸®½ºÆ®</a> |
-            <a href="update.jsp?num=<%=num%>">¼öÁ¤</a> |
-            <a href="delete.jsp?num=<%=num%>">»èÁ¦</a> ]
+            [ <a href="list.jsp">ë¦¬ìŠ¤íŠ¸</a> |
+            <a href="update.jsp?num=<%=num%>">ìˆ˜ì •</a> |
+            <a href="delete.jsp?num=<%=num%>">ì‚­ì œ</a> ]
         </td>
     </tr>
 </table>

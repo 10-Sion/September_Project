@@ -33,7 +33,9 @@ if(userRole == "교수"){
             </div>
             <a href="<%=mainGang%>" class="menuItem">학사관리시스템</a>
             <a href="../../QnA/list.jsp" class="menuItem">강의실</a>
-            <a href="../../Notices/list.jsp" class="menuItem">공지사항</a>
+            <a href="/HakSaGwanLee/GangUi/gangMain.jsp" class="menuItem">학사관리시스템</a>
+            <a href="/HakSaGwanLee/QnA/list.jsp" class="menuItem">강의실</a>
+            <a href="/HakSaGwanLee/Notices/list.jsp" class="menuItem">공지사항</a>
 
             <!-- 로그인 상태에 따라 다르게 표시 -->
             <div class="user-links">
@@ -41,13 +43,13 @@ if(userRole == "교수"){
                 if (uniqueId != null) {
                 %>
                 <p><%=username%>님이 로그인 중
-                    <a href="../../LoginServlet" id="logoutButton" class="small-link">로그아웃</a>
+                    <a href="/HakSaGwanLee/LoginServlet" id="logoutButton" class="small-link">로그아웃</a>
                 </p>
                 <%
                     // "직원"으로 로그인한 경우에만 회원가입 버튼 표시
                     if ("직원".equals(userRole)) {
                 %>
-                <a href="Form.jsp" id="FormButton" class="small-link">회원 추가</a>
+                <a href="/HakSaGwanLee/page/main/Form.jsp" id="FormButton" class="small-link">회원 추가</a>
                 <%
                     }
                 %>
@@ -73,7 +75,7 @@ if(userRole == "교수"){
 	
 	            // 받은 데이터를 사용하여 서블릿에 요청
 	            var xhr = new XMLHttpRequest();
-	            xhr.open("POST", "../../LoginServlet", true);
+	            xhr.open("POST", "/HakSaGwanLee/LoginServlet", true);
 	            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	            xhr.onreadystatechange = function () {
 	                if (xhr.readyState === 4 && xhr.status === 200) {
