@@ -9,7 +9,7 @@
                 	<div class="top"></div>
                 	<div class="bottom"></div>
                 </div>
-                <li onclick="loadPage('../GangUi/privGangSub1.jsp')">
+                <li onclick="loadPage('<%=contextPath%>/Lecture/LectureList.do')">
                     <a href="javascript:void(0);">
                     <i class="fas fa-tachometer-alt">
                     </i>강의실</a>
@@ -19,17 +19,17 @@
                     <i class="far fa-address-book">
                     </i>수업 활동</a>
                 </li>
-                <li onclick="loadPage('stuTable2.jsp')">
-                    <a href="javascript:void(0s);">
-                    <i class="far fa-clone">
-                    </i>강의 관리</a>
-                </li>
+<!--                 <li onclick="loadPage('stuTable2.jsp')"> -->
+<!--                     <a href="javascript:void(0s);"> -->
+<!--                     <i class="far fa-clone"> -->
+<!--                     </i>강의 관리</a> -->
+<!--                 </li> -->
                 <li onclick="loadPage('../GangUi/privGangSub4.jsp')">
                     <a href="javascript:void(0);">
                     <i class="far fa-calendar-alt">
                     </i>공지사항</a>
                 </li>
-                <li onclick="loadPage('../GangUi/privGangSub5.jsp')">
+                <li onclick="loadPage('../QnA/pageView.jsp')">
                     <a href="javascript:void(0);">
                     <i class="far fa-chart-bar">
                     </i>Q&A 게시판</a>
@@ -40,7 +40,7 @@
                     </i>과제 게시판</a>
                 </li>
                 <li  class="active">
-                    <a href="../GangUi/gangMain.jsp">
+                    <a href="../Student/stuMainGang.jsp">
                     <i class="far fa-copy">
                     </i>학사관리시스템 메인</a>
                 </li>

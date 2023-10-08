@@ -123,7 +123,7 @@ public class ReportController extends HttpServlet {
 			}
 			
 			// nextPage = "/GangUi/privateGangMain.jsp";
-			response.sendRedirect("/HakSaGwanLee/GangUi/privateGangMain.jsp");
+			response.sendRedirect("/HakSaGwanLee/Student/stuMain.jsp");
 			return;
 		
 		// 제출한 과제 목록 list 
