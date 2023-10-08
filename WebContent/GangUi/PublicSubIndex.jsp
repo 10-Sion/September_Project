@@ -83,7 +83,7 @@
 </head>
 <body>
 	<h1 align="center">강의실(전체 강의리스트)</h1>
-	<form action="<%=contextPath%>/Lecture/ProLectureList.do" name="search"
+	<form action="<%=contextPath%>/Lecture//LectureList.do" name="search"
 		method="post">
 		<table border=0 width=527 align=center cellpadding=4 cellspacing=0>
 			<td align=center valign=bottom><select name="keyField" size="1">
@@ -155,7 +155,7 @@
 
 				if (nowBlock > 0) {
 %> 
-				<a onclick= "loadServletData('<%=contextPath%>/Lecture/ProLectureList.do?nowBlock=<%=nowBlock-1%>&nowPage=<%=(nowBlock-1)*pagePerBlock%>&keyField=<%=keyField%>&keyWord=<%=keyWord%>&pro_no=<%=pro_no%>')">
+				<a onclick= "loadServletData('<%=contextPath%>/Lecture/LectureList.do?nowBlock=<%=nowBlock-1%>&nowPage=<%=(nowBlock-1)*pagePerBlock%>&keyField=<%=keyField%>&keyWord=<%=keyWord%>')">
 				이전<%=pagePerBlock%>개
 				</a> 
 <%
@@ -171,7 +171,7 @@
  						break;
  					}
  %> 																									
- 					<a	onclick="loadServletData('<%=contextPath%>/Lecture/ProLectureList.do?nowBlock=<%=nowBlock%>&nowPage=<%=(nowBlock*pagePerBlock)+j%>&keyField=<%=keyField%>&keyWord=<%=keyWord%>&pro_no=<%=pro_no%>')">
+ 					<a	onclick="loadServletData('<%=contextPath%>/Lecture/LectureList.do?nowBlock=<%=nowBlock%>&nowPage=<%=(nowBlock*pagePerBlock)+j%>&keyField=<%=keyField%>&keyWord=<%=keyWord%>')">
 					<%=(nowBlock * pagePerBlock)+j+1%>
 					</a>
 <%
@@ -187,7 +187,7 @@
 
  			if( totalBlock > nowBlock+1 ){																	
  %>																											
- 				<a onclick="loadServletData('<%=contextPath%>/Lecture/ProLectureList.do?nowBlock=<%=nowBlock+1%>&nowPage=<%=(nowBlock + 1) * pagePerBlock%>&keyField=<%=keyField%>&keyWord=<%=keyWord%>&pro_no=<%=pro_no%>')">
+ 				<a onclick="loadServletData('<%=contextPath%>/Lecture/LectureList.do?nowBlock=<%=nowBlock+1%>&nowPage=<%=(nowBlock + 1) * pagePerBlock%>&keyField=<%=keyField%>&keyWord=<%=keyWord%>')">
 				다음<%=pagePerBlock%>개
 				</a> 
  <%

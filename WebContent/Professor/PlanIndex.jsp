@@ -87,7 +87,6 @@
 		method="post">
 		<table border=0 width=527 align=center cellpadding=4 cellspacing=0>
 			<td align=center valign=bottom><select name="keyField" size="1">
-					<option value="pro_name">교수 명</option>
 					<option value="sub_name">과목 명</option>
 			</select> <input type="text" size="16" name="keyWord"> <input
 				type="button" value="찾기" onClick="check()"> <input
@@ -105,7 +104,8 @@
 				<th>전공</th>
 				<th>강의 장소</th>
 				<th>학점</th>
-				<th>수업계획서</th>
+				<th>수업계획</th>
+				<th>강의 평가계획 입력</th>
 			</tr>
  			<%
 				if (list.isEmpty()) {
@@ -136,6 +136,9 @@
 				<th><a
 					onclick="loadServletData('<%=contextPath%>/Lecture/ProLecturePlan.do?sub_no=<%=lv.getSub_no()%>')">
 					수업계획</a></th>
+				<th><a
+					onclick="loadServletData('<%=contextPath%>/Lecture/ViewPlan.do?sub_no=<%=lv.getSub_no()%>')">
+					입력하러 가기</a></th>
 			</tr>
 
 			<%
@@ -155,7 +158,7 @@
 
 				if (nowBlock > 0) {
 %> 
-				<a onclick= "loadServletData('<%=contextPath%>/Lecture/ProLectureList.do?nowBlock=<%=nowBlock-1%>&nowPage=<%=(nowBlock-1)*pagePerBlock%>&keyField=<%=keyField%>&keyWord=<%=keyWord%>&pro_no=<%=pro_no%>')">
+				<a onclick= "loadServletData('<%=contextPath%>/Lecture/PlanIndex.do.do?nowBlock=<%=nowBlock-1%>&nowPage=<%=(nowBlock-1)*pagePerBlock%>&keyField=<%=keyField%>&keyWord=<%=keyWord%>&pro_no=<%=pro_no%>')">
 				이전<%=pagePerBlock%>개
 				</a> 
 <%
@@ -171,7 +174,7 @@
  						break;
  					}
  %> 																									
- 					<a	onclick="loadServletData('<%=contextPath%>/Lecture/ProLectureList.do?nowBlock=<%=nowBlock%>&nowPage=<%=(nowBlock*pagePerBlock)+j%>&keyField=<%=keyField%>&keyWord=<%=keyWord%>&pro_no=<%=pro_no%>')">
+ 					<a	onclick="loadServletData('<%=contextPath%>/Lecture/PlanIndex.do.do?nowBlock=<%=nowBlock%>&nowPage=<%=(nowBlock*pagePerBlock)+j%>&keyField=<%=keyField%>&keyWord=<%=keyWord%>&pro_no=<%=pro_no%>')">
 					<%=(nowBlock * pagePerBlock)+j+1%>
 					</a>
 <%
@@ -187,7 +190,7 @@
 
  			if( totalBlock > nowBlock+1 ){																	
  %>																											
- 				<a onclick="loadServletData('<%=contextPath%>/Lecture/ProLectureList.do?nowBlock=<%=nowBlock+1%>&nowPage=<%=(nowBlock + 1) * pagePerBlock%>&keyField=<%=keyField%>&keyWord=<%=keyWord%>&pro_no=<%=pro_no%>')">
+ 				<a onclick="loadServletData('<%=contextPath%>/Lecture/PlanIndex.do.do?nowBlock=<%=nowBlock+1%>&nowPage=<%=(nowBlock + 1) * pagePerBlock%>&keyField=<%=keyField%>&keyWord=<%=keyWord%>&pro_no=<%=pro_no%>')">
 				다음<%=pagePerBlock%>개
 				</a> 
  <%

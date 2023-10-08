@@ -17,30 +17,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-// function ads() {
-	
-//     $.ajax(
-//     	{
-<%--         url: '<%=contextPath%>/Lecture/ProLectureDetail.do?sub_no=<%=sub_no%>', --%>
-//         type: 'post',
-//         dataType: 'json',
-//         success: function(data) {
-        	
-//          console.log("제이슨 연결");	
-//       	 console.log(data.weeklist);
-      	 
-//      	var jsonObject = JSON.parse(data);
-// 		var array = jsonObject.weeklist;
-//         },
-//         error: function(xhr, status, error) {
-//             console.error(error);
-//             console.log("제이슨 연결");	
-//         }
-//     });
 
-
-    
-    
     function refreshList() {
         $.ajax({
             url: "<%=contextPath%>/Lecture/ProLectureDetail.do?sub_no=<%=sub_no%>",
@@ -71,14 +48,12 @@
 </head>
 <body align = "center" onload="set();">
 <buttons>
- <button type = "button" onclick= "window.open('<%=contextPath%>/Professor/InsertWeek.jsp?sub_no=<%=sub_no%>','주차추가','width=500 height=400')">주차 추가</button>
- <button type = "button" onclick= "loadPage('<%=contextPath%>/Professor/InsertWeek.jsp?sub_no=<%=sub_no%>')">주차 추가2</button>
-	<button type = "button">수정</button>
-	<button type = "button">삭제</button>
+ <button type = "button" onclick= "loadPage('<%=contextPath%>/Professor/InsertWeek.jsp?sub_no=<%=sub_no%>')">주차 추가</button>
+ <button type = "button">수정</button>
 </buttons>
 	<div class = "table">
 	<table>
-	<tr  onclick = "ads();">
+	<tr>
 		<td>주차</td>
 		<td>차시</td>
 		<td>강의 주제</td>

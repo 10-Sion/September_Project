@@ -14,20 +14,20 @@
                 <li onclick="loadPage('<%=contextPath%>/Lecture/ProLectureList.do?pro_no=<%=pro_no%>')">
                     <a href="javascript:void(0);">
                     <i class="fas fa-tachometer-alt">
-                    </i>강의실</a>
-                </li>
-                <li onclick="loadPage('MyInfoProfessor.jsp')">
-                    <a href="javascript:void(0);">
-                    <i class="far fa-address-book">
-                    </i>나의 정보</a>
+                    </i>나의 강의</a>
                 </li>
                 <li onclick="loadPage('InsertSubject.jsp')">
                     <a href="javascript:void(0);">
                     <i class="far fa-clone">
                     </i>수업추가</a>
                 </li>
+                 <li onclick="loadPage('<%=contextPath%>/Lecture/PlanIndex.do?pro_no=<%=pro_no%>')">
+                    <a href="javascript:void(0);">
+                    <i class="far fa-clone">
+                    </i>수업 평가 추가</a>
+                </li>
                 <li  class="active">
-                    <a href="../GangUi/gangMain.jsp">
+                    <a href="proMainGang.jsp">
                     <i class="far fa-copy">
                     </i>학사관리시스템 메인</a>
                 </li>
