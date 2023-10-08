@@ -1,27 +1,32 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="javax.servlet.http.HttpSession" %>
-<%@ page import="Member.ProfessorDAO" %>
-
-<jsp:include page="../page/main/mainTop.jsp" />
-
-<%! String userName = null; // 사용자 이름을 저장할 변수 %>
+<%@ page import="Member.*" %>
 
 
 <%
+   String userName = null; // 사용자 이름을 저장할 변수 
+   String userRole = null;
+   
    HttpSession userSession = request.getSession(false); // 세션이 없으면 새로 생성하지 않음
 
    if (userSession != null) {
       // 세션이 존재하면 사용자 정보를 가져와서 이름을 설정합니다.
-      String userRole = (String) userSession.getAttribute("userRole");
+      userRole = (String) userSession.getAttribute("userRole");
       int uniqueId = (int) userSession.getAttribute("uniqueId");
 
       // 사용자 역할이 교수인 경우만 교수 이름을 가져옵니다.
       if ("교수".equals(userRole)) {
     	  ProfessorDAO professorDAO = new ProfessorDAO();
          userName = professorDAO.getProfessorName(uniqueId);
+         
+      }
+      if ("직원".equals(userRole)) {
+    	  EmployeeDAO employeeDAO = new EmployeeDAO();
+         userName = employeeDAO.getEmployeeName(uniqueId);
       }
    }
 %>
+
 
 <html>
 <head>
@@ -30,6 +35,7 @@
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<jsp:include page="../page/main/mainTop.jsp" />
 <div align="center">
     <br/><br/>
     <table width="600" cellpadding="3">
@@ -46,7 +52,7 @@
                         <tr>
                             <td width="10%">작성자</td>
                             <td width="90%">
-                                <input name="name" size="10" maxlength="8" value="<%= userName %> 교수님" readonly>
+                                <input name="name" size="10" maxlength="8" value="<%= userName %> <%= userRole %>님" readonly>
                             </td>
                         </tr>
                         <tr>

@@ -24,6 +24,7 @@
     </script>
 </head>
 <body>
+<jsp:include page="../page/main/mainTop.jsp" />
 <div align="center">
     <br/><br/>
     <table width="600" cellpadding="3">

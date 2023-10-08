@@ -32,7 +32,7 @@
                     // "직원"으로 로그인한 경우에만 회원가입 버튼 표시
                     if ("직원".equals(userRole)) {
                 %>
-                <a href="Form.jsp" id="FormButton" class="small-link">회원 추가</a>
+                <a href="/HakSaGwanLee/page/main/Form.jsp" id="FormButton" class="small-link">회원 추가</a>
                 <%
                     }
                 %>
