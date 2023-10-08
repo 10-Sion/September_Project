@@ -153,6 +153,47 @@ public class ReportDAO {
 		}
 		return rVo;
 	}
+
+	public ArrayList submitreport(String stu_no) {
+		ArrayList reportlist = new ArrayList();
+		String sql = "";
+		int no = Integer.parseInt(stu_no);
+		
+		try {
+			con = pool.getConnection();
+			
+			sql = "select week, sub_no, sub_name, report_name, stu_no, stu_name, title, content, filename from report "
+					+ "where stu_no=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				ReportVO reVo = new ReportVO();			
+				
+				reVo.setWeek(rs.getInt("week"));
+				reVo.setSub_no(rs.getInt("sub_no"));
+				reVo.setSub_name(rs.getString("sub_name"));
+				reVo.setReport_name(rs.getString("report_name"));
+				reVo.setStu_no(rs.getInt("stu_no"));
+				reVo.setStu_name(rs.getString("stu_name"));
+				reVo.setTitle(rs.getString("title"));
+				reVo.setContent(rs.getString("content"));
+				reVo.setFilename(rs.getString("filename"));
+				
+				reportlist.add(reVo);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("selectreport() 메소드 내부 오류 : " + e );
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+
+		return reportlist;
+	}
 	
 	
 	

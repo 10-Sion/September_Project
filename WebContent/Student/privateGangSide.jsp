@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%
 	String contextPath = request.getContextPath();
+	Integer session_no = (Integer)session.getAttribute("uniqueId");
 %>
 <div id="accordian">
             <ul class="show-dropdown main-navbar">
@@ -9,15 +10,15 @@
                 	<div class="top"></div>
                 	<div class="bottom"></div>
                 </div>
-                <li onclick="loadPage('<%=contextPath%>/Lecture/LectureList.do')">
+                <li onclick="loadServletData('<%=contextPath%>/stu/selSubject.do?stu_no=<%=session_no%>')">
                     <a href="javascript:void(0);">
                     <i class="fas fa-tachometer-alt">
-                    </i>강의실</a>
+                    </i>개설 강좌</a>
                 </li>
-                <li onclick="loadPage('../GangUi/privGangSub2.jsp')">
+                <li onclick="loadServletData('<%=contextPath%>/stu/stu_Info.do?stu_no=<%=session_no%>')">
                     <a href="javascript:void(0);">
                     <i class="far fa-address-book">
-                    </i>수업 활동</a>
+                    </i>내 강의실</a>
                 </li>
 <!--                 <li onclick="loadPage('stuTable2.jsp')"> -->
 <!--                     <a href="javascript:void(0s);"> -->

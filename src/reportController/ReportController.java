@@ -128,9 +128,17 @@ public class ReportController extends HttpServlet {
 		
 		// 제출한 과제 목록 list 
 		} else if (action.equals("/ReportInfo.do")) {
-			System.out.println("과제 제출목록");
+			System.out.println("과제 제출목록 세션 : " + request.getParameter("stu_no"));
 			
-			nextPage = "/Report/ReportInfo.jsp";
+			String stu_no =request.getParameter("stu_no");
+			
+			ArrayList reportList = new ArrayList();
+			
+			reportList = rService.submitlist(stu_no);
+			
+			request.setAttribute("submitlist", reportList);
+			
+			nextPage = "/ReportBoard/ReportInfo.jsp";
 		}
 		
 		System.out.println("반환되는 주소 : " + nextPage);

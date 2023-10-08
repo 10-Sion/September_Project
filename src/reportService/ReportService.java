@@ -35,4 +35,13 @@ public class ReportService {
 		return reportlist;
 	}
 
+	public ArrayList submitlist(String stu_no) {
+		
+		ArrayList reportlist = new ArrayList();
+		
+		reportlist = rDao.submitreport(stu_no);
+		
+		return reportlist;
+	}
+
 }

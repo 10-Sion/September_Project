@@ -7,7 +7,8 @@
 	// 개설된 과제리스트를 반환 받는 rilst 변수
 	ArrayList rlist = (ArrayList)request.getAttribute("reportlist");
 	ReportlistVO rlistVo = new ReportlistVO();
-	
+	Integer session_no = (Integer)session.getAttribute("uniqueId");
+	System.out.println(session_no);
 %>
 <!DOCTYPE html>
 <html>
@@ -51,6 +52,6 @@
 %>
 	</table>
 	<a href="javascript:void(0);" 
-					onclick="loadServletData('<%=contextPath%>/Report/ReportInfo.do')">제출과제목록</a>
+					onclick="loadServletData('<%=contextPath%>/Report/ReportInfo.do?stu_no=<%=session_no%>')">제출과제목록</a>
 </body>
 </html>

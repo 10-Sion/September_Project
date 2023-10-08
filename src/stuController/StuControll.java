@@ -114,9 +114,11 @@ public class StuControll extends HttpServlet {
 				break;
 				
 			case "/selSubject.do":
+				
+				String stu_no_1 = request.getParameter("stu_no");
 				ArrayList subList = new ArrayList();
 				
-				subList = stuDao.subList();
+				subList = stuDao.subList(stu_no_1);
 				
 				request.setAttribute("subList", subList);
 				
@@ -125,13 +127,43 @@ public class StuControll extends HttpServlet {
 				break;
 			
 			case "/addSubject.do":
-				//String[] addSub = request.getParameterValues("addSub");
 				
-				System.out.println("에드서브잭트 : " + request.getParameterValues("addSub"));
-			
-			
-			
-			
+				System.out.println(request.getParameter("sub_no"));
+				System.out.println(request.getParameter("stu_no"));
+				// 과목번호 넘어옴
+				String sub_no1 = request.getParameter("sub_no");
+				String sNo = request.getParameter("stu_no");
+				stuDao.addSub(sub_no1, sNo);
+				
+				nextPage = "stuSubject.jsp";
+				
+				break;
+				
+			case "/stu_Info.do":
+				// System.out.println(request.getParameter("stu_no"));
+				String stu_no2 = request.getParameter("stu_no");
+				 
+				ArrayList stuSub = stuDao.selectSub(stu_no2);
+				
+				request.setAttribute("stuSub", stuSub);
+				
+				nextPage = "stuSubject.jsp";
+				
+				break;
+				
+			case "/delSubject.do":
+				System.out.println(request.getParameter("stu_no"));
+				System.out.println(request.getParameter("sub_no"));
+				
+				String sub_no_2 = request.getParameter("sub_no");
+				String sNo_2 = request.getParameter("stu_no");
+				
+				stuDao.delSubject(sub_no_2, sNo_2);
+				
+				nextPage = "stuSubject.jsp";
+				
+				break;
+				
 		default:
 			break;
 		}
