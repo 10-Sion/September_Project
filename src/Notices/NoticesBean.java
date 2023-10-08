@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package Notices;
 
 public class NoticesBean {
@@ -51,7 +51,7 @@ public class NoticesBean {
 	
 	
 }
-=======
+
 package Notices;
 
 public class NoticesBean {
@@ -104,4 +104,4 @@ public class NoticesBean {
 	
 	
 }
->>>>>>> 281df3d6eaca0dc18cca82b395222ad9e4fc3678
+
