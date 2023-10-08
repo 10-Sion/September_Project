@@ -26,7 +26,7 @@
 	            
 	            
                     <c:choose>
-                        <c:when test="${sessionScope.currentEmployeeId == employee.empNo}">
+                        <c:when test="${sessionScope.uniqueId == employee.empNo}">
                             <!-- 현재 로그인한 사용자의 emp_no와 직원의 emp_no가 일치하는 경우 삭제 버튼을 표시하지 않음 -->
                            	<td>로그인중인 계정</td>
                            	<td></td>

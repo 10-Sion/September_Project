@@ -25,70 +25,7 @@
             
             
             <div class="base_content">
-                <div id="arlina">
-                  <div id="header">
-                    <h1>Univ News</h1></br>
-                    <p>AAAA BBBB CCCC</div>
-                  <div id="menu"></div>
-                  <div id="content">
-                <div class='ticker-wrap' data-domain='www.halosehat.xyz'>
-                <div id='ticker'>
-                </div>
-                </div>
-                    <div id="main">
-                        <div id="box" class="news-box">
-                          <!-- 첫 번째 뉴스 -->
-                          <h3>첫 번째 뉴스 제목</h3>
-                          <p>첫 번째 뉴스 내용...</p>
-                        </div>
-                        <div id="box" class="news-box">
-                          <!-- 두 번째 뉴스 -->
-                          <h3>두 번째 뉴스 제목</h3>
-                          <p>두 번째 뉴스 내용...</p>
-                        </div>
-                        <div id="box" class="news-box">
-                          <!-- 두 번째 뉴스 -->
-                          <h3>두 번째 뉴스 제목</h3>
-                          <p>두 번째 뉴스 내용...</p>
-                        </div>
-                        <div id="box" class="news-box">
-                          <!-- 두 번째 뉴스 -->
-                          <h3>두 번째 뉴스 제목</h3>
-                          <p>두 번째 뉴스 내용...</p>
-                        </div>
-                        <div id="box" class="news-box">
-                          <!-- 두 번째 뉴스 -->
-                          <h3>두 번째 뉴스 제목</h3>
-                          <p>두 번째 뉴스 내용...</p>
-                        </div>
-                        <div id="box" class="news-box">
-                          <!-- 두 번째 뉴스 -->
-                          <h3>두 번째 뉴스 제목</h3>
-                          <p>두 번째 뉴스 내용...</p>
-                        </div>
-
-                      </div>
-                      <div id="side">
-                        <div id="sidecontent2" class="cf">
-                          <span>Widget 1</span>
-                        </div>
-                        <div id="sidecontent2" class="cf">
-                          <span>Widget 2</span>
-                        </div>
-                        <div id="sidecontent2" class="cf">
-                          <span>Widget 3</span>
-                        </div>
-                        <div id="sidecontent">
-                          <span>Widget 4</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="footer" class="cf"></div>
-
-                  </div>
-
-                
-                <div class='back-to-top' id='back-to-top' title='Back to top'><i class='fa fa-chevron-up' /></div>
+                <jsp:include page="gangSchedule.jsp" />
             </div>
             
               <div class="table">
