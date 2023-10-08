@@ -39,5 +39,6 @@
     
     <script src="../pageSetUp/gangSubApp.js"></script>
     <script src="../pageSetUp/myPage.js"></script>
+    <script src="../pageSetUp/videoPage.js"></script>
 </body>
 </html>
