@@ -17,7 +17,7 @@
                     </i>나의 정보</a>
                 </li>
                 <li>
-                    <a href="../GangUi/gangMain.jsp">
+                    <a href="proMainGang.jsp">
                     <i class="far fa-copy">
                     </i>학사관리시스템 메인</a>
                 </li>

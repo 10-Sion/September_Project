@@ -36,7 +36,7 @@
                     <h3 class="card__heading">마이 페이지</h3>
                 </div>
             </a>
-            <a class="card" href="../page/main/MainPage.jsp">
+            <a class="card" href="../Student/MainPage.jsp">
                 <div class="card__background" style="background-image: url(../pageSetUp/img/return.jpg)"></div>
                 <div class="card__content">
                     <p class="card__category">돌아가기</p>

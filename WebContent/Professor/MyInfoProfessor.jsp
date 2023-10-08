@@ -13,10 +13,14 @@
 
 	String contextPath = request.getContextPath();
 	ProDao pdao = new ProDao();
+	
 	ProBean pb = pdao.getProInfo(pro_no);
 	ProIntroVO piv = pdao.getProIntro(pro_no); 
 	
-	String home = piv.getHomepage(), blog = piv.getBlog(), facebook= piv.getFacebook(), intro = piv.getIntroduce();
+	String home = piv.getHomepage();
+	String blog = piv.getBlog();
+	String facebook= piv.getFacebook(); 
+	String intro = piv.getIntroduce();
 	
 	if(home == null){
 		home = "";
@@ -74,7 +78,7 @@
 			</table>
 		</div>
 		<div id="buttons" align="center">
-		<h1 align = "left">기본 정보</h1>
+		<h1 align = "left">추가 정보</h1>
 			<table border ="1">
 				<tr>
 					<th>홈페이지</th>
@@ -91,15 +95,12 @@
 					<tr>
 					
 					<th>자기소개</th>
-					<td><textarea name="Introduce" style="width:90%;height:300px;font-size:20px;" value="<%=intro%>"></textarea></td>
+					<td><textarea name="Introduce" style="width:90%;height:300px;font-size:20px;"><%=intro%></textarea></td>
 					</tr>
 			</table>
 		</div>
 		<div id="buttons" align="center">
-			<input type="submit" value="수정하기" class="submit" /> 
-			<input type="reset" value="수정취소" class="cancel" />
-			
-			<button type = "button" onclick ="location.href='DelProfessorPro.jsp?no=<%=pb.getNo()%>'"> 탈퇴  </button>
+			<input type="submit" value="입력하기" class="submit" />
 		</div>
 			
 	</form>

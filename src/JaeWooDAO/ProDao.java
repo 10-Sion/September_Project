@@ -380,11 +380,13 @@ public class ProDao {
 				
 				rs = pstmt.executeQuery();
 				
+				if(rs.next()) {
+				piv.setPro_no(rs.getInt("pro_no"));
 				piv.setBlog(rs.getString("blog"));
 				piv.setHomepage(rs.getString("homepage"));
 				piv.setFacebook(rs.getString("facebook"));
-				piv.setIntroduce(rs.getString("facebook"));
-				
+				piv.setIntroduce(rs.getString("Introduce"));
+				}
 				
 			}catch (Exception e) {
 				System.out.println("ProDao/getProIntro 메소드 오류 " + e);
