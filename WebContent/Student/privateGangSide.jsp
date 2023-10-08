@@ -19,8 +19,8 @@
                     <i class="far fa-address-book">
                     </i>수업 활동</a>
                 </li>
-                <li onclick="loadPage('../GangUi/privGangSub3.jsp')">
-                    <a href="javascript:void(0);">
+                <li onclick="loadPage('stuTable2.jsp')">
+                    <a href="javascript:void(0s);">
                     <i class="far fa-clone">
                     </i>강의 관리</a>
                 </li>

@@ -40,20 +40,6 @@
                     <h3 class="card__heading">공통 강의실 페이지</h3>
                 </div>
             </a>
-            <a class="card" href="<%=PrivatePage%>">
-                <div class="card__background" style="background-image: url(../pageSetUp/img/gang2.jpg)"></div>
-                <div class="card__content">
-                    <p class="card__category">강의</p>
-                    <h3 class="card__heading">개인 강의실 페이지</h3>
-                </div>
-            </a>
-            <a class="card" href="../Employee/empMain.jsp">
-                <div class="card__background" style="background-image: url(../pageSetUp/img/mypage.jpg)"></div>
-                <div class="card__content">
-                    <p class="card__category">개인</p>
-                    <h3 class="card__heading">마이 페이지</h3>
-                </div>
-            </a>
             <a class="card" href="../page/main/MainPage.jsp">
                 <div class="card__background" style="background-image: url(../pageSetUp/img/return.jpg)"></div>
                 <div class="card__content">

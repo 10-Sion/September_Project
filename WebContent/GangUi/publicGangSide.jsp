@@ -23,11 +23,6 @@
                     <i class="far fa-chart-bar">
                     </i>Q&A 게시판</a>
                 </li>
-                <li onclick="loadPage('pubGangSub4.jsp')">
-                    <a href="javascript:void(0);">
-                    <i class="far fa-calendar-alt">
-                    </i>마이페이지</a>
-                </li>
                 <li class="active" >
                     <a href="gangMain.jsp">
                     <i class="far fa-copy">
