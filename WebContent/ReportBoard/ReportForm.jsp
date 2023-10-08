@@ -31,8 +31,6 @@
 				<td><input type="text" name="title"></td>
 				<td>작성자</td>
 				<td ><input type="text" name="stu_no" value="<%=uniqueId %>" readonly="readonly" /></td>
-				<th>비밀글 설정</th>
-				<td ><input type="checkbox" name=secret /></td>
 			</tr>
 			<tr>
 				<td colspan="6">

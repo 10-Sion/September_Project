@@ -4,9 +4,8 @@
 	pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
-	
+	// 개설된 과제리스트를 반환 받는 rilst 변수
 	ArrayList rlist = (ArrayList)request.getAttribute("reportlist");
-	
 	ReportlistVO rlistVo = new ReportlistVO();
 	
 %>
@@ -45,12 +44,13 @@
 			<td><%=rlistVo.getPersonnel() %></td>
 			<td><%=rlistVo.getPro_name() %></td>
 			<td><a href="javascript:void(0);" 
-			onclick="loadPage('<%=contextPath%>/ReportBoard/ReportForm.jsp?report_name=<%=rlistVo.getReposrt_name()%>')">제출하기</a></td>
+					onclick="loadPage('<%=contextPath%>/ReportBoard/ReportForm.jsp?report_name=<%=rlistVo.getReposrt_name()%>')">미제출</a></td>
 		</tr>
 <% 
 	}
 %>
-		
 	</table>
+	<a href="javascript:void(0);" 
+					onclick="loadServletData('<%=contextPath%>/Report/ReportInfo.do')">제출과제목록</a>
 </body>
 </html>

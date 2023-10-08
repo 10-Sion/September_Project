@@ -82,7 +82,7 @@ public class ReportController extends HttpServlet {
 			
 			ArrayList reportList = new ArrayList();
 			
-			reportList = rService.reportInfo();
+			reportList = rService.reportInfo(uniqueId);
 			
 			request.setAttribute("reportlist", reportList);
 			
@@ -101,7 +101,6 @@ public class ReportController extends HttpServlet {
 			// HashMap에 저장된 글 정보 (업로드한 파일명, 입력한 글제목, 입력한 글내용)을 HashMap에서 다시 가져온다.
 			String title = RepostMap.get("title");
 			String stu_no = RepostMap.get("stu_no");
-			String secret = RepostMap.get("secret");
 			String content = RepostMap.get("content");
 			String fileName = RepostMap.get("reportfile");
 			String report_name = RepostMap.get("report_name");
@@ -109,7 +108,6 @@ public class ReportController extends HttpServlet {
 			// DB에 추가하기 위해 사용자가 입력한 글 정보 + 업로드한 파일명을 ReportVO 객체의 각 변수에 저장
 			rVo.setTitle(title);
 			rVo.setStu_no(Integer.parseInt(stu_no));
-			rVo.setSecret(secret);
 			rVo.setContent(content);
 			rVo.setFilename(fileName); 
 			rVo.setReport_name(report_name);
@@ -128,7 +126,12 @@ public class ReportController extends HttpServlet {
 			response.sendRedirect("/HakSaGwanLee/GangUi/privateGangMain.jsp");
 			return;
 		
-		}	// ReportUpload.do 메소드 끝
+		// 제출한 과제 목록 list 
+		} else if (action.equals("/ReportInfo.do")) {
+			System.out.println("과제 제출목록");
+			
+			nextPage = "/Report/ReportInfo.jsp";
+		}
 		
 		System.out.println("반환되는 주소 : " + nextPage);
 		request.getRequestDispatcher(nextPage).forward(request, response);

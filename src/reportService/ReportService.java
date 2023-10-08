@@ -16,6 +16,7 @@ public class ReportService {
 	
 	public int addReport(ReportVO rVo) {
 		
+		// 과제 업로드 시 DB에서 각 정보 조회 저장
 		rVo = rDao.selectInfo(rVo);
 		
 		// 과제 업로드 메소드
@@ -25,11 +26,11 @@ public class ReportService {
 	}
 
 	// 과제 list 불러오기
-	public ArrayList reportInfo() {
+	public ArrayList reportInfo(int no) {
 		
 		ArrayList reportlist = new ArrayList();
 		
-		reportlist = rDao.selectreport();
+		reportlist = rDao.selectreport(no);
 		
 		return reportlist;
 	}

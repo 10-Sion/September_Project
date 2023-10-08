@@ -40,7 +40,7 @@
                     </i>과제 게시판</a>
                 </li>
                 <li  class="active">
-                    <a href="gangMain.jsp">
+                    <a href="../GangUi/gangMain.jsp">
                     <i class="far fa-copy">
                     </i>학사관리시스템 메인</a>
                 </li>
