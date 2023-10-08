@@ -5,19 +5,19 @@ Integer uniqueId = (Integer) session.getAttribute("uniqueId");
 String userRole = (String) session.getAttribute("userRole");
 String username = (String) session.getAttribute("username");
 
-String mainGang = "../../GangUi/gangMain.jsp";
+String mainGang = "/HakSaGwanLee/GangUi/gangMain.jsp";
 
 if(userRole == "교수"){
 	
-	mainGang = "../../Professor/proMainGang.jsp";
+	mainGang = "/HakSaGwanLee/Professor/proMainGang.jsp";
 	
 }else if(userRole == "학생"){
 	
-	mainGang = "../../Student/stuMainGang.jsp";
+	mainGang = "/HakSaGwanLee/Student/stuMainGang.jsp";
 	
 }else if(userRole == "직원"){
 	
-	mainGang = "../../Employee/empMainGang.jsp";
+	mainGang = "/HakSaGwanLee/Employee/empMainGang.jsp";
 }
 %>
 <html>
@@ -28,12 +28,10 @@ if(userRole == "교수"){
     <header>
         <div class="navigation">
             <div class="logo">
-                <a href="<%=request.getContextPath()%>/page/main/MainPage.jsp"><img src="/HakSaGwanLee/page/main/image/Hogwarts-Crest.png" alt="로고 이미지"></a>
+                <a href="/HakSaGwanLee/page/main/MainPage.jsp"><img src="/HakSaGwanLee/page/main/image/Hogwarts-Crest.png" alt="로고 이미지"></a>
                 <h1>교학대학교</h1>
             </div>
             <a href="<%=mainGang%>" class="menuItem">학사관리시스템</a>
-            <a href="../../QnA/list.jsp" class="menuItem">강의실</a>
-            <a href="/HakSaGwanLee/GangUi/gangMain.jsp" class="menuItem">학사관리시스템</a>
             <a href="/HakSaGwanLee/QnA/list.jsp" class="menuItem">강의실</a>
             <a href="/HakSaGwanLee/Notices/list.jsp" class="menuItem">공지사항</a>
 
