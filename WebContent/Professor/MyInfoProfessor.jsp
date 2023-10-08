@@ -1,3 +1,4 @@
+<%@page import="JaeWooVO.ProIntroVO"%>
 <%@page import="JaeWooVO.DepBean"%>
 <%@page import="JaeWooVO.ProBean"%>
 <%@page import="JaeWooDAO.ProDao"%>
@@ -7,112 +8,91 @@
 	pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	//	int pro_no = Integer.parseInt( request.getParameter("no")) ;
-	//	String P_name = request.getParameter("name");
-	int pro_no = (Integer)session.getAttribute("uniqueId");
-	//	String p_name = (String)session.getAttribute("pro_no");
 
+	int pro_no = (Integer)session.getAttribute("uniqueId");
+
+	String contextPath = request.getContextPath();
 	ProDao pdao = new ProDao();
 	ProBean pb = pdao.getProInfo(pro_no);
+	ProIntroVO piv = pdao.getProIntro(pro_no); 
+	
+	String home = piv.getHomepage(), blog = piv.getBlog(), facebook= piv.getFacebook(), intro = piv.getIntroduce();
+	
+	if(home == null){
+		home = "";
+	}
+	if(blog == null){
+		blog = "";
+	}
+	if(facebook == null){
+		facebook = "";
+	}
+	if(intro == null){
+		intro = "";
+	}
+	
+	
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript">
-
-   function addSel(select) {
-	   
-	   
-	   
-	   $.ajax({
-		    url:'<%=request.getContextPath()%>/join.do',
-			type : 'post',
-			data : {dep_val : select.value },
-			dataType : 'json',
-			success:function(data){
-				
-				console.log(data);
-			
-				if(data != null){
-				 $('#mj_sel').empty();
-				
-				for(var j = 0; j< data.length; j++){
-				 $('#mj_sel').append("<option value = '"+ data[j].major + "'>" + data[j].major +"</option>");
-				}
-				}
-			}
-	   });
-	  }
- </script>
 </head>
 <body>
-	<form action="modProfessorPro.jsp" method="post">
+	<form action="<%=contextPath%>/Lecture/InsertProIntro.do?pro_no=<%=pro_no%>" method="post">
 		<div align="center" class="table" border ="1">
-			<h1 align = "left">교수 정보</h1>
+			<h1 align = "left">기본 정보</h1>
 			<table border ="1">
 				<tr>
 					<input type="hidden" name="no" value="<%=pb.getNo()%>">
 					<th>이름</th>
-					<td><input type="text" name="name" value="<%=pb.getName()%>"></td>
-				</tr>
-				<tr>
-					<th>비밀번호</th>
-					<td><input type="password" name="pw" value="<%=pb.getPw()%>"></td>
-				</tr>
-				<tr>
+					<td><%=pb.getName()%></td>
+				
 					<th>학부</th>
-					<td>
-						<div>
-							<select name="dep_name" onchange="addSel(this);">
-								<option value="<%=pb.getDep_name()%>" selected><%=pb.getDep_name()%></option>
-								<%
-									List list = pdao.getDep();
-									for (int i = 0; i < list.size(); i++) {
-										DepBean depB = (DepBean)list.get(i);
-										String Dep_name = depB.getDep_name();
-								%>
-								<option value = <%=depB.getDep_name()%> id ="dep_val" name ="dep_val" >
-									<%=depB.getDep_name()%>
-								</option>
-<%
-								}
-%>
-							</select>
-						</div><br>
-					</td>
-				</tr>		
+					<td><%=pb.getDep_name()%></td>
+					</tr> 
+					<tr>
 					<th>전공</th>
-					<div>
 						<td>
-							<select name="major" id="mj_sel">
-								<option value="<%=pb.getMajor()%>" selected><%=pb.getMajor()%></option>
-							</select>
+							<%=pb.getMajor()%>
 						</td>
-					</div>
+					<th>이메일</th>
+					<td><%=pb.getEmail()%></td>
 				<tr>
 					<th>연락처(휴대폰)</th>
-					<td><input type="text" name="phone" value="<%=pb.getPhone()%>"></td>
-				</tr>
-				<tr>
+					<td><%=pb.getPhone()%></td>
+
 					<th>연락처(연구실)</th>
-					<td><input type="text" name="tel" value="<%=pb.getTel()%>"></td>
+					<td><%=pb.getTel()%></td>
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td><input type="text" name="addr" value="<%=pb.getAddr()%>"></td>
-				</tr>
-				<tr>
-					<th>이메일</th>
-					<td><input type="text" name="email" value="<%=pb.getEmail()%>"></td>
-				</tr>
-				<tr>
+					<td><%=pb.getAddr()%></td>
 					<th>연구실 위치</th>
-					<td><input type="text" name="labNum"
-						value="<%=pb.getLabNum()%>"></td>
+					<td><%=pb.getLabNum()%></td>
 				</tr>
+			</table>
+		</div>
+		<div id="buttons" align="center">
+		<h1 align = "left">기본 정보</h1>
+			<table border ="1">
+				<tr>
+					<th>홈페이지</th>
+					<td><input type="text" name="homepage" style="width:90%;height:30px;font-size:15px;" value="<%=home%>"></td>
+				</tr>
+				<tr>	
+					<th>블로그</th>
+					<td><input type="text" name="blog" style="width:90%;height:30px;font-size:15px;" value="<%=blog%>" %>></td>
+					</tr>
+					<tr>	
+					<th>페이스북</th>
+					<td><input type="text" name="facebook" style="width:90%;height:30px;font-size:15px;" value="<%=facebook%>"></td>
+					</tr>
+					<tr>
+					
+					<th>자기소개</th>
+					<td><textarea name="Introduce" style="width:90%;height:300px;font-size:20px;" value="<%=intro%>"></textarea></td>
+					</tr>
 			</table>
 		</div>
 		<div id="buttons" align="center">

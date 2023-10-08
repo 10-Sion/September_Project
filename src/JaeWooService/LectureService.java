@@ -9,6 +9,7 @@ import JaeWooDAO.LectureDAO;
 import JaeWooDAO.ProDao;
 import JaeWooVO.LectureVO;
 import JaeWooVO.PlanVO;
+import JaeWooVO.ProIntroVO;
 import JaeWooVO.WeekVO;
 
 public class LectureService {
@@ -49,6 +50,15 @@ public class LectureService {
 
 	public void InsertSubject(LectureVO lv) {
 		prodao.InsertSubject(lv);
+	}
+
+	public void InsertPlan(PlanVO pv) {
+		prodao.InsertPlan(pv);
+		
+	}
+
+	public void InsertProIntro(int pro_no, ProIntroVO piv) {
+		prodao.InsertProIntro(pro_no, piv);		
 	}
 	
 	

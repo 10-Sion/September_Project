@@ -41,19 +41,15 @@
 		<tr>
 			<th>과목명</th>
 			<td><input type = "text" name = "sub_name"></td>
-		</tr>
-		<tr>
 			<th>교수명</th>
 			<td><input type= "hidden" name="pro_name" value ="<%=pro_name%>"><%=pro_name%>
-				<input type= "hidden" name="major" value ="<%=pro_email%>">
+				<input type= "hidden" name="pro_email" value ="<%=pro_email%>">
 				<input type= "hidden" name="pro_no" value ="<%=pro_no%>">
 			</td>
 		</tr>
 		<tr>
 			<th>학부</th>
 			<td><input type = "hidden" name = "dep_name" value="<%=dep_name%>"><%=dep_name%></td>
-		</tr>
-		<tr>
 			<th>전공</th>
 			<td><input type= "hidden" name="major" value ="<%=major%>"><%=major%></td>
 		</tr>
@@ -68,8 +64,6 @@
 							<option value="4" >4학년</option>
 				</select>
 			</td>
-		</tr>
-		<tr>
 			<th>이수 구분</th>
 			<td>
 				<select name="comp_sort">
@@ -83,13 +77,11 @@
 		</tr>
 		<tr>
 			<th>교육 목표</th>
-			<td><input type="text" name= "edu_goal"  width = "200px" height = "100px"></td>
+			<td colspan="3"><input type="text" name= "edu_goal" ></td>
 		</tr>
 		<tr>
 			<th>강의 장소</th>
-			<td><input type="text" name= "place" value= "<%=dep_name%>건물-000호"></td>	
-		</tr>
-		<tr>
+			<td><input type="text" name= "place" value= "<%=dep_name%>건물-000호"></td>
 			<th>부여 학점</th>
 			<td>	
 				<select name="credit">
@@ -109,12 +101,6 @@
 							<option value="2" >2 학기</option>
 				</select>
 			</td>
-		</tr>
-		<tr>
-			<th>강의 장소</th>
-			<td><input type="text" name= "place" value= "<%=dep_name%>건물-000호"></td>	
-		</tr>
-		<tr>
 			<th>강의 교재</th>
 			<td><input type="text" name= "textbook" ></td>	
 		</tr>
@@ -123,8 +109,6 @@
 	<div id="buttons" align="center">
 		<input type="submit" value="수업등록" class="submit"/>
 		<input type="reset" value="등록취소" class="cancel"/><br>
-		<br><br><br><br>
-		<input type="button" value="이전 페이지" class="cancel" onclick="history.back()"/>
 	</div>
 </form>
 </body>

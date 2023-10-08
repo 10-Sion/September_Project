@@ -16,7 +16,9 @@ import org.json.simple.JSONObject;
 
 import JaeWooVO.DepBean;
 import JaeWooVO.LectureVO;
+import JaeWooVO.PlanVO;
 import JaeWooVO.ProBean;
+import JaeWooVO.ProIntroVO;
 import JaeWooVO.SubBean;
 
 
@@ -279,5 +281,136 @@ public class ProDao {
 			}
 			return result;
 		}
+
+		public void InsertPlan(PlanVO pv) {
+			
+			
+			try{
+				
+				con = getConnection();
+			
+				String sql = "Insert into evaluation_plan(`sub_no`, `mid_exam`, `final_exam`, `quiz`, `task`, `attendance`, `jilmun`, `toron`)" +
+				"VALUES (?,?,?,?,?,?,?,?)";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1,pv.getSub_no());
+				pstmt.setInt(2, pv.getMid_exam());
+				pstmt.setInt(3, pv.getFinal_exam());
+				pstmt.setInt(4, pv.getQuiz());
+				pstmt.setInt(5, pv.getTask());
+				pstmt.setInt(6, pv.getAttendance());
+				pstmt.setInt(7, pv.getJilmun());
+				pstmt.setInt(8, pv.getToron());
+				
+				pstmt.executeUpdate();
+				
+				
+			}catch (Exception e) {
+				System.out.println("Prodao 내부의 insertPlan메소드 구문 오류 : " + e);
+				e.printStackTrace();
+			}finally {
+				rs_Close();
+			}
+			
+			
+		}
+		public void InsertProIntro(int pro_no, ProIntroVO piv) {
+			
+			String sql = "";
+			ProBean pb = new ProBean();
+			try {
+				con = getConnection();
+				
+				sql = "select * from pro_Intro where pro_no = " + pro_no;
+				
+				pstmt = con.prepareStatement(sql);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					
+					sql = "update pro_Intro set homepage=?, blog =?, facebook=? ,Introduce=? where pro_no =" + pro_no;
+					
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setString(1, piv.getHomepage());
+					pstmt.setString(2, piv.getBlog());
+					pstmt.setString(3, piv.getFacebook());
+					pstmt.setString(4, piv.getIntroduce());
+					
+					pstmt.executeUpdate();
+					
+				}else{
+					
+					sql = "insert into pro_Intro (pro_no, homepage, blog, facebook, Introduce)"
+							+ "VALUES (?,?,?,?,?)";
+					
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setInt(1, piv.getPro_no());
+					pstmt.setString(2, piv.getHomepage());
+					pstmt.setString(3, piv.getBlog());
+					pstmt.setString(4, piv.getFacebook());
+					pstmt.setString(5, piv.getIntroduce());
+					
+					pstmt.executeUpdate();
+					
+				}			
+				
+			} catch(Exception e) {
+				System.out.println("ProDao/InsertProIntro 메소드 오류 " + e);
+				e.printStackTrace(); 
+			} finally {
+				rs_Close();
+			}
+			
+		}
+		public ProIntroVO getProIntro(int pro_no) {
+			
+			ProIntroVO piv = new ProIntroVO();
+			
+			try {
+				
+				con = getConnection();
+				
+				String sql =  "select * from pro_Intro where pro_no = " + pro_no;
+				
+				pstmt = con.prepareStatement(sql);
+				
+				rs = pstmt.executeQuery();
+				
+				piv.setBlog(rs.getString("blog"));
+				piv.setHomepage(rs.getString("homepage"));
+				piv.setFacebook(rs.getString("facebook"));
+				piv.setIntroduce(rs.getString("facebook"));
+				
+				
+			}catch (Exception e) {
+				System.out.println("ProDao/getProIntro 메소드 오류 " + e);
+				e.printStackTrace(); 
+			} finally {
+				rs_Close();
+			}
+			
+			return piv;
+					
+		}
 		
 }//ProDao ?��
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
