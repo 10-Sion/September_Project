@@ -24,7 +24,7 @@
                 if (uniqueId != null) {
                 %>
                 <p><%=username%>님이 로그인 중
-                    <a href="../../LoginServlet" id="logoutButton" class="small-link">로그아웃</a>
+                    <a href="/HakSaGwanLee/LoginServlet" id="logoutButton" class="small-link">로그아웃</a>
                 </p>
                 <%
                     // "직원"으로 로그인한 경우에만 회원가입 버튼 표시
@@ -56,7 +56,7 @@
 	
 	            // 받은 데이터를 사용하여 서블릿에 요청
 	            var xhr = new XMLHttpRequest();
-	            xhr.open("POST", "../../LoginServlet", true);
+	            xhr.open("POST", "/HakSaGwanLee/LoginServlet", true);
 	            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	            xhr.onreadystatechange = function () {
 	                if (xhr.readyState === 4 && xhr.status === 200) {

@@ -23,9 +23,6 @@
         <!-- 메인 콘텐츠 영역 (개인 강의실 내용) -->
         <div class="main_content">
             
-            <div class="top">
-                <jsp:include page="privateGangTop.jsp" />
-            </div>
             
             <div class="base_content">
                 <div id="arlina">
