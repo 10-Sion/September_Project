@@ -6,7 +6,7 @@
 <title>회원가입</title>
 <link href=Form.css rel="stylesheet">
 </head>
-
+<jsp:include page="mainTop.jsp" />
 <div id="join-form">
 	<h1>회원가입</h1>
 	
