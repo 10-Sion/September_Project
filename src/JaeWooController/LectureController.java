@@ -301,7 +301,26 @@ public class LectureController extends HttpServlet {
 				return;
 				
 				
-			}
+			}else if(action.equals("/StuLectureList.do")){
+				
+				int sub_no = Integer.parseInt(request.getParameter("전달한 학생 번호 이름"));
+				String nowPage = request.getParameter("nowPage");
+				String nowBlock = request.getParameter("nowBlock");
+				
+				if(request.getParameter("keyWord") != null){
+					keyField = request.getParameter("keyField");
+					keyWord = request.getParameter("keyWord");
+				}
+				
+				List Subject = 서비스에서 요청
+				
+				request.setAttribute("keyField", keyField);
+				request.setAttribute("keyWord", keyWord);
+				request.setAttribute("list", Subject);
+				request.setAttribute("nowPage", nowPage);
+				request.setAttribute("nowBlock", nowBlock);
+				
+				nextPage = "/Student/SubIndex.jsp";
 			
 			
 			

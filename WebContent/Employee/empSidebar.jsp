@@ -33,7 +33,7 @@
                 <p>공지사항 작성(미완)</p>
             </div>
             
-            <div class="menu_item" onclick="window.location.href='../GangUi/gangMain.jsp'">
+            <div class="menu_item" onclick="window.location.href='empMainGang.jsp'">
                 <i class='bx bx-cog'></i>
                 <p>학사관리시스템</p>
             </div>
