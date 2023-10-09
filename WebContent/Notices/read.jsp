@@ -22,7 +22,7 @@
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<jsp:include page="../page/main/mainTop.jsp" />
+
 <br/><br/>
 <table align="center" width="600" cellspacing="3">
     <tr>

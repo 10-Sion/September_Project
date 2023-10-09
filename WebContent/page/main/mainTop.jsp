@@ -32,7 +32,7 @@ if(userRole == "교수"){
                 <h1>교학대학교</h1>
             </div>
             <a href="<%=mainGang%>" class="menuItem">학사관리시스템</a>
-            <a href="/HakSaGwanLee/QnA/list.jsp" class="menuItem">강의실</a>
+            <a href="/HakSaGwanLee/QnA/list.jsp" class="menuItem">QnA</a>
             <a href="/HakSaGwanLee/Notices/list.jsp" class="menuItem">공지사항</a>
 
             <!-- 로그인 상태에 따라 다르게 표시 -->

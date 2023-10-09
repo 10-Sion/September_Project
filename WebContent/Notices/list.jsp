@@ -29,6 +29,7 @@
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+
 <div align="center">
     <br/>
     <h2>공지사항</h2>
