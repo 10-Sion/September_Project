@@ -24,16 +24,7 @@
                     <i class="far fa-clone">
                     </i>강의 관리</a>
                 </li>
-                <li onclick="loadPage('../GangUi/privGangSub4.jsp')">
-                    <a href="javascript:void(0);">
-                    <i class="far fa-calendar-alt">
-                    </i>공지사항</a>
-                </li>
-                <li onclick="loadPage('../GangUi/privGangSub5.jsp')">
-                    <a href="javascript:void(0);">
-                    <i class="far fa-chart-bar">
-                    </i>Q&A 게시판</a>
-                </li>
+               
                 <li onclick="loadServletData('<%=contextPath%>/Report/ReportList.do')">
                     <a href="javascript:void(0);">
                     <i class="far fa-copy">
