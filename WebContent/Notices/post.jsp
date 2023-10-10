@@ -2,6 +2,7 @@
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page import="Member.*" %>
 
+<jsp:include page="../page/main/mainTop.jsp" />
 
 <%
    String userName = null; // 사용자 이름을 저장할 변수 
@@ -35,7 +36,7 @@
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<jsp:include page="../page/main/mainTop.jsp" />
+
 <div align="center">
     <br/><br/>
     <table width="600" cellpadding="3">

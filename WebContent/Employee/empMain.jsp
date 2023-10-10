@@ -19,14 +19,7 @@
     %>
     <%-- 세션에서 값을 읽어와 출력 --%>
     <% Integer currentEmployeeId = (Integer) session.getAttribute("uniqueId"); %>
-    <% if (currentEmployeeId != null) { %>
-        <p>현재 직원 ID: <%= currentEmployeeId %></p>
-    <% } else { %>
-        <%-- error.jsp 페이지로 이동 --%>
-        <% request.setAttribute("errorMessage", "직원 정보를 가져오지 못했습니다."); %>
-        <% request.getRequestDispatcher("/Employee/error.jsp").forward(request, response); %>
-    <% } %>
-  	
+
   	
     <div class="left_sidebar">
       <jsp:include page="empSidebar.jsp" />
@@ -46,7 +39,7 @@
           </div>
           
           <div class="profile_name">
-            <p>Num</p>
+            <p>관리자 ID <%= currentEmployeeId %></p>
           </div>
           
         </div>
@@ -59,14 +52,7 @@
           <h2>Database</h2>
         </div>
         <div class="filter_and_sort">
-          <div class="sort sort_and_filter">
-            <p>Sort</p>
-            <i class='bx bx-sort-down'></i>
-          </div>
-          <div class="filter sort_and_filter">
-            <p>Filter</p>
-            <i class='bx bx-filter'></i>
-          </div>
+
         </div>
       </div>
       <div class="tabs">

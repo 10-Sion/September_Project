@@ -24,9 +24,14 @@
                     </i>Q&A 게시판</a>
                 </li>
                 <li class="active" >
-                    <a href="gangMain.jsp">
+                    <a href="/HakSaGwanLee/GangUi/publicGangMain.jsp">
                     <i class="far fa-copy">
-                    </i>학사관리시스템 메인</a>
+                    </i>학사 일정</a>
+                </li>
+                <li class="active" >
+                    <a href="/HakSaGwanLee/page/main/MainPage.jsp">
+                    <i class="far fa-copy">
+                    </i>메인 페이지로</a>
                 </li>
 
             </ul>

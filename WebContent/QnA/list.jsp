@@ -2,6 +2,9 @@
 <%@page import="QnA.BoardBean"%>
 <%@page import="java.util.Vector"%>
 <jsp:useBean id="bMgr" class="QnA.BoardMgr" />
+
+
+
 <%	
 	  request.setCharacterEncoding("UTF-8");
 	  
@@ -82,7 +85,7 @@
 </script>
 </head>
 <body>
-<jsp:include page="../page/main/mainTop.jsp" />
+
 <div align="center">
 	<br/>
 	<h2>Q & A</h2>

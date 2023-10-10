@@ -312,9 +312,7 @@ public class LectureController extends HttpServlet {
 					keyWord = request.getParameter("keyWord");
 				}
 				
-				System.out.println("내 강의실 버튼클릭");
-				
-				List Subject = null; //서비스에서 요청
+				List Subject = lectureservice.getSublist(keyField, keyWord);
 				
 				request.setAttribute("keyField", keyField);
 				request.setAttribute("keyWord", keyWord);
@@ -339,6 +337,6 @@ public class LectureController extends HttpServlet {
 //			System.out.println( "오류 : " + e);
 //			e.printStackTrace();
 //		}
-	
+		}
 	}
 }

@@ -45,7 +45,7 @@
             </tr>
             <tr>
                 <th>학부:</th>
-                <td>${student.dep_name}</td>
+                <td>${student.dep_name}</td> <!-- 수정: 학부 항목 표시 -->
             </tr>
             <tr>
                 <th>전공:</th>
@@ -54,7 +54,7 @@
         </table>
     
         <!-- 수정 폼 -->
-        <form action="<%=request.getContextPath()%>/student/update" method="POST">
+        <form action="<%=request.getContextPath()%>/student/update" method="POST" class="edit_form">
             <input type="hidden" name="currentStudentId" value="${student.stuNo}">
     
             <label for="newPw">새로운 비밀번호:</label>
@@ -84,6 +84,8 @@
             <input type="submit" value="수정">
         </form>
         
+        <button class="editBtn" onclick="showEditForm()">수정</button>
+
     </c:if>
     
     <c:if test="${student == null}">

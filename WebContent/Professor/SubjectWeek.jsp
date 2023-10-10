@@ -80,7 +80,8 @@
 			<td><%=kw.getWeek_name()%></td>
 			<td><%=kw.getClass_type()%></td>
 			<td><%if( kw.isAssignment() == true){%>유<%}	else{%>무<%}%></td>			
-			<td><button data-video-url="<%=kw.getLecture_link()%>">강의 시청</button></td>
+			<td><a href="/HakSaGwanLee/GangUi/subVideo.jsp?videoUrl=<%=kw.getLecture_link()%>" target="_blank" class="video-link" data-video-url="<%=kw.getLecture_link()%>">강의 시청</a></td>
+
 		</tr>
 <%
 		}
@@ -89,6 +90,5 @@
 	</table>
 	</div>
 	
-	<script src="../pageSetUp/videoPage.js"></script>
 </body>
 </html>
