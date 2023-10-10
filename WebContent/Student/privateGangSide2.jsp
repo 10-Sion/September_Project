@@ -10,10 +10,10 @@
                 	<div class="top"></div>
                 	<div class="bottom"></div>
                 </div>
-                <li onclick="loadServletData('<%=contextPath%>/stu/selSubject.do?stu_no=<%=session_no%>')">
+                <li onclick="loadServletData('<%=contextPath%>/stu/selStudnet.do?stu_no=<%=session_no%>')">
                     <a href="javascript:void(0);">
                     <i class="fas fa-tachometer-alt">
-                    </i>개설 강좌</a>
+                    </i>학생 정보</a>
                 </li>
                 <li onclick="loadServletData('<%=contextPath%>/stu/stu_Info.do?stu_no=<%=session_no%>')">
                     <a href="javascript:void(0);">

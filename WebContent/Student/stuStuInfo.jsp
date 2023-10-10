@@ -7,7 +7,7 @@
 	String contextPath = request.getContextPath();
 	//System.out.println(request.getAttribute("stuVO")); // 값 넘어옴
 	StuVO sVo = (StuVO)request.getAttribute("stuVO");
-	int stu_no = (Integer)session.getAttribute("stu_no");
+	int stu_no = (Integer)session.getAttribute("uniqueId");
 %>
 <!DOCTYPE html>
 <html>

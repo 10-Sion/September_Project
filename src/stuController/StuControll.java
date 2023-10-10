@@ -50,9 +50,9 @@ public class StuControll extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String action = request.getPathInfo();
-		//String val = request.getParameter("stu_no");
+		
 		System.out.println("요청 받은 주소 : " + action);
-		//System.out.println("요청 받은 로그인 값 : " + val);
+		
 		
 		// 조건에 따라서 포워딩 또는 보여줄 VIEW 주소 경로를 저장할 변수
 		String nextPage = null;
@@ -102,14 +102,14 @@ public class StuControll extends HttpServlet {
 				// stu_no 값을 이용해 DB 에 저장된 학생 한명의 정보를 조회하기위해
 				// stuDAO 객체의 studnetInfo(int stu_no) 호출 시 학생 번호전달
 				// 조회한 학생 정보를 StuVO 객체에 저장해서 반환
-				StuVO stuVO = stuDao.studnetInfo(stu_no);
+				StuVO stuVO = stuDao.studentInfo(stu_no);
 				
 				request.setAttribute("stuVO", stuVO);
 				//equest.setAttribute("center", "s_StuInfo.jsp");
 				
 				// -- nextPage 변수에 내가 원하는 jsp 경로를 넣어준다 -- //
 				// 전체 메인화면 주소 저장
-				nextPage = "/stuTable1.jsp";
+				nextPage = "/stuStuInfo.jsp";
 				
 				break;
 				

@@ -339,4 +339,4 @@ public class LectureController extends HttpServlet {
 //		}
 		}
 	}
-}
+

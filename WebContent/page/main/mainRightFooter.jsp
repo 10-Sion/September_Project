@@ -53,6 +53,9 @@ List<jun_chamgo.WeekInfo> recentWeekInfo = weekInfoDAO.getRecentWeekInfo(4); // 
                     <% 
                     NoticesMgr noticesMgr = new NoticesMgr();
                     Vector<NoticesBean> noticeList = noticesMgr.getsimple(0, 5); // 처음 5개 공지사항 번호와 제목 가져오기
+                    
+                    
+                    
                     for (NoticesBean notice : noticeList) {
                     %>
                     <li><a href="/HakSaGwanLee/Notices/read.jsp?num=<%=notice.getNum()%>"><%= notice.getTitle() %></a></li>
@@ -102,16 +105,14 @@ List<jun_chamgo.WeekInfo> recentWeekInfo = weekInfoDAO.getRecentWeekInfo(4); // 
                         <a href="#"><img src="image/lecture.jpeg" class="gangThumb"><br>
                         <%= subName %></a> <!-- sub_name 값을 표시 -->
                     </div>
-                    <%
-                    }
-                    %>
+                  <% } %>
                 </div>
             </div>
 
 
             </div>
         </div>
-    </div>
+
 
 
     <script src="js/contentAnimate.js"></script>

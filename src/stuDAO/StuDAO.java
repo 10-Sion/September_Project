@@ -110,7 +110,7 @@ public class StuDAO {
 	} // userCheck 메소?�� ?��
 
 	// 학생 한명의 정보를 조회하는 메소드
-	public StuVO studnetInfo(int stu_no) {
+	public StuVO studentInfo(int stu_no) {
 
 		String sql = "select * from student where stu_no=?";
 		// 학생정보 저장을 위한 VO 객체 생성
@@ -196,6 +196,7 @@ public class StuDAO {
 					+ "WHERE ss.stu_no IS NULL";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+			
 			while (rs.next()) {
 
 				SubVO subVo = new SubVO();
