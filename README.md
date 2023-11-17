@@ -74,7 +74,8 @@ Eclipse, tomcat, MySQL, Git
 <img src = "https://github.com/10-Sion/September_Project/assets/140682709/fbdfdf04-e7d1-432f-90b2-4dda45864f33" width="40%" height="40%">
 
 ## 📖 게시판 기능
-<img src = "https://github.com/10-Sion/September_Project/assets/140682709/5fc15995-0163-4c70-8b38-53a9680605f7" width="40%" height="40%">
+![그림15](https://github.com/10-Sion/September_Project/assets/140682709/5db233de-5780-4375-a5c3-d14931d14979)
+
 <img src = "https://github.com/10-Sion/September_Project/assets/140682709/9dc8e15f-f26a-4ff9-b644-34b9eef153a4" width="40%" height="40%">
 <img src = "https://github.com/10-Sion/September_Project/assets/140682709/2f7269ae-eb0d-4052-984f-e7fbf95fdc03" width="40%" height="40%">
 
