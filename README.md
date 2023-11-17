@@ -52,13 +52,9 @@ Eclipse, tomcat, MySQL, Git
 ## 📖 기능 구현
 ### 👩🏻‍🎓 학생
 <img src = "https://github.com/10-Sion/September_Project/assets/140682709/3ca1b4ca-660c-4a19-a733-6475d5fd2f31" width="50%" height="50%">
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/d6545d79-ff3e-4607-9d9f-fb99d60ca884" width="50%" height="50%">
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/6dbedd0b-62f8-44fd-bbfb-3d881f533ad3" width="50%" height="50%">
 
-<img src = "https://github.com/10-Sion/September_Project/assets/140682709/60ad79ae-bc41-43e2-a8c1-ad937b6745a2" width="50%" height="50%">
-
-
-![그림3](https://github.com/10-Sion/September_Project/assets/140682709/60ad79ae-bc41-43e2-a8c1-ad937b6745a2)
-
-![그림4](https://github.com/10-Sion/September_Project/assets/140682709/8a73ee7b-c8e8-47fa-bc33-5607d7f395bb)
 
 ## 👨🏻‍🏫 교수
 
