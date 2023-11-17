@@ -72,7 +72,7 @@ Eclipse, tomcat, MySQL, Git
 
 ![그림12](https://github.com/10-Sion/September_Project/assets/140682709/a3a0fdee-048f-4aa2-86db-6f9be5757c6e)
 
-![그림13](https://github.com/10-Sion/September_Project/assets/140682709/fbdfdf04-e7d1-432f-90b2-4dda45864f33)
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/fbdfdf04-e7d1-432f-90b2-4dda45864f33" width="40%" height="40%">
 
 ## 📖 게시판 기능
 ![그림15](https://github.com/10-Sion/September_Project/assets/140682709/5fc15995-0163-4c70-8b38-53a9680605f7)
@@ -82,6 +82,6 @@ Eclipse, tomcat, MySQL, Git
 ![그림17](https://github.com/10-Sion/September_Project/assets/140682709/2f7269ae-eb0d-4052-984f-e7fbf95fdc03)
 
 ## 📖 메인페이지 하단 및 중앙 영상시청 기능
-![하단](https://github.com/10-Sion/September_Project/assets/140682709/524a39fb-28ac-489d-8f72-674c456f5caf)
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/524a39fb-28ac-489d-8f72-674c456f5caf" width="40%" height="40%">
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/720a50ee-6dcb-4991-8bad-9e94795e7a31" width="40%" height="40%">
 
-![영상](https://github.com/10-Sion/September_Project/assets/140682709/720a50ee-6dcb-4991-8bad-9e94795e7a31)
