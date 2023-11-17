@@ -67,19 +67,16 @@ Eclipse, tomcat, MySQL, Git
 ![그림10](https://github.com/10-Sion/September_Project/assets/140682709/be56696f-f0f8-4874-b096-54bcd4f68c24)
 
 ## 👨🏻‍💼 교직원
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/f690ccf3-3adc-4394-b6c2-fe4efcb13465" width="40%" height="40%">
 
-![그림11](https://github.com/10-Sion/September_Project/assets/140682709/f690ccf3-3adc-4394-b6c2-fe4efcb13465)
-
-![그림12](https://github.com/10-Sion/September_Project/assets/140682709/a3a0fdee-048f-4aa2-86db-6f9be5757c6e)
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/a3a0fdee-048f-4aa2-86db-6f9be5757c6e" width="40%" height="40%">
 
 <img src = "https://github.com/10-Sion/September_Project/assets/140682709/fbdfdf04-e7d1-432f-90b2-4dda45864f33" width="40%" height="40%">
 
 ## 📖 게시판 기능
-![그림15](https://github.com/10-Sion/September_Project/assets/140682709/5fc15995-0163-4c70-8b38-53a9680605f7)
-
-![그림16](https://github.com/10-Sion/September_Project/assets/140682709/9dc8e15f-f26a-4ff9-b644-34b9eef153a4)
-
-![그림17](https://github.com/10-Sion/September_Project/assets/140682709/2f7269ae-eb0d-4052-984f-e7fbf95fdc03)
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/5fc15995-0163-4c70-8b38-53a9680605f7" width="40%" height="40%">
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/9dc8e15f-f26a-4ff9-b644-34b9eef153a4" width="40%" height="40%">
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/2f7269ae-eb0d-4052-984f-e7fbf95fdc03" width="40%" height="40%">
 
 ## 📖 메인페이지 하단 및 중앙 영상시청 기능
 <img src = "https://github.com/10-Sion/September_Project/assets/140682709/524a39fb-28ac-489d-8f72-674c456f5caf" width="40%" height="40%">
