@@ -57,14 +57,11 @@ Eclipse, tomcat, MySQL, Git
 
 
 ## 👨🏻‍🏫 교수
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/b2ea9f5d-257d-4983-ad39-1ff7fcb4ef01" width="40%" height="40%">
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/8c6258c3-9de7-4f61-8130-285d6bc5b066" width="40%" height="40%">
 
-![그림5](https://github.com/10-Sion/September_Project/assets/140682709/b2ea9f5d-257d-4983-ad39-1ff7fcb4ef01)
-
-![그림6](https://github.com/10-Sion/September_Project/assets/140682709/8c6258c3-9de7-4f61-8130-285d6bc5b066)
-
-![그림7](https://github.com/10-Sion/September_Project/assets/140682709/34888ecb-9224-4cb0-9681-872a4a4acc11)
-
-![그림8](https://github.com/10-Sion/September_Project/assets/140682709/8bbc4908-6fc1-487a-aa2b-f1dbde975f5c)
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/34888ecb-9224-4cb0-9681-872a4a4acc11" width="40%" height="40%">
+<img src = "https://github.com/10-Sion/September_Project/assets/140682709/8bbc4908-6fc1-487a-aa2b-f1dbde975f5c" width="40%" height="40%">
 
 ## 📖 학사 일정 캘린더
 ![그림10](https://github.com/10-Sion/September_Project/assets/140682709/be56696f-f0f8-4874-b096-54bcd4f68c24)
