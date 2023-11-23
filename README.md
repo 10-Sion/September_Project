@@ -1,6 +1,7 @@
-![image](https://github.com/10-Sion/September_Project/assets/140682709/268c0d96-490b-4a6d-ba02-ac7d7f0f3b11)![image](https://github.com/10-Sion/September_Project/assets/140682709/202ca80c-eca4-49df-9186-7fad2fbcd394)![image](https://github.com/10-Sion/September_Project/assets/140682709/7aa351a6-4dc4-4f32-87d6-cf33dfeaf8a5)![image](https://github.com/10-Sion/September_Project/assets/140682709/63ee070a-0354-4b66-8627-d20099fa632e)# 대학 학사정보시스템 University Management Project
-
-![메인](https://github.com/10-Sion/September_Project/assets/140682709/5f7b109f-2e75-4b05-a86b-984ec8829f8b)
+# 대학 학사정보시스템 University Management Project
+|<img width="1000" alt="스크린샷 2023-11-23 오전 12 01 50" src="https://github.com/10-Sion/September_Project/assets/140682709/5f7b109f-2e75-4b05-a86b-984ec8829f8b">|
+|:---:|
+|메인 페이지|
 
 
 ## 🖥️ 프로젝트 소개
@@ -16,6 +17,7 @@
      - [김소이](#김소이)
      - [박준현](#박준현)
      - [김민성](#김민성)
+       
 
 ## 📌 주요 기능
 #### 👩🏻‍🎓 학생
