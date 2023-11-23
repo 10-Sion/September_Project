@@ -58,11 +58,11 @@ Eclipse, tomcat, MySQL, Git
 
 
 ## 👨🏻‍🏫 교수
-<img src = "https://github.com/10-Sion/September_Project/assets/140682709/b2ea9f5d-257d-4983-ad39-1ff7fcb4ef01" width="40%" height="40%">
-<img src = "https://github.com/10-Sion/September_Project/assets/140682709/8c6258c3-9de7-4f61-8130-285d6bc5b066" width="40%" height="40%">
+|<img src = "https://github.com/10-Sion/September_Project/assets/140682709/b2ea9f5d-257d-4983-ad39-1ff7fcb4ef01" width="500">|<img src = "https://github.com/10-Sion/September_Project/assets/140682709/8c6258c3-9de7-4f61-8130-285d6bc5b066" width="500">
+|:---:|:---:|
 
-<img src = "https://github.com/10-Sion/September_Project/assets/140682709/34888ecb-9224-4cb0-9681-872a4a4acc11" width="40%" height="40%">
-<img src = "https://github.com/10-Sion/September_Project/assets/140682709/8bbc4908-6fc1-487a-aa2b-f1dbde975f5c" width="40%" height="40%">
+|<img src = "https://github.com/10-Sion/September_Project/assets/140682709/34888ecb-9224-4cb0-9681-872a4a4acc11" width="500">|<img src = "https://github.com/10-Sion/September_Project/assets/140682709/8bbc4908-6fc1-487a-aa2b-f1dbde975f5c" width="500">
+|:---:|:---:|
 
 ## 📖 학사 일정 캘린더
 ![그림10](https://github.com/10-Sion/September_Project/assets/140682709/be56696f-f0f8-4874-b096-54bcd4f68c24)
@@ -77,10 +77,10 @@ Eclipse, tomcat, MySQL, Git
 ## 📖 게시판 기능
 ![그림15](https://github.com/10-Sion/September_Project/assets/140682709/5db233de-5780-4375-a5c3-d14931d14979)
 
-<img src = "https://github.com/10-Sion/September_Project/assets/140682709/9dc8e15f-f26a-4ff9-b644-34b9eef153a4" width="40%" height="40%">
-<img src = "https://github.com/10-Sion/September_Project/assets/140682709/2f7269ae-eb0d-4052-984f-e7fbf95fdc03" width="40%" height="40%">
+|<img src = "https://github.com/10-Sion/September_Project/assets/140682709/9dc8e15f-f26a-4ff9-b644-34b9eef153a4" width="500">|<img src = "https://github.com/10-Sion/September_Project/assets/140682709/2f7269ae-eb0d-4052-984f-e7fbf95fdc03" width="500">
+|:---:|:---:|
 
 ## 📖 메인페이지 하단 및 중앙 영상시청 기능
-<img src = "https://github.com/10-Sion/September_Project/assets/140682709/524a39fb-28ac-489d-8f72-674c456f5caf" width="40%" height="40%">
-<img src = "https://github.com/10-Sion/September_Project/assets/140682709/720a50ee-6dcb-4991-8bad-9e94795e7a31" width="40%" height="40%">
+|<img src = "https://github.com/10-Sion/September_Project/assets/140682709/524a39fb-28ac-489d-8f72-674c456f5caf" width="500">|<img src = "https://github.com/10-Sion/September_Project/assets/140682709/720a50ee-6dcb-4991-8bad-9e94795e7a31" width="500">
+|:---:|:---:|
 
